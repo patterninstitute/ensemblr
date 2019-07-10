@@ -1,0 +1,17 @@
+Package: sapiens
+Type: Package
+Title: R Client for the Ensembl REST API
+Version: 0.1.0
+Authors@R: c(
+    person(given = "Ramiro", family = "Magno", email = "ramiro.magno@gmail.com",
+    role = c("aut", "cre"), comment = c(ORCID = "0000-0001-5226-3441")),
+    person(given = "Ana-Teresa", family = "Maia",
+    email = "maia.anateresa@gmail.com", role = "aut", 
+    comment = c(ORCID = "0000-0002-0454-9207")),
+    person("Centre for Biomedical Research, University of Algarve", role = c("cph", "fnd"))
+    )
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
