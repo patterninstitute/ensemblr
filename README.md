@@ -16,7 +16,7 @@ You can install the current, **very** experimental version of ensemblr
 with:
 
 ``` r
-# install.packages("ensemblr")
+# install.packages("remotes")
 remotes::install_github("ramiromagno/ensemblr")
 ```
 
