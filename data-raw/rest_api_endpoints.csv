@@ -1,0 +1,119 @@
+section,endpoint,description,last_update_date
+Archive,GET archive/id/:id,Uses the given identifier to return its latest version,Tue Jul 23 17:56:44 2019
+Archive,POST archive/id,Retrieve the latest version for a set of identifiers,Tue Jul 23 17:56:44 2019
+Comparative Genomics,GET cafe/genetree/id/:id,Retrieves a cafe tree of the gene tree using the gene tree stable identifier,Tue Jul 23 17:56:44 2019
+Comparative Genomics,GET cafe/genetree/member/id/:id,Retrieves the cafe tree of the gene tree that contains the gene / transcript / translation stable identifier,Tue Jul 23 17:56:44 2019
+Comparative Genomics,GET cafe/genetree/member/symbol/:species/:symbol,Retrieves the cafe tree of the gene tree that contains the gene identified by a symbol,Tue Jul 23 17:56:44 2019
+Comparative Genomics,GET family/id/:id,Retrieves a family information using the family stable identifier,Tue Jul 23 17:56:44 2019
+Comparative Genomics,GET family/member/id/:id,Retrieves the information for all the families that contains the gene / transcript / translation stable identifier,Tue Jul 23 17:56:44 2019
+Comparative Genomics,GET family/member/symbol/:species/:symbol,Retrieves the information for all the families that contains the gene identified by a symbol,Tue Jul 23 17:56:44 2019
+Comparative Genomics,GET genetree/id/:id,Retrieves a gene tree for a gene tree stable identifier,Tue Jul 23 17:56:44 2019
+Comparative Genomics,GET genetree/member/id/:id,Retrieves the gene tree that contains the gene / transcript / translation stable identifier,Tue Jul 23 17:56:44 2019
+Comparative Genomics,GET genetree/member/symbol/:species/:symbol,Retrieves the gene tree that contains the gene identified by a symbol,Tue Jul 23 17:56:44 2019
+Comparative Genomics,GET alignment/region/:species/:region,Retrieves genomic alignments as separate blocks based on a region and species,Tue Jul 23 17:56:44 2019
+Comparative Genomics,GET homology/id/:id,Retrieves homology information (orthologs) by Ensembl gene id,Tue Jul 23 17:56:44 2019
+Comparative Genomics,GET homology/symbol/:species/:symbol,Retrieves homology information (orthologs) by symbol,Tue Jul 23 17:56:44 2019
+Cross References,GET xrefs/symbol/:species/:symbol,"Looks up an external symbol and returns all Ensembl objects linked to it. This can be a display name for a gene/transcript/translation, a synonym or an externally linked reference. If a gene's transcript is linked to the supplied symbol the service will return both gene and transcript (it supports transient links).",Tue Jul 23 17:56:44 2019
+Cross References,GET xrefs/id/:id,Perform lookups of Ensembl Identifiers and retrieve their external references in other databases,Tue Jul 23 17:56:44 2019
+Cross References,GET xrefs/name/:species/:name,Performs a lookup based upon the primary accession or display label of an external reference and returning the information we hold about the entry,Tue Jul 23 17:56:44 2019
+EQTL,GET eqtl/stable_id/:species/:stable_id,Returns the p-value for each SNP in a given gene (e.g. ENSG00000227232),Tue Jul 23 17:56:44 2019
+EQTL,GET eqtl/variant_name/:species/:variant_name,Returns the p-values for a SNP (e.g. rs123),Tue Jul 23 17:56:44 2019
+EQTL,GET eqtl/tissue/:species/,Returns all tissues currently available in the DB,Tue Jul 23 17:56:44 2019
+Information,GET info/analysis/:species,List the names of analyses involved in generating Ensembl data.,Tue Jul 23 17:56:44 2019
+Information,GET info/assembly/:species,"List the currently available assemblies for a species, along with toplevel sequences, chromosomes and cytogenetic bands.",Tue Jul 23 17:56:44 2019
+Information,GET info/assembly/:species/:region_name,Returns information about the specified toplevel sequence region for the given species.,Tue Jul 23 17:56:44 2019
+Information,GET info/biotypes/:species,List the functional classifications of gene models that Ensembl associates with a particular species. Useful for restricting the type of genes/transcripts retrieved by other endpoints.,Tue Jul 23 17:56:44 2019
+Information,GET info/biotypes/groups/:group/:object_type,"Without argument the list of available biotype groups is returned. With :group argument provided, list the properties of biotypes within that group. Object type (gene or transcript) can be provided for filtering.",Tue Jul 23 17:56:44 2019
+Information,GET info/biotypes/name/:name/:object_type,List the properties of biotypes with a given name. Object type (gene or transcript) can be provided for filtering.,Tue Jul 23 17:56:44 2019
+Information,GET info/compara/methods,List all compara analyses available (an analysis defines the type of comparative data).,Tue Jul 23 17:56:44 2019
+Information,GET info/compara/species_sets/:method,List all collections of species analysed with the specified compara method.,Tue Jul 23 17:56:44 2019
+Information,GET info/comparas,Lists all available comparative genomics databases and their data release. DEPRECATED: use info/genomes/division instead.,Tue Jul 23 17:56:44 2019
+Information,GET info/data,Shows the data releases available on this REST server. May return more than one release (unfrequent non-standard Ensembl configuration).,Tue Jul 23 17:56:44 2019
+Information,GET info/eg_version,Returns the Ensembl Genomes version of the databases backing this service,Tue Jul 23 17:56:44 2019
+Information,GET info/external_dbs/:species,Lists all available external sources for a species.,Tue Jul 23 17:56:44 2019
+Information,GET info/divisions,Get list of all Ensembl divisions for which information is available,Tue Jul 23 17:56:44 2019
+Information,GET info/genomes/:genome_name,Find information about a given genome,Tue Jul 23 17:56:44 2019
+Information,GET info/genomes/accession/:accession,Find information about genomes containing a specified INSDC accession,Tue Jul 23 17:56:44 2019
+Information,GET info/genomes/assembly/:assembly_id,Find information about a genome with a specified assembly,Tue Jul 23 17:56:44 2019
+Information,GET info/genomes/division/:division_name,Find information about all genomes in a given division. May be large for Ensembl Bacteria.,Tue Jul 23 17:56:44 2019
+Information,GET info/genomes/taxonomy/:taxon_name,Find information about all genomes beneath a given node of the taxonomy,Tue Jul 23 17:56:44 2019
+Information,GET info/ping,Checks if the service is alive.,Tue Jul 23 17:56:44 2019
+Information,GET info/rest,Shows the current version of the Ensembl REST API.,Tue Jul 23 17:56:44 2019
+Information,GET info/software,Shows the current version of the Ensembl API used by the REST server.,Tue Jul 23 17:56:44 2019
+Information,GET info/species,"Lists all available species, their aliases, available adaptor groups and data release.",Tue Jul 23 17:56:44 2019
+Information,GET info/variation/:species,List the variation sources used in Ensembl for a species.,Tue Jul 23 17:56:44 2019
+Information,GET info/variation/consequence_types,Lists all variant consequence types.,Tue Jul 23 17:56:44 2019
+Information,GET info/variation/populations/:species:/:population_name,List all individuals for a population from a species,Tue Jul 23 17:56:44 2019
+Information,GET info/variation/populations/:species,List all populations for a species,Tue Jul 23 17:56:44 2019
+Linkage Disequilibrium,GET ld/:species/:id/:population_name,Computes and returns LD values between the given variant and all other variants in a window centered around the given variant. The window size is set to 500 kb.,Tue Jul 23 17:56:44 2019
+Linkage Disequilibrium,GET ld/:species/pairwise/:id1/:id2,Computes and returns LD values between the given variants.,Tue Jul 23 17:56:44 2019
+Linkage Disequilibrium,GET ld/:species/region/:region/:population_name,Computes and returns LD values between all pairs of variants in the defined region.,Tue Jul 23 17:56:44 2019
+Lookup,GET lookup/id/:id,"Find the species and database for a single identifier e.g. gene, transcript, protein",Tue Jul 23 17:56:44 2019
+Lookup,POST lookup/id,Find the species and database for several identifiers. IDs that are not found are returned with no data.,Tue Jul 23 17:56:44 2019
+Lookup,GET lookup/symbol/:species/:symbol,Find the species and database for a symbol in a linked external database,Tue Jul 23 17:56:44 2019
+Lookup,POST lookup/symbol/:species/:symbol,Find the species and database for a set of symbols in a linked external database. Unknown symbols are omitted from the response.,Tue Jul 23 17:56:44 2019
+Mapping,GET map/cdna/:id/:region,Convert from cDNA coordinates to genomic coordinates. Output reflects forward orientation coordinates as returned from the Ensembl API.,Tue Jul 23 17:56:44 2019
+Mapping,GET map/cds/:id/:region,Convert from CDS coordinates to genomic coordinates. Output reflects forward orientation coordinates as returned from the Ensembl API.,Tue Jul 23 17:56:44 2019
+Mapping,GET map/:species/:asm_one/:region/:asm_two,Convert the co-ordinates of one assembly to another,Tue Jul 23 17:56:44 2019
+Mapping,GET map/translation/:id/:region,Convert from protein (translation) coordinates to genomic coordinates. Output reflects forward orientation coordinates as returned from the Ensembl API.,Tue Jul 23 17:56:44 2019
+Ontologies and Taxonomy,GET ontology/ancestors/:id,Reconstruct the entire ancestry of a term from is_a and part_of relationships,Tue Jul 23 17:56:44 2019
+Ontologies and Taxonomy,GET ontology/ancestors/chart/:id,Reconstruct the entire ancestry of a term from is_a and part_of relationships.,Tue Jul 23 17:56:44 2019
+Ontologies and Taxonomy,GET ontology/descendants/:id,Find all the terms descended from a given term. By default searches are conducted within the namespace of the given identifier,Tue Jul 23 17:56:44 2019
+Ontologies and Taxonomy,GET ontology/id/:id,Search for an ontological term by its namespaced identifier,Tue Jul 23 17:56:44 2019
+Ontologies and Taxonomy,GET ontology/name/:name,Search for a list of ontological terms by their name,Tue Jul 23 17:56:44 2019
+Ontologies and Taxonomy,GET taxonomy/classification/:id,Return the taxonomic classification of a taxon node,Tue Jul 23 17:56:44 2019
+Ontologies and Taxonomy,GET taxonomy/id/:id,Search for a taxonomic term by its identifier or name,Tue Jul 23 17:56:44 2019
+Ontologies and Taxonomy,GET taxonomy/name/:name,Search for a taxonomic id by a non-scientific name,Tue Jul 23 17:56:44 2019
+Overlap,GET overlap/id/:id,"Retrieves features (e.g. genes, transcripts, variants and more) that overlap a region defined by the given identifier.",Tue Jul 23 17:56:44 2019
+Overlap,GET overlap/region/:species/:region,"Retrieves features (e.g. genes, transcripts, variants and more) that overlap a given region.",Tue Jul 23 17:56:44 2019
+Overlap,GET overlap/translation/:id,"Retrieve features related to a specific Translation as described by its stable ID (e.g. domains, variants).",Tue Jul 23 17:56:44 2019
+Phenotype annotations,GET /phenotype/accession/:species/:accession,Return phenotype annotations for genomic features given a phenotype ontology accession,Tue Jul 23 17:56:44 2019
+Phenotype annotations,GET /phenotype/gene/:species/:gene,Return phenotype annotations for a given gene.,Tue Jul 23 17:56:44 2019
+Phenotype annotations,GET /phenotype/region/:species/:region,Return phenotype annotations that overlap a given genomic region.,Tue Jul 23 17:56:44 2019
+Phenotype annotations,GET /phenotype/term/:species/:term,Return phenotype annotations for genomic features given a phenotype ontology term,Tue Jul 23 17:56:44 2019
+Regulation,GET regulatory/species/:species/microarray/:microarray/vendor/:vendor,Returns information about a specific microarray,Tue Jul 23 17:56:44 2019
+Regulation,GET regulatory/species/:species/epigenome,Returns information about all epigenomes available for the given species,Tue Jul 23 17:56:44 2019
+Regulation,GET species/:species/binding_matrix/:binding_matrix_stable_id/,Return the specified binding matrix,Tue Jul 23 17:56:44 2019
+Regulation,GET regulatory/species/:species/microarray,Returns information about all microarrays available for the given species,Tue Jul 23 17:56:44 2019
+Regulation,GET regulatory/species/:species/microarray/:microarray/probe/:probe,Returns information about a specific probe from a microarray,Tue Jul 23 17:56:44 2019
+Regulation,GET regulatory/species/:species/microarray/:microarray/probe_set/:probe_set,Returns information about a specific probe_set from a microarray,Tue Jul 23 17:56:44 2019
+Regulation,GET regulatory/species/:species/id/:id,Returns a RegulatoryFeature given its stable ID (e.g. ENSR00000006733),Tue Jul 23 17:56:44 2019
+Sequence,GET sequence/id/:id,Request multiple types of sequence by stable identifier. Supports feature masking and expand options.,Tue Jul 23 17:56:44 2019
+Sequence,POST sequence/id,Request multiple types of sequence by a stable identifier list.,Tue Jul 23 17:56:44 2019
+Sequence,GET sequence/region/:species/:region,Returns the genomic sequence of the specified region of the given species. Supports feature masking and expand options.,Tue Jul 23 17:56:44 2019
+Sequence,POST sequence/region/:species,Request multiple types of sequence by a list of regions.,Tue Jul 23 17:56:44 2019
+Transcript Haplotypes,GET transcript_haplotypes/:species/:id,Computes observed transcript haplotype sequences based on phased genotype data,Tue Jul 23 17:56:44 2019
+Variation,GET variant_recoder/:species/:id,"Translate a variant identifier, HGVS notation or genomic SPDI notation to all possible variant IDs, HGVS and genomic SPDI",Tue Jul 23 17:56:44 2019
+Variation,POST variant_recoder/:species,"Translate a list of variant identifiers, HGVS notations or genomic SPDI notations to all possible variant IDs, HGVS and genomic SPDI",Tue Jul 23 17:56:44 2019
+Variation,GET variation/:species/:id,"Uses a variant identifier (e.g. rsID) to return the variation features including optional genotype, phenotype and population data",Tue Jul 23 17:56:44 2019
+Variation,GET variation/:species/pmcid/:pmcid,Fetch variants by publication using PubMed Central reference number (PMCID),Tue Jul 23 17:56:44 2019
+Variation,GET variation/:species/pmid/:pmid,Fetch variants by publication using PubMed reference number (PMID),Tue Jul 23 17:56:44 2019
+Variation,POST variation/:species/,"Uses a list of variant identifiers (e.g. rsID) to return the variation features including optional genotype, phenotype and population data",Tue Jul 23 17:56:44 2019
+Variation GA4GH,GET ga4gh/beacon,Return Beacon information,Tue Jul 23 17:56:44 2019
+Variation GA4GH,GET ga4gh/beacon/query,Return the Beacon response for allele information,Tue Jul 23 17:56:44 2019
+Variation GA4GH,POST ga4gh/beacon/query,Return the Beacon response for allele information,Tue Jul 23 17:56:44 2019
+Variation GA4GH,GET ga4gh/features/:id,Return the GA4GH record for a specific sequence feature given its identifier,Tue Jul 23 17:56:44 2019
+Variation GA4GH,POST ga4gh/features/search,Return a list of sequence annotation features in GA4GH format,Tue Jul 23 17:56:44 2019
+Variation GA4GH,POST ga4gh/callsets/search,Return a list of sets of genotype calls for specific samples in GA4GH format,Tue Jul 23 17:56:44 2019
+Variation GA4GH,GET ga4gh/callsets/:id,Return the GA4GH record for a specific CallSet given its identifier,Tue Jul 23 17:56:44 2019
+Variation GA4GH,POST ga4gh/datasets/search,Return a list of datasets in GA4GH format,Tue Jul 23 17:56:44 2019
+Variation GA4GH,GET ga4gh/datasets/:id,Return the GA4GH record for a specific dataset given its identifier,Tue Jul 23 17:56:44 2019
+Variation GA4GH,POST ga4gh/featuresets/search,Return a list of feature sets in GA4GH format,Tue Jul 23 17:56:44 2019
+Variation GA4GH,GET ga4gh/featuresets/:id,Return the GA4GH record for a specific featureSet given its identifier,Tue Jul 23 17:56:44 2019
+Variation GA4GH,GET ga4gh/variants/:id,Return the GA4GH record for a specific variant given its identifier.,Tue Jul 23 17:56:44 2019
+Variation GA4GH,POST ga4gh/variantannotations/search,Return variant annotation information in GA4GH format for a region on a reference sequence,Tue Jul 23 17:56:44 2019
+Variation GA4GH,POST ga4gh/variants/search,Return variant call information in GA4GH format for a region on a reference sequence,Tue Jul 23 17:56:44 2019
+Variation GA4GH,POST ga4gh/variantsets/search,Return a list of variant sets in GA4GH format,Tue Jul 23 17:56:44 2019
+Variation GA4GH,GET ga4gh/variantsets/:id,Return the GA4GH record for a specific VariantSet given its identifier,Tue Jul 23 17:56:44 2019
+Variation GA4GH,POST ga4gh/references/search,Return a list of reference sequences in GA4GH format,Tue Jul 23 17:56:44 2019
+Variation GA4GH,GET ga4gh/references/:id,Return data for a specific reference in GA4GH format by id,Tue Jul 23 17:56:44 2019
+Variation GA4GH,POST ga4gh/referencesets/search,Return a list of reference sets in GA4GH format,Tue Jul 23 17:56:44 2019
+Variation GA4GH,GET ga4gh/referencesets/:id,Return data for a specific reference set in GA4GH format,Tue Jul 23 17:56:44 2019
+Variation GA4GH,POST ga4gh/variantannotationsets/search,Return a list of annotation sets in GA4GH format,Tue Jul 23 17:56:44 2019
+Variation GA4GH,GET ga4gh/variantannotationsets/:id,Return meta data for a specific annotation set in GA4GH format,Tue Jul 23 17:56:44 2019
+VEP,GET vep/:species/hgvs/:hgvs_notation,Fetch variant consequences based on a HGVS notation,Tue Jul 23 17:56:44 2019
+VEP,POST vep/:species/hgvs,Fetch variant consequences for multiple HGVS notations,Tue Jul 23 17:56:44 2019
+VEP,GET vep/:species/id/:id,Fetch variant consequences based on a variant identifier,Tue Jul 23 17:56:44 2019
+VEP,POST vep/:species/id,Fetch variant consequences for multiple ids,Tue Jul 23 17:56:44 2019
+VEP,GET vep/:species/region/:region/:allele/,Fetch variant consequences,Tue Jul 23 17:56:44 2019
+VEP,POST vep/:species/region,Fetch variant consequences for multiple regions,Tue Jul 23 17:56:44 2019

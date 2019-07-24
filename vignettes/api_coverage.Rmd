@@ -1,0 +1,95 @@
+---
+title: "Ensembl REST API Coverage"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Ensembl REST API Coverage}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, echo=FALSE, message=FALSE}
+library(knitr)
+library(kableExtra)
+library(formattable)
+library(dplyr)
+library(ensemblr)
+```
+
+```{r, echo=FALSE}
+section_tally <- dplyr::count(rest_api_endpoints, section)
+my_index <- section_tally$n
+names(my_index) <- section_tally$section
+
+r <- function(x) cell_spec(x, background = "red", color = "white", bold = TRUE)
+g <- function(x) cell_spec(x, background = "green", color = "white", bold = TRUE)
+
+rest_api_coverage <- rest_api_endpoints %>%
+  select(endpoint, description) %>%
+  mutate(ensemblr_api = r('TODO'))
+```
+
+```{r echo=FALSE}
+# get_versioning
+rest_api_coverage[
+  rest_api_coverage$endpoint == 'GET info/data',
+  'ensemblr_api'] <- '`get_data_versions()`'
+
+rest_api_coverage[
+  rest_api_coverage$endpoint == 'GET info/software',
+  'ensemblr_api'] <- '`get_software_version()`'
+
+rest_api_coverage[
+  rest_api_coverage$endpoint == 'GET info/rest',
+  'ensemblr_api'] <- '`get_rest_version()`'
+```
+
+```{r echo=FALSE}
+# get_species
+rest_api_coverage[
+  rest_api_coverage$endpoint == 'GET info/species',
+  'ensemblr_api'] <- '`get_species()`'
+```
+
+```{r echo=FALSE}
+# get_divisions
+rest_api_coverage[
+  rest_api_coverage$endpoint == 'GET info/divisions',
+  'ensemblr_api'] <- '`get_divisions()`'
+```
+
+
+```{r echo=FALSE}
+# get_ld_variants_by_window
+rest_api_coverage[
+  rest_api_coverage$endpoint == 'GET ld/:species/:id/:population_name',
+  'ensemblr_api'] <- '`get_ld_variants_by_window()`'
+
+# get_ld_variants_by_pair
+rest_api_coverage[
+  rest_api_coverage$endpoint == 'GET ld/:species/pairwise/:id1/:id2',
+  'ensemblr_api'] <- '`get_ld_variants_by_pair()`'
+
+# get_ld_variants_by_range
+rest_api_coverage[
+  rest_api_coverage$endpoint == 'GET ld/:species/region/:region/:population_name',
+  'ensemblr_api'] <- '`get_ld_variants_by_range()`'
+```
+
+```{r echo=FALSE}
+kable(rest_api_coverage[c('endpoint', 'ensemblr_api', 'description')],
+      escape = FALSE,
+      col.names = c('Endpoint', 'ensemblr API', 'Description')
+      ) %>%
+  column_spec(3, width = "10cm") %>%
+  kable_styling(c("striped", "hover", "condensed", "responsive"),
+                full_width = FALSE,
+                fixed_thead = TRUE) %>%
+  pack_rows(index = my_index)
+```
