@@ -1,0 +1,700 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="394"
+   height="231.95312"
+   viewBox="0 0 104.24584 61.37093"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 5da689c313, 2019-01-14"
+   sodipodi:docname="ensembl_api_versioning.svg"
+   inkscape:export-filename="/home/rmagno/sci/code/R/pkg/sapiens/man/figures/ensembl_api_versioning.png"
+   inkscape:export-xdpi="121.83"
+   inkscape:export-ydpi="121.83">
+  <defs
+     id="defs2"><inkscape:path-effect
+   effect="bspline"
+   id="path-effect2370"
+   is_visible="true"
+   weight="33.333333"
+   steps="2"
+   helper_size="0"
+   apply_no_weight="true"
+   apply_with_weight="true"
+   only_selected="false" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	</defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="1"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2"
+     inkscape:cx="207.07916"
+     inkscape:cy="102.93338"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="2556"
+     inkscape:window-height="1401"
+     inkscape:window-x="1920"
+     inkscape:window-y="18"
+     inkscape:window-maximized="0"
+     fit-margin-top="2"
+     fit-margin-left="2"
+     fit-margin-right="2"
+     fit-margin-bottom="2" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-0.79374996,-231.11968)">
+    <g
+       id="g1636"
+       transform="matrix(0.91247073,0,0,0.91247073,23.83258,14.581867)"
+       style="stroke-width:1.09592557">
+      <path
+         id="path1002"
+         d="m 54.776359,263.44643 h -1.166606 v -0.51152 c 0,-0.12176 -0.08291,-0.22785 -0.201063,-0.2573 l -0.785162,-0.19561 -0.410504,-0.99057 0.416655,-0.69315 c 0.06273,-0.10434 0.04632,-0.238 -0.03977,-0.32407 l -1.098621,-1.09862 c -0.08612,-0.0861 -0.219782,-0.10248 -0.324093,-0.0398 l -0.693153,0.41665 -0.990599,-0.4105 -0.195603,-0.78516 c -0.02944,-0.11815 -0.135542,-0.20106 -0.257299,-0.20106 h -0.51145 v -1.16661 c 0,-0.14644 -0.118705,-0.26515 -0.265148,-0.26515 -0.146443,0 -0.265148,0.11871 -0.265148,0.26515 v 1.16661 h -0.511529 c -0.121757,0 -0.227843,0.0829 -0.2573,0.20106 l -0.195602,0.78516 -0.990572,0.4105 -0.693152,-0.41665 c -0.104391,-0.0627 -0.238001,-0.0464 -0.324066,0.0398 l -1.098624,1.09862 c -0.08609,0.0861 -0.102479,0.21976 -0.03977,0.32407 l 0.416655,0.69315 -0.410504,0.99057 -0.785162,0.19561 c -0.11815,0.0294 -0.20106,0.13554 -0.20106,0.2573 v 0.51152 h -1.166582 c -0.14644,0 -0.265148,0.11871 -0.265148,0.26515 0,0.14642 0.118708,0.26515 0.265148,0.26515 h 1.166606 v 0.51153 c 0,0.12176 0.08291,0.22787 0.201063,0.25727 l 0.785162,0.19563 0.410505,0.99057 -0.416683,0.69316 c -0.06273,0.10436 -0.04632,0.23802 0.03977,0.32412 l 1.098624,1.09862 c 0.08609,0.0861 0.219754,0.10245 0.324117,0.0397 l 0.693129,-0.41666 0.990599,0.4105 0.195599,0.78514 c 0.02944,0.11815 0.135546,0.20106 0.257302,0.20106 h 0.511499 v 1.16661 c 0,0.14641 0.118708,0.26515 0.265152,0.26515 0.14644,0 0.265148,-0.11874 0.265148,-0.26515 v -1.16661 h 0.511526 c 0.121756,0 0.227845,-0.0829 0.257302,-0.20106 l 0.1956,-0.78514 0.990599,-0.4105 0.693128,0.41666 c 0.104363,0.0627 0.238,0.0463 0.324121,-0.0397 l 1.098621,-1.09862 c 0.08606,-0.0861 0.102478,-0.21978 0.03974,-0.32412 l -0.416655,-0.69316 0.410504,-0.99057 0.785162,-0.19563 c 0.11815,-0.0294 0.201063,-0.13551 0.201063,-0.25727 v -0.51153 h 1.166606 c 0.14644,0 0.265149,-0.11873 0.265149,-0.26515 -8e-5,-0.14644 -0.118788,-0.26515 -0.265228,-0.26515 z m -1.696878,0.83464 -0.713811,0.17787 c -0.08156,0.0203 -0.14867,0.0781 -0.180858,0.15577 l -0.512851,1.23756 c -0.03219,0.0777 -0.02562,0.16601 0.01771,0.2381 l 0.378793,0.63016 -0.805603,0.80563 -0.630155,-0.37879 c -0.0721,-0.0434 -0.160444,-0.0499 -0.238132,-0.0177 l -1.23756,0.51288 c -0.07766,0.0322 -0.135439,0.0993 -0.155776,0.18086 l -0.177834,0.71378 H 47.68443 l -0.177837,-0.71378 c -0.02034,-0.0816 -0.07811,-0.14867 -0.155773,-0.18086 l -1.23756,-0.51288 c -0.07769,-0.0322 -0.166038,-0.0256 -0.238131,0.0177 l -0.630155,0.37879 -0.805604,-0.80563 0.378793,-0.63016 c 0.04333,-0.0721 0.04988,-0.16044 0.01768,-0.2381 l -0.512852,-1.23756 c -0.03219,-0.0777 -0.0993,-0.13544 -0.180857,-0.15577 l -0.713783,-0.17787 v -1.13897 l 0.713808,-0.17784 c 0.08156,-0.0203 0.148669,-0.0781 0.18086,-0.15578 l 0.512851,-1.23756 c 0.03219,-0.0777 0.02563,-0.16603 -0.01768,-0.2381 l -0.37879,-0.63016 0.805603,-0.8056 0.630155,0.37879 c 0.07207,0.0433 0.160416,0.0499 0.238104,0.0177 l 1.23756,-0.51286 c 0.07766,-0.0322 0.135439,-0.0993 0.155773,-0.18085 l 0.177837,-0.71382 h 1.138978 l 0.177834,0.71382 c 0.02034,0.0816 0.07811,0.14867 0.155776,0.18085 l 1.23756,0.51286 c 0.07772,0.0322 0.166036,0.0256 0.238104,-0.0177 l 0.630155,-0.37879 0.805603,0.8056 -0.378793,0.63016 c -0.04333,0.0721 -0.04987,0.16042 -0.01768,0.2381 l 0.512852,1.23756 c 0.03219,0.0777 0.0993,0.13544 0.180857,0.15578 l 0.713811,0.17784 z"
+         inkscape:connector-curvature="0"
+         style="stroke-width:0.28996366" />
+      <path
+         id="path1008"
+         d="m 49.423226,260.5247 c -0.137454,-0.0504 -0.28981,0.0201 -0.340268,0.15755 -0.05046,0.13748 0.0201,0.28981 0.157551,0.34027 1.122645,0.41201 1.876917,1.49268 1.876917,2.68909 0,1.57897 -1.284572,2.86351 -2.863511,2.86351 -1.57894,0 -2.863482,-1.28457 -2.863482,-2.86354 0,-1.13208 0.668919,-2.16017 1.704117,-2.61915 0.133872,-0.0593 0.194274,-0.21599 0.134908,-0.34983 -0.05934,-0.13385 -0.21602,-0.19428 -0.34984,-0.13491 -1.226739,0.5439 -2.019433,1.76226 -2.019433,3.10389 0,1.87132 1.522438,3.39378 3.393785,3.39378 1.871346,0 3.393756,-1.52246 3.393756,-3.39378 0,-1.41786 -0.893981,-2.69858 -2.2245,-3.18688 z"
+         inkscape:connector-curvature="0"
+         style="stroke-width:0.28996366" />
+      <path
+         id="path1014"
+         d="m 48.267994,260.31783 -0.01405,-3e-5 c -0.146443,0 -0.265148,0.11871 -0.265148,0.26515 0,0.14644 0.118705,0.26515 0.265148,0.26515 l 0.01249,3e-5 c 2.65e-4,0 6.1e-4,0 9.16e-4,0 0.14607,0 0.264696,-0.11821 0.265148,-0.26438 3.06e-4,-0.14645 -0.117939,-0.2655 -0.264382,-0.26592 z"
+         inkscape:connector-curvature="0"
+         style="stroke-width:0.28996366" />
+      <path
+         id="path1038"
+         d="m 54.140557,256.92402 c -0.497077,0 -0.901482,0.40438 -0.901482,0.90148 0,0.15209 0.03799,0.2954 0.104784,0.42116 l -1.014436,1.01441 c -0.103538,0.10354 -0.103538,0.27144 0,0.37498 0.05179,0.0518 0.119664,0.0776 0.187515,0.0776 0.06785,0 0.135729,-0.0259 0.187488,-0.0777 l 1.014222,-1.01422 c 0.125975,0.067 0.269553,0.10515 0.421881,0.10515 0.497077,0 0.901482,-0.40437 0.901482,-0.90148 0,-0.4971 -0.404353,-0.90145 -0.901454,-0.90145 z m 0,1.27266 c -0.204698,0 -0.371185,-0.16651 -0.371185,-0.37118 0,-0.20469 0.166515,-0.37118 0.371185,-0.37118 0.204695,0 0.371182,0.16651 0.371182,0.37118 2.7e-5,0.20467 -0.166487,0.37118 -0.371182,0.37118 z"
+         inkscape:connector-curvature="0"
+         style="stroke-width:0.28996366" />
+      <path
+         id="path1044"
+         d="m 44.178406,267.78706 c -0.103541,-0.10348 -0.271434,-0.10348 -0.374948,3e-5 l -1.014064,1.01407 c -0.125894,-0.0669 -0.269338,-0.10497 -0.421535,-0.10497 -0.497102,2e-5 -0.901482,0.4044 -0.901482,0.90148 0,0.49707 0.40438,0.90148 0.901482,0.90148 0.497101,0 0.901482,-0.40438 0.901482,-0.90148 0,-0.15223 -0.03808,-0.29567 -0.104971,-0.42154 l 1.014064,-1.01409 c 0.103514,-0.10351 0.103514,-0.27141 -2.8e-5,-0.37498 z m -1.810547,2.18182 c -0.204695,0 -0.371182,-0.16652 -0.371182,-0.37119 0,-0.20469 0.166511,-0.37118 0.371182,-0.37118 0.204694,0 0.371182,0.16651 0.371182,0.37118 0,0.20467 -0.166512,0.37119 -0.371182,0.37119 z"
+         inkscape:connector-curvature="0"
+         style="stroke-width:0.28996366" />
+      <path
+         id="path1050"
+         d="m 52.704557,267.78704 c -0.04958,-0.0493 -0.117991,-0.0777 -0.187726,-0.0777 -0.06973,0 -0.138142,0.0283 -0.18746,0.0777 -0.04932,0.0493 -0.07769,0.1177 -0.07769,0.18746 0,0.0697 0.02837,0.13814 0.07769,0.18743 0.04932,0.0493 0.117728,0.0777 0.18746,0.0777 0.07,0 0.138145,-0.0284 0.187726,-0.0777 0.04932,-0.0493 0.07743,-0.11746 0.07743,-0.18743 0,-0.0698 -0.0281,-0.13817 -0.07743,-0.18746 z"
+         inkscape:connector-curvature="0"
+         style="stroke-width:0.28996366" />
+      <path
+         id="path1056"
+         d="m 54.140557,268.69621 c -0.152356,0 -0.295934,0.0381 -0.421881,0.10516 l -0.447945,-0.44795 c -0.103538,-0.10348 -0.271434,-0.10351 -0.374948,0 -0.103538,0.10355 -0.103566,0.27144 0,0.37498 l 0.448104,0.44813 c -0.06676,0.12581 -0.104788,0.26913 -0.104788,0.42116 0,0.49708 0.404381,0.90149 0.901482,0.90149 0.497105,0 0.901458,-0.40438 0.901458,-0.90149 0,-0.4971 -0.404381,-0.90148 -0.901482,-0.90148 z m 0,1.27267 c -0.204698,0 -0.371185,-0.16652 -0.371185,-0.37119 0,-0.20469 0.166515,-0.37118 0.371185,-0.37118 0.204695,0 0.371182,0.16651 0.371182,0.37118 2.7e-5,0.20467 -0.166487,0.37119 -0.371182,0.37119 z"
+         inkscape:connector-curvature="0"
+         style="stroke-width:0.28996366" />
+      <path
+         id="path1062"
+         d="m 44.178406,259.26107 -1.014036,-1.01403 c 0.0669,-0.1259 0.104971,-0.26934 0.104971,-0.42154 0,-0.49708 -0.404381,-0.90148 -0.901482,-0.90148 -0.497102,0 -0.901482,0.40438 -0.901482,0.90148 0,0.4971 0.40438,0.90148 0.901482,0.90148 0.152221,0 0.295668,-0.0381 0.421535,-0.10497 l 1.014064,1.01404 c 0.05178,0.0518 0.119637,0.0777 0.187488,0.0777 0.06785,0 0.135729,-0.0259 0.187488,-0.0777 0.103514,-0.10354 0.103514,-0.27144 -2.8e-5,-0.37498 z m -1.810547,-1.06439 c -0.204695,0 -0.371182,-0.16651 -0.371182,-0.37118 0,-0.20469 0.166511,-0.37118 0.371182,-0.37118 0.204694,0 0.371182,0.16651 0.371182,0.37118 0,0.20467 -0.166512,0.37118 -0.371182,0.37118 z"
+         inkscape:connector-curvature="0"
+         style="stroke-width:0.28996366" />
+    </g>
+    <g
+       id="g1311"
+       transform="matrix(0.07079185,0,0,0.07079185,94.216778,239.76743)"
+       style="stroke-width:14.1259203">
+      <path
+         style="stroke-width:4.9833107"
+         id="path1155"
+         d="m 23.673317,192.83273 c 1.570962,-3.56085 2.432237,-7.41109 2.432237,-11.36744 0,-15.56219 -12.660037,-28.22222 -28.2222217,-28.22222 -5.3757264,0 -10.5916023,1.53789 -15.0853843,4.39732 -3.038574,-10.69082 -12.967338,-18.50843 -24.425726,-18.50843 -4.379404,0 -8.619627,1.11759 -12.406478,3.25079 -5.873199,-7.38215 -14.760165,-11.71746 -24.28241,-11.71746 -9.737217,0 -18.801951,4.52686 -24.662754,12.21217 -2.07257,-0.61598 -4.20852,-0.92328 -6.38169,-0.92328 -10.35458,0 -19.37108,7.17958 -21.86947,17.04633 -9.90258,1.05558 -17.64164,9.46299 -17.64164,19.64256 0,5.52593 2.28617,10.52132 5.95726,14.11111 H -146.05 c -1.55718,0 -2.82222,1.2609 -2.82222,2.82222 v 107.24444 c 0,1.56132 1.26504,2.82222 2.82222,2.82222 H 23.283332 c 1.557182,0 2.822222,-1.2609 2.822222,-2.82222 V 195.5764 c 0,-1.42214 -1.066603,-2.54524 -2.432237,-2.74367 z M -143.22778,178.64307 c 0,-7.78041 6.33071,-14.11111 14.0119,-14.11387 1.49103,0.12954 2.90766,-0.95085 3.11574,-2.41019 1.18236,-8.27787 8.37985,-14.52039 16.73903,-14.52039 2.19522,0 4.34358,0.4203 6.38721,1.2554 1.24712,0.50849 2.68579,0.0648 3.425801,-1.06385 4.721158,-7.18785 12.657279,-11.48044 21.231433,-11.48044 8.550726,0 16.475823,4.27606 21.203874,11.43221 0.423058,0.64354 1.085892,1.08176 1.842434,1.22232 0.759302,0.13918 1.535138,-0.0331 2.156633,-0.48231 3.380327,-2.42397 7.354588,-3.70555 11.485947,-3.70555 10.193348,0 18.832269,7.95542 19.671495,18.11293 0.08681,1.07212 0.775836,1.99816 1.774913,2.39366 0.990809,0.40376 2.133202,0.19154 2.932466,-0.53055 4.171322,-3.78547 9.5442929,-5.86493 15.1322363,-5.86493 12.4491957,0 22.5777777,10.12858 22.5777777,22.57778 0,4.00733 -1.101052,7.86308 -3.09094,11.28889 h -146.48683 c -7.78041,0 -14.11112,-6.33071 -14.11112,-14.11111 z m 163.68889,19.75555 v 16.93333 h -163.68889 v -16.93333 z m -163.68889,101.6 V 220.9764 H 20.46111 v 79.02222 z m 0,0"
+         inkscape:connector-curvature="0" />
+      <path
+         style="stroke-width:4.9833107"
+         id="path1157"
+         d="m -134.76111,204.04307 h 5.64445 v 5.64444 h -5.64445 z m 0,0"
+         inkscape:connector-curvature="0" />
+      <path
+         style="stroke-width:4.9833107"
+         id="path1159"
+         d="m -123.47222,204.04307 h 5.64444 v 5.64444 h -5.64444 z m 0,0"
+         inkscape:connector-curvature="0" />
+      <path
+         style="stroke-width:4.9833107"
+         id="path1161"
+         d="m -112.18333,204.04307 h 5.64444 v 5.64444 h -5.64444 z m 0,0"
+         inkscape:connector-curvature="0" />
+      <path
+         style="stroke-width:4.9833107"
+         id="path1163"
+         d="m -100.89444,204.04307 h 5.644441 v 5.64444 h -5.644441 z m 0,0"
+         inkscape:connector-curvature="0" />
+      <path
+         style="stroke-width:4.9833107"
+         id="path1165"
+         d="m -27.516667,204.04307 h 45.155554 v 5.64444 h -45.155554 z m 0,0"
+         inkscape:connector-curvature="0" />
+      <path
+         style="stroke-width:4.9833107"
+         id="path1167"
+         d="m -2.1166677,164.53196 v 5.64444 c 6.2259773,0 11.2888887,5.06291 11.2888887,11.28889 h 5.644444 c 0,-9.33897 -7.5943667,-16.93333 -16.9333327,-16.93333 z m 0,0"
+         inkscape:connector-curvature="0" />
+      <path
+         style="stroke-width:4.9833107"
+         id="path1169"
+         d="m -137.58333,178.64307 c 0,4.66741 3.79925,8.46666 8.46667,8.46666 v -5.64444 c -1.55443,0 -2.82223,-1.26504 -2.82223,-2.82222 0,-1.55719 1.2678,-2.82223 2.82223,-2.82223 v -5.64444 c -4.66742,0 -8.46667,3.79925 -8.46667,8.46667 z m 0,0"
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       id="g1531"
+       transform="matrix(0.20732177,0,0,0.20732177,39.609142,248.99142)"
+       style="stroke-width:1.27619648">
+      <g
+         id="g1462"
+         style="stroke-width:1.27619648">
+	<path
+   id="path1434"
+   d="m 10.5,6.125 c -2.481,0 -4.5,2.019 -4.5,4.5 0,2.481 2.019,4.5 4.5,4.5 2.481,0 4.5,-2.019 4.5,-4.5 0,-2.481 -2.019,-4.5 -4.5,-4.5 z m 0,7 c -1.378,0 -2.5,-1.121 -2.5,-2.5 0,-1.379 1.122,-2.5 2.5,-2.5 1.378,0 2.5,1.121 2.5,2.5 0,1.379 -1.122,2.5 -2.5,2.5 z"
+   inkscape:connector-curvature="0"
+   style="stroke-width:1.27619648" />
+
+	<circle
+   id="circle1436"
+   r="1"
+   cy="9.125"
+   cx="50"
+   style="stroke-width:1.27619648" />
+
+	<circle
+   id="circle1438"
+   r="1"
+   cy="9.125"
+   cx="46"
+   style="stroke-width:1.27619648" />
+
+	<circle
+   id="circle1440"
+   r="1"
+   cy="12.125"
+   cx="52"
+   style="stroke-width:1.27619648" />
+
+	<circle
+   id="circle1442"
+   r="1"
+   cy="12.125"
+   cx="48"
+   style="stroke-width:1.27619648" />
+
+	<circle
+   id="circle1444"
+   r="1"
+   cy="9.125"
+   cx="42"
+   style="stroke-width:1.27619648" />
+
+	<circle
+   id="circle1446"
+   r="1"
+   cy="12.125"
+   cx="44"
+   style="stroke-width:1.27619648" />
+
+	<circle
+   id="circle1448"
+   r="1"
+   cy="9.125"
+   cx="38"
+   style="stroke-width:1.27619648" />
+
+	<circle
+   id="circle1450"
+   r="1"
+   cy="12.125"
+   cx="40"
+   style="stroke-width:1.27619648" />
+
+	<circle
+   id="circle1452"
+   r="1"
+   cy="9.125"
+   cx="34"
+   style="stroke-width:1.27619648" />
+
+	<circle
+   id="circle1454"
+   r="1"
+   cy="12.125"
+   cx="36"
+   style="stroke-width:1.27619648" />
+
+	<path
+   id="path1456"
+   d="m 10.5,25.125 c -2.481,0 -4.5,2.019 -4.5,4.5 0,2.481 2.019,4.5 4.5,4.5 2.481,0 4.5,-2.019 4.5,-4.5 0,-2.481 -2.019,-4.5 -4.5,-4.5 z m 0,7 c -1.378,0 -2.5,-1.121 -2.5,-2.5 0,-1.379 1.122,-2.5 2.5,-2.5 1.378,0 2.5,1.121 2.5,2.5 0,1.379 -1.122,2.5 -2.5,2.5 z"
+   inkscape:connector-curvature="0"
+   style="stroke-width:1.27619648" />
+
+	<path
+   id="path1458"
+   d="m 10.5,44.125 c -2.481,0 -4.5,2.019 -4.5,4.5 0,2.481 2.019,4.5 4.5,4.5 2.481,0 4.5,-2.019 4.5,-4.5 0,-2.481 -2.019,-4.5 -4.5,-4.5 z m 0,7 c -1.378,0 -2.5,-1.121 -2.5,-2.5 0,-1.379 1.122,-2.5 2.5,-2.5 1.378,0 2.5,1.121 2.5,2.5 0,1.379 -1.122,2.5 -2.5,2.5 z"
+   inkscape:connector-curvature="0"
+   style="stroke-width:1.27619648" />
+
+	<path
+   id="path1460"
+   d="M 60,16.517 V 4.733 C 60,2.192 57.933,0.125 55.392,0.125 H 4.608 C 2.067,0.125 0,2.192 0,4.733 V 16.516 C 0,17.985 0.703,19.28 1.777,20.124 0.703,20.969 0,22.265 0,23.733 V 35.516 C 0,36.985 0.703,38.28 1.777,39.124 0.703,39.969 0,41.265 0,42.733 v 11.783 c 0,2.541 2.067,4.608 4.608,4.608 h 27.875 c 2.682,0.494 5.622,0.75 8.517,0.75 8.672,0 17.816,-2.249 18.895,-6.553 C 59.962,53.188 60,53.036 60,52.875 v -9 V 43.5 43.125 34.875 34.5 34.125 25.5 25.125 C 60,24.975 59.963,24.836 59.904,24.709 59.557,23.245 58.256,22.012 56.342,21.024 58.428,20.585 60,18.732 60,16.517 Z m -58,19 V 23.733 c 0,-1.438 1.17,-2.608 2.608,-2.608 h 20.86 c -1.809,0.971 -3.037,2.169 -3.372,3.584 C 22.037,24.837 22,24.975 22,25.125 v 0.375 8.625 0.375 0.375 3.25 H 4.608 C 3.17,38.125 2,36.955 2,35.517 Z M 24.626,29.38 c 0.045,0.029 0.093,0.058 0.139,0.087 0.176,0.11 0.359,0.218 0.55,0.324 0.055,0.03 0.108,0.061 0.163,0.09 0.233,0.125 0.475,0.247 0.727,0.364 0.04,0.019 0.083,0.037 0.123,0.055 0.221,0.101 0.448,0.198 0.682,0.293 0.069,0.028 0.137,0.056 0.206,0.083 0.276,0.108 0.557,0.214 0.848,0.314 0.016,0.005 0.032,0.01 0.048,0.016 0.278,0.095 0.564,0.186 0.855,0.274 0.078,0.024 0.157,0.047 0.236,0.07 0.288,0.084 0.58,0.166 0.879,0.244 0.024,0.006 0.047,0.013 0.071,0.019 0.322,0.083 0.651,0.16 0.985,0.235 0.084,0.019 0.169,0.037 0.253,0.055 0.286,0.062 0.575,0.121 0.867,0.177 0.058,0.011 0.116,0.023 0.174,0.034 0.343,0.064 0.69,0.123 1.041,0.179 0.083,0.013 0.168,0.026 0.251,0.039 0.291,0.045 0.584,0.087 0.88,0.126 0.081,0.011 0.161,0.022 0.243,0.032 0.358,0.045 0.718,0.087 1.081,0.125 0.073,0.008 0.147,0.014 0.22,0.021 0.305,0.03 0.612,0.057 0.919,0.082 0.093,0.007 0.185,0.015 0.278,0.022 0.367,0.027 0.736,0.051 1.105,0.07 0.052,0.003 0.105,0.004 0.158,0.007 0.325,0.016 0.651,0.028 0.977,0.037 0.098,0.003 0.196,0.006 0.295,0.008 0.373,0.008 0.746,0.014 1.118,0.014 0.372,0 0.745,-0.006 1.118,-0.014 0.098,-0.002 0.196,-0.005 0.295,-0.008 0.326,-0.009 0.651,-0.021 0.977,-0.037 0.053,-0.003 0.105,-0.004 0.158,-0.007 0.369,-0.019 0.738,-0.043 1.105,-0.07 0.093,-0.007 0.185,-0.014 0.278,-0.022 0.308,-0.024 0.614,-0.052 0.919,-0.082 0.073,-0.007 0.147,-0.014 0.22,-0.021 0.363,-0.038 0.723,-0.079 1.081,-0.125 0.081,-0.01 0.162,-0.021 0.243,-0.032 0.295,-0.039 0.589,-0.081 0.88,-0.126 0.084,-0.013 0.168,-0.025 0.251,-0.039 0.351,-0.056 0.698,-0.115 1.041,-0.179 0.059,-0.011 0.116,-0.023 0.174,-0.034 0.293,-0.056 0.582,-0.115 0.867,-0.177 0.085,-0.019 0.169,-0.037 0.253,-0.055 0.333,-0.075 0.663,-0.152 0.985,-0.235 0.024,-0.006 0.047,-0.013 0.071,-0.019 0.299,-0.077 0.591,-0.159 0.879,-0.244 0.079,-0.023 0.158,-0.046 0.236,-0.07 0.291,-0.088 0.577,-0.179 0.855,-0.274 0.016,-0.005 0.032,-0.01 0.048,-0.016 0.291,-0.101 0.573,-0.206 0.848,-0.314 0.07,-0.027 0.138,-0.055 0.206,-0.083 0.234,-0.095 0.461,-0.192 0.682,-0.293 0.041,-0.019 0.083,-0.036 0.123,-0.055 0.252,-0.117 0.493,-0.239 0.727,-0.364 0.056,-0.03 0.109,-0.06 0.163,-0.09 0.19,-0.105 0.373,-0.213 0.55,-0.324 0.046,-0.029 0.094,-0.057 0.139,-0.087 0.207,-0.134 0.403,-0.272 0.589,-0.414 0.012,-0.009 0.026,-0.017 0.038,-0.026 v 4.988 c -0.024,0.116 -0.04,0.234 -0.021,0.353 C 57.99,34.354 58,34.426 58,34.5 c 0,0.11 -0.031,0.222 -0.058,0.333 -0.021,0.086 -0.048,0.173 -0.084,0.259 -0.032,0.075 -0.072,0.151 -0.116,0.226 -0.043,0.075 -0.09,0.151 -0.144,0.226 -0.077,0.104 -0.164,0.208 -0.263,0.312 -0.037,0.04 -0.074,0.08 -0.114,0.12 -2.117,2.048 -8.364,3.898 -16.22,3.898 -7.851,0 -14.095,-1.848 -16.216,-3.895 -0.044,-0.044 -0.084,-0.087 -0.124,-0.131 -0.094,-0.1 -0.179,-0.2 -0.253,-0.3 C 24.351,35.469 24.301,35.39 24.256,35.31 24.215,35.239 24.177,35.168 24.146,35.096 24.107,35.005 24.08,34.915 24.058,34.825 24.031,34.717 24,34.608 24,34.5 c 0,-0.071 0.009,-0.142 0.021,-0.212 0.021,-0.13 0.008,-0.26 -0.021,-0.385 v -4.964 c 0.012,0.009 0.026,0.017 0.038,0.026 0.185,0.142 0.381,0.28 0.588,0.415 z m 33.231,14.712 c -0.032,0.075 -0.072,0.151 -0.116,0.226 -0.043,0.075 -0.09,0.151 -0.144,0.226 -0.077,0.104 -0.164,0.208 -0.263,0.312 -0.037,0.04 -0.074,0.08 -0.114,0.12 -2.117,2.048 -8.364,3.898 -16.22,3.898 -7.851,0 -14.095,-1.848 -16.216,-3.895 -0.044,-0.044 -0.084,-0.087 -0.124,-0.131 -0.094,-0.1 -0.179,-0.2 -0.253,-0.3 C 24.35,44.469 24.3,44.39 24.255,44.31 24.214,44.239 24.176,44.168 24.145,44.096 24.106,44.005 24.079,43.915 24.057,43.825 24.034,43.731 24.01,43.636 24.007,43.542 v -0.12 c 0.004,-0.045 0.006,-0.09 0.013,-0.135 0.014,-0.086 -0.005,-0.17 -0.014,-0.255 L 24,38.125 v -0.186 c 0.04,0.031 0.087,0.06 0.129,0.09 0.126,0.094 0.258,0.186 0.393,0.277 0.11,0.073 0.224,0.145 0.34,0.217 0.179,0.11 0.359,0.219 0.551,0.324 0.002,10e-4 0.004,0.002 0.005,0.003 2.086,1.137 4.954,1.958 8.125,2.455 0.024,0.004 0.048,0.007 0.072,0.011 1.023,0.159 2.073,0.283 3.141,0.374 0.227,0.019 0.453,0.039 0.682,0.055 0.223,0.016 0.446,0.03 0.67,0.042 0.302,0.017 0.604,0.032 0.906,0.044 0.176,0.007 0.352,0.015 0.529,0.02 0.487,0.014 0.973,0.024 1.458,0.024 0.484,0 0.97,-0.009 1.455,-0.023 0.178,-0.005 0.355,-0.013 0.533,-0.02 0.3,-0.012 0.599,-0.026 0.898,-0.043 0.226,-0.013 0.451,-0.027 0.676,-0.043 0.225,-0.016 0.447,-0.035 0.671,-0.054 1.078,-0.091 2.138,-0.217 3.17,-0.377 0.015,-0.002 0.031,-0.005 0.046,-0.007 3.465,-0.542 6.564,-1.473 8.681,-2.779 0.115,-0.071 0.229,-0.142 0.338,-0.215 0.135,-0.09 0.267,-0.182 0.392,-0.276 0.045,-0.033 0.096,-0.064 0.14,-0.098 v 4.988 c -0.024,0.116 -0.04,0.234 -0.021,0.353 0.01,0.073 0.02,0.145 0.02,0.219 0,0.11 -0.031,0.222 -0.058,0.333 -0.022,0.086 -0.048,0.173 -0.085,0.259 z M 4.608,57.125 C 3.17,57.125 2,55.955 2,54.517 V 42.733 C 2,41.295 3.17,40.125 4.608,40.125 H 22 v 3 0.375 0.375 9 1 h 0.296 c 0.016,0.037 0.039,0.073 0.057,0.11 0.035,0.075 0.074,0.148 0.114,0.222 0.082,0.148 0.175,0.294 0.278,0.438 0.102,0.145 0.217,0.285 0.339,0.424 0.062,0.07 0.124,0.139 0.191,0.208 0.383,0.395 0.843,0.765 1.374,1.111 0.018,0.012 0.037,0.024 0.056,0.036 0.384,0.247 0.799,0.481 1.248,0.702 H 4.608 Z M 58,52.619 c -0.008,0.031 -0.015,0.063 -0.02,0.094 -0.409,2.493 -7.33,5.162 -16.98,5.162 -3.079,0 -5.875,-0.273 -8.276,-0.724 l 0.001,-0.008 C 27.752,56.202 25,54.613 24.23,53.273 24.229,53.272 24.228,53.271 24.228,53.269 24.193,53.207 24.168,53.146 24.141,53.086 24.089,52.961 24.04,52.837 24.02,52.713 l -0.008,-5.765 c 0.036,0.028 0.079,0.054 0.116,0.082 0.126,0.094 0.258,0.186 0.393,0.277 0.11,0.073 0.224,0.145 0.34,0.217 0.179,0.11 0.359,0.219 0.551,0.324 0.002,10e-4 0.004,0.002 0.005,0.003 2.086,1.137 4.954,1.958 8.125,2.455 0.024,0.004 0.048,0.007 0.072,0.011 1.023,0.159 2.073,0.283 3.141,0.374 0.227,0.019 0.453,0.039 0.682,0.055 0.223,0.016 0.446,0.03 0.67,0.042 0.302,0.017 0.604,0.032 0.906,0.044 0.176,0.007 0.352,0.015 0.529,0.02 0.487,0.014 0.973,0.024 1.458,0.024 0.484,0 0.97,-0.009 1.455,-0.023 0.178,-0.005 0.355,-0.013 0.533,-0.02 0.3,-0.012 0.599,-0.026 0.898,-0.043 0.226,-0.013 0.451,-0.027 0.676,-0.043 0.225,-0.016 0.447,-0.035 0.671,-0.054 1.078,-0.091 2.138,-0.217 3.17,-0.377 0.015,-0.002 0.031,-0.005 0.046,-0.007 3.465,-0.542 6.564,-1.473 8.681,-2.779 0.115,-0.071 0.229,-0.142 0.338,-0.215 0.135,-0.09 0.267,-0.182 0.392,-0.276 0.045,-0.033 0.096,-0.064 0.14,-0.098 z M 58,25.5 c 0,2.537 -7.271,5.375 -17,5.375 -9.73,0 -17,-2.838 -17,-5.375 0,-0.128 0.031,-0.258 0.068,-0.388 0.04,-0.129 0.094,-0.261 0.174,-0.397 0.003,-0.006 0.006,-0.012 0.009,-0.018 0.333,-0.556 1.004,-1.154 2.037,-1.731 0.044,-0.024 0.089,-0.048 0.134,-0.072 0.177,-0.096 0.364,-0.191 0.561,-0.285 0.229,-0.107 0.464,-0.214 0.716,-0.317 0.049,-0.021 0.1,-0.041 0.151,-0.061 1.162,-0.463 2.562,-0.874 4.138,-1.21 0.493,-0.104 0.995,-0.202 1.511,-0.288 0.137,-0.023 0.271,-0.047 0.41,-0.069 4.477,-0.69 9.7,-0.69 14.177,0 0.141,0.022 0.277,0.047 0.416,0.07 0.513,0.085 1.012,0.182 1.501,0.286 C 54.878,22.058 58,23.841 58,25.5 Z m 0,-8.983 c 0,1.438 -1.17,2.608 -2.608,2.608 h -4.63 C 50.704,19.112 50.64,19.104 50.582,19.091 49.926,18.949 49.251,18.822 48.561,18.712 48.494,18.702 48.427,18.691 48.36,18.681 45.999,18.314 43.479,18.125 41,18.125 c -2.479,0 -4.997,0.189 -7.358,0.556 -0.069,0.01 -0.137,0.021 -0.206,0.031 -0.688,0.11 -1.361,0.237 -2.015,0.378 -0.059,0.013 -0.125,0.021 -0.184,0.034 H 4.608 C 3.17,19.125 2,17.955 2,16.517 V 4.733 C 2,3.295 3.17,2.125 4.608,2.125 H 55.391 C 56.83,2.125 58,3.295 58,4.733 Z"
+   inkscape:connector-curvature="0"
+   style="stroke-width:1.27619648" />
+
+</g>
+      <g
+         id="g1464"
+         style="stroke-width:1.27619648">
+</g>
+      <g
+         id="g1466"
+         style="stroke-width:1.27619648">
+</g>
+      <g
+         id="g1468"
+         style="stroke-width:1.27619648">
+</g>
+      <g
+         id="g1470"
+         style="stroke-width:1.27619648">
+</g>
+      <g
+         id="g1472"
+         style="stroke-width:1.27619648">
+</g>
+      <g
+         id="g1474"
+         style="stroke-width:1.27619648">
+</g>
+      <g
+         id="g1476"
+         style="stroke-width:1.27619648">
+</g>
+      <g
+         id="g1478"
+         style="stroke-width:1.27619648">
+</g>
+      <g
+         id="g1480"
+         style="stroke-width:1.27619648">
+</g>
+      <g
+         id="g1482"
+         style="stroke-width:1.27619648">
+</g>
+      <g
+         id="g1484"
+         style="stroke-width:1.27619648">
+</g>
+      <g
+         id="g1486"
+         style="stroke-width:1.27619648">
+</g>
+      <g
+         id="g1488"
+         style="stroke-width:1.27619648">
+</g>
+      <g
+         id="g1490"
+         style="stroke-width:1.27619648">
+</g>
+      <g
+         id="g1492"
+         style="stroke-width:1.27619648">
+</g>
+    </g>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot1548"
+       style="font-style:normal;font-weight:normal;font-size:10.66666698px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"><flowRegion
+         id="flowRegion1550"
+         style="font-size:10.66666698px"><rect
+           id="rect1552"
+           width="114.25"
+           height="66.25"
+           x="26.25"
+           y="174.5"
+           style="font-size:10.66666698px" /></flowRegion><flowPara
+         id="flowPara1554"></flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot1556"
+       style="font-style:normal;font-weight:normal;font-size:10.66666698px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"><flowRegion
+         id="flowRegion1558"
+         style="font-size:10.66666698px"><rect
+           id="rect1560"
+           width="119.75"
+           height="79.25"
+           x="17.75"
+           y="167.25"
+           style="font-size:10.66666698px" /></flowRegion><flowPara
+         id="flowPara1562"></flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot1572"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;line-height:1.25;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,7.1962555,198.77105)"><flowRegion
+         id="flowRegion1574"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"><rect
+           id="rect1576"
+           width="94.431976"
+           height="13.706588"
+           x="122.75"
+           y="173"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start" /></flowRegion><flowPara
+         id="flowPara1578">Databases</flowPara></flowRoot>    <g
+       id="g2469">
+      <rect
+         y="271.13409"
+         x="1.3898724"
+         height="7.4632359"
+         width="102.92537"
+         id="rect2042-3-6-4"
+         style="opacity:1;fill:#ffffff;fill-opacity:0.99215686;stroke:none;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.99215686" />
+      <rect
+         y="278.59732"
+         x="1.3898724"
+         height="7.4632359"
+         width="102.92537"
+         id="rect2042-3-6-4-4"
+         style="opacity:1;fill:#eeeeec;fill-opacity:0.99215686;stroke:none;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.99215686" />
+      <rect
+         y="263.67087"
+         x="1.3898724"
+         height="7.4632359"
+         width="102.92537"
+         id="rect2042-3-6"
+         style="opacity:1;fill:#eeeeec;fill-opacity:0.99215686;stroke:none;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.99215686" />
+    </g>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot1572-4"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;line-height:1.25;font-family:Inconsolata;-inkscape-font-specification:'Inconsolata, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,6.2829359,227.11477)"><flowRegion
+         id="flowRegion1574-6"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:Inconsolata;-inkscape-font-specification:'Inconsolata, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"><rect
+           id="rect1576-25"
+           width="67"
+           height="17.75"
+           x="122.75"
+           y="173"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:Inconsolata;-inkscape-font-specification:'Inconsolata, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start" /></flowRegion><flowPara
+         id="flowPara1578-3">/info/data</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot1572-47"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,-28.33584,219.81836)"><flowRegion
+         id="flowRegion1574-3"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"><rect
+           id="rect1576-9"
+           width="96.25"
+           height="18.25"
+           x="122.75"
+           y="173"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start" /></flowRegion><flowPara
+         id="flowPara1578-8"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro'">Version type<flowSpan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64.99999762%;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro';baseline-shift:super"
+   id="flowSpan2009" /></flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot1572-47-6"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,-28.58984,234.74481)"><flowRegion
+         id="flowRegion1574-3-1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"><rect
+           id="rect1576-9-6"
+           width="102.6599"
+           height="17.156326"
+           x="122.75"
+           y="173"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start" /></flowRegion><flowPara
+         id="flowPara1578-8-7"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro'">Name of list element</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot1572-47-69"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,6.0166324,219.81836)"><flowRegion
+         id="flowRegion1574-3-6"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"><rect
+           id="rect1576-9-3"
+           width="90.896446"
+           height="20.424097"
+           x="122.75"
+           y="173"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start" /></flowRegion><flowPara
+         id="flowPara1578-8-9"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro'">Data version</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot1572-47-69-6"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,28.950958,219.81836)"><flowRegion
+         id="flowRegion1574-3-6-1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"><rect
+           id="rect1576-9-3-9"
+           width="88.068016"
+           height="14.41369"
+           x="122.75"
+           y="173"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start" /></flowRegion><flowPara
+         id="flowPara1578-8-9-1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro'">API version</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot1572-47-69-2"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,49.750495,219.81836)"><flowRegion
+         id="flowRegion1574-3-6-7"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"><rect
+           id="rect1576-9-3-3"
+           width="83.471825"
+           height="16.535009"
+           x="122.75"
+           y="173"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start" /></flowRegion><flowPara
+         id="flowPara1578-8-9-2"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro'">REST version</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot1572-4-3"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;line-height:1.25;font-family:Inconsolata;-inkscape-font-specification:'Inconsolata, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,25.495059,227.11477)"><flowRegion
+         id="flowRegion1574-6-6"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:Inconsolata;-inkscape-font-specification:'Inconsolata, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"><rect
+           id="rect1576-25-4"
+           width="80.5"
+           height="22.25"
+           x="122.75"
+           y="173"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:Inconsolata;-inkscape-font-specification:'Inconsolata, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start" /></flowRegion><flowPara
+         id="flowPara1578-3-1">/info/software</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot1572-4-9"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;line-height:1.25;font-family:Inconsolata;-inkscape-font-specification:'Inconsolata, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,50.32689,227.11477)"><flowRegion
+         id="flowRegion1574-6-8"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:Inconsolata;-inkscape-font-specification:'Inconsolata, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"><rect
+           id="rect1576-25-8"
+           width="67"
+           height="17.75"
+           x="122.75"
+           y="173"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:Inconsolata;-inkscape-font-specification:'Inconsolata, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start" /></flowRegion><flowPara
+         id="flowPara1578-3-2">/info/rest</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot1572-4-0"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;line-height:1.25;font-family:Inconsolata;-inkscape-font-specification:'Inconsolata, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,10.54308,234.57799)"><flowRegion
+         id="flowRegion1574-6-4"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:Inconsolata;-inkscape-font-specification:'Inconsolata, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"><rect
+           id="rect1576-25-46"
+           width="67"
+           height="17.75"
+           x="122.75"
+           y="173"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:Inconsolata;-inkscape-font-specification:'Inconsolata, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start" /></flowRegion><flowPara
+         id="flowPara1578-3-5">data</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot1572-4-0-2"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;line-height:1.25;font-family:Inconsolata;-inkscape-font-specification:'Inconsolata, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,29.73827,234.57799)"><flowRegion
+         id="flowRegion1574-6-4-0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:Inconsolata;-inkscape-font-specification:'Inconsolata, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"><rect
+           id="rect1576-25-46-0"
+           width="67"
+           height="17.75"
+           x="122.75"
+           y="173"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:Inconsolata;-inkscape-font-specification:'Inconsolata, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start" /></flowRegion><flowPara
+         id="flowPara1578-3-5-1">software</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot1572-4-0-2-9"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;line-height:1.25;font-family:Inconsolata;-inkscape-font-specification:'Inconsolata, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,54.482612,234.57799)"><flowRegion
+         id="flowRegion1574-6-4-0-6"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:Inconsolata;-inkscape-font-specification:'Inconsolata, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"><rect
+           id="rect1576-25-46-0-2"
+           width="67"
+           height="17.75"
+           x="122.75"
+           y="173"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:Inconsolata;-inkscape-font-specification:'Inconsolata, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start" /></flowRegion><flowPara
+         id="flowPara1578-3-5-1-6">rest</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot1572-47-3"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,-28.58984,227.28159)"><flowRegion
+         id="flowRegion1574-3-61"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"><rect
+           id="rect1576-9-8"
+           width="107.65558"
+           height="15.30278"
+           x="122.75"
+           y="173"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start" /></flowRegion><flowPara
+         id="flowPara1578-8-4"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro'">REST API Endpoint</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot1572-47-0"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,9.4488887,241.56564)"><flowRegion
+         id="flowRegion1574-3-5"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"><rect
+           id="rect1576-9-4"
+           width="347.92978"
+           height="14.767243"
+           x="122.75"
+           y="173"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start" /></flowRegion><flowPara
+         id="flowPara1578-8-0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;font-family:Inconsolata;-inkscape-font-specification:'Inconsolata, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start">https://github.com/Ensembl/ensembl-rest/wiki/API-Versioning</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot1572-01"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;line-height:1.25;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,30.847227,198.77105)"><flowRegion
+         id="flowRegion1574-1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"><rect
+           id="rect1576-0"
+           width="94.431976"
+           height="13.706588"
+           x="122.75"
+           y="173"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start" /></flowRegion><flowPara
+         id="flowPara1578-33">Perl API</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot1572-01-7"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;line-height:1.25;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,52.147113,198.77105)"><flowRegion
+         id="flowRegion1574-1-3"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"><rect
+           id="rect1576-0-4"
+           width="94.431976"
+           height="13.706588"
+           x="122.75"
+           y="173"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start" /></flowRegion><flowPara
+         id="flowPara1578-33-4">REST API</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot1572-8"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:1.25;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#426fbd;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,-28.71684,188.75453)"><flowRegion
+         id="flowRegion1574-17"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#426fbd;fill-opacity:1"><rect
+           id="rect1576-7"
+           width="172.21371"
+           height="22.19187"
+           x="122.75"
+           y="173"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#426fbd;fill-opacity:1" /></flowRegion><flowPara
+         id="flowPara1578-5">Ensembl API versioning</flowPara></flowRoot>    <rect
+       style="opacity:1;fill:#426fbd;fill-opacity:0.99215686;stroke:none;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.99215686"
+       id="rect2042-3-6-5"
+       width="102.92537"
+       height="0.35386646"
+       x="1.3898724"
+       y="239.94812" />
+    <g
+       id="g2391"
+       transform="translate(0.61963364,0.10195622)">
+      <path
+         inkscape:connector-curvature="0"
+         id="path2372"
+         d="m 53.776562,253.72915 h 4.431771 l -1.698506,-0.98063"
+         style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path2372-4"
+         d="m 58.702053,256.48884 h -4.431771 l 1.698506,0.98063"
+         style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+    <g
+       id="g2391-0"
+       transform="translate(22.628029,0.10195622)">
+      <path
+         inkscape:connector-curvature="0"
+         id="path2372-3"
+         d="m 53.776562,253.72915 h 4.431771 l -1.698506,-0.98063"
+         style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path2372-4-8"
+         d="m 58.702053,256.48884 h -4.431771 l 1.698506,0.98063"
+         style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+  </g>
+</svg>
