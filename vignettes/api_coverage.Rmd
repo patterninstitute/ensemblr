@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 ```{r setup, echo=FALSE, message=FALSE}
 library(knitr)
 library(kableExtra)
-library(formattable)
+#library(formattable)
 library(dplyr)
 library(ensemblr)
 ```
@@ -27,12 +27,12 @@ section_tally <- dplyr::count(rest_api_endpoints, section)
 my_index <- section_tally$n
 names(my_index) <- section_tally$section
 
-r <- function(x) cell_spec(x, background = "red", color = "white", bold = TRUE)
-g <- function(x) cell_spec(x, background = "green", color = "white", bold = TRUE)
+#r <- function(x) cell_spec(x, background = "red", color = "white", bold = TRUE)
+#g <- function(x) cell_spec(x, background = "green", color = "white", bold = TRUE)
 
 rest_api_coverage <- rest_api_endpoints %>%
   select(endpoint, description) %>%
-  mutate(ensemblr_api = r('TODO'))
+  mutate(ensemblr_api = 'TODO')
 ```
 
 ```{r echo=FALSE}
