@@ -1,7 +1,7 @@
 Package: ensemblr
 Type: Package
 Title: R Client for the Ensembl REST API
-Version: 0.1.0
+Version: 0.0.1
 Authors@R: c(
     person(given = "Ramiro", family = "Magno", email = "ramiro.magno@gmail.com",
     role = c("aut", "cre"), comment = c(ORCID = "0000-0001-5226-3441")),
