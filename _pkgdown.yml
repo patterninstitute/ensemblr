@@ -1,2 +1,26 @@
 destination: docs
 url: https://rmagno.eu/ensemblr
+
+reference:
+- title: "Information"
+  contents:
+  - '`get_data_versions`'
+  - '`get_rest_version`'
+  - '`get_software_version`'
+  - '`get_versioning`'
+  - '`get_species`'
+  - '`get_divisions`'
+  - '`traits-class`'
+- title: "Linkage disequilibrium"
+  contents:
+  - '`get_ld_variants_by_window`'
+  - '`get_ld_variants_by_pair`'
+  - '`get_ld_variants_by_range`'
+- title: "Utilities"
+  contents:
+  - '`genomic_range`'
+  - '`is_ensembl_reachable`'
+  - '`request`'
+- title: "Data sets"
+  contents:
+  - "`rest_api_endpoints`"
