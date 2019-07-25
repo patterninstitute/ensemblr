@@ -133,7 +133,7 @@ get_species <- function(division = get_divisions(),
 
   # Usually we'd use purrr::map here but we opted for plyr::llply
   # for a no frills alternative with progress bar support.
-  progress <- dplyr::if_else(progress_bar, 'text', 'none')
+  progress <- dplyr::if_else(progress_bar && interactive(), 'text', 'none')
   responses <- plyr::llply(
     .data = resource_urls,
     .fun = request,
