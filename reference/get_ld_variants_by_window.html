@@ -185,7 +185,9 @@ lowercase and space replaced by underscore. Examples: <code>'homo_sapiens'</code
     </tr>
     <tr>
       <th>population</th>
-      <td><p>Population for which to compute linkage disequilibrium. TODO.</p></td>
+      <td><p>Population for which to compute linkage disequilibrium. See
+<code><a href='get_populations.html'>get_populations</a></code> on how to find available
+populations for a species.</p></td>
     </tr>
     <tr>
       <th>d_prime</th>
@@ -257,27 +259,27 @@ function <code>get_ld_variants_by_range()</code>.</p></td>
 <span class='co'># 1kb: 500 bp upstream and 500 bp downstream of variant.</span>
 <span class='fu'>get_ld_variants_by_window</span>(<span class='st'>'rs123'</span>, <span class='kw'>genomic_window_size</span> <span class='kw'>=</span> <span class='fl'>1L</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 6
 #&gt;   species_name population              variant_id1 variant_id2 d_prime r_squared
-#&gt;   &lt;chr&gt;        &lt;chr&gt;                   &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;    
-#&gt; 1 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs122       0.9999… 0.722419 
-#&gt; 2 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs12536724  0.9999… 0.255383 
-#&gt; 3 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs10239961  0.9999… 0.255383 
-#&gt; 4 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs115       0.9999… 0.720853 
-#&gt; 5 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs124       0.9999… 0.722419 
-#&gt; 6 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs114       0.7029… 0.474554 </div><div class='input'>
+#&gt;   &lt;chr&gt;        &lt;chr&gt;                   &lt;chr&gt;       &lt;chr&gt;         &lt;dbl&gt;     &lt;dbl&gt;
+#&gt; 1 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs124         1.000     0.722
+#&gt; 2 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs122         1.000     0.722
+#&gt; 3 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs115         1.000     0.721
+#&gt; 4 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs10239961    1.000     0.255
+#&gt; 5 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs12536724    1.000     0.255
+#&gt; 6 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs114         0.703     0.475</div><div class='input'>
 <span class='co'># Retrieve LD measures for pairs of variants:</span>
 <span class='fu'>get_ld_variants_by_pair</span>(
   <span class='kw'>variant_id1</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>'rs123'</span>, <span class='st'>'rs35439278'</span>),
   <span class='kw'>variant_id2</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>'rs122'</span>, <span class='st'>'rs35174522'</span>)
 )</div><div class='output co'>#&gt; # A tibble: 2 x 6
 #&gt;   species_name population              variant_id1 variant_id2 d_prime r_squared
-#&gt;   &lt;chr&gt;        &lt;chr&gt;                   &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;    
-#&gt; 1 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs122       0.9999… 0.722419 
-#&gt; 2 homo_sapiens 1000GENOMES:phase_3:CEU rs35439278  rs35174522  0.9998… 0.097345 </div><div class='input'>
+#&gt;   &lt;chr&gt;        &lt;chr&gt;                   &lt;chr&gt;       &lt;chr&gt;         &lt;dbl&gt;     &lt;dbl&gt;
+#&gt; 1 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs122         1.000    0.722 
+#&gt; 2 homo_sapiens 1000GENOMES:phase_3:CEU rs35439278  rs35174522    1.000    0.0973</div><div class='input'>
 <span class='co'># Retrieve variants in LD within a genomic range</span>
 <span class='fu'>get_ld_variants_by_range</span>(<span class='st'>'7:100000..100500'</span>)</div><div class='output co'>#&gt; # A tibble: 1 x 6
 #&gt;   species_name population              variant_id1 variant_id2 d_prime r_squared
-#&gt;   &lt;chr&gt;        &lt;chr&gt;                   &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;    
-#&gt; 1 homo_sapiens 1000GENOMES:phase_3:CEU rs35439278  rs35174522  0.9998… 0.097345 </div></pre>
+#&gt;   &lt;chr&gt;        &lt;chr&gt;                   &lt;chr&gt;       &lt;chr&gt;         &lt;dbl&gt;     &lt;dbl&gt;
+#&gt; 1 homo_sapiens 1000GENOMES:phase_3:CEU rs35439278  rs35174522    1.000    0.0973</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

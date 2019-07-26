@@ -16,7 +16,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="R Client for the Ensembl REST API">
-<meta property="og:description" content="R Client for the Ensembl REST API">
+<meta property="og:description" content="R Client for the Ensembl REST API.">
 <meta property="og:image" content="https://rmagno.eu/ensemblr/logo.png">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -109,13 +109,13 @@
 <a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw"><a href="reference/get_ld_variants_by_window.html">get_ld_variants_by_window</a></span>(<span class="st">'rs123'</span>, <span class="dt">genomic_window_size =</span> 1L)</a>
 <a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt; # A tibble: 6 x 6</span></a>
 <a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt;   species_name population         variant_id1 variant_id2 d_prime r_squared</span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;              &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;    </span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt; 1 homo_sapiens 1000GENOMES:phase… rs123       rs122       0.9999… 0.722419 </span></a>
-<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt; 2 homo_sapiens 1000GENOMES:phase… rs123       rs12536724  0.9999… 0.255383 </span></a>
-<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt; 3 homo_sapiens 1000GENOMES:phase… rs123       rs10239961  0.9999… 0.255383 </span></a>
-<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt; 4 homo_sapiens 1000GENOMES:phase… rs123       rs115       0.9999… 0.720853 </span></a>
-<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt; 5 homo_sapiens 1000GENOMES:phase… rs123       rs124       0.9999… 0.722419 </span></a>
-<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt; 6 homo_sapiens 1000GENOMES:phase… rs123       rs114       0.7029… 0.474554</span></a></code></pre></div>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;              &lt;chr&gt;       &lt;chr&gt;         &lt;dbl&gt;     &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt; 1 homo_sapiens 1000GENOMES:phase… rs123       rs122         1.000     0.722</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt; 2 homo_sapiens 1000GENOMES:phase… rs123       rs124         1.000     0.722</span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt; 3 homo_sapiens 1000GENOMES:phase… rs123       rs115         1.000     0.721</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt; 4 homo_sapiens 1000GENOMES:phase… rs123       rs12536724    1.000     0.255</span></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt; 5 homo_sapiens 1000GENOMES:phase… rs123       rs10239961    1.000     0.255</span></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt; 6 homo_sapiens 1000GENOMES:phase… rs123       rs114         0.703     0.475</span></a></code></pre></div>
 </div>
 <div id="contributors" class="section level2">
 <h2 class="hasAnchor">
