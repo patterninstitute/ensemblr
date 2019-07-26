@@ -53,6 +53,13 @@ rest_api_coverage[
 ```{r echo=FALSE}
 # get_species
 rest_api_coverage[
+  rest_api_coverage$endpoint == 'GET info/variation/populations/:species',
+  'ensemblr_api'] <- '`get_populations()`'
+```
+
+```{r echo=FALSE}
+# get_species
+rest_api_coverage[
   rest_api_coverage$endpoint == 'GET info/species',
   'ensemblr_api'] <- '`get_species()`'
 ```
@@ -63,7 +70,6 @@ rest_api_coverage[
   rest_api_coverage$endpoint == 'GET info/divisions',
   'ensemblr_api'] <- '`get_divisions()`'
 ```
-
 
 ```{r echo=FALSE}
 # get_ld_variants_by_window
