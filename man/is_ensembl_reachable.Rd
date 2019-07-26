@@ -5,7 +5,7 @@
 \title{Is the Ensembl REST API server reachable?}
 \usage{
 is_ensembl_reachable(url = ensembl_server(), port = 443L,
-  chatty = FALSE)
+  verbose = FALSE)
 }
 \arguments{
 \item{url}{Ensembl REST API server URL. Default is
@@ -14,7 +14,7 @@ is_ensembl_reachable(url = ensembl_server(), port = 443L,
 \item{port}{Network port on which to ping the server. You should not need to
 change this parameter.}
 
-\item{chatty}{Whether to be verbose (\code{TRUE}) or not (\code{FALSE}).}
+\item{verbose}{Whether to be verbose (\code{TRUE}) or not (\code{FALSE}).}
 }
 \value{
 A logical value: \code{TRUE} if EBI server is reachable, \code{FALSE}
@@ -24,7 +24,7 @@ A logical value: \code{TRUE} if EBI server is reachable, \code{FALSE}
 Check if the Ensembl server where REST API service is running is reachable.
 This function attempts to connect to
 \href{https://rest.ensembl.org}{https://rest.ensembl.org}, returning
-\code{TRUE} on success, and \code{FALSE} otherwise. Set \code{chatty = TRUE}
+\code{TRUE} on success, and \code{FALSE} otherwise. Set \code{verbose = TRUE}
 for a step by step description of the connection attempt.
 }
 \examples{
@@ -33,6 +33,6 @@ is_ensembl_reachable() # Returns TRUE or FALSE.
 
 # Check if the GWAS Catalog Server is reachable
 # and show exactly at what step is it failing (if that is the case)
-is_ensembl_reachable(chatty = TRUE)
+is_ensembl_reachable(verbose = TRUE)
 
 }

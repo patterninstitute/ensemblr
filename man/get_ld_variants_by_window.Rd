@@ -40,7 +40,9 @@ looking 250kb upstream and downstream the variant passed as
 lowercase and space replaced by underscore. Examples: \code{'homo_sapiens'}
 (human), \code{'ovis_aries'} (Domestic sheep) or \code{'capra_hircus'} (Goat).}
 
-\item{population}{Population for which to compute linkage disequilibrium. TODO.}
+\item{population}{Population for which to compute linkage disequilibrium. See
+\code{\link[ensemblr]{get_populations}} on how to find available
+populations for a species.}
 
 \item{d_prime}{\eqn{D'} is a measure of linkage disequilibrium.
 \code{d_prime} defines a cut-off threshold: only variants whose

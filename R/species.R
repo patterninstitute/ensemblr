@@ -33,11 +33,11 @@ json_list_to_species_tbl <- function(json_list) {
 
   tbl <- species_tbl(
     division = purrr::pluck(json_list, 'division', .default = NA_character_),
-    taxon_id = purrr::pluck(json_list, 'taxon_id', .default = NA_integer_),
+    taxon_id = as.integer(purrr::pluck(json_list, 'taxon_id', .default = NA_integer_)),
     species_name = purrr::pluck(json_list, 'name', .default = NA_character_),
     species_display_name = purrr::pluck(json_list, 'display_name', .default = NA_character_),
     species_common_name = purrr::pluck(json_list, 'common_name', .default = NA_character_),
-    release = purrr::pluck(json_list, 'release', .default = NA_integer_),
+    release = as.integer(purrr::pluck(json_list, 'release', .default = NA_integer_)),
     genome_assembly_name = purrr::pluck(json_list, 'assembly', .default = NA_character_),
     genbank_assembly_accession = purrr::pluck(json_list, 'accession', .default = NA_character_),
     strain = purrr::pluck(json_list, 'strain', .default = NA_character_),
@@ -51,23 +51,6 @@ json_list_to_species_tbl <- function(json_list) {
   species_name <- rlang::expr(species_name)
 
   return(dplyr::arrange(tbl, !!division, !!species_name))
-}
-
-
-assert_division <- function(division) {
-
-  if (
-    !((rlang::is_character(division) &&
-       all(division %in% (divisions <- get_divisions())))
-      )
-    ) {
-    possible_values <- concatenate::cc_or(divisions, oxford = TRUE)
-    msg <- glue::glue('`division` must be one or more Ensembl divisions:\n',
-                      '{possible_values}.')
-    rlang::abort(msg)
-  }
-
-  return(TRUE)
 }
 
 #' Get Ensembl species
