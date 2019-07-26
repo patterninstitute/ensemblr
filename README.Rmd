@@ -42,7 +42,6 @@ Retrieve human linkage disequilibrium information for variants within a 1 kiloba
 
 ```{r}
 library(ensemblr)
-
 get_ld_variants_by_window('rs123', genomic_window_size = 1L)
 ```
 

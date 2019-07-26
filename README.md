@@ -41,17 +41,16 @@ Retrieve human linkage disequilibrium information for variants within a
 
 ``` r
 library(ensemblr)
-
 get_ld_variants_by_window('rs123', genomic_window_size = 1L)
 #> # A tibble: 6 x 6
 #>   species_name population         variant_id1 variant_id2 d_prime r_squared
-#>   <chr>        <chr>              <chr>       <chr>       <chr>   <chr>    
-#> 1 homo_sapiens 1000GENOMES:phase… rs123       rs12536724  0.9999… 0.255383 
-#> 2 homo_sapiens 1000GENOMES:phase… rs123       rs122       0.9999… 0.722419 
-#> 3 homo_sapiens 1000GENOMES:phase… rs123       rs10239961  0.9999… 0.255383 
-#> 4 homo_sapiens 1000GENOMES:phase… rs123       rs124       0.9999… 0.722419 
-#> 5 homo_sapiens 1000GENOMES:phase… rs123       rs115       0.9999… 0.720853 
-#> 6 homo_sapiens 1000GENOMES:phase… rs123       rs114       0.7029… 0.474554
+#>   <chr>        <chr>              <chr>       <chr>         <dbl>     <dbl>
+#> 1 homo_sapiens 1000GENOMES:phase… rs123       rs124         1.000     0.722
+#> 2 homo_sapiens 1000GENOMES:phase… rs123       rs122         1.000     0.722
+#> 3 homo_sapiens 1000GENOMES:phase… rs123       rs115         1.000     0.721
+#> 4 homo_sapiens 1000GENOMES:phase… rs123       rs10239961    1.000     0.255
+#> 5 homo_sapiens 1000GENOMES:phase… rs123       rs12536724    1.000     0.255
+#> 6 homo_sapiens 1000GENOMES:phase… rs123       rs114         0.703     0.475
 ```
 
 ## Contributors
