@@ -107,14 +107,14 @@
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ensemblr)</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="reference/get_ld_variants_by_window.html">get_ld_variants_by_window</a></span>(<span class="st">'rs123'</span>, <span class="dt">genomic_window_size =</span> 1L)</a>
 <a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt; # A tibble: 6 x 6</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt;   species_name population         variant_id1 variant_id2 d_prime r_squared</span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;              &lt;chr&gt;       &lt;chr&gt;         &lt;dbl&gt;     &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; 1 homo_sapiens 1000GENOMES:phase… rs123       rs122         1.000     0.722</span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt; 2 homo_sapiens 1000GENOMES:phase… rs123       rs124         1.000     0.722</span></a>
-<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt; 3 homo_sapiens 1000GENOMES:phase… rs123       rs115         1.000     0.721</span></a>
-<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt; 4 homo_sapiens 1000GENOMES:phase… rs123       rs12536724    1.000     0.255</span></a>
-<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt; 5 homo_sapiens 1000GENOMES:phase… rs123       rs10239961    1.000     0.255</span></a>
-<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt; 6 homo_sapiens 1000GENOMES:phase… rs123       rs114         0.703     0.475</span></a></code></pre></div>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt;   species_name population         variant_id1 variant_id2 r_squared d_prime</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;              &lt;chr&gt;       &lt;chr&gt;           &lt;dbl&gt;   &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; 1 homo_sapiens 1000GENOMES:phase… rs123       rs10239961      0.255   1.000</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt; 2 homo_sapiens 1000GENOMES:phase… rs123       rs122           0.722   1.000</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt; 3 homo_sapiens 1000GENOMES:phase… rs123       rs12536724      0.255   1.000</span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt; 4 homo_sapiens 1000GENOMES:phase… rs123       rs114           0.475   0.703</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt; 5 homo_sapiens 1000GENOMES:phase… rs123       rs115           0.721   1.000</span></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt; 6 homo_sapiens 1000GENOMES:phase… rs123       rs124           0.722   1.000</span></a></code></pre></div>
 </div>
 <div id="contributors" class="section level2">
 <h2 class="hasAnchor">

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Is the Ensembl REST API server reachable? — is_ensembl_reachable • ensemblr</title>
+<title>Get details about an Ensembl stable identifier — get_id • ensemblr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -37,13 +37,11 @@
 
 
 
-<meta property="og:title" content="Is the Ensembl REST API server reachable? — is_ensembl_reachable" />
+<meta property="og:title" content="Get details about an Ensembl stable identifier — get_id" />
 
-<meta property="og:description" content="Check if the Ensembl server where REST API service is running is reachable.
-This function attempts to connect to
-https://rest.ensembl.org, returning
-TRUE on success, and FALSE otherwise. Set verbose = TRUE
-for a step by step description of the connection attempt." />
+<meta property="og:description" content="This function retrieves information about one or more Ensembl stable identifiers.
+Ensembl identifiers are assigned to four types of entities: genes, exons,
+transcripts and proteins." />
 
 <meta property="og:image" content="https://rmagno.eu/ensemblr/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -119,56 +117,65 @@ for a step by step description of the connection attempt." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Is the Ensembl REST API server reachable?</h1>
+    <h1>Get details about an Ensembl stable identifier</h1>
     
-    <div class="hidden name"><code>is_ensembl_reachable.Rd</code></div>
+    <div class="hidden name"><code>get_id.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Check if the Ensembl server where REST API service is running is reachable.
-This function attempts to connect to
-<a href='https://rest.ensembl.org'>https://rest.ensembl.org</a>, returning
-<code>TRUE</code> on success, and <code>FALSE</code> otherwise. Set <code>verbose = TRUE</code>
-for a step by step description of the connection attempt.</p>
+    <p>This function retrieves information about one or more Ensembl stable identifiers.
+Ensembl identifiers are assigned to four types of entities: genes, exons,
+transcripts and proteins.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>is_ensembl_reachable</span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='fu'><a href='ensembl_server.html'>ensembl_server</a></span>(), <span class='kw'>port</span> <span class='kw'>=</span> <span class='fl'>443L</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>get_id</span>(<span class='no'>id</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>warnings</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>progress_bar</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>url</th>
-      <td><p>Ensembl REST API server URL. Default is
-<a href='https://rest.ensembl.org'>https://rest.ensembl.org</a>. You should not need to change this parameter.</p></td>
-    </tr>
-    <tr>
-      <th>port</th>
-      <td><p>Network port on which to ping the server. You should not need to
-change this parameter.</p></td>
+      <th>id</th>
+      <td><p>A character vector of Ensembl identifiers. Ensembl stable
+identifiers have the form ENS[species prefix][feature type prefix][a unique
+eleven digit number]. <code>id</code> should not contain NAs. Please note that
+while <code>'ENSG00000157764'</code> is a valid stable identifier,
+<code>'ENSG00000157764.13'</code> is not.</p></td>
     </tr>
     <tr>
       <th>verbose</th>
-      <td><p>Whether to be verbose (<code>TRUE</code>) or not (<code>FALSE</code>).</p></td>
+      <td><p>Whether to be verbose about the http requests and respective
+responses' status.</p></td>
+    </tr>
+    <tr>
+      <th>warnings</th>
+      <td><p>Whether to show warnings.</p></td>
+    </tr>
+    <tr>
+      <th>progress_bar</th>
+      <td><p>Whether to show a progress bar.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A logical value: <code>TRUE</code> if EBI server is reachable, <code>FALSE</code>
-  otherwise.</p>
+    <p>A <code><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></code> of 9 variables:</p><dl class='dl-horizontal'>
+  <dt><code>id</code></dt><dd><p>Ensembl stable identifier.</p></dd>
+  <dt><code>id_latest</code></dt><dd><p>Ensembl identifier including the version suffix.</p></dd>
+  <dt><code>type</code></dt><dd><p>Entity type: gene (<code>'Gene'</code>), exon (<code>'Exon'</code>),
+  transcript (<code>'Transcript'</code>), and protein (<code>'Translation'</code>).</p></dd>
+  <dt><code>id_version</code></dt><dd><p>Ensembl identifier version, indicates how many
+  times that entity has changed during its time in Ensembl.</p></dd>
+  <dt><code>release</code></dt><dd><p>Ensembl release version.</p></dd>
+  <dt><code>is_current</code></dt><dd><p>Is this the latest identifier for the represented entity.</p></dd>
+  <dt><code>genome_assembly_name</code></dt><dd><p>Code name of the genome assembly.</p></dd>
+  <dt><code>peptide</code></dt><dd><p>TODO</p></dd>
+  <dt><code>possible_replacement</code></dt><dd><p>TODO</p></dd>
+</dl>
+
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Check if the Ensembl Server is reachable</span>
-<span class='fu'>is_ensembl_reachable</span>() <span class='co'># Returns TRUE or FALSE.</span></div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
-<span class='co'># Check if the GWAS Catalog Server is reachable</span>
-<span class='co'># and show exactly at what step is it failing (if that is the case)</span>
-<span class='fu'>is_ensembl_reachable</span>(<span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Am I online? Yes.</span></div><div class='output co'>#&gt; <span class='message'>Is there a DNS service running? Yes.</span></div><div class='output co'>#&gt; <span class='message'>Connected to the internet? Yes.</span></div><div class='output co'>#&gt; <span class='message'>Ping'ing rest.ensembl.org on port 443...</span></div><div class='output co'>#&gt; <span class='message'>rest.ensembl.org successfully replied in 98.199 ms.</span></div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -176,9 +183,7 @@ change this parameter.</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+          </ul>
 
   </div>
 </div>

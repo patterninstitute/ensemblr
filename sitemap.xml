@@ -19,6 +19,9 @@
     <loc>https://rmagno.eu/ensemblr/reference/get_divisions.html</loc>
   </url>
   <url>
+    <loc>https://rmagno.eu/ensemblr/reference/get_id.html</loc>
+  </url>
+  <url>
     <loc>https://rmagno.eu/ensemblr/reference/get_ld_variants_by_window.html</loc>
   </url>
   <url>
@@ -38,6 +41,9 @@
   </url>
   <url>
     <loc>https://rmagno.eu/ensemblr/reference/is_ensembl_reachable.html</loc>
+  </url>
+  <url>
+    <loc>https://rmagno.eu/ensemblr/reference/pairwise_combn.html</loc>
   </url>
   <url>
     <loc>https://rmagno.eu/ensemblr/reference/request.html</loc>
