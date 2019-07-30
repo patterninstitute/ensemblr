@@ -5,6 +5,7 @@
 \alias{get_ld_variants_by_window}
 \alias{get_ld_variants_by_pair}
 \alias{get_ld_variants_by_range}
+\alias{get_ld_variants_by_pair_combn}
 \title{Get linkage disequilibrium data for variants}
 \usage{
 get_ld_variants_by_window(variant_id, genomic_window_size = 500L,
@@ -18,6 +19,10 @@ get_ld_variants_by_pair(variant_id1, variant_id2,
   verbose = FALSE, warnings = TRUE, progress_bar = TRUE)
 
 get_ld_variants_by_range(genomic_range, species_name = "homo_sapiens",
+  population = "1000GENOMES:phase_3:CEU", d_prime = 0, r_squared = 0,
+  verbose = FALSE, warnings = TRUE, progress_bar = TRUE)
+
+get_ld_variants_by_pair_combn(variant_id, species_name = "homo_sapiens",
   population = "1000GENOMES:phase_3:CEU", d_prime = 0, r_squared = 0,
   verbose = FALSE, warnings = TRUE, progress_bar = TRUE)
 }

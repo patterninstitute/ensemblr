@@ -3,26 +3,19 @@ ld_tbl <- function(
   population = character(),
   variant_id1 = character(),
   variant_id2 = character(),
-  d_prime = double(),
-  r_squared = double()
+  r_squared = double(),
+  d_prime = double()
 ) {
   tbl <- tibble::tibble(
     species_name = species_name,
     population = population,
     variant_id1 = variant_id1,
     variant_id2 = variant_id2,
-    d_prime = d_prime,
-    r_squared = r_squared
+    r_squared = r_squared,
+    d_prime = d_prime
   )
 
-  tbl2 <- dplyr::arrange(.data = tbl,
-                         species_name,
-                         population,
-                         variant_id1,
-                         dplyr::desc(d_prime),
-                         dplyr::desc(r_squared)
-                         )
-  return(tbl2)
+  return(tbl)
 }
 
 json_list_to_ld_tbl <- function(species_name, json_list) {
@@ -32,8 +25,8 @@ json_list_to_ld_tbl <- function(species_name, json_list) {
     population = purrr::pluck(json_list, 'population_name', .default = NA_character_),
     variant_id1 = purrr::pluck(json_list, 'variation1', .default = NA_character_),
     variant_id2 = purrr::pluck(json_list, 'variation2', .default = NA_character_),
-    d_prime = as.double(purrr::pluck(json_list, 'd_prime', .default = NA_real_)),
-    r_squared = as.double(purrr::pluck(json_list, 'r2', .default = NA_real_))
+    r_squared = as.double(purrr::pluck(json_list, 'r2', .default = NA_real_)),
+    d_prime = as.double(purrr::pluck(json_list, 'd_prime', .default = NA_real_))
   )
 
   # Drop rows if all columns except species_name are NA
@@ -428,4 +421,55 @@ get_ld_variants_by_range <- function(genomic_range,
     )
   )
 
+}
+
+#' @export
+#' @rdname get_ld_variants_by_window
+get_ld_variants_by_pair_combn <- function(variant_id,
+                                    species_name = 'homo_sapiens',
+                                    population = '1000GENOMES:phase_3:CEU',
+                                    d_prime = 0.0,
+                                    r_squared = 0.0,
+                                    verbose = FALSE,
+                                    warnings = TRUE,
+                                    progress_bar = TRUE) {
+
+  # Assert species_name is scalar
+  # (defer more specific assertions to get_ld_variants_by_pair())
+  assertthat::assert_that(assertthat::is.scalar(species_name))
+
+  # Assert population is scalar
+  # (defer more specific assertions to get_ld_variants_by_pair())
+  assertthat::assert_that(assertthat::is.scalar(population))
+
+  # Assert d_prime is scalar
+  # (defer more specific assertions to get_ld_variants_by_pair())
+  assertthat::assert_that(assertthat::is.scalar(d_prime))
+
+  # Assert r_squared is scalar
+  # (defer more specific assertions to get_ld_variants_by_pair())
+  assertthat::assert_that(assertthat::is.scalar(r_squared))
+
+  # Assert verbose argument.
+  assertthat::assert_that(assertthat::is.flag(verbose))
+  # Assert warnings argument.
+  assertthat::assert_that(assertthat::is.flag(warnings))
+  # Assert progress_bar argument.
+  assertthat::assert_that(assertthat::is.flag(progress_bar))
+
+  pair_combn <- pairwise_combn(variant_id)
+
+  my_ld_variants <- get_ld_variants_by_pair(
+    variant_id1 = dplyr::pull(pair_combn, 1L),
+    variant_id2 = dplyr::pull(pair_combn, 2L),
+    species_name = species_name,
+    population = population,
+    d_prime = d_prime,
+    r_squared = r_squared,
+    verbose = verbose,
+    warnings = warnings,
+    progress_bar = progress_bar
+  )
+
+  return(my_ld_variants)
 }
