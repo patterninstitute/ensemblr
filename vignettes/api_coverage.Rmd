@@ -38,6 +38,13 @@ rest_api_coverage <- rest_api_endpoints %>%
 ```{r echo=FALSE}
 # get_versioning
 rest_api_coverage[
+  rest_api_coverage$endpoint == 'GET archive/id/:id',
+  'ensemblr_api'] <- '`get_id()`'
+```
+
+```{r echo=FALSE}
+# get_versioning
+rest_api_coverage[
   rest_api_coverage$endpoint == 'GET info/data',
   'ensemblr_api'] <- '`get_data_versions()`'
 

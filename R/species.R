@@ -42,8 +42,8 @@ json_list_to_species_tbl <- function(json_list) {
     genbank_assembly_accession = purrr::pluck(json_list, 'accession', .default = NA_character_),
     strain = purrr::pluck(json_list, 'strain', .default = NA_character_),
     strain_collection = purrr::pluck(json_list, 'strain_collection', .default = NA_character_),
-    species_aliases = purrr::pluck(json_list, 'aliases', .default = list()),
-    groups = purrr::pluck(json_list, 'groups', .default = list())
+    species_aliases = purrr::pluck(json_list, 'aliases', .default = list(character())),
+    groups = purrr::pluck(json_list, 'groups', .default = list(character()))
   )
 
   # Sort species by division and species_name

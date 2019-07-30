@@ -3,6 +3,7 @@
 export(genomic_range)
 export(get_data_versions)
 export(get_divisions)
+export(get_id)
 export(get_ld_variants_by_pair)
 export(get_ld_variants_by_pair_combn)
 export(get_ld_variants_by_range)
