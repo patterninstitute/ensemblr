@@ -40,7 +40,7 @@ pairwise_combn <- function(x) {
   assertthat::assert_that(assertthat::noNA(x))
 
   # Each column in pairs_matrix is a pairwise combination
-  pairs_matrix <- combn(x, m = 2)
+  pairs_matrix <- utils::combn(x, m = 2)
   tbl <- tibble::tibble(x1 = pairs_matrix[1, ], x2 = pairs_matrix[2, ])
   return(tbl)
 }
