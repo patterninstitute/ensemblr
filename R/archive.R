@@ -13,7 +13,7 @@ id_tbl <- function(
     id = id,
     id_latest = id_latest,
     type = type,
-    id_version = version,
+    id_version = id_version,
     release = release,
     is_current = is_current,
     genome_assembly_name = genome_assembly_name,
