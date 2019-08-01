@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get details about an Ensembl identifier — get_id • ensemblr</title>
+<title>Get analyses behind Ensembl databases — get_analyses • ensemblr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -37,11 +37,10 @@
 
 
 
-<meta property="og:title" content="Get details about an Ensembl identifier — get_id" />
+<meta property="og:title" content="Get analyses behind Ensembl databases — get_analyses" />
 
-<meta property="og:description" content="This function retrieves information about one or more Ensembl identifiers.
-Ensembl identifiers for which information is available are: genes, exons,
-transcripts and proteins." />
+<meta property="og:description" content="This function retrieves a table of analyses involved in the generation of
+data for the different Ensembl databases." />
 
 <meta property="og:image" content="https://rmagno.eu/ensemblr/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -117,31 +116,29 @@ transcripts and proteins." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get details about an Ensembl identifier</h1>
+    <h1>Get analyses behind Ensembl databases</h1>
     
-    <div class="hidden name"><code>get_id.Rd</code></div>
+    <div class="hidden name"><code>get_analyses.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This function retrieves information about one or more Ensembl identifiers.
-Ensembl identifiers for which information is available are: genes, exons,
-transcripts and proteins.</p>
+    <p>This function retrieves a table of analyses involved in the generation of
+data for the different Ensembl databases.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>get_id</span>(<span class='no'>id</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>warnings</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>progress_bar</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>get_analyses</span>(<span class='no'>species_name</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>warnings</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>progress_bar</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>id</th>
-      <td><p>A character vector of Ensembl identifiers. Ensembl identifiers have
-the form ENS[species prefix][feature type prefix][a unique eleven digit
-number]. <code>id</code> should not contain NAs. Please note that while
-<code>'ENSG00000157764'</code> is a valid identifier as a query,
-<code>'ENSG00000157764.13'</code> is not.</p></td>
+      <th>species_name</th>
+      <td><p>The species name, i.e., the scientific name, all letters
+lowercase and space replaced by underscore. Examples: <code>'homo_sapiens'</code>
+(human), <code>'ovis_aries'</code> (Domestic sheep) or <code>'capra_hircus'</code> (Goat).</p></td>
     </tr>
     <tr>
       <th>verbose</th>
@@ -160,18 +157,15 @@ responses' status.</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></code> of 9 variables:</p><dl class='dl-horizontal'>
-  <dt><code>id</code></dt><dd><p>Ensembl identifier.</p></dd>
-  <dt><code>id_latest</code></dt><dd><p>Ensembl identifier including the version suffix.</p></dd>
-  <dt><code>type</code></dt><dd><p>Entity type: gene (<code>'Gene'</code>), exon (<code>'Exon'</code>),
-  transcript (<code>'Transcript'</code>), and protein (<code>'Translation'</code>).</p></dd>
-  <dt><code>id_version</code></dt><dd><p>Ensembl identifier version, indicates how many
-  times that entity has changed during its time in Ensembl.</p></dd>
-  <dt><code>release</code></dt><dd><p>Ensembl release version.</p></dd>
-  <dt><code>is_current</code></dt><dd><p>Is this the latest identifier for the represented entity.</p></dd>
-  <dt><code>genome_assembly_name</code></dt><dd><p>Code name of the genome assembly.</p></dd>
-  <dt><code>peptide</code></dt><dd><p>TODO</p></dd>
-  <dt><code>possible_replacement</code></dt><dd><p>TODO</p></dd>
+    <p>A <code><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></code> of 3 variables:</p><dl class='dl-horizontal'>
+  <dt><code>species_name</code></dt><dd><p>Ensembl species name: this is the name used
+  internally by Ensembl to uniquely identify a species by name. It is the
+  scientific name but formatted without capitalisation and spacing converted
+  with an underscore, e.g., <code>'homo_sapiens'</code>.</p></dd>
+  <dt><code>database</code></dt><dd><p>Ensembl database. Typically one of <code>'core'</code>,
+  <code>'rnaseq'</code>, <code>'cdna'</code>, <code>'funcgen'</code> and
+  <code>'otherfeatures'</code>.</p></dd>
+  <dt><code>analysis</code></dt><dd><p>Analysis.</p></dd>
 </dl>
 
     

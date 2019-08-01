@@ -264,12 +264,12 @@ function <code>get_ld_variants_by_range()</code>.</p></td>
 <span class='fu'>get_ld_variants_by_window</span>(<span class='st'>'rs123'</span>, <span class='kw'>genomic_window_size</span> <span class='kw'>=</span> <span class='fl'>1L</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 6
 #&gt;   species_name population              variant_id1 variant_id2 r_squared d_prime
 #&gt;   &lt;chr&gt;        &lt;chr&gt;                   &lt;chr&gt;       &lt;chr&gt;           &lt;dbl&gt;   &lt;dbl&gt;
-#&gt; 1 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs122           0.722   1.000
-#&gt; 2 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs12536724      0.255   1.000
-#&gt; 3 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs10239961      0.255   1.000
-#&gt; 4 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs124           0.722   1.000
-#&gt; 5 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs115           0.721   1.000
-#&gt; 6 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs114           0.475   0.703</div><div class='input'>
+#&gt; 1 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs124           0.722   1.000
+#&gt; 2 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs115           0.721   1.000
+#&gt; 3 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs114           0.475   0.703
+#&gt; 4 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs12536724      0.255   1.000
+#&gt; 5 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs122           0.722   1.000
+#&gt; 6 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs10239961      0.255   1.000</div><div class='input'>
 <span class='co'># Retrieve LD measures for pairs of variants:</span>
 <span class='fu'>get_ld_variants_by_pair</span>(
   <span class='kw'>variant_id1</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>'rs123'</span>, <span class='st'>'rs35439278'</span>),
