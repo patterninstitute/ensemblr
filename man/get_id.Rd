@@ -2,15 +2,15 @@
 % Please edit documentation in R/archive.R
 \name{get_id}
 \alias{get_id}
-\title{Get details about an Ensembl stable identifier}
+\title{Get details about an Ensembl identifier}
 \usage{
 get_id(id, verbose = FALSE, warnings = TRUE, progress_bar = TRUE)
 }
 \arguments{
-\item{id}{A character vector of Ensembl identifiers. Ensembl stable
-identifiers have the form ENS[species prefix][feature type prefix][a unique
-eleven digit number]. \code{id} should not contain NAs. Please note that
-while \code{'ENSG00000157764'} is a valid stable identifier,
+\item{id}{A character vector of Ensembl identifiers. Ensembl identifiers have
+the form ENS[species prefix][feature type prefix][a unique eleven digit
+number]. \code{id} should not contain NAs. Please note that while
+\code{'ENSG00000157764'} is a valid identifier as a query,
 \code{'ENSG00000157764.13'} is not.}
 
 \item{verbose}{Whether to be verbose about the http requests and respective
@@ -23,7 +23,7 @@ responses' status.}
 \value{
 A \code{\link[tibble]{tibble}} of 9 variables:
 \describe{
-  \item{\code{id}}{Ensembl stable identifier.}
+  \item{\code{id}}{Ensembl identifier.}
   \item{\code{id_latest}}{Ensembl identifier including the version suffix.}
   \item{\code{type}}{Entity type: gene (\code{'Gene'}), exon (\code{'Exon'}),
   transcript (\code{'Transcript'}), and protein (\code{'Translation'}).}
@@ -37,7 +37,7 @@ A \code{\link[tibble]{tibble}} of 9 variables:
 }
 }
 \description{
-This function retrieves information about one or more Ensembl stable identifiers.
-Ensembl identifiers are assigned to four types of entities: genes, exons,
+This function retrieves information about one or more Ensembl identifiers.
+Ensembl identifiers for which information is available are: genes, exons,
 transcripts and proteins.
 }

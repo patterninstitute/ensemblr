@@ -2,11 +2,15 @@ destination: docs
 url: https://rmagno.eu/ensemblr
 
 reference:
+- title: "Archive"
+  contents:
+  - '`get_id`'
 - title: "Information"
   contents:
   - '`get_divisions`'
   - '`get_species`'
   - '`get_populations`'
+  - '`get_analyses`'
   - '`get_data_versions`'
   - '`get_rest_version`'
   - '`get_software_version`'
@@ -16,6 +20,7 @@ reference:
   - '`get_ld_variants_by_window`'
   - '`get_ld_variants_by_pair`'
   - '`get_ld_variants_by_range`'
+  - '`get_ld_variants_by_pair_combn`'
 - title: "Utilities"
   contents:
   - '`genomic_range`'
