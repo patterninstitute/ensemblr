@@ -27,10 +27,14 @@ get_ld_variants_by_pair_combn(variant_id, species_name = "homo_sapiens",
   verbose = FALSE, warnings = TRUE, progress_bar = TRUE)
 }
 \arguments{
-\item{variant_id}{A variant identifier, e.g., \code{'rs123'}. This argument
-is to be used with function \code{get_ld_variants_by_window()}. Note that this
-argument is not the same as \code{variant_id1} or \code{variant_id2}, to be
-used with function \code{get_ld_variants_by_pair}.}
+\item{variant_id}{Variant identifiers, e.g., \code{'rs123'}. This argument is
+to be used with either function \code{get_ld_variants_by_window()} or
+\code{get_ld_variants_by_pair_combn()}. In the case of
+\code{get_ld_variants_by_pair_combn()} all pairwise combinations of
+elements of \code{variant_id} are used to define pairs of variants for
+querying. Note that this argument is not the same as \code{variant_id1} or
+\code{variant_id2}, to be used with function
+\code{get_ld_variants_by_pair}.}
 
 \item{genomic_window_size}{An integer vector specifying the genomic window
 size in kilobases (kb) around the variant indicated in \code{variant_id}.
@@ -96,15 +100,14 @@ A \code{\link[tibble]{tibble}} of 6 variables:
 }
 \description{
 Gets linkage disequilibrium data for variants from Ensembl REST API. There
-are three ways to query, either by:
-\describe{
-\item{A genomic window centred on a
-variant:}{\code{get_ld_variants_by_window(variant_id, genomic_window_size,
-...)}}
-\item{A pair of variants:}{\code{get_ld_variants_by_pair(variant_id1,
-variant_id2, ...)}}
-\item{A genomic range:}{\code{get_ld_variants_by_range(genomic_range, ...)}}
-}
+are four ways to query, either by:
+\describe{ \item{Genomic window centred on
+variants:}{\code{get_ld_variants_by_window(variant_id, genomic_window_size,
+...)}} \item{Pairs of variants:}{\code{get_ld_variants_by_pair(variant_id1,
+variant_id2, ...)}} \item{Genomic
+range:}{\code{get_ld_variants_by_range(genomic_range, ...)}} \item{All pair
+combinations of variants:}{\code{get_ld_variants_by_pair_combn(variant_id,
+...)}} }
 }
 \examples{
 # Retrieve variants in LD by a window size of 1kb:
@@ -119,4 +122,8 @@ get_ld_variants_by_pair(
 
 # Retrieve variants in LD within a genomic range
 get_ld_variants_by_range('7:100000..100500')
+
+# Retrieve all pair combinations of variants in LD
+get_ld_variants_by_pair_combn(c('rs6978506', 'rs12718102', 'rs13307200'))
+
 }
