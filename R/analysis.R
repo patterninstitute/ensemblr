@@ -94,6 +94,9 @@ get_analyses <- function(species_name,
     .f = ~ json_list_to_analysis_tbl(species_name = species_name[.y], json_list = .x$content)
   )
 
-  return(dplyr::arrange(tbl, species_name, database, analysis))
+  database <- rlang::expr(database)
+  analysis <- rlang::expr(analysis)
+
+  return(dplyr::arrange(tbl, species_name, !!database, !!analysis))
 
 }
