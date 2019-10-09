@@ -151,21 +151,25 @@ combinations of variants:</dt><dd><p><code>get_ld_variants_by_pair_combn(variant
 
     <pre class="usage"><span class='fu'>get_ld_variants_by_window</span>(<span class='no'>variant_id</span>, <span class='kw'>genomic_window_size</span> <span class='kw'>=</span> <span class='fl'>500L</span>,
   <span class='kw'>species_name</span> <span class='kw'>=</span> <span class='st'>"homo_sapiens"</span>,
-  <span class='kw'>population</span> <span class='kw'>=</span> <span class='st'>"1000GENOMES:phase_3:CEU"</span>, <span class='kw'>d_prime</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>r_squared</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>warnings</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>progress_bar</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+  <span class='kw'>population</span> <span class='kw'>=</span> <span class='st'>"1000GENOMES:phase_3:CEU"</span>, <span class='kw'>d_prime</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>r_squared</span> <span class='kw'>=</span> <span class='fl'>0.05</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>warnings</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>progress_bar</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='fu'>get_ld_variants_by_pair</span>(<span class='no'>variant_id1</span>, <span class='no'>variant_id2</span>,
   <span class='kw'>species_name</span> <span class='kw'>=</span> <span class='st'>"homo_sapiens"</span>,
-  <span class='kw'>population</span> <span class='kw'>=</span> <span class='st'>"1000GENOMES:phase_3:CEU"</span>, <span class='kw'>d_prime</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>r_squared</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>warnings</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>progress_bar</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+  <span class='kw'>population</span> <span class='kw'>=</span> <span class='st'>"1000GENOMES:phase_3:CEU"</span>, <span class='kw'>d_prime</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>r_squared</span> <span class='kw'>=</span> <span class='fl'>0.05</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>warnings</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>progress_bar</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='fu'>get_ld_variants_by_range</span>(<span class='no'>genomic_range</span>, <span class='kw'>species_name</span> <span class='kw'>=</span> <span class='st'>"homo_sapiens"</span>,
-  <span class='kw'>population</span> <span class='kw'>=</span> <span class='st'>"1000GENOMES:phase_3:CEU"</span>, <span class='kw'>d_prime</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>r_squared</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>warnings</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>progress_bar</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+  <span class='kw'>population</span> <span class='kw'>=</span> <span class='st'>"1000GENOMES:phase_3:CEU"</span>, <span class='kw'>d_prime</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>r_squared</span> <span class='kw'>=</span> <span class='fl'>0.05</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>warnings</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>progress_bar</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='fu'>get_ld_variants_by_pair_combn</span>(<span class='no'>variant_id</span>, <span class='kw'>species_name</span> <span class='kw'>=</span> <span class='st'>"homo_sapiens"</span>,
-  <span class='kw'>population</span> <span class='kw'>=</span> <span class='st'>"1000GENOMES:phase_3:CEU"</span>, <span class='kw'>d_prime</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>r_squared</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>warnings</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>progress_bar</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+  <span class='kw'>population</span> <span class='kw'>=</span> <span class='st'>"1000GENOMES:phase_3:CEU"</span>, <span class='kw'>d_prime</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>r_squared</span> <span class='kw'>=</span> <span class='fl'>0.05</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>warnings</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>progress_bar</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -213,8 +217,9 @@ populations for a species.</p></td>
     <tr>
       <th>r_squared</th>
       <td><p>\(r^2\) is a measure of linkage disequilibrium.
-<code>r_squared</code> defines a cut-off threshold: only variants whose
-\(r^2 \ge \)<code>r_squared</code> are returned.</p></td>
+<code>r_squared</code> defines a cut-off threshold: only variants whose \(r^2
+\ge \)<code>r_squared</code> are returned. The lower bound for <code>r_squared</code> is
+<code>0.05</code>, not <code>0</code>; the upper bound is <code>1</code>.</p></td>
     </tr>
     <tr>
       <th>verbose</th>
@@ -277,10 +282,10 @@ function <code>get_ld_variants_by_range()</code>.</p></td>
 #&gt;   &lt;chr&gt;        &lt;chr&gt;                   &lt;chr&gt;       &lt;chr&gt;           &lt;dbl&gt;   &lt;dbl&gt;
 #&gt; 1 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs124           0.722   1.000
 #&gt; 2 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs12536724      0.255   1.000
-#&gt; 3 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs10239961      0.255   1.000
-#&gt; 4 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs114           0.475   0.703
+#&gt; 3 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs114           0.475   0.703
+#&gt; 4 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs115           0.721   1.000
 #&gt; 5 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs122           0.722   1.000
-#&gt; 6 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs115           0.721   1.000</div><div class='input'>
+#&gt; 6 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs10239961      0.255   1.000</div><div class='input'>
 <span class='co'># Retrieve LD measures for pairs of variants:</span>
 <span class='fu'>get_ld_variants_by_pair</span>(
   <span class='kw'>variant_id1</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>'rs123'</span>, <span class='st'>'rs35439278'</span>),
@@ -301,7 +306,7 @@ function <code>get_ld_variants_by_range()</code>.</p></td>
 #&gt;   &lt;chr&gt;        &lt;chr&gt;                   &lt;chr&gt;       &lt;chr&gt;           &lt;dbl&gt;   &lt;dbl&gt;
 #&gt; 1 homo_sapiens 1000GENOMES:phase_3:CEU rs6978506   rs12718102      0.111   0.999
 #&gt; 2 homo_sapiens 1000GENOMES:phase_3:CEU rs6978506   rs13307200      0.320   1.000
-#&gt; 3 homo_sapiens 1000GENOMES:phase_3:CEU rs13307200  rs12718102      0.266   0.875</div><div class='input'>
+#&gt; 3 homo_sapiens 1000GENOMES:phase_3:CEU rs12718102  rs13307200      0.266   0.875</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -322,7 +327,7 @@ function <code>get_ld_variants_by_range()</code>.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
 
       </footer>

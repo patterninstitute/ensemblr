@@ -6,15 +6,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Page not found (404) • ensemblr</title>
+<title>Convert strand values to integer codes — strand_to_code • ensemblr</title>
 
 <!-- favicons -->
-<link rel="icon" type="image/png" sizes="16x16" href="https://rmagno.eu/ensemblr/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://rmagno.eu/ensemblr/favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="https://rmagno.eu/ensemblr/apple-touch-icon.png" />
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="https://rmagno.eu/ensemblr/apple-touch-icon-120x120.png" />
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="https://rmagno.eu/ensemblr/apple-touch-icon-76x76.png" />
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="https://rmagno.eu/ensemblr/apple-touch-icon-60x60.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -36,13 +36,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
-<link href="https://rmagno.eu/ensemblr/pkgdown.css" rel="stylesheet">
-<script src="https://rmagno.eu/ensemblr/pkgdown.js"></script>
+<link href="../pkgdown.css" rel="stylesheet">
+<script src="../pkgdown.js"></script>
 
 
 
 
-<meta property="og:title" content="Page not found (404)" />
+<meta property="og:title" content="Convert strand values to integer codes — strand_to_code" />
+<meta property="og:description" content="This function converts a character vector of values 'forward' or
+'reverse' to 1 or -1, respectively." />
 <meta property="og:image" content="https://rmagno.eu/ensemblr/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -63,7 +65,7 @@
   </head>
 
   <body>
-    <div class="container template-title-body">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -75,7 +77,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="https://rmagno.eu/ensemblr/index.html">ensemblr</a>
+        <a class="navbar-link" href="../index.html">ensemblr</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1</span>
       </span>
     </div>
@@ -83,13 +85,13 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">
+  <a href="../index.html">
     <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="reference/index.html">Reference</a>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -99,7 +101,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="articles/api_coverage.html">Ensembl REST API Coverage</a>
+      <a href="../articles/api_coverage.html">Ensembl REST API Coverage</a>
     </li>
   </ul>
 </li>
@@ -117,17 +119,57 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Page not found (404)</h1>
+    <h1>Convert strand values to integer codes</h1>
+    
+    <div class="hidden name"><code>strand_to_code.Rd</code></div>
     </div>
 
-Content not found. Please use links in the navbar.
+    <div class="ref-description">
+    <p>This function converts a character vector of values <code>'forward'</code> or
+<code>'reverse'</code> to <code>1</code> or <code>-1</code>, respectively.</p>
+    </div>
+
+    <pre class="usage"><span class='fu'>strand_to_code</span>(<span class='no'>strand</span>, <span class='kw'>.default</span> <span class='kw'>=</span> <span class='fl'>NA_integer_</span>, <span class='kw'>.missing</span> <span class='kw'>=</span> <span class='fl'>NA_integer_</span>)</pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>strand</th>
+      <td><p>Character vector of strandness values: <code>'forward'</code> or
+<code>'reverse'</code>.</p></td>
+    </tr>
+    <tr>
+      <th>.default</th>
+      <td><p>What value to use by default for values other than
+<code>'forward'</code> or <code>'reverse'</code>.</p></td>
+    </tr>
+    <tr>
+      <th>.missing</th>
+      <td><p>What value to use when recoding <code>NA_character_</code>.</p></td>
+    </tr>
+    </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>An integer vector.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='code_to_strand.html'>code_to_strand</a></code></p></div>
 
   </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
+      <li><a href="#see-also">See also</a></li>
+    </ul>
 
+  </div>
 </div>
-
 
 
       <footer>

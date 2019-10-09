@@ -7,6 +7,9 @@
     <loc>https://rmagno.eu/ensemblr/reference/are_vec_recyclable.html</loc>
   </url>
   <url>
+    <loc>https://rmagno.eu/ensemblr/reference/code_to_strand.html</loc>
+  </url>
+  <url>
     <loc>https://rmagno.eu/ensemblr/reference/ensembl_server.html</loc>
   </url>
   <url>
@@ -53,6 +56,9 @@
   </url>
   <url>
     <loc>https://rmagno.eu/ensemblr/reference/rest_api_endpoints.html</loc>
+  </url>
+  <url>
+    <loc>https://rmagno.eu/ensemblr/reference/strand_to_code.html</loc>
   </url>
   <url>
     <loc>https://rmagno.eu/ensemblr/reference/user_agent_id.html</loc>
