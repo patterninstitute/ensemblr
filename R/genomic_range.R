@@ -79,3 +79,12 @@ genomic_range <- function(chr, start, end, starting_position_index = 1L) {
 
 is_genomic_range <- function(genomic_range)
   stringr::str_detect(genomic_range, '\\w+:\\d+\\.\\.\\d+')
+
+split_genomic_range <- function(genomic_range) {
+
+  split_coordinates <- stringr::str_match(genomic_range,
+                                          '^(\\w+):(\\d+)\\.\\.(\\d+)$')[, -1, drop = FALSE]
+
+  colnames(split_coordinates) <- c('chromosome', 'start', 'end')
+  return(split_coordinates)
+}

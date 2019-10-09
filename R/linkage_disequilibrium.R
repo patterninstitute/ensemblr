@@ -85,8 +85,9 @@ json_list_to_ld_tbl <- function(species_name, json_list) {
 #'   \code{d_prime} defines a cut-off threshold: only variants whose
 #'   \eqn{D' \ge }\code{d_prime} are returned.
 #' @param r_squared \eqn{r^2} is a measure of linkage disequilibrium.
-#'   \code{r_squared} defines a cut-off threshold: only variants whose
-#'   \eqn{r^2 \ge }\code{r_squared} are returned.
+#'   \code{r_squared} defines a cut-off threshold: only variants whose \eqn{r^2
+#'   \ge }\code{r_squared} are returned. The lower bound for \code{r_squared} is
+#'   \code{0.05}, not \code{0}; the upper bound is \code{1}.
 #' @param verbose Whether to be verbose about the http requests and respective
 #'   responses' status.
 #' @param warnings Whether to show warnings.
@@ -130,7 +131,7 @@ get_ld_variants_by_window <- function(variant_id,
                                    species_name = 'homo_sapiens',
                                    population = '1000GENOMES:phase_3:CEU',
                                    d_prime = 0.0,
-                                   r_squared = 0.0,
+                                   r_squared = 0.05,
                                    verbose = FALSE,
                                    warnings = TRUE,
                                    progress_bar = TRUE) {
@@ -233,7 +234,7 @@ get_ld_variants_by_pair <- function(variant_id1,
                                  species_name = 'homo_sapiens',
                                  population = '1000GENOMES:phase_3:CEU',
                                  d_prime = 0.0,
-                                 r_squared = 0.0,
+                                 r_squared = 0.05,
                                  verbose = FALSE,
                                  warnings = TRUE,
                                  progress_bar = TRUE) {
@@ -338,7 +339,7 @@ get_ld_variants_by_range <- function(genomic_range,
                                   species_name = 'homo_sapiens',
                                   population = '1000GENOMES:phase_3:CEU',
                                   d_prime = 0.0,
-                                  r_squared = 0.0,
+                                  r_squared = 0.05,
                                   verbose = FALSE,
                                   warnings = TRUE,
                                   progress_bar = TRUE) {
@@ -435,7 +436,7 @@ get_ld_variants_by_pair_combn <- function(variant_id,
                                     species_name = 'homo_sapiens',
                                     population = '1000GENOMES:phase_3:CEU',
                                     d_prime = 0.0,
-                                    r_squared = 0.0,
+                                    r_squared = 0.05,
                                     verbose = FALSE,
                                     warnings = TRUE,
                                     progress_bar = TRUE) {

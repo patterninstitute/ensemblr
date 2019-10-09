@@ -154,8 +154,8 @@ assert_r_squared <- function(r_squared) {
 
   # Is r_squared in [0, 1]?
   assertthat::assert_that(
-    all(dplyr::between(r_squared, 0, 1)),
-    msg = '`r_squared` contains values outside the range [0, 1].'
+    all(dplyr::between(r_squared, 0.05, 1)),
+    msg = '`r_squared` contains values outside the range [0.05, 1].'
   )
 
   return(TRUE)
