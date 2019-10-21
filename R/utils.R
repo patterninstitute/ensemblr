@@ -44,3 +44,15 @@ pairwise_combn <- function(x) {
   tbl <- tibble::tibble(x1 = pairs_matrix[1, ], x2 = pairs_matrix[2, ])
   return(tbl)
 }
+
+p <- function(param_name, value, missing = '') {
+
+  params <- glue::glue('{param_name}={value}')
+  params[value == missing] <- ''
+
+  return(params)
+}
+
+empty_strings_to_NA <- function(df) {
+  dplyr::mutate_if(df, is.character, list( ~ dplyr::na_if(., "")))
+}

@@ -38,7 +38,8 @@ Imports:
     tidyr,
     vctrs,
     kableExtra,
-    formattable
+    formattable,
+    magrittr
 Suggests: 
     knitr,
     rmarkdown
