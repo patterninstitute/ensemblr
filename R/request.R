@@ -54,6 +54,7 @@ warn_when_request_errored <- function(response) {
     msg2 <- rvest::html_text(rvest::html_nodes(content2, 'h2'), trim = TRUE)
     response_msg <- glue::glue('{msg1}. {msg2}.')
     }
+    # TODO: handle 400 error, e.g. resource_url = '/info/variation/populations/homo_sapiens/little humans'
   }
 
   wrn_msg <- glue::glue(
@@ -145,3 +146,45 @@ request <- function(resource_url, base_url = ensembl_server(),
   }
 }
 
+#' Parallel version of request
+#'
+#' Performs a \code{\link[httr]{GET}} request on each of the endpoints as
+#' specified by \code{resource_urls}.
+#'
+#' @param resource_urls Vector of endpoint URLs. Each endpoint is internally
+#'   appended to the \code{base_url}. It should start with a forward slash
+#'   (\code{'/'}).
+#' @param verbose Whether to be verbose.
+#' @param warnings Whether to print warnings.
+#' @param progress_bar Whether to show a progress bar.
+#'
+#' @return A list of named lists of four elements:
+#' \describe{
+#' \item{url}{The URL endpoint.}
+#' \item{response_code}{\href{https://tinyurl.com/8yqvhwf}{HTTP
+#' status code}.}
+#' \item{status}{A string describing the status of the response obtained:
+#' \code{"OK"} if successful or a description the error.}
+#' \item{content}{The parsed JSON as a nested list, as returned by
+#' \code{\link[jsonlite]{fromJSON}}.}
+#' }
+#'
+#' @export
+request_parallel <- function(resource_urls,
+                             verbose = FALSE,
+                             warnings = TRUE,
+                             progress_bar = TRUE) {
+
+
+  # Usually we'd use purrr::map here but we opted for plyr::llply
+  # for a no frills alternative with progress bar support.
+  progress <- dplyr::if_else(progress_bar && interactive(), 'text', 'none')
+  responses <- plyr::llply(
+    .data = resource_urls,
+    .fun = request,
+    verbose = verbose,
+    warnings = warnings,
+    .progress = progress)
+
+  return(responses)
+}
