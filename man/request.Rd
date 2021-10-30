@@ -4,8 +4,12 @@
 \alias{request}
 \title{Request an endpoint from Ensembl REST API}
 \usage{
-request(resource_url, base_url = ensembl_server(), verbose = FALSE,
-  warnings = TRUE)
+request(
+  resource_url,
+  base_url = ensembl_server(),
+  verbose = FALSE,
+  warnings = TRUE
+)
 }
 \arguments{
 \item{resource_url}{Endpoint URL. The endpoint is internally appended to the
