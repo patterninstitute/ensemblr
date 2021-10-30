@@ -200,16 +200,24 @@ get_ld_variants_by_window <- function(variant_id,
 
   # Usually we'd use purrr::map here but we opted for plyr::llply
   # for a no frills alternative with progress bar support.
-  progress <- dplyr::if_else(progress_bar && interactive(), 'text', 'none')
-  responses <- plyr::llply(
-    .data = resource_urls,
-    .fun = request,
-    verbose = verbose,
-    warnings = warnings,
-    .progress = progress)
+  # progress <- dplyr::if_else(progress_bar && interactive(), 'text', 'none')
+  # responses <- plyr::llply(
+  #   .data = resource_urls,
+  #   .fun = request,
+  #   verbose = verbose,
+  #   warnings = warnings,
+  #   .progress = progress)
+
+  responses <-
+    request_parallel(
+      resource_urls,
+      verbose = verbose,
+      warnings = warnings,
+      progress_bar = progress_bar
+    )
 
   # Only keep those responses that responded successfully, i.e. with status == "OK".
-  responses_ok <- purrr::keep(responses, ~ .x$status == 'OK')
+  responses_ok <- purrr::keep(responses, ~ identical(.x$status, 'OK'))
 
   # If none of the responses were successful then return an empty linkage
   # disequilibrium tibble.
@@ -306,16 +314,23 @@ get_ld_variants_by_pair <- function(variant_id1,
 
   # Usually we'd use purrr::map here but we opted for plyr::llply
   # for a no frills alternative with progress bar support.
-  progress <- dplyr::if_else(progress_bar && interactive(), 'text', 'none')
-  responses <- plyr::llply(
-    .data = resource_urls,
-    .fun = request,
-    verbose = verbose,
-    warnings = warnings,
-    .progress = progress)
+  # progress <- dplyr::if_else(progress_bar && interactive(), 'text', 'none')
+  # responses <- plyr::llply(
+  #   .data = resource_urls,
+  #   .fun = request,
+  #   verbose = verbose,
+  #   warnings = warnings,
+  #   .progress = progress)
+  responses <-
+    request_parallel(
+      resource_urls,
+      verbose = verbose,
+      warnings = warnings,
+      progress_bar = progress_bar
+    )
 
   # Only keep those responses that responded successfully, i.e. with status == "OK".
-  responses_ok <- purrr::keep(responses, ~ .x$status == 'OK')
+  responses_ok <- purrr::keep(responses, ~ identical(.x$status, 'OK'))
 
   # If none of the responses were successful then return an empty linkage
   # disequilibrium tibble.
@@ -403,16 +418,23 @@ get_ld_variants_by_range <- function(genomic_range,
 
   # Usually we'd use purrr::map here but we opted for plyr::llply
   # for a no frills alternative with progress bar support.
-  progress <- dplyr::if_else(progress_bar && interactive(), 'text', 'none')
-  responses <- plyr::llply(
-    .data = resource_urls,
-    .fun = request,
-    verbose = verbose,
-    warnings = warnings,
-    .progress = progress)
+  # progress <- dplyr::if_else(progress_bar && interactive(), 'text', 'none')
+  # responses <- plyr::llply(
+  #   .data = resource_urls,
+  #   .fun = request,
+  #   verbose = verbose,
+  #   warnings = warnings,
+  #   .progress = progress)
+  responses <-
+    request_parallel(
+      resource_urls,
+      verbose = verbose,
+      warnings = warnings,
+      progress_bar = progress_bar
+    )
 
   # Only keep those responses that responded successfully, i.e. with status == "OK".
-  responses_ok <- purrr::keep(responses, ~ .x$status == 'OK')
+  responses_ok <- purrr::keep(responses, ~ identical(.x$status, 'OK'))
 
   # If none of the responses were successful then return an empty linkage
   # disequilibrium tibble.
