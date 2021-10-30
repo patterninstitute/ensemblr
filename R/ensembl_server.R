@@ -62,7 +62,7 @@ is_ensembl_reachable <-
                        count = 1L,
                        timeout = 2)
     if (is.na(ping_response)) {
-      rlang::inform('{domain} is not replying to ping requests on port {port}.')
+      rlang::inform(glue::glue('{domain} is not replying to ping requests on port {port}.'))
       return(FALSE)
     } else {
       if (verbose)

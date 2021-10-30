@@ -4,8 +4,7 @@
 \alias{is_ensembl_reachable}
 \title{Is the Ensembl REST API server reachable?}
 \usage{
-is_ensembl_reachable(url = ensembl_server(), port = 443L,
-  verbose = FALSE)
+is_ensembl_reachable(url = ensembl_server(), port = 443L, verbose = FALSE)
 }
 \arguments{
 \item{url}{Ensembl REST API server URL. Default is
