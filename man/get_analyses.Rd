@@ -4,8 +4,12 @@
 \alias{get_analyses}
 \title{Get analyses behind Ensembl databases}
 \usage{
-get_analyses(species_name, verbose = FALSE, warnings = TRUE,
-  progress_bar = TRUE)
+get_analyses(
+  species_name,
+  verbose = FALSE,
+  warnings = TRUE,
+  progress_bar = TRUE
+)
 }
 \arguments{
 \item{species_name}{The species name, i.e., the scientific name, all letters
