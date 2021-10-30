@@ -4,8 +4,7 @@
 \alias{code_to_strand}
 \title{Convert strand integer codes to strand words}
 \usage{
-code_to_strand(code, .default = NA_character_,
-  .missing = NA_character_)
+code_to_strand(code, .default = NA_character_, .missing = NA_character_)
 }
 \arguments{
 \item{code}{Integer vector of strandness codes: \code{1L} or
