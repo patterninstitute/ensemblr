@@ -1,6 +1,5 @@
 # Title: Ensembl REST API Endpoints
 # Source: Ensembl's REST API (https://rest.ensembl.org/)
-# Last download date: 23 July 2019.
 # How to run: just source this file.
 # Documentation source: R/data.R
 
