@@ -4,8 +4,12 @@
 \alias{get_species}
 \title{Get Ensembl species}
 \usage{
-get_species(division = get_divisions(), verbose = FALSE,
-  warnings = TRUE, progress_bar = TRUE)
+get_species(
+  division = get_divisions(),
+  verbose = FALSE,
+  warnings = TRUE,
+  progress_bar = TRUE
+)
 }
 \arguments{
 \item{division}{Ensembl division, e.g., \code{"EnsemblVertebrates"} or
