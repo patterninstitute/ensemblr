@@ -71,6 +71,10 @@ json_list_to_id_tbl <- function(json_list) {
 #'   \item{\code{peptide}}{TODO}
 #'   \item{\code{possible_replacement}}{TODO}
 #' }
+#'
+#' @examples
+#' get_id(c('ENSDARE00000830915', 'ENSG00000248378', 'ENSDART00000033574', 'ENSP00000000233'))
+#'
 #' @export
 get_id <- function(id,
                    verbose = FALSE,
@@ -95,16 +99,23 @@ get_id <- function(id,
 
   # Usually we'd use purrr::map here but we opted for plyr::llply
   # for a no frills alternative with progress bar support.
-  progress <- dplyr::if_else(progress_bar && interactive(), 'text', 'none')
-  responses <- plyr::llply(
-    .data = resource_urls,
-    .fun = request,
-    verbose = verbose,
-    warnings = warnings,
-    .progress = progress)
+  # progress <- dplyr::if_else(progress_bar && interactive(), 'text', 'none')
+  # responses <- plyr::llply(
+  #   .data = resource_urls,
+  #   .fun = request,
+  #   verbose = verbose,
+  #   warnings = warnings,
+  #   .progress = progress)
+  responses <-
+    request_parallel(
+      resource_urls,
+      verbose = verbose,
+      warnings = warnings,
+      progress_bar = progress_bar
+    )
 
   # Only keep those responses that responded successfully, i.e. with status == "OK".
-  responses_ok <- purrr::keep(responses, ~ .x$status == 'OK')
+  responses_ok <- purrr::keep(responses, ~ identical(.x$status, 'OK'))
 
   # If none of the responses were successful then return an empty linkage
   # disequilibrium tibble.

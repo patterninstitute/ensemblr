@@ -41,3 +41,7 @@ This function retrieves information about one or more Ensembl identifiers.
 Ensembl identifiers for which information is available are: genes, exons,
 transcripts and proteins.
 }
+\examples{
+get_id(c('ENSDARE00000830915', 'ENSG00000248378', 'ENSDART00000033574', 'ENSP00000000233'))
+
+}
