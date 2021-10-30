@@ -4,8 +4,13 @@
 \alias{get_populations}
 \title{Get populations for a species}
 \usage{
-get_populations(species_name = "homo_sapiens", ld_only = TRUE,
-  verbose = FALSE, warnings = TRUE, progress_bar = TRUE)
+get_populations(
+  species_name = "homo_sapiens",
+  ld_only = TRUE,
+  verbose = FALSE,
+  warnings = TRUE,
+  progress_bar = TRUE
+)
 }
 \arguments{
 \item{species_name}{The species name, i.e., the scientific name, all letters
