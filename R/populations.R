@@ -54,6 +54,11 @@ json_list_to_population_tbl <- function(species_name, json_list) {
 #'   \item{cohort_size}{Cohort sample size.}
 #' }
 #'
+#' @details # Ensembl REST API endpoints
+#'
+#' `get_populations()` makes GET requests to
+#' [/info/variation/populations/:species](https://rest.ensembl.org/documentation/info/variation_populations).
+#'
 #' @examples
 #' # Get all human populations with linkage disequilibrium data
 #' get_populations(species_name = 'homo_sapiens', ld_only = TRUE)
@@ -61,6 +66,7 @@ json_list_to_population_tbl <- function(species_name, json_list) {
 #' # Get all human populations
 #' get_populations(species_name = 'homo_sapiens', ld_only = FALSE)
 #'
+#' @md
 #' @export
 get_populations <- function(species_name = 'homo_sapiens',
                             ld_only = TRUE,

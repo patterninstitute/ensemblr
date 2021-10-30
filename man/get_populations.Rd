@@ -31,13 +31,13 @@ responses' status.}
 \value{
 A \code{\link[tibble]{tibble}} of 4 variables:
 \describe{
-  \item{species_name}{Ensembl species name: this is the name used internally
-  by Ensembl to uniquely identify a species by name. It is the scientific
-  name but formatted without capitalisation and spacing converted with an
-  underscore, e.g., \code{'homo_sapiens'}.}
-  \item{population}{Population.}
-  \item{description}{Description of the population.}
-  \item{cohort_size}{Cohort sample size.}
+\item{species_name}{Ensembl species name: this is the name used internally
+by Ensembl to uniquely identify a species by name. It is the scientific
+name but formatted without capitalisation and spacing converted with an
+underscore, e.g., \code{'homo_sapiens'}.}
+\item{population}{Population.}
+\item{description}{Description of the population.}
+\item{cohort_size}{Cohort sample size.}
 }
 }
 \description{
@@ -48,6 +48,11 @@ section Value for details about each column. The parameter \code{ld_only} to
 restrict populations returned to only populations with linkage disequilibrium
 information.
 }
+\section{Ensembl REST API endpoints}{
+\code{get_populations()} makes GET requests to
+\href{https://rest.ensembl.org/documentation/info/variation_populations}{/info/variation/populations/:species}.
+}
+
 \examples{
 # Get all human populations with linkage disequilibrium data
 get_populations(species_name = 'homo_sapiens', ld_only = TRUE)
