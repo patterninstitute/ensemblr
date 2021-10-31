@@ -121,7 +121,12 @@ combinations of variants:get_ld_variants_by_pair_combn(variant_id,
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/maialab/ensemblr/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -136,7 +141,7 @@ combinations of variants:get_ld_variants_by_pair_combn(variant_id,
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get linkage disequilibrium data for variants</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/maialab/ensemblr/blob/master/R/linkage_disequilibrium.R'><code>R/linkage_disequilibrium.R</code></a></small>
     <div class="hidden name"><code>get_ld_variants_by_window.Rd</code></div>
     </div>
 
@@ -307,15 +312,10 @@ function <code>get_ld_variants_by_range()</code>.</p></td>
     <pre class="examples"><div class='input'><span class='co'># Retrieve variants in LD by a window size of 1kb:</span>
 <span class='co'># 1kb: 500 bp upstream and 500 bp downstream of variant.</span>
 <span class='fu'>get_ld_variants_by_window</span><span class='op'>(</span><span class='st'>'rs123'</span>, genomic_window_size <span class='op'>=</span> <span class='fl'>1L</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6 × 6</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 × 6</span>
 #&gt;   species_name population              variant_id1 variant_id2 r_squared d_prime
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>1</span> homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs10239961      0.255   1.00 
-#&gt; <span style='color: #BCBCBC;'>2</span> homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs124           0.722   1.00 
-#&gt; <span style='color: #BCBCBC;'>3</span> homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs122           0.722   1.00 
-#&gt; <span style='color: #BCBCBC;'>4</span> homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs115           0.721   1.00 
-#&gt; <span style='color: #BCBCBC;'>5</span> homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs114           0.475   0.703
-#&gt; <span style='color: #BCBCBC;'>6</span> homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs12536724      0.255   1.00 </div><div class='input'>
+#&gt; <span style='color: #BCBCBC;'>1</span> homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs122           0.722    1.00</div><div class='input'>
 <span class='co'># Retrieve LD measures for pairs of variants:</span>
 <span class='fu'>get_ld_variants_by_pair</span><span class='op'>(</span>
   variant_id1 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'rs123'</span>, <span class='st'>'rs35439278'</span><span class='op'>)</span>,
