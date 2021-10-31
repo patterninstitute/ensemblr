@@ -80,3 +80,13 @@ identifier. The data is returned as a \code{\link[tibble]{tibble}} where each
 row is a cross reference related to the provided Ensembl identifier. See
 below under section Value for details about each column.
 }
+\section{Ensembl REST API endpoints}{
+\code{get_xrefs_by_ensembl_id()} makes GET requests to
+\href{https://rest.ensembl.org/documentation/info/xref_id}{/xrefs/id/:id}.
+}
+
+\examples{
+get_xrefs_by_ensembl_id('human', 'ENSG00000248378')
+
+get_xrefs_by_ensembl_id('human', 'ENSG00000248378', all_levels = TRUE)
+}

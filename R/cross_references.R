@@ -76,34 +76,40 @@ json_list_to_xrefs_details_tbl <- function(species_name, gene, ensembl_db, json_
 #'
 #' @return A \code{\link[tibble]{tibble}} of 12 variables:
 #' \describe{
-#'   \item{species_name}{Ensembl species name: this is the name used internally
+#'   \item{`species_name`}{Ensembl species name: this is the name used internally
 #'   by Ensembl to uniquely identify a species by name. It is the scientific
 #'   name but formatted without capitalisation and spacing converted with an
 #'   underscore, e.g., \code{'homo_sapiens'}.}
-#'   \item{gene}{Gene symbol.}
-#'   \item{ensembl_db}{Ensembl database.}
-#'   \item{primary_id}{Primary identification in external database.}
-#'   \item{display_id}{Display identification in external database.}
-#'   \item{external_db_name}{External database name.}
-#'   \item{external_db_display_name}{External database display name.}
-#'   \item{version}{TODO}
-#'   \item{info_type}{There are two types of external cross references (XRef):
+#'   \item{`gene`}{Gene symbol.}
+#'   \item{`ensembl_db`}{Ensembl database.}
+#'   \item{`primary_id`}{Primary identification in external database.}
+#'   \item{`display_id`}{Display identification in external database.}
+#'   \item{`external_db_name`}{External database name.}
+#'   \item{`external_db_display_name`}{External database display name.}
+#'   \item{`version`}{TODO}
+#'   \item{`info_type`}{There are two types of external cross references (XRef):
 #'   direct (\code{'DIRECT'}) or dependent (\code{'DEPENDENT'}). A direct cross
 #'   reference is one that can be directly linked to a gene, transcript or
 #'   translation object in Ensembl Genomes by synonymy or sequence similarity. A
 #'   dependent cross reference is one that is transitively linked to the object
 #'   via the direct cross reference. The value can also be \code{'UNMAPPED'} for
 #'   unmapped cross references, or \code{'PROJECTION'} for TODO.}
-#'   \item{info_text}{TODO}
+#'   \item{`info_text`}{TODO}
 #'   \item{synonyms}{Other names or acronyms used to refer to the
 #'   gene. Note that this column is of the list type.}
-#'   \item{description}{Brief description of the external database entry.}
+#'   \item{`description`}{Brief description of the external database entry.}
 #' }
+#'
+#' @details # Ensembl REST API endpoints
+#'
+#' `get_xrefs_by_gene()` makes GET requests to
+#' [/xrefs/name/:species/:name](https://rest.ensembl.org/documentation/info/xref_name).
 #'
 #' @examples
 #' # Get cross references that relate to gene BRCA2
 #' get_xrefs_by_gene(species_name = 'human', gene = 'BRCA2')
 #'
+#' @md
 #' @export
 get_xrefs_by_gene <- function(species_name,
                               gene,
@@ -168,7 +174,7 @@ get_xrefs_by_gene <- function(species_name,
 
   # If none of the responses were successful then return an empty linkage
   # disequilibrium tibble.
-  if (rlang::is_empty(responses_ok)) return(ld_tbl())
+  if (rlang::is_empty(responses_ok)) return(xrefs_details_tbl())
 
   return(
     purrr::imap_dfr(
@@ -339,7 +345,15 @@ json_list_to_xrefs_details_tbl2 <- function(species_name, ensembl_id, ensembl_db
 #'   \item{`description`}{Brief description of the external database entry.}
 #' }
 #'
+#' @details # Ensembl REST API endpoints
 #'
+#' `get_xrefs_by_ensembl_id()` makes GET requests to
+#' [/xrefs/id/:id](https://rest.ensembl.org/documentation/info/xref_id).
+#'
+#' @examples
+#' get_xrefs_by_ensembl_id('human', 'ENSG00000248378')
+#'
+#' get_xrefs_by_ensembl_id('human', 'ENSG00000248378', all_levels = TRUE)
 #' @md
 #' @export
 get_xrefs_by_ensembl_id <- function(species_name,

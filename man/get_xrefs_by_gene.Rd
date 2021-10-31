@@ -39,28 +39,28 @@ responses' status.}
 \value{
 A \code{\link[tibble]{tibble}} of 12 variables:
 \describe{
-  \item{species_name}{Ensembl species name: this is the name used internally
-  by Ensembl to uniquely identify a species by name. It is the scientific
-  name but formatted without capitalisation and spacing converted with an
-  underscore, e.g., \code{'homo_sapiens'}.}
-  \item{gene}{Gene symbol.}
-  \item{ensembl_db}{Ensembl database.}
-  \item{primary_id}{Primary identification in external database.}
-  \item{display_id}{Display identification in external database.}
-  \item{external_db_name}{External database name.}
-  \item{external_db_display_name}{External database display name.}
-  \item{version}{TODO}
-  \item{info_type}{There are two types of external cross references (XRef):
-  direct (\code{'DIRECT'}) or dependent (\code{'DEPENDENT'}). A direct cross
-  reference is one that can be directly linked to a gene, transcript or
-  translation object in Ensembl Genomes by synonymy or sequence similarity. A
-  dependent cross reference is one that is transitively linked to the object
-  via the direct cross reference. The value can also be \code{'UNMAPPED'} for
-  unmapped cross references, or \code{'PROJECTION'} for TODO.}
-  \item{info_text}{TODO}
-  \item{synonyms}{Other names or acronyms used to refer to the
-  gene. Note that this column is of the list type.}
-  \item{description}{Brief description of the external database entry.}
+\item{\code{species_name}}{Ensembl species name: this is the name used internally
+by Ensembl to uniquely identify a species by name. It is the scientific
+name but formatted without capitalisation and spacing converted with an
+underscore, e.g., \code{'homo_sapiens'}.}
+\item{\code{gene}}{Gene symbol.}
+\item{\code{ensembl_db}}{Ensembl database.}
+\item{\code{primary_id}}{Primary identification in external database.}
+\item{\code{display_id}}{Display identification in external database.}
+\item{\code{external_db_name}}{External database name.}
+\item{\code{external_db_display_name}}{External database display name.}
+\item{\code{version}}{TODO}
+\item{\code{info_type}}{There are two types of external cross references (XRef):
+direct (\code{'DIRECT'}) or dependent (\code{'DEPENDENT'}). A direct cross
+reference is one that can be directly linked to a gene, transcript or
+translation object in Ensembl Genomes by synonymy or sequence similarity. A
+dependent cross reference is one that is transitively linked to the object
+via the direct cross reference. The value can also be \code{'UNMAPPED'} for
+unmapped cross references, or \code{'PROJECTION'} for TODO.}
+\item{\code{info_text}}{TODO}
+\item{synonyms}{Other names or acronyms used to refer to the
+gene. Note that this column is of the list type.}
+\item{\code{description}}{Brief description of the external database entry.}
 }
 }
 \description{
@@ -69,6 +69,11 @@ The data is returned as a \code{\link[tibble]{tibble}} where each row is a
 cross reference related to the provided symbol or display name of a gene. See
 below under section Value for details about each column.
 }
+\section{Ensembl REST API endpoints}{
+\code{get_xrefs_by_gene()} makes GET requests to
+\href{https://rest.ensembl.org/documentation/info/xref_name}{/xrefs/name/:species/:name}.
+}
+
 \examples{
 # Get cross references that relate to gene BRCA2
 get_xrefs_by_gene(species_name = 'human', gene = 'BRCA2')
