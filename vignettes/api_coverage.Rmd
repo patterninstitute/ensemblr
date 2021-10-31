@@ -14,95 +14,232 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup, echo=FALSE, message=FALSE}
-library(knitr)
-library(kableExtra)
-#library(formattable)
-library(dplyr)
-library(ensemblr)
-```
+The list of Ensembl REST API endpoints can be found at
+https://rest.ensembl.org/. Below you will find the current coverage of Ensembl
+REST API endpoints by `{ensemblr}`.
 
-```{r, echo=FALSE}
-section_tally <- dplyr::count(rest_api_endpoints, section)
-my_index <- section_tally$n
-names(my_index) <- section_tally$section
+## Coverage
 
-#r <- function(x) cell_spec(x, background = "red", color = "white", bold = TRUE)
-#g <- function(x) cell_spec(x, background = "green", color = "white", bold = TRUE)
+| Ensembl REST API Section | Coverage |
+| ---------------- | ---------------- |
+| Archive | 2/2 |
+| Comparative genomics | 0/12 |
+| Cross references | 0/3 |
+| eQTL | 1/3 |
+| Information | 10/26 |
+| Linkage disequilibrium | 3/3 |
+| Lookup | 0/4 |
+| Mapping | 0/4 |
+| Ontologies and taxonomy | 0/8 |
+| Overlap | 0/3 |
+| Phenotype annotations | 0/4 |
+| Regulation | 0/7 |
+| Sequence | 0/4 |
+| Transcript Haplotypes | 0/1 |
+| VEP | 0/6 |
+| Variation | 0/6 |
+| Variation GA4GH | 0/22 |
 
-rest_api_coverage <- rest_api_endpoints %>%
-  select(endpoint, description) %>%
-  mutate(ensemblr_api = 'TODO')
-```
 
-```{r echo=FALSE}
-# get_versioning
-rest_api_coverage[
-  rest_api_coverage$endpoint == 'GET archive/id/:id',
-  'ensemblr_api'] <- '`get_id()`'
-```
+## Archive
 
-```{r echo=FALSE}
-# get_versioning
-rest_api_coverage[
-  rest_api_coverage$endpoint == 'GET info/data',
-  'ensemblr_api'] <- '`get_data_versions()`'
+| Ensembl REST API   | `{ensemblr}` API    | Description |
+| ----------------   | ----------------    | ----------- |
+| `GET archive/id/:id`  | `get_id()`       | Get details about an Ensembl identifier. |
+| `POST archive/id`     | `get_id()`       | Get details about an Ensembl identifier. |
 
-rest_api_coverage[
-  rest_api_coverage$endpoint == 'GET info/software',
-  'ensemblr_api'] <- '`get_software_version()`'
+## Comparative genomics
 
-rest_api_coverage[
-  rest_api_coverage$endpoint == 'GET info/rest',
-  'ensemblr_api'] <- '`get_rest_version()`'
-```
+| Ensembl REST API                                    | `{ensemblr}` API | Description |
+| --------------------------------------------------- | ---------------- | ----------- |
+| GET cafe/genetree/id/:id                            | --- | --- |
+| GET cafe/genetree/member/id/:id                     | --- | --- |
+| GET cafe/genetree/member/symbol/:species/:symbol    | --- | --- |
+| GET family/id/:id                                   | --- | --- |
+| GET family/member/id/:id                            | --- | --- |
+| GET family/member/symbol/:species/:symbol           | --- | --- |
+| GET genetree/id/:id                                 | --- | --- |
+| GET genetree/member/id/:id                          | --- | --- |
+| GET genetree/member/symbol/:species/:symbol         | --- | --- |
+| GET alignment/region/:species/:region               | --- | --- |
+| GET homology/id/:id                                 | --- | --- |
+| GET homology/symbol/:species/:symbol                | --- | --- |
 
-```{r echo=FALSE}
-# get_species
-rest_api_coverage[
-  rest_api_coverage$endpoint == 'GET info/variation/populations/:species',
-  'ensemblr_api'] <- '`get_populations()`'
-```
+## Cross references
 
-```{r echo=FALSE}
-# get_species
-rest_api_coverage[
-  rest_api_coverage$endpoint == 'GET info/species',
-  'ensemblr_api'] <- '`get_species()`'
-```
+| Ensembl REST API | `{ensemblr}` API | Description |
+| ---------------- | ---------------- | ----------- |
+| GET xrefs/symbol/:species/:symbol | --- | --- |
+| GET xrefs/id/:id | --- | --- |
+| GET xrefs/name/:species/:name | --- | --- |
 
-```{r echo=FALSE}
-# get_divisions
-rest_api_coverage[
-  rest_api_coverage$endpoint == 'GET info/divisions',
-  'ensemblr_api'] <- '`get_divisions()`'
-```
+## eQTL
 
-```{r echo=FALSE}
-# get_ld_variants_by_window
-rest_api_coverage[
-  rest_api_coverage$endpoint == 'GET ld/:species/:id/:population_name',
-  'ensemblr_api'] <- '`get_ld_variants_by_window()`'
+| Ensembl REST API | `{ensemblr}` API | Description |
+| ---------------- | ---------------- | ----------- |
+| GET eqtl/stable_id/:species/:stable_id | --- | --- |
+| GET eqtl/variant_name/:species/:variant_name | --- | --- |
+| GET eqtl/tissue/:species | `get_eqtl_tissues()` | Returns all tissues currently available in the eQTL database. |
 
-# get_ld_variants_by_pair
-rest_api_coverage[
-  rest_api_coverage$endpoint == 'GET ld/:species/pairwise/:id1/:id2',
-  'ensemblr_api'] <- '`get_ld_variants_by_pair()`'
+## Information
 
-# get_ld_variants_by_range
-rest_api_coverage[
-  rest_api_coverage$endpoint == 'GET ld/:species/region/:region/:population_name',
-  'ensemblr_api'] <- '`get_ld_variants_by_range()`'
-```
+| Ensembl REST API | `{ensemblr}` API | Description |
+| ---------------- | ---------------- | ----------- |
+| GET info/analysis/:species | `get_analyses()` | Gets a table of analyses involved in the generation of data for the different Ensembl databases. |
+| GET info/assembly/:species | --- | --- |
+| GET info/assembly/:species/:region_name | --- | --- |
+| GET info/biotypes/:species | --- | --- |
+| GET info/biotypes/groups/:group/:object_type | --- | --- |
+| GET info/biotypes/name/:name/:object_type | --- | --- |
+| GET info/compara/methods | --- | --- |
+| GET info/compara/species_sets/:method | --- | --- |
+| GET info/comparas | --- | --- |
+| GET info/data | `get_data_versions()` | Get data release version(s) available on the Ensembl REST server. |
+| GET info/eg_version | --- | --- |
+| GET info/external_dbs/:species | --- | --- |
+| GET info/divisions | `get_divisions()` | Retrieve Ensembl divisions. |
+| GET info/genomes/:genome_name | --- | --- |
+| GET info/genomes/accession/:accession | --- | --- |
+| GET info/genomes/assembly/:assembly_id | --- | --- |
+| GET info/genomes/division/:division_name | --- | --- |
+| GET info/genomes/taxonomy/:taxon_name | --- | --- |
+| GET info/ping | --- | --- |
+| GET info/rest | `get_rest_version()` | Retrieve the current version of the Ensembl REST API. |
+| GET info/software | `get_software_version()` | Retrieve the Perl API version. |
+| GET info/species | `get_species()` | Retrieves species-level information. |
+| GET info/variation/:species | `get_variation_sources()` | Retrieves variant sources, i.e. a list of databases used by Ensembl for obtaining variant information. |
+| GET info/variation/consequence_types | `get_variant_consequences()` | Retrieves variant consequence types. |
+| GET info/variation/populations/:species:/:population_name | `get_individuals()` | Retrieves individual-level information. |
+| GET info/variation/populations/:species | `get_populations()` | Retrieves population-level information. |
 
-```{r echo=FALSE}
-kable(rest_api_coverage[c('endpoint', 'ensemblr_api', 'description')],
-      escape = FALSE,
-      col.names = c('Endpoint', 'ensemblr API', 'Description')
-      ) %>%
-  column_spec(3, width = "10cm") %>%
-  kable_styling(c("striped", "hover", "condensed", "responsive"),
-                full_width = FALSE,
-                fixed_thead = TRUE) %>%
-  pack_rows(index = my_index)
-```
+## Linkage disequilibrium
+
+| Ensembl REST API | `{ensemblr}` API | Description |
+| ---------------- | ---------------- | ----------- |
+| GET ld/:species/:id/:population_name | `get_ld_variants_by_window()` | Gets linkage disequilibrium data by genomic window centred on queried variants. |
+| GET ld/:species/pairwise/:id1/:id2 | `get_ld_variants_by_pair()` | Gets linkage disequilibrium data for pairs of queried variants. |
+| GET ld/:species/region/:region/:population_name | `get_ld_variants_by_range()` | Gets linkage disequilibrium data by genomic range. |
+
+## Lookup
+
+| Ensembl REST API | `{ensemblr}` API | Description |
+| ---------------- | ---------------- | ----------- |
+| GET lookup/id/:id | --- | --- |
+| POST lookup/id | --- | --- |
+| GET lookup/symbol/:species/:symbol | --- | --- |
+| POST lookup/symbol/:species/:symbol | --- | --- |
+
+## Mapping
+
+| Ensembl REST API | `{ensemblr}` API | Description |
+| ---------------- | ---------------- | ----------- |
+| GET map/cdna/:id/:region | --- | --- |
+| GET map/cds/:id/:region | --- | --- |
+| GET map/:species/:asm_one/:region/:asm_two | --- | --- |
+|  GET map/translation/:id/:region | --- | --- |
+
+## Ontologies and taxonomy
+
+| Ensembl REST API | `{ensemblr}` API | Description |
+| ---------------- | ---------------- | ----------- |
+| GET ontology/ancestors/:id | --- | --- |
+| GET ontology/ancestors/chart/:id | --- | --- |
+| GET ontology/descendants/:id | --- | --- |
+| GET ontology/id/:id | --- | --- |
+| GET ontology/name/:name | --- | --- |
+| GET taxonomy/classification/:id | --- | --- |
+| GET taxonomy/id/:id | --- | --- |
+| GET taxonomy/name/:name | --- | --- |
+
+## Overlap
+
+| Ensembl REST API | `{ensemblr}` API | Description |
+| ---------------- | ---------------- | ----------- |
+| GET overlap/id/:id | --- | --- |
+| GET overlap/region/:species/:region | --- | --- |
+| GET overlap/translation/:id | --- | --- |
+
+## Phenotype annotations
+
+| Ensembl REST API | `{ensemblr}` API | Description |
+| ---------------- | ---------------- | ----------- |
+| GET /phenotype/accession/:species/:accession | --- | --- |
+| GET /phenotype/gene/:species/:gene | --- | --- |
+| GET /phenotype/region/:species/:region | --- | --- |
+| GET /phenotype/term/:species/:term | --- | --- |
+
+## Regulation
+
+| Ensembl REST API | `{ensemblr}` API | Description |
+| ---------------- | ---------------- | ----------- |
+| GET regulatory/species/:species/microarray/:microarray/vendor/:vendor	 | --- | --- |
+| GET regulatory/species/:species/epigenome | --- | --- |
+| GET species/:species/binding_matrix/:binding_matrix_stable_id/ | --- | --- |
+| GET regulatory/species/:species/microarray | --- | --- |
+| GET regulatory/species/:species/microarray/:microarray/probe/:probe | --- | --- |
+| GET regulatory/species/:species/microarray/:microarray/probe_set/:probe_set | --- | --- |
+| GET regulatory/species/:species/id/:id | --- | --- |
+
+## Sequence
+
+| Ensembl REST API | `{ensemblr}` API | Description |
+| ---------------- | ---------------- | ----------- |
+| GET sequence/id/:id | --- | --- |
+| POST sequence/id | --- | --- |
+| GET sequence/region/:species/:region | --- | --- |
+| POST sequence/region/:species | --- | --- |
+
+## Transcript haplotypes
+
+| Ensembl REST API | `{ensemblr}` API | Description |
+| ---------------- | ---------------- | ----------- |
+| GET transcript_haplotypes/:species/:id | --- | --- |
+
+## VEP
+
+| Ensembl REST API | `{ensemblr}` API | Description |
+| ---------------- | ---------------- | ----------- |
+| GET vep/:species/hgvs/:hgvs_notation | --- | --- |
+| POST vep/:species/hgvs | --- | --- |
+| GET vep/:species/id/:id | --- | --- |
+| POST vep/:species/id | --- | --- |
+| GET vep/:species/region/:region/:allele/ | --- | --- |
+| POST vep/:species/region | --- | --- |
+
+## Variation
+
+| Ensembl REST API | `{ensemblr}` API | Description |
+| ---------------- | ---------------- | ----------- |
+| GET variant_recoder/:species/:id | --- | --- |
+| POST variant_recoder/:species | --- | --- |
+| GET variation/:species/:id | --- | --- |
+| GET variation/:species/pmcid/:pmcid | --- | --- |
+| GET variation/:species/pmid/:pmid | --- | --- |
+| POST variation/:species/ | --- | --- |
+
+## Variation GA4GH
+
+| Ensembl REST API | `{ensemblr}` API | Description |
+| ---------------- | ---------------- | ----------- |
+| GET ga4gh/beacon | --- | --- |
+| GET ga4gh/beacon/query | --- | --- |
+| POST ga4gh/beacon/query | --- | --- |
+| GET ga4gh/features/:id | --- | --- |
+| POST ga4gh/features/search | --- | --- |
+| POST ga4gh/callsets/search | --- | --- |
+| GET ga4gh/callsets/:id | --- | --- |
+| POST ga4gh/datasets/search | --- | --- |
+| GET ga4gh/datasets/:id | --- | --- |
+| POST ga4gh/featuresets/search | --- | --- |
+| GET ga4gh/featuresets/:id | --- | --- |
+| GET ga4gh/variants/:id | --- | --- |
+| POST ga4gh/variantannotations/search | --- | --- |
+| POST ga4gh/variants/search | --- | --- |
+| POST ga4gh/variantsets/search | --- | --- |
+| GET ga4gh/variantsets/:id | --- | --- |
+| POST ga4gh/references/search | --- | --- |
+| GET ga4gh/references/:id | --- | --- |
+| POST ga4gh/referencesets/search | --- | --- |
+| GET ga4gh/referencesets/:id | --- | --- |
+| POST ga4gh/variantannotationsets/search | --- | --- |
+| GET ga4gh/variantannotationsets/:id | --- | --- |
