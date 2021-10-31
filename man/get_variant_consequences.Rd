@@ -47,6 +47,6 @@ transcript structure:
 
 \examples{
 # Retrieve variant consequence types
-get_variant_consequence_types()
+get_variant_consequences()
 
 }
