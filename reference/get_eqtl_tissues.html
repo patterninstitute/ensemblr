@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get populations for a species — get_populations • ensemblr</title>
+<title>Get tissues in the eQTL database — get_eqtl_tissues • ensemblr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,13 +48,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Get populations for a species — get_populations" />
-<meta property="og:description" content="This function retrieves population-level information. The data is returned as
-a tibble where each row is a population of a given
-species and the columns are metadata about each population. See below under
-section Value for details about each column. The parameter ld_only to
-restrict populations returned to only populations with linkage disequilibrium
-information." />
+<meta property="og:title" content="Get tissues in the eQTL database — get_eqtl_tissues" />
+<meta property="og:description" content="This function retrieves all tissues in the eQTL database." />
 <meta property="og:image" content="https://maialab.org/ensemblr/logo.png" />
 
 
@@ -130,23 +125,17 @@ information." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get populations for a species</h1>
+    <h1>Get tissues in the eQTL database</h1>
     
-    <div class="hidden name"><code>get_populations.Rd</code></div>
+    <div class="hidden name"><code>get_eqtl_tissues.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function retrieves population-level information. The data is returned as
-a <code><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></code> where each row is a population of a given
-species and the columns are metadata about each population. See below under
-section Value for details about each column. The parameter <code>ld_only</code> to
-restrict populations returned to only populations with linkage disequilibrium
-information.</p>
+    <p>This function retrieves all tissues in the eQTL database.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_populations</span><span class='op'>(</span>
+    <pre class="usage"><span class='fu'>get_eqtl_tissues</span><span class='op'>(</span>
   species_name <span class='op'>=</span> <span class='st'>"homo_sapiens"</span>,
-  ld_only <span class='op'>=</span> <span class='cn'>TRUE</span>,
   verbose <span class='op'>=</span> <span class='cn'>FALSE</span>,
   warnings <span class='op'>=</span> <span class='cn'>TRUE</span>,
   progress_bar <span class='op'>=</span> <span class='cn'>TRUE</span>
@@ -158,14 +147,8 @@ information.</p>
     <tr>
       <th>species_name</th>
       <td><p>The species name, i.e., the scientific name, all letters
-lowercase and space replaced by underscore. Examples: <code>'homo_sapiens'</code>
-(human), <code>'ovis_aries'</code> (Domestic sheep) or <code>'capra_hircus'</code>
-(Goat).</p></td>
-    </tr>
-    <tr>
-      <th>ld_only</th>
-      <td><p>Whether to restrict populations returned to only populations
-with linkage disequilibrium data.</p></td>
+lowercase and space replaced by underscore. Currently, only human
+<code>'homo_sapiens'</code> is available.</p></td>
     </tr>
     <tr>
       <th>verbose</th>
@@ -182,57 +165,27 @@ responses' status.</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>A <code><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></code> of 4 variables:</p><dl>
-<dt>species_name</dt><dd><p>Ensembl species name: this is the name used internally
-by Ensembl to uniquely identify a species by name. It is the scientific
-name but formatted without capitalisation and spacing converted with an
-underscore, e.g., <code>'homo_sapiens'</code>.</p></dd>
-<dt>population</dt><dd><p>Population.</p></dd>
-<dt>description</dt><dd><p>Description of the population.</p></dd>
-<dt>cohort_size</dt><dd><p>Cohort sample size.</p></dd>
-
-</dl>
-
     <h2 class="hasAnchor" id="ensembl-rest-api-endpoints"><a class="anchor" href="#ensembl-rest-api-endpoints"></a>Ensembl REST API endpoints</h2>
 
-    <p><code>get_populations()</code> makes GET requests to
-<a href='https://rest.ensembl.org/documentation/info/variation_populations'>/info/variation/populations/:species</a>.</p>
+    <p><code>get_eqtl_tissues()</code> makes GET requests to
+<a href='https://rest.ensembl.org/documentation/info/tissues'>/eqtl/tissue/:species/</a>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Get all human populations with linkage disequilibrium data</span>
-<span class='fu'>get_populations</span><span class='op'>(</span>species_name <span class='op'>=</span> <span class='st'>'homo_sapiens'</span>, ld_only <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 30 × 4</span>
-#&gt;    species_name population              description                  cohort_size
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                              <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> homo_sapiens 1000GENOMES:phase_3:ACB African Caribbean in Barbad…          96
-#&gt; <span style='color: #BCBCBC;'> 2</span> homo_sapiens 1000GENOMES:phase_3:ASW African Ancestry in Southwe…          61
-#&gt; <span style='color: #BCBCBC;'> 3</span> homo_sapiens 1000GENOMES:phase_3:BEB Bengali in Bangladesh                 86
-#&gt; <span style='color: #BCBCBC;'> 4</span> homo_sapiens 1000GENOMES:phase_3:CDX Chinese Dai in Xishuangbann…          93
-#&gt; <span style='color: #BCBCBC;'> 5</span> homo_sapiens 1000GENOMES:phase_3:CEU Utah residents with Norther…          99
-#&gt; <span style='color: #BCBCBC;'> 6</span> homo_sapiens 1000GENOMES:phase_3:CHB Han Chinese in Bejing, China         103
-#&gt; <span style='color: #BCBCBC;'> 7</span> homo_sapiens 1000GENOMES:phase_3:CHS Southern Han Chinese, China          105
-#&gt; <span style='color: #BCBCBC;'> 8</span> homo_sapiens 1000GENOMES:phase_3:CLM Colombian in Medellin, Colo…          94
-#&gt; <span style='color: #BCBCBC;'> 9</span> homo_sapiens 1000GENOMES:phase_3:ESN Esan in Nigeria                       99
-#&gt; <span style='color: #BCBCBC;'>10</span> homo_sapiens 1000GENOMES:phase_3:FIN Finnish in Finland                    99
-#&gt; <span style='color: #949494;'># … with 20 more rows</span></div><div class='input'>
-<span class='co'># Get all human populations</span>
-<span class='fu'>get_populations</span><span class='op'>(</span>species_name <span class='op'>=</span> <span class='st'>'homo_sapiens'</span>, ld_only <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 37 × 4</span>
-#&gt;    species_name population              description                  cohort_size
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                              <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> homo_sapiens 1000GENOMES:phase_3:ACB African Caribbean in Barbad…          96
-#&gt; <span style='color: #BCBCBC;'> 2</span> homo_sapiens 1000GENOMES:phase_3:AFR African                              661
-#&gt; <span style='color: #BCBCBC;'> 3</span> homo_sapiens 1000GENOMES:phase_3:ALL All phase 3 individuals             <span style='text-decoration: underline;'>2</span>504
-#&gt; <span style='color: #BCBCBC;'> 4</span> homo_sapiens 1000GENOMES:phase_3:AMR American                             347
-#&gt; <span style='color: #BCBCBC;'> 5</span> homo_sapiens 1000GENOMES:phase_3:ASW African Ancestry in Southwe…          61
-#&gt; <span style='color: #BCBCBC;'> 6</span> homo_sapiens 1000GENOMES:phase_3:BEB Bengali in Bangladesh                 86
-#&gt; <span style='color: #BCBCBC;'> 7</span> homo_sapiens 1000GENOMES:phase_3:CDX Chinese Dai in Xishuangbann…          93
-#&gt; <span style='color: #BCBCBC;'> 8</span> homo_sapiens 1000GENOMES:phase_3:CEU Utah residents with Norther…          99
-#&gt; <span style='color: #BCBCBC;'> 9</span> homo_sapiens 1000GENOMES:phase_3:CHB Han Chinese in Bejing, China         103
-#&gt; <span style='color: #BCBCBC;'>10</span> homo_sapiens 1000GENOMES:phase_3:CHS Southern Han Chinese, China          105
-#&gt; <span style='color: #949494;'># … with 27 more rows</span></div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'>get_eqtl_tissues</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 44 × 2</span>
+#&gt;    species_name tissue                              
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                               
+#&gt; <span style='color: #BCBCBC;'> 1</span> homo_sapiens Adipose_Subcutaneous                
+#&gt; <span style='color: #BCBCBC;'> 2</span> homo_sapiens Adipose_Visceral_Omentum            
+#&gt; <span style='color: #BCBCBC;'> 3</span> homo_sapiens Adrenal_Gland                       
+#&gt; <span style='color: #BCBCBC;'> 4</span> homo_sapiens Artery_Aorta                        
+#&gt; <span style='color: #BCBCBC;'> 5</span> homo_sapiens Artery_Coronary                     
+#&gt; <span style='color: #BCBCBC;'> 6</span> homo_sapiens Artery_Tibial                       
+#&gt; <span style='color: #BCBCBC;'> 7</span> homo_sapiens Brain_Anterior_cingulate_cortex_BA24
+#&gt; <span style='color: #BCBCBC;'> 8</span> homo_sapiens Brain_Caudate_basal_ganglia         
+#&gt; <span style='color: #BCBCBC;'> 9</span> homo_sapiens Brain_Cerebellar_Hemisphere         
+#&gt; <span style='color: #BCBCBC;'>10</span> homo_sapiens Brain_Cerebellum                    
+#&gt; <span style='color: #949494;'># … with 34 more rows</span></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

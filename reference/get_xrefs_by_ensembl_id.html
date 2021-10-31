@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get populations for a species — get_populations • ensemblr</title>
+<title>Get cross-references by Ensembl ID — get_xrefs_by_ensembl_id • ensemblr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,13 +48,11 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Get populations for a species — get_populations" />
-<meta property="og:description" content="This function retrieves population-level information. The data is returned as
-a tibble where each row is a population of a given
-species and the columns are metadata about each population. See below under
-section Value for details about each column. The parameter ld_only to
-restrict populations returned to only populations with linkage disequilibrium
-information." />
+<meta property="og:title" content="Get cross-references by Ensembl ID — get_xrefs_by_ensembl_id" />
+<meta property="og:description" content="This function retrieves cross-references to external databases by Ensembl
+identifier. The data is returned as a tibble where each
+row is a cross reference related to the provided Ensembl identifier. See
+below under section Value for details about each column." />
 <meta property="og:image" content="https://maialab.org/ensemblr/logo.png" />
 
 
@@ -130,23 +128,25 @@ information." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get populations for a species</h1>
+    <h1>Get cross-references by Ensembl ID</h1>
     
-    <div class="hidden name"><code>get_populations.Rd</code></div>
+    <div class="hidden name"><code>get_xrefs_by_ensembl_id.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function retrieves population-level information. The data is returned as
-a <code><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></code> where each row is a population of a given
-species and the columns are metadata about each population. See below under
-section Value for details about each column. The parameter <code>ld_only</code> to
-restrict populations returned to only populations with linkage disequilibrium
-information.</p>
+    <p>This function retrieves cross-references to external databases by Ensembl
+identifier. The data is returned as a <code><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></code> where each
+row is a cross reference related to the provided Ensembl identifier. See
+below under section Value for details about each column.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_populations</span><span class='op'>(</span>
-  species_name <span class='op'>=</span> <span class='st'>"homo_sapiens"</span>,
-  ld_only <span class='op'>=</span> <span class='cn'>TRUE</span>,
+    <pre class="usage"><span class='fu'>get_xrefs_by_ensembl_id</span><span class='op'>(</span>
+  <span class='va'>species_name</span>,
+  <span class='va'>ensembl_id</span>,
+  all_levels <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  ensembl_db <span class='op'>=</span> <span class='st'>"core"</span>,
+  external_db <span class='op'>=</span> <span class='st'>""</span>,
+  feature <span class='op'>=</span> <span class='st'>""</span>,
   verbose <span class='op'>=</span> <span class='cn'>FALSE</span>,
   warnings <span class='op'>=</span> <span class='cn'>TRUE</span>,
   progress_bar <span class='op'>=</span> <span class='cn'>TRUE</span>
@@ -163,9 +163,31 @@ lowercase and space replaced by underscore. Examples: <code>'homo_sapiens'</code
 (Goat).</p></td>
     </tr>
     <tr>
-      <th>ld_only</th>
-      <td><p>Whether to restrict populations returned to only populations
-with linkage disequilibrium data.</p></td>
+      <th>ensembl_id</th>
+      <td><p>An Ensembl stable identifier, e.g. <code>"ENSG00000248234378"</code>.</p></td>
+    </tr>
+    <tr>
+      <th>all_levels</th>
+      <td><p>A <code>logical</code> vector. Set to find all genetic features linked
+to the stable ID, and fetch all external references for them. Specifying
+this on a gene will also return values from its transcripts and
+translations.</p></td>
+    </tr>
+    <tr>
+      <th>ensembl_db</th>
+      <td><p>Restrict the search to an Ensembl database: typically one
+of <code>'core'</code>, <code>'rnaseq'</code>, <code>'cdna'</code>, <code>'funcgen'</code> and <code>'otherfeatures'</code>.</p></td>
+    </tr>
+    <tr>
+      <th>external_db</th>
+      <td><p>External database to be filtered by. By default no
+filtering is applied.</p></td>
+    </tr>
+    <tr>
+      <th>feature</th>
+      <td><p>Restrict search to a feature type: gene (<code>'gene'</code>), exon
+(<code>'exon'</code>), transcript (<code>'transcript'</code>), and protein
+(<code>'translation'</code>).</p></td>
     </tr>
     <tr>
       <th>verbose</th>
@@ -184,56 +206,55 @@ responses' status.</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></code> of 4 variables:</p><dl>
-<dt>species_name</dt><dd><p>Ensembl species name: this is the name used internally
-by Ensembl to uniquely identify a species by name. It is the scientific
-name but formatted without capitalisation and spacing converted with an
-underscore, e.g., <code>'homo_sapiens'</code>.</p></dd>
-<dt>population</dt><dd><p>Population.</p></dd>
-<dt>description</dt><dd><p>Description of the population.</p></dd>
-<dt>cohort_size</dt><dd><p>Cohort sample size.</p></dd>
+    <p>A <code><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></code> of 12
+variables:</p><dl>
+<dt><code>species_name</code></dt><dd><p>Ensembl species name: this is the name used
+internally by Ensembl to uniquely identify a species by name. It is the
+scientific name but formatted without capitalisation and spacing converted
+with an underscore, e.g., <code>'homo_sapiens'</code>.</p></dd>
+<dt><code>ensembl_id</code></dt><dd><p>An Ensembl stable identifier, e.g. <code>"ENSG00000248234378"</code>.</p></dd>
+<dt><code>ensembl_db</code></dt><dd><p>Ensembl database.</p></dd>
+<dt><code>primary_id</code></dt><dd><p>Primary identification in external database.</p></dd>
+<dt><code>display_id</code></dt><dd><p>Display identification in external database.</p></dd>
+<dt><code>external_db_name</code></dt><dd><p>External database name.</p></dd>
+<dt><code>external_db_display_name</code></dt><dd><p>External database display name.</p></dd>
+<dt><code>version</code></dt><dd><p>TODO</p></dd>
+<dt><code>info_type</code></dt><dd><p>There are two types of external cross references (XRef):
+direct (<code>'DIRECT'</code>) or dependent (<code>'DEPENDENT'</code>). A direct cross
+reference is one that can be directly linked to a gene, transcript or
+translation object in Ensembl Genomes by synonymy or sequence similarity. A
+dependent cross reference is one that is transitively linked to the object
+via the direct cross reference. The value can also be <code>'UNMAPPED'</code> for
+unmapped cross references, or <code>'PROJECTION'</code> for TODO.</p></dd>
+<dt><code>info_text</code></dt><dd><p>TODO</p></dd>
+<dt><code>synonyms</code></dt><dd><p>Other names or acronyms used to refer to the
+the external database entry. Note that this column is of the list type.</p></dd>
+<dt><code>description</code></dt><dd><p>Brief description of the external database entry.</p></dd>
 
 </dl>
 
     <h2 class="hasAnchor" id="ensembl-rest-api-endpoints"><a class="anchor" href="#ensembl-rest-api-endpoints"></a>Ensembl REST API endpoints</h2>
 
-    <p><code>get_populations()</code> makes GET requests to
-<a href='https://rest.ensembl.org/documentation/info/variation_populations'>/info/variation/populations/:species</a>.</p>
+    <p><code>get_xrefs_by_ensembl_id()</code> makes GET requests to
+<a href='https://rest.ensembl.org/documentation/info/xref_id'>/xrefs/id/:id</a>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Get all human populations with linkage disequilibrium data</span>
-<span class='fu'>get_populations</span><span class='op'>(</span>species_name <span class='op'>=</span> <span class='st'>'homo_sapiens'</span>, ld_only <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 30 × 4</span>
-#&gt;    species_name population              description                  cohort_size
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                              <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> homo_sapiens 1000GENOMES:phase_3:ACB African Caribbean in Barbad…          96
-#&gt; <span style='color: #BCBCBC;'> 2</span> homo_sapiens 1000GENOMES:phase_3:ASW African Ancestry in Southwe…          61
-#&gt; <span style='color: #BCBCBC;'> 3</span> homo_sapiens 1000GENOMES:phase_3:BEB Bengali in Bangladesh                 86
-#&gt; <span style='color: #BCBCBC;'> 4</span> homo_sapiens 1000GENOMES:phase_3:CDX Chinese Dai in Xishuangbann…          93
-#&gt; <span style='color: #BCBCBC;'> 5</span> homo_sapiens 1000GENOMES:phase_3:CEU Utah residents with Norther…          99
-#&gt; <span style='color: #BCBCBC;'> 6</span> homo_sapiens 1000GENOMES:phase_3:CHB Han Chinese in Bejing, China         103
-#&gt; <span style='color: #BCBCBC;'> 7</span> homo_sapiens 1000GENOMES:phase_3:CHS Southern Han Chinese, China          105
-#&gt; <span style='color: #BCBCBC;'> 8</span> homo_sapiens 1000GENOMES:phase_3:CLM Colombian in Medellin, Colo…          94
-#&gt; <span style='color: #BCBCBC;'> 9</span> homo_sapiens 1000GENOMES:phase_3:ESN Esan in Nigeria                       99
-#&gt; <span style='color: #BCBCBC;'>10</span> homo_sapiens 1000GENOMES:phase_3:FIN Finnish in Finland                    99
-#&gt; <span style='color: #949494;'># … with 20 more rows</span></div><div class='input'>
-<span class='co'># Get all human populations</span>
-<span class='fu'>get_populations</span><span class='op'>(</span>species_name <span class='op'>=</span> <span class='st'>'homo_sapiens'</span>, ld_only <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 37 × 4</span>
-#&gt;    species_name population              description                  cohort_size
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                              <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> homo_sapiens 1000GENOMES:phase_3:ACB African Caribbean in Barbad…          96
-#&gt; <span style='color: #BCBCBC;'> 2</span> homo_sapiens 1000GENOMES:phase_3:AFR African                              661
-#&gt; <span style='color: #BCBCBC;'> 3</span> homo_sapiens 1000GENOMES:phase_3:ALL All phase 3 individuals             <span style='text-decoration: underline;'>2</span>504
-#&gt; <span style='color: #BCBCBC;'> 4</span> homo_sapiens 1000GENOMES:phase_3:AMR American                             347
-#&gt; <span style='color: #BCBCBC;'> 5</span> homo_sapiens 1000GENOMES:phase_3:ASW African Ancestry in Southwe…          61
-#&gt; <span style='color: #BCBCBC;'> 6</span> homo_sapiens 1000GENOMES:phase_3:BEB Bengali in Bangladesh                 86
-#&gt; <span style='color: #BCBCBC;'> 7</span> homo_sapiens 1000GENOMES:phase_3:CDX Chinese Dai in Xishuangbann…          93
-#&gt; <span style='color: #BCBCBC;'> 8</span> homo_sapiens 1000GENOMES:phase_3:CEU Utah residents with Norther…          99
-#&gt; <span style='color: #BCBCBC;'> 9</span> homo_sapiens 1000GENOMES:phase_3:CHB Han Chinese in Bejing, China         103
-#&gt; <span style='color: #BCBCBC;'>10</span> homo_sapiens 1000GENOMES:phase_3:CHS Southern Han Chinese, China          105
-#&gt; <span style='color: #949494;'># … with 27 more rows</span></div><div class='input'>
-</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>get_xrefs_by_ensembl_id</span><span class='op'>(</span><span class='st'>'human'</span>, <span class='st'>'ENSG00000248378'</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 × 12</span>
+#&gt;   species_name ensembl_id      ensembl_db primary_id display_id external_db_name
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>           
+#&gt; <span style='color: #BCBCBC;'>1</span> human        ENSG00000248378 core       ENSG00000… ENSG00000… ArrayExpress    
+#&gt; <span style='color: #949494;'># … with 6 more variables: external_db_display_name &lt;chr&gt;, version &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   info_type &lt;chr&gt;, info_text &lt;chr&gt;, synonyms &lt;list&gt;, description &lt;lgl&gt;</span></div><div class='input'>
+<span class='fu'>get_xrefs_by_ensembl_id</span><span class='op'>(</span><span class='st'>'human'</span>, <span class='st'>'ENSG00000248378'</span>, all_levels <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 3 × 12</span>
+#&gt;   species_name ensembl_id      ensembl_db primary_id display_id external_db_name
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>           
+#&gt; <span style='color: #BCBCBC;'>1</span> human        ENSG00000248378 core       ENSG00000… ENSG00000… ArrayExpress    
+#&gt; <span style='color: #BCBCBC;'>2</span> human        ENSG00000248378 core       uc063csj.1 uc063csj.1 UCSC            
+#&gt; <span style='color: #BCBCBC;'>3</span> human        ENSG00000248378 core       URS000007… URS000007… RNAcentral      
+#&gt; <span style='color: #949494;'># … with 6 more variables: external_db_display_name &lt;chr&gt;, version &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   info_type &lt;chr&gt;, info_text &lt;chr&gt;, synonyms &lt;list&gt;, description &lt;lgl&gt;</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

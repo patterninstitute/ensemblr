@@ -1,72 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://rmagno.eu/ensemblr/index.html</loc>
+    <loc>https://maialab.org/ensemblr/index.html</loc>
   </url>
   <url>
-    <loc>https://rmagno.eu/ensemblr/reference/are_vec_recyclable.html</loc>
+    <loc>https://maialab.org/ensemblr/reference/are_vec_recyclable.html</loc>
   </url>
   <url>
-    <loc>https://rmagno.eu/ensemblr/reference/code_to_strand.html</loc>
+    <loc>https://maialab.org/ensemblr/reference/code_to_strand.html</loc>
   </url>
   <url>
-    <loc>https://rmagno.eu/ensemblr/reference/ensembl_server.html</loc>
+    <loc>https://maialab.org/ensemblr/reference/ensembl_server.html</loc>
   </url>
   <url>
-    <loc>https://rmagno.eu/ensemblr/reference/genomic_range.html</loc>
+    <loc>https://maialab.org/ensemblr/reference/genomic_range.html</loc>
   </url>
   <url>
-    <loc>https://rmagno.eu/ensemblr/reference/get_analyses.html</loc>
+    <loc>https://maialab.org/ensemblr/reference/get_analyses.html</loc>
   </url>
   <url>
-    <loc>https://rmagno.eu/ensemblr/reference/get_data_versions.html</loc>
+    <loc>https://maialab.org/ensemblr/reference/get_data_versions.html</loc>
   </url>
   <url>
-    <loc>https://rmagno.eu/ensemblr/reference/get_divisions.html</loc>
+    <loc>https://maialab.org/ensemblr/reference/get_divisions.html</loc>
   </url>
   <url>
-    <loc>https://rmagno.eu/ensemblr/reference/get_id.html</loc>
+    <loc>https://maialab.org/ensemblr/reference/get_eqtl_tissues.html</loc>
   </url>
   <url>
-    <loc>https://rmagno.eu/ensemblr/reference/get_ld_variants_by_window.html</loc>
+    <loc>https://maialab.org/ensemblr/reference/get_id.html</loc>
   </url>
   <url>
-    <loc>https://rmagno.eu/ensemblr/reference/get_populations.html</loc>
+    <loc>https://maialab.org/ensemblr/reference/get_individuals.html</loc>
   </url>
   <url>
-    <loc>https://rmagno.eu/ensemblr/reference/get_rest_version.html</loc>
+    <loc>https://maialab.org/ensemblr/reference/get_ld_variants_by_window.html</loc>
   </url>
   <url>
-    <loc>https://rmagno.eu/ensemblr/reference/get_software_version.html</loc>
+    <loc>https://maialab.org/ensemblr/reference/get_populations.html</loc>
   </url>
   <url>
-    <loc>https://rmagno.eu/ensemblr/reference/get_species.html</loc>
+    <loc>https://maialab.org/ensemblr/reference/get_rest_version.html</loc>
   </url>
   <url>
-    <loc>https://rmagno.eu/ensemblr/reference/get_versioning.html</loc>
+    <loc>https://maialab.org/ensemblr/reference/get_software_version.html</loc>
   </url>
   <url>
-    <loc>https://rmagno.eu/ensemblr/reference/is_ensembl_reachable.html</loc>
+    <loc>https://maialab.org/ensemblr/reference/get_species.html</loc>
   </url>
   <url>
-    <loc>https://rmagno.eu/ensemblr/reference/pairwise_combn.html</loc>
+    <loc>https://maialab.org/ensemblr/reference/get_variant_consequences.html</loc>
   </url>
   <url>
-    <loc>https://rmagno.eu/ensemblr/reference/request.html</loc>
+    <loc>https://maialab.org/ensemblr/reference/get_variation_sources.html</loc>
   </url>
   <url>
-    <loc>https://rmagno.eu/ensemblr/reference/rest_api_endpoints.html</loc>
+    <loc>https://maialab.org/ensemblr/reference/get_versioning.html</loc>
   </url>
   <url>
-    <loc>https://rmagno.eu/ensemblr/reference/strand_to_code.html</loc>
+    <loc>https://maialab.org/ensemblr/reference/get_xrefs_by_ensembl_id.html</loc>
   </url>
   <url>
-    <loc>https://rmagno.eu/ensemblr/reference/user_agent_id.html</loc>
+    <loc>https://maialab.org/ensemblr/reference/get_xrefs_by_gene.html</loc>
   </url>
   <url>
-    <loc>https://rmagno.eu/ensemblr/reference/warn_when_request_errored.html</loc>
+    <loc>https://maialab.org/ensemblr/reference/is_ensembl_reachable.html</loc>
   </url>
   <url>
-    <loc>https://rmagno.eu/ensemblr/articles/api_coverage.html</loc>
+    <loc>https://maialab.org/ensemblr/reference/pairwise_combn.html</loc>
+  </url>
+  <url>
+    <loc>https://maialab.org/ensemblr/reference/pipe.html</loc>
+  </url>
+  <url>
+    <loc>https://maialab.org/ensemblr/reference/request.html</loc>
+  </url>
+  <url>
+    <loc>https://maialab.org/ensemblr/reference/request_parallel.html</loc>
+  </url>
+  <url>
+    <loc>https://maialab.org/ensemblr/reference/rest_api_endpoints.html</loc>
+  </url>
+  <url>
+    <loc>https://maialab.org/ensemblr/reference/strand_to_code.html</loc>
+  </url>
+  <url>
+    <loc>https://maialab.org/ensemblr/reference/user_agent_id.html</loc>
+  </url>
+  <url>
+    <loc>https://maialab.org/ensemblr/reference/warn_when_request_errored.html</loc>
+  </url>
+  <url>
+    <loc>https://maialab.org/ensemblr/articles/api_coverage.html</loc>
   </url>
 </urlset>
