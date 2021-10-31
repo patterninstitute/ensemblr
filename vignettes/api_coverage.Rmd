@@ -24,7 +24,7 @@ REST API endpoints by `{ensemblr}`.
 | ---------------- | ---------------- |
 | Archive | 2/2 |
 | Comparative genomics | 0/12 |
-| Cross references | 0/3 |
+| Cross references | 2/3 |
 | eQTL | 1/3 |
 | Information | 10/26 |
 | Linkage disequilibrium | 3/3 |
@@ -70,8 +70,8 @@ REST API endpoints by `{ensemblr}`.
 | Ensembl REST API | `{ensemblr}` API | Description |
 | ---------------- | ---------------- | ----------- |
 | GET xrefs/symbol/:species/:symbol | --- | --- |
-| GET xrefs/id/:id | --- | --- |
-| GET xrefs/name/:species/:name | --- | --- |
+| GET xrefs/id/:id | `get_xrefs_by_ensembl_id()` | --- |
+| GET xrefs/name/:species/:name | `get_xrefs_by_gene()` | --- |
 
 ## eQTL
 
