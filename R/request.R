@@ -89,7 +89,7 @@ warn_when_request_errored <- function(response) {
 #' \code{\link[jsonlite]{fromJSON}}.}
 #' }
 #'
-#' @export
+#' @keywords internal
 request <- function(resource_url, base_url = ensembl_server(),
                                      verbose = FALSE, warnings = TRUE) {
 
@@ -169,7 +169,7 @@ request <- function(resource_url, base_url = ensembl_server(),
 #' \code{\link[jsonlite]{fromJSON}}.}
 #' }
 #'
-#' @export
+#' @keywords internal
 request_parallel <- function(resource_urls,
                              verbose = FALSE,
                              warnings = TRUE,
