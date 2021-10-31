@@ -27,26 +27,21 @@ RoxygenNote: 7.1.2
 Imports: 
     glue,
     rlang,
-    crayon,
     dplyr,
     purrr,
     assertthat,
     stringr,
-    concatenate,
     pingr,
     urltools,
-    memoise,
     plyr,
     rvest,
-    methods,
     httr,
     jsonlite,
     tibble,
     tidyr,
     vctrs,
-    kableExtra,
-    formattable,
-    magrittr
+    magrittr,
+    concatenate
 Suggests: 
     knitr,
     rmarkdown
