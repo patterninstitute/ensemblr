@@ -3,7 +3,10 @@
 #' A dataset containing the Ensembl REST API endpoints, as listed in
 #' \url{https://rest.ensembl.org/}.
 #'
-#' @format A data frame with 118 rows and 4 variables:
+#' @md
+#'
+#' @format A data frame with `r nrow(rest_api_endpoints)` rows and
+#' `r ncol(rest_api_endpoints)` variables:
 #' \describe{
 #'   \item{section}{Section.}
 #'   \item{endpoint}{Ensembl REST API endpoint.}
