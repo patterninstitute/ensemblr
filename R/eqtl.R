@@ -27,6 +27,27 @@ json_list_to_eqtl_tissue_tbl <- function(species_name, json_list) {
   return(tbl3)
 }
 
+#' Get tissues in the eQTL database
+#'
+#' This function retrieves all tissues in the eQTL database.
+#'
+#' @param species_name The species name, i.e., the scientific name, all letters
+#'   lowercase and space replaced by underscore. Currently, only human
+#'   \code{'homo_sapiens'} is available.
+#' @param verbose Whether to be verbose about the http requests and respective
+#'   responses' status.
+#' @param warnings Whether to show warnings.
+#' @param progress_bar Whether to show a progress bar.
+#'
+#' @details # Ensembl REST API endpoints
+#'
+#' `get_eqtl_tissues()` makes GET requests to
+#' [/eqtl/tissue/:species/](https://rest.ensembl.org/documentation/info/tissues).
+#'
+#' @examples
+#' get_eqtl_tissues()
+#'
+#' @md
 #' @export
 get_eqtl_tissues <- function(
   species_name = 'homo_sapiens',
