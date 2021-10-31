@@ -310,12 +310,12 @@ function <code>get_ld_variants_by_range()</code>.</p></td>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6 × 6</span>
 #&gt;   species_name population              variant_id1 variant_id2 r_squared d_prime
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>1</span> homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs114           0.475   0.703
+#&gt; <span style='color: #BCBCBC;'>1</span> homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs10239961      0.255   1.00 
 #&gt; <span style='color: #BCBCBC;'>2</span> homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs124           0.722   1.00 
-#&gt; <span style='color: #BCBCBC;'>3</span> homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs10239961      0.255   1.00 
+#&gt; <span style='color: #BCBCBC;'>3</span> homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs122           0.722   1.00 
 #&gt; <span style='color: #BCBCBC;'>4</span> homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs115           0.721   1.00 
-#&gt; <span style='color: #BCBCBC;'>5</span> homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs12536724      0.255   1.00 
-#&gt; <span style='color: #BCBCBC;'>6</span> homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs122           0.722   1.00 </div><div class='input'>
+#&gt; <span style='color: #BCBCBC;'>5</span> homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs114           0.475   0.703
+#&gt; <span style='color: #BCBCBC;'>6</span> homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs12536724      0.255   1.00 </div><div class='input'>
 <span class='co'># Retrieve LD measures for pairs of variants:</span>
 <span class='fu'>get_ld_variants_by_pair</span><span class='op'>(</span>
   variant_id1 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'rs123'</span>, <span class='st'>'rs35439278'</span><span class='op'>)</span>,

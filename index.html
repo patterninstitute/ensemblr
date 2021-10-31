@@ -85,14 +85,14 @@
 </h1></div>
 
 <p>The goal of ensemblr is to provide an R client to the <a href="https://rest.ensembl.org/">Ensembl REST API</a>.</p>
-<p>Please note that this package is still in its infancy and hence only a small fraction of the resources exposed by the Ensembl REST API are retrievable via ensemblr. You can check the functionality covered so far in <a href="https://rmagno.eu/ensemblr/articles/api_coverage.html">Ensembl REST API Coverage</a>.</p>
+<p>Please note that this package is still in its infancy and hence only a small fraction of the resources exposed by the Ensembl REST API are retrievable via ensemblr. You can check the functionality covered so far in <a href="https://maialab.org/ensemblr/articles/api_coverage.html">Ensembl REST API Coverage</a>.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You can install the current, <strong>very</strong> experimental version of ensemblr with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"ramiromagno/ensemblr"</span><span class="op">)</span></code></pre></div>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"maialab/ensemblr"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="cheatsheet" class="section level2">
 <h2 class="hasAnchor">
@@ -106,15 +106,15 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">ensemblr</span><span class="op">)</span>
 <span class="fu"><a href="reference/get_ld_variants_by_by_window.html">get_ld_variants_by_window</a></span><span class="op">(</span><span class="st">'rs123'</span>, genomic_window_size <span class="op">=</span> <span class="fl">1L</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6 x 6</span>
-<span class="co">#&gt;   species_name population         variant_id1 variant_id2 r_squared d_prime</span>
-<span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;              &lt;chr&gt;       &lt;chr&gt;           &lt;dbl&gt;   &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 homo_sapiens 1000GENOMES:phase… rs123       rs114           0.475   0.703</span>
-<span class="co">#&gt; 2 homo_sapiens 1000GENOMES:phase… rs123       rs122           0.722   1.000</span>
-<span class="co">#&gt; 3 homo_sapiens 1000GENOMES:phase… rs123       rs10239961      0.255   1.000</span>
-<span class="co">#&gt; 4 homo_sapiens 1000GENOMES:phase… rs123       rs124           0.722   1.000</span>
-<span class="co">#&gt; 5 homo_sapiens 1000GENOMES:phase… rs123       rs12536724      0.255   1.000</span>
-<span class="co">#&gt; 6 homo_sapiens 1000GENOMES:phase… rs123       rs115           0.721   1.000</span></code></pre></div>
+<span class="co">#&gt; # A tibble: 6 × 6</span>
+<span class="co">#&gt;   species_name population              variant_id1 variant_id2 r_squared d_prime</span>
+<span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;                   &lt;chr&gt;       &lt;chr&gt;           &lt;dbl&gt;   &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs10239961      0.255   1.00 </span>
+<span class="co">#&gt; 2 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs114           0.475   0.703</span>
+<span class="co">#&gt; 3 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs124           0.722   1.00 </span>
+<span class="co">#&gt; 4 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs122           0.722   1.00 </span>
+<span class="co">#&gt; 5 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs12536724      0.255   1.00 </span>
+<span class="co">#&gt; 6 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs115           0.721   1.00</span></code></pre></div>
 </div>
 <div id="contributors" class="section level2">
 <h2 class="hasAnchor">
