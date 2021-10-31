@@ -46,3 +46,5 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+URL: https://github.com/maialab/ensemblr
+BugReports: https://github.com/maialab/ensemblr/issues
