@@ -18,7 +18,7 @@ Please note that this package is still in its infancy and hence only a
 small fraction of the resources exposed by the Ensembl REST API are
 retrievable via ensemblr. You can check the functionality covered so far
 in [Ensembl REST API
-Coverage](https://rmagno.eu/ensemblr/articles/api_coverage.html).
+Coverage](https://maialab.org/ensemblr/articles/api_coverage.html).
 
 ## Installation
 
@@ -27,7 +27,7 @@ with:
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("ramiromagno/ensemblr")
+remotes::install_github("maialab/ensemblr")
 ```
 
 ## Cheatsheet
@@ -42,15 +42,15 @@ Retrieve human linkage disequilibrium information for variants within a
 ``` r
 library(ensemblr)
 get_ld_variants_by_window('rs123', genomic_window_size = 1L)
-#> # A tibble: 6 x 6
-#>   species_name population         variant_id1 variant_id2 r_squared d_prime
-#>   <chr>        <chr>              <chr>       <chr>           <dbl>   <dbl>
-#> 1 homo_sapiens 1000GENOMES:phase… rs123       rs114           0.475   0.703
-#> 2 homo_sapiens 1000GENOMES:phase… rs123       rs122           0.722   1.000
-#> 3 homo_sapiens 1000GENOMES:phase… rs123       rs10239961      0.255   1.000
-#> 4 homo_sapiens 1000GENOMES:phase… rs123       rs124           0.722   1.000
-#> 5 homo_sapiens 1000GENOMES:phase… rs123       rs12536724      0.255   1.000
-#> 6 homo_sapiens 1000GENOMES:phase… rs123       rs115           0.721   1.000
+#> # A tibble: 6 × 6
+#>   species_name population              variant_id1 variant_id2 r_squared d_prime
+#>   <chr>        <chr>                   <chr>       <chr>           <dbl>   <dbl>
+#> 1 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs10239961      0.255   1.00 
+#> 2 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs114           0.475   0.703
+#> 3 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs124           0.722   1.00 
+#> 4 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs122           0.722   1.00 
+#> 5 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs12536724      0.255   1.00 
+#> 6 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs115           0.721   1.00
 ```
 
 ## Contributors
@@ -71,10 +71,10 @@ PDB](https://www.rcsb.org/), used under
 
 ## Similar projects
 
-  - R package rensembl by [David Winter](http://david-winter.info/):
+-   R package rensembl by [David Winter](http://david-winter.info/):
     <https://github.com/dwinter/rensembl>
-  - Python package ensembl-rest by [Andrés
+-   Python package ensembl-rest by [Andrés
     García](https://agargar.wordpress.com/):
     <https://github.com/Ad115/EnsemblRest>
-  - Python package ensembl by [Katsuya Noguchi](https://twitter.com/kn):
+-   Python package ensembl by [Katsuya Noguchi](https://twitter.com/kn):
     <https://github.com/kn/ensembl>
