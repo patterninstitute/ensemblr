@@ -472,3 +472,149 @@ get_xrefs_by_ensembl_id <- function(species_name,
   ))
 
 }
+
+#' xrefs_symbol_species_symbol_tbl <-
+#'   function(species_name = character(),
+#'            symbol = character(),
+#'            ensembl_id = character(),
+#'            ensembl_db = character(),
+#'            external_db_name = character(),
+#'            feature = character())
+#'   {
+#'     tbl <- tibble::tibble(
+#'       species_name = species_name,
+#'       symbol = symbol,
+#'       ensembl_id = ensembl_id,
+#'       ensembl_db = ensembl_db,
+#'       external_db_name = external_db_name,
+#'       feature = feature,
+#'     )
+#'     return(tbl)
+#'   }
+#'
+#' json_list_to_xrefs_symbol_species_symbol_tbl <-
+#'   function(species_name,
+#'            symbol,
+#'            ensembl_id,
+#'            ensembl_db,
+#'            external_db,
+#'            json_list) {
+#'     tbl <- xrefs_symbol_species_symbol_tbl(
+#'       species_name = species_name,
+#'       symbol = symbol,
+#'       ensembl_id = purrr::pluck(json_list, 'id', .default = NA_character_),
+#'       feature = purrr::pluck(json_list, 'type', .default = NA_character_),
+#'       ensembl_db = ensembl_db,
+#'       external_db_name = external_db
+#'     )
+#'
+#'     # Convert empty strings to NA_character_
+#'     tbl2 <- empty_strings_to_NA(tbl)
+#'
+#'     return(tbl2)
+#'   }
+#'
+#' #' @export
+#' get_ensembl_ids_by_xrefs <- function(species_name,
+#'                                      symbol,
+#'                                      ensembl_db = 'core',
+#'                                      external_db = '',
+#'                                      feature = '',
+#'                                      verbose = FALSE,
+#'                                      warnings = TRUE,
+#'                                      progress_bar = TRUE) {
+#'
+#'
+#'   # Assert species_name argument.
+#'   assert_species_name(species_name)
+#'
+#'   # TODO: Need to validate here the arguments:
+#'   #       - species_name
+#'   #       - symbol
+#'   #       - ensembl_db
+#'   #       - external_db
+#'   #       - feature
+#'
+#'   # Assert verbose argument.
+#'   assertthat::assert_that(assertthat::is.flag(verbose))
+#'   # Assert warnings argument.
+#'   assertthat::assert_that(assertthat::is.flag(warnings))
+#'   # Assert progress_bar argument.
+#'   assertthat::assert_that(assertthat::is.flag(progress_bar))
+#'
+#'   error_msg <- glue::glue(
+#'     'All arguments must have consistent lengths, ',
+#'     'only values of length one are recycled:\n',
+#'     '* Length of `species_name`: {length(species_name)}\n',
+#'     '* Length of `symbol`: {length(symbol)}\n',
+#'     '* Length of `ensembl_db`: {length(ensembl_db)}\n',
+#'     '* Length of `external_db`: {length(external_db)}\n',
+#'     '* Length of `feature`: {length(feature)}\n'
+#'   )
+#'
+#'   if (!are_vec_recyclable(species_name,
+#'                           symbol,
+#'                           ensembl_db,
+#'                           external_db,
+#'                           feature)) {
+#'     rlang::abort(error_msg)
+#'   }
+#'
+#'   recycled_args <- vctrs::vec_recycle_common(species_name,
+#'                                              symbol,
+#'                                              ensembl_db,
+#'                                              external_db,
+#'                                              feature)
+#'
+#'   # The order of names here should be same as passed to
+#'   # vctrs::vec_recycle_common()
+#'   names(recycled_args) <-
+#'     c(
+#'       'species_name',
+#'       'symbol',
+#'       'ensembl_db',
+#'       'external_db',
+#'       'feature'
+#'     )
+#'
+#'   resource_urls <- glue::glue('/xrefs/symbol/',
+#'                               '{recycled_args$species_name}/',
+#'                               '{recycled_args$symbol}?',
+#'                               ';{p("db_type", recycled_args$ensembl_db)}',
+#'                               ';{p("external_db", recycled_args$external_db)}',
+#'                               ';{p("object_type", recycled_args$feature)}')
+#'
+#'   # Usually we'd use purrr::map here but we opted for plyr::llply
+#'   # for a no frills alternative with progress bar support.
+#'   # progress <- dplyr::if_else(progress_bar && interactive(), 'text', 'none')
+#'   # responses <- plyr::llply(
+#'   #   .data = resource_urls,
+#'   #   .fun = request,
+#'   #   verbose = verbose,
+#'   #   warnings = warnings,
+#'   #   .progress = progress)
+#'   responses <-
+#'     request_parallel(
+#'       resource_urls,
+#'       verbose = verbose,
+#'       warnings = warnings,
+#'       progress_bar = progress_bar
+#'     )
+#'
+#'   # Only keep those responses that responded successfully, i.e. with status == "OK".
+#'   responses_ok <- purrr::keep(responses, ~ identical(.x$status, 'OK'))
+#'
+#'   if (rlang::is_empty(responses_ok)) return(xrefs_symbol_species_symbol_tbl())
+#'
+#'   return(purrr::imap_dfr(
+#'     .x = responses_ok,
+#'     .f = ~ json_list_to_xrefs_symbol_species_symbol_tbl(
+#'       species_name = recycled_args$species_name[.y],
+#'       symbol = recycled_args$symbol[.y],
+#'       ensembl_db = recycled_args$ensembl_db[.y],
+#'       external_db = recycled_args$external_db[.y],
+#'       json_list = .x$content
+#'     )
+#'   ))
+#'
+#' }
