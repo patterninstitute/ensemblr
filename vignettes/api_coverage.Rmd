@@ -25,7 +25,7 @@ REST API endpoints by `{ensemblr}`.
 | Archive | 2/2 |
 | Comparative genomics | 0/12 |
 | Cross references | 2/3 |
-| eQTL | 1/3 |
+| eQTL | 3/3 |
 | Information | 10/26 |
 | Linkage disequilibrium | 3/3 |
 | Lookup | 0/4 |
@@ -77,8 +77,8 @@ REST API endpoints by `{ensemblr}`.
 
 | Ensembl REST API | `{ensemblr}` API | Description |
 | ---------------- | ---------------- | ----------- |
-| GET eqtl/stable_id/:species/:stable_id | --- | --- |
-| GET eqtl/variant_name/:species/:variant_name | --- | --- |
+| GET eqtl/id/:species/:stable_id | `get_eqtl_pval_by_gene()` | Retrieve eQTLs associated with queried gene. |
+| GET eqtl/variant_name/:species/:variant_name | `get_eqtl_pval_by_variant()` | Retrieve genes eQTL associated with queried variant. |
 | GET eqtl/tissue/:species | `get_eqtl_tissues()` | Returns all tissues currently available in the eQTL database. |
 
 ## Information
