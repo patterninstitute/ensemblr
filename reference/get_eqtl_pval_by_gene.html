@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get linkage disequilibrium data for variants — get_ld_variants_by_by_window • ensemblr</title>
+<title>Get eQTL details by gene ensembl identifier — get_eqtl_pval_by_gene • ensemblr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,18 +48,9 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Get linkage disequilibrium data for variants — get_ld_variants_by_by_window" />
-<meta property="og:description" content="Gets linkage disequilibrium data for variants from Ensembl REST API. There
-are four ways to query, either by:
-Genomic window centred on
-variants:get_ld_variants_by_window(variant_id, genomic_window_size,
-...) Pairs of variants:get_ld_variants_by_pair(variant_id1,
-variant_id2, ...) Genomic
-range:get_ld_variants_by_range(genomic_range, ...) All pair
-combinations of variants:get_ld_variants_by_pair_combn(variant_id,
-...) 
-
-" />
+<meta property="og:title" content="Get eQTL details by gene ensembl identifier — get_eqtl_pval_by_gene" />
+<meta property="og:description" content="This function retrieves eQTLs, along with its genomic position, beta values
+and p-values." />
 <meta property="og:image" content="https://maialab.org/ensemblr/logo.png" />
 
 
@@ -140,66 +131,19 @@ combinations of variants:get_ld_variants_by_pair_combn(variant_id,
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get linkage disequilibrium data for variants</h1>
-    <small class="dont-index">Source: <a href='https://github.com/maialab/ensemblr/blob/master/R/linkage_disequilibrium.R'><code>R/linkage_disequilibrium.R</code></a></small>
-    <div class="hidden name"><code>get_ld_variants_by_window.Rd</code></div>
+    <h1>Get eQTL details by gene ensembl identifier</h1>
+    <small class="dont-index">Source: <a href='https://github.com/maialab/ensemblr/blob/master/R/get_eqtl_pval_by_gene.R'><code>R/get_eqtl_pval_by_gene.R</code></a></small>
+    <div class="hidden name"><code>get_eqtl_pval_by_gene.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Gets linkage disequilibrium data for variants from Ensembl REST API. There
-are four ways to query, either by:</p><dl>
-<dt>Genomic window centred on
-variants:</dt><dd><p><code>get_ld_variants_by_window(variant_id, genomic_window_size,
-...)</code></p></dd> <dt>Pairs of variants:</dt><dd><p><code>get_ld_variants_by_pair(variant_id1,
-variant_id2, ...)</code></p></dd> <dt>Genomic
-range:</dt><dd><p><code>get_ld_variants_by_range(genomic_range, ...)</code></p></dd> <dt>All pair
-combinations of variants:</dt><dd><p><code>get_ld_variants_by_pair_combn(variant_id,
-...)</code></p></dd> 
-</dl>
-
+    <p>This function retrieves eQTLs, along with its genomic position, beta values
+and p-values.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_ld_variants_by_window</span><span class='op'>(</span>
-  <span class='va'>variant_id</span>,
-  genomic_window_size <span class='op'>=</span> <span class='fl'>500L</span>,
+    <pre class="usage"><span class='fu'>get_eqtl_pval_by_gene</span><span class='op'>(</span>
+  <span class='va'>ensembl_id</span>,
   species_name <span class='op'>=</span> <span class='st'>"homo_sapiens"</span>,
-  population <span class='op'>=</span> <span class='st'>"1000GENOMES:phase_3:CEU"</span>,
-  d_prime <span class='op'>=</span> <span class='fl'>0</span>,
-  r_squared <span class='op'>=</span> <span class='fl'>0.05</span>,
-  verbose <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  warnings <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  progress_bar <span class='op'>=</span> <span class='cn'>TRUE</span>
-<span class='op'>)</span>
-
-<span class='fu'>get_ld_variants_by_pair</span><span class='op'>(</span>
-  <span class='va'>variant_id1</span>,
-  <span class='va'>variant_id2</span>,
-  species_name <span class='op'>=</span> <span class='st'>"homo_sapiens"</span>,
-  population <span class='op'>=</span> <span class='st'>"1000GENOMES:phase_3:CEU"</span>,
-  d_prime <span class='op'>=</span> <span class='fl'>0</span>,
-  r_squared <span class='op'>=</span> <span class='fl'>0.05</span>,
-  verbose <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  warnings <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  progress_bar <span class='op'>=</span> <span class='cn'>TRUE</span>
-<span class='op'>)</span>
-
-<span class='fu'>get_ld_variants_by_range</span><span class='op'>(</span>
-  <span class='va'>genomic_range</span>,
-  species_name <span class='op'>=</span> <span class='st'>"homo_sapiens"</span>,
-  population <span class='op'>=</span> <span class='st'>"1000GENOMES:phase_3:CEU"</span>,
-  d_prime <span class='op'>=</span> <span class='fl'>0</span>,
-  r_squared <span class='op'>=</span> <span class='fl'>0.05</span>,
-  verbose <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  warnings <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  progress_bar <span class='op'>=</span> <span class='cn'>TRUE</span>
-<span class='op'>)</span>
-
-<span class='fu'>get_ld_variants_by_pair_combn</span><span class='op'>(</span>
-  <span class='va'>variant_id</span>,
-  species_name <span class='op'>=</span> <span class='st'>"homo_sapiens"</span>,
-  population <span class='op'>=</span> <span class='st'>"1000GENOMES:phase_3:CEU"</span>,
-  d_prime <span class='op'>=</span> <span class='fl'>0</span>,
-  r_squared <span class='op'>=</span> <span class='fl'>0.05</span>,
   verbose <span class='op'>=</span> <span class='cn'>FALSE</span>,
   warnings <span class='op'>=</span> <span class='cn'>TRUE</span>,
   progress_bar <span class='op'>=</span> <span class='cn'>TRUE</span>
@@ -209,51 +153,15 @@ combinations of variants:</dt><dd><p><code>get_ld_variants_by_pair_combn(variant
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>variant_id</th>
-      <td><p>Variant identifiers, e.g., <code>'rs123'</code>. This argument is
-to be used with either function <code>get_ld_variants_by_window()</code> or
-<code>get_ld_variants_by_pair_combn()</code>. In the case of
-<code>get_ld_variants_by_pair_combn()</code> all pairwise combinations of
-elements of <code>variant_id</code> are used to define pairs of variants for
-querying. Note that this argument is not the same as <code>variant_id1</code> or
-<code>variant_id2</code>, to be used with function
-<code>get_ld_variants_by_pair</code>.</p></td>
-    </tr>
-    <tr>
-      <th>genomic_window_size</th>
-      <td><p>An integer vector specifying the genomic window
-size in kilobases (kb) around the variant indicated in <code>variant_id</code>.
-This argument is to be used with function
-<code>get_ld_variants_by_window()</code>. At the moment, the Ensembl REST API
-does not allow values greater than 500kb. A window size of 500 means
-looking 250kb upstream and downstream the variant passed as
-<code>variant_id</code>. The minimum value for this argument is <code>1L</code>, not
-<code>0L</code>.</p></td>
+      <th>ensembl_id</th>
+      <td><p>An Ensembl stable identifier, e.g. <code>"ENSG00000248234378"</code>
+(or a vector thereof).</p></td>
     </tr>
     <tr>
       <th>species_name</th>
       <td><p>The species name, i.e., the scientific name, all letters
-lowercase and space replaced by underscore. Examples: <code>'homo_sapiens'</code>
-(human), <code>'ovis_aries'</code> (Domestic sheep) or <code>'capra_hircus'</code> (Goat).</p></td>
-    </tr>
-    <tr>
-      <th>population</th>
-      <td><p>Population for which to compute linkage disequilibrium. See
-<code><a href='get_populations.html'>get_populations</a></code> on how to find available
-populations for a species.</p></td>
-    </tr>
-    <tr>
-      <th>d_prime</th>
-      <td><p>\(D'\) is a measure of linkage disequilibrium.
-<code>d_prime</code> defines a cut-off threshold: only variants whose
-\(D' \ge \)<code>d_prime</code> are returned.</p></td>
-    </tr>
-    <tr>
-      <th>r_squared</th>
-      <td><p>\(r^2\) is a measure of linkage disequilibrium.
-<code>r_squared</code> defines a cut-off threshold: only variants whose \(r^2
-\ge \)<code>r_squared</code> are returned. The lower bound for <code>r_squared</code> is
-<code>0.05</code>, not <code>0</code>; the upper bound is <code>1</code>.</p></td>
+lowercase and space replaced by underscore. Currently, only
+<code>'homo_sapiens'</code> (human) is supported.</p></td>
     </tr>
     <tr>
       <th>verbose</th>
@@ -268,83 +176,41 @@ responses' status.</p></td>
       <th>progress_bar</th>
       <td><p>Whether to show a progress bar.</p></td>
     </tr>
-    <tr>
-      <th>variant_id1</th>
-      <td><p>The first variant of a pair of variants. Used with
-<code>variant_id2</code>. Note that this argument is not the same as
-<code>variant_id</code>. This argument is to be used with function
-<code>get_ld_variants_by_pair()</code>.</p></td>
-    </tr>
-    <tr>
-      <th>variant_id2</th>
-      <td><p>The second variant of a pair of variants. Used with
-<code>variant_id1</code>. Note that this argument is not the same as
-<code>variant_id</code>. This argument is to be used with function
-<code>get_ld_variants_by_pair()</code>.</p></td>
-    </tr>
-    <tr>
-      <th>genomic_range</th>
-      <td><p>Genomic range formatted as a string
-<code>"chr:start..end"</code>, e.g., <code>"X:1..10000"</code>. Check function
-<code><a href='genomic_range.html'>genomic_range</a></code> to easily create these ranges from
-vectors of start and end positions. This argument is to be used with
-function <code>get_ld_variants_by_range()</code>.</p></td>
-    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></code> of 6 variables:</p><dl>
-  <dt><code>species_name</code></dt><dd><p>Ensembl species name: this is the name used internally
-  by Ensembl to uniquely identify a species by name. It is the scientific
-  name but formatted without capitalisation and spacing converted with an
-  underscore, e.g., <code>'homo_sapiens'</code>.</p></dd>
-  <dt><code>population</code></dt><dd><p>Population for which to compute linkage disequilibrium.</p></dd>
-  <dt><code>variant_id1</code></dt><dd><p>First variant identifier.</p></dd>
-  <dt><code>variant_id2</code></dt><dd><p>Second variant identifier.</p></dd>
-  <dt><code>d_prime</code></dt><dd><p>\(D'\) between the two variants.</p></dd>
-  <dt><code>r_squared</code></dt><dd><p>\(r^2\) between the two variants.</p></dd>
+    <p>A <code><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></code> of 10
+variables:</p><dl>
+<dt><code>species_name</code></dt><dd><p>Ensembl species name: this is the name used
+internally by Ensembl to uniquely identify a species by name. It is the
+scientific name but formatted without capitalisation and spacing converted
+with an underscore, e.g., <code>'homo_sapiens'</code>.</p></dd>
+<dt><code>ensembl_id</code></dt><dd><p>An Ensembl stable identifier, e.g.
+<code>"ENSG00000248234378"</code>.</p></dd>
+<dt><code>variant_id</code></dt><dd><p>Variant identifier, e.g. <code>"rs80100814"</code>.</p></dd>
+<dt><code>tissue</code></dt><dd><p>Tissue.</p></dd>
+<dt><code>display_consequence</code></dt><dd><p>Variant consequence type.</p></dd>
+<dt><code>seq_region_name</code></dt><dd><p>Sequence region name (typically a chromosome name)
+of the variant.</p></dd>
+<dt><code>seq_region_start</code></dt><dd><p>Genomic start position of the variant.</p></dd>
+<dt><code>seq_region_end</code></dt><dd><p>Genomic end position of the variant.</p></dd>
+<dt><code>beta</code></dt><dd><p>The effect size beta of the eQTL association analysis.</p></dd>
+<dt><code>pvalue</code></dt><dd><p>The p-value of the eQTL association analysis.</p></dd>
 
 </dl>
 
+    <h2 class="hasAnchor" id="ensembl-rest-api-endpoints"><a class="anchor" href="#ensembl-rest-api-endpoints"></a>Ensembl REST API endpoints</h2>
+
+    <p><code>get_eqtl_pval_by_gene()</code> makes GET requests to
+<a href='https://rest.ensembl.org/documentation/info/species_id'>/eqtl/id/:species/:stable_id</a>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Retrieve variants in LD by a window size of 1kb:</span>
-<span class='co'># 1kb: 500 bp upstream and 500 bp downstream of variant.</span>
-<span class='fu'>get_ld_variants_by_window</span><span class='op'>(</span><span class='st'>'rs123'</span>, genomic_window_size <span class='op'>=</span> <span class='fl'>1L</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6 × 6</span>
-#&gt;   species_name population              variant_id1 variant_id2 r_squared d_prime
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>1</span> homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs122           0.722   1.00 
-#&gt; <span style='color: #BCBCBC;'>2</span> homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs12536724      0.255   1.00 
-#&gt; <span style='color: #BCBCBC;'>3</span> homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs115           0.721   1.00 
-#&gt; <span style='color: #BCBCBC;'>4</span> homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs10239961      0.255   1.00 
-#&gt; <span style='color: #BCBCBC;'>5</span> homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs114           0.475   0.703
-#&gt; <span style='color: #BCBCBC;'>6</span> homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs124           0.722   1.00 </div><div class='input'>
-<span class='co'># Retrieve LD measures for pairs of variants:</span>
-<span class='fu'>get_ld_variants_by_pair</span><span class='op'>(</span>
-  variant_id1 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'rs123'</span>, <span class='st'>'rs35439278'</span><span class='op'>)</span>,
-  variant_id2 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'rs122'</span>, <span class='st'>'rs35174522'</span><span class='op'>)</span>
-<span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2 × 6</span>
-#&gt;   species_name population              variant_id1 variant_id2 r_squared d_prime
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>1</span> homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs122          0.722     1.00
-#&gt; <span style='color: #BCBCBC;'>2</span> homo_sapiens 1000GENOMES:phase_3:CEU rs35439278  rs35174522     0.097<span style='text-decoration: underline;'>3</span>    1.00</div><div class='input'>
-<span class='co'># Retrieve variants in LD within a genomic range</span>
-<span class='fu'>get_ld_variants_by_range</span><span class='op'>(</span><span class='st'>'7:100000..100500'</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 × 6</span>
-#&gt;   species_name population              variant_id1 variant_id2 r_squared d_prime
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>1</span> homo_sapiens 1000GENOMES:phase_3:CEU rs35439278  rs35174522     0.097<span style='text-decoration: underline;'>3</span>    1.00</div><div class='input'>
-<span class='co'># Retrieve all pair combinations of variants in LD</span>
-<span class='fu'>get_ld_variants_by_pair_combn</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'rs6978506'</span>, <span class='st'>'rs12718102'</span>, <span class='st'>'rs13307200'</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 3 × 6</span>
-#&gt;   species_name population              variant_id1 variant_id2 r_squared d_prime
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>1</span> homo_sapiens 1000GENOMES:phase_3:CEU rs6978506   rs12718102      0.111   0.999
-#&gt; <span style='color: #BCBCBC;'>2</span> homo_sapiens 1000GENOMES:phase_3:CEU rs6978506   rs13307200      0.320   1.00 
-#&gt; <span style='color: #BCBCBC;'>3</span> homo_sapiens 1000GENOMES:phase_3:CEU rs12718102  rs13307200      0.266   0.875</div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'>get_eqtl_pval_by_gene</span><span class='op'>(</span><span class='st'>'ENSG00000248378'</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 0 × 10</span>
+#&gt; <span style='color: #949494;'># … with 10 variables: species_name &lt;chr&gt;, ensembl_id &lt;chr&gt;, variant_id &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   tissue &lt;chr&gt;, display_consequence &lt;chr&gt;, seq_region_name &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   seq_region_start &lt;int&gt;, seq_region_end &lt;int&gt;, beta &lt;dbl&gt;, pvalue &lt;dbl&gt;</span></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
