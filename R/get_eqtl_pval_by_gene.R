@@ -23,6 +23,7 @@ eqtl_tbl <- function(species_name = character(),
 
 }
 
+#' @importFrom rlang .data
 to_eqtl_tbl <- function(species_name, ensembl_id, tbl) {
 
   tbl %>%
@@ -39,9 +40,9 @@ to_eqtl_tbl <- function(species_name, ensembl_id, tbl) {
     names_from = 'statistic',
     values_from = 'value'
   ) %>%
-    dplyr::mutate(seq_region_start = as.integer(seq_region_start), seq_region_end = as.integer(seq_region_end)) %>%
+    dplyr::mutate(seq_region_start = as.integer(.data$seq_region_start), seq_region_end = as.integer(.data$seq_region_end)) %>%
     tibble::add_column(species_name = species_name, ensembl_id = ensembl_id, .before = 1L) %>%
-    dplyr::rename(variant_id = snp, pvalue = `p-value`)
+    dplyr::rename(variant_id = .data$snp, pvalue = .data$`p-value`)
 }
 
 #' Get eQTL details by gene ensembl identifier
@@ -108,7 +109,7 @@ get_eqtl_pval_by_gene <-
       )
 
     # Only keep those responses that responded successfully, i.e. with status == "OK".
-    responses_ok <- purrr::keep(responses, ~ identical(.x$status, 'OK'))
+    responses_ok <- purrr::keep(responses, ~ identical(.x$status, 'OK') && !rlang::is_empty(.x$content))
     if (rlang::is_empty(responses_ok)) return(eqtl_tbl())
 
     return(
