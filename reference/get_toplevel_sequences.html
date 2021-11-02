@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Retrieve variant consequences — get_variant_consequences • ensemblr</title>
+<title>Get toplevel sequences by species — get_toplevel_sequences • ensemblr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,10 +48,11 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Retrieve variant consequences — get_variant_consequences" />
-<meta property="og:description" content="This function retrieves variant consequence types. For more details check
-Ensembl
-Variation - Calculated variant consequences." />
+<meta property="og:title" content="Get toplevel sequences by species — get_toplevel_sequences" />
+<meta property="og:description" content="This function retrieves toplevel sequences. These sequences correspond to
+genomic regions in the genome assembly that are not a component of another
+sequence region. Thus, toplevel sequences will be chromosomes and any
+unlocalised or unplaced scaffolds." />
 <meta property="og:image" content="https://maialab.org/ensemblr/logo.png" />
 
 
@@ -132,76 +133,93 @@ Variation - Calculated variant consequences." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Retrieve variant consequences</h1>
-    <small class="dont-index">Source: <a href='https://github.com/maialab/ensemblr/blob/master/R/consequence_types.R'><code>R/consequence_types.R</code></a></small>
-    <div class="hidden name"><code>get_variant_consequences.Rd</code></div>
+    <h1>Get toplevel sequences by species</h1>
+    <small class="dont-index">Source: <a href='https://github.com/maialab/ensemblr/blob/master/R/get_toplevel_sequences.R'><code>R/get_toplevel_sequences.R</code></a></small>
+    <div class="hidden name"><code>get_toplevel_sequences.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function retrieves variant consequence types. For more details check
-<a href='https://m.ensembl.org/info/genome/variation/prediction/predicted_data.html'>Ensembl
-Variation - Calculated variant consequences</a>.</p>
+    <p>This function retrieves toplevel sequences. These sequences correspond to
+genomic regions in the genome assembly that are not a component of another
+sequence region. Thus, toplevel sequences will be chromosomes and any
+unlocalised or unplaced scaffolds.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_variant_consequences</span><span class='op'>(</span>verbose <span class='op'>=</span> <span class='cn'>FALSE</span>, warnings <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>get_toplevel_sequences</span><span class='op'>(</span>
+  species_name <span class='op'>=</span> <span class='st'>"homo_sapiens"</span>,
+  verbose <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  warnings <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  progress_bar <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>species_name</th>
+      <td><p>The species name, i.e., the scientific name, all letters
+lowercase and space replaced by underscore. Examples: <code>'homo_sapiens'</code>
+(human), <code>'ovis_aries'</code> (Domestic sheep) or <code>'capra_hircus'</code>
+(Goat).</p></td>
+    </tr>
+    <tr>
       <th>verbose</th>
-      <td><p>Whether to be chatty about the underlying requests.</p></td>
+      <td><p>Whether to be chatty.</p></td>
     </tr>
     <tr>
       <th>warnings</th>
       <td><p>Whether to print warnings.</p></td>
     </tr>
+    <tr>
+      <th>progress_bar</th>
+      <td><p>Whether to show a progress bar.</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></code>, each row being a variant consequence,
-of four variables:</p><dl>
-<dt>SO_accession</dt><dd><p><a href='http://www.sequenceontology.org/'>Sequence
-Ontology</a> accession, e.g., <code>'SO:0001626'</code>.</p></dd>
-<dt>SO_term</dt><dd><p><a href='http://www.sequenceontology.org/'>Sequence Ontology</a>
-term, e.g., <code>'incomplete_terminal_codon_variant'</code>.</p></dd>
-<dt>label</dt><dd><p>Display term.</p></dd>
-<dt>description</dt><dd><p><a href='http://www.sequenceontology.org/'>Sequence Ontology</a>
-description.</p></dd>
+    <p>A <code><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></code>, each row being a toplevel sequence,
+of 4 variables:</p><dl>
+<dt><code>species_name</code></dt><dd><p>Ensembl species name: this is the name used internally
+by Ensembl to uniquely identify a species by name. It is the scientific
+name but formatted without capitalisation and spacing converted with an
+underscore, e.g., <code>'homo_sapiens'</code>.</p></dd>
+<dt><code>coord_system</code></dt><dd><p>Coordinate system type.</p></dd>
+<dt><code>toplevel_sequence</code></dt><dd><p>Name of the toplevel sequence.</p></dd>
+<dt><code>length</code></dt><dd><p>Genomic length toplevel sequence in base pairs.</p></dd>
 
 </dl>
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>A rule-based approach is used to predict the effects that each allele of a
-variant may have on each transcript. These effects are variant consequences,
-that are catalogued as consequence terms, defined by the <a href='http://www.sequenceontology.org/'>Sequence Ontology</a>.</p>
-<p>See below a diagram showing the location of each display term relative to the
-transcript structure:</p>
-<p><img src='figures/consequences-fs8.png' width="90%" alt="Figure: consequences-fs8.png" /></p>
-    <h2 class="hasAnchor" id="ensembl-rest-api-endpoints"><a class="anchor" href="#ensembl-rest-api-endpoints"></a>Ensembl REST API endpoints</h2>
-
-    <p><code>get_variant_consequence_types</code> makes GET requests to
-<a href='https://rest.ensembl.org/documentation/info/variation_consequence_types'>/info/variation/consequence_types</a>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Retrieve variant consequence types</span>
-<span class='fu'>get_variant_consequences</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 37 × 4</span>
-#&gt;    SO_accession SO_term                           label     description         
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                             <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>               
-#&gt; <span style='color: #BCBCBC;'> 1</span> SO:0001628   intergenic_variant                intergen… A sequence variant …
-#&gt; <span style='color: #BCBCBC;'> 2</span> SO:0001632   downstream_gene_variant           downstre… A sequence variant …
-#&gt; <span style='color: #BCBCBC;'> 3</span> SO:0001818   protein_altering_variant          protein … A sequence_variant …
-#&gt; <span style='color: #BCBCBC;'> 4</span> SO:0001574   splice_acceptor_variant           splice a… A splice variant th…
-#&gt; <span style='color: #BCBCBC;'> 5</span> SO:0001619   non_coding_transcript_variant     non codi… A transcript varian…
-#&gt; <span style='color: #BCBCBC;'> 6</span> SO:0001583   missense_variant                  missense… A sequence variant,…
-#&gt; <span style='color: #BCBCBC;'> 7</span> SO:0001580   coding_sequence_variant           coding s… A sequence variant …
-#&gt; <span style='color: #BCBCBC;'> 8</span> SO:0001626   incomplete_terminal_codon_variant incomple… A sequence variant …
-#&gt; <span style='color: #BCBCBC;'> 9</span> SO:0001892   TFBS_amplification                TFBS amp… A feature amplifica…
-#&gt; <span style='color: #BCBCBC;'>10</span> SO:0001620   mature_miRNA_variant              mature m… A transcript varian…
-#&gt; <span style='color: #949494;'># … with 27 more rows</span></div><div class='input'>
+    <pre class="examples"><div class='input'><span class='co'># Get toplevel sequences for the human genome (default)</span>
+<span class='fu'>get_toplevel_sequences</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 194 × 4</span>
+#&gt;    species_name coord_system toplevel_sequence length
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> homo_sapiens scaffold     KI270757.1         <span style='text-decoration: underline;'>71</span>251
+#&gt; <span style='color: #BCBCBC;'> 2</span> homo_sapiens scaffold     KI270741.1        <span style='text-decoration: underline;'>157</span>432
+#&gt; <span style='color: #BCBCBC;'> 3</span> homo_sapiens scaffold     KI270756.1         <span style='text-decoration: underline;'>79</span>590
+#&gt; <span style='color: #BCBCBC;'> 4</span> homo_sapiens scaffold     KI270730.1        <span style='text-decoration: underline;'>112</span>551
+#&gt; <span style='color: #BCBCBC;'> 5</span> homo_sapiens scaffold     KI270739.1         <span style='text-decoration: underline;'>73</span>985
+#&gt; <span style='color: #BCBCBC;'> 6</span> homo_sapiens scaffold     KI270738.1         <span style='text-decoration: underline;'>99</span>375
+#&gt; <span style='color: #BCBCBC;'> 7</span> homo_sapiens scaffold     KI270737.1        <span style='text-decoration: underline;'>103</span>838
+#&gt; <span style='color: #BCBCBC;'> 8</span> homo_sapiens scaffold     KI270312.1           998
+#&gt; <span style='color: #BCBCBC;'> 9</span> homo_sapiens scaffold     KI270591.1          <span style='text-decoration: underline;'>5</span>796
+#&gt; <span style='color: #BCBCBC;'>10</span> homo_sapiens scaffold     KI270371.1          <span style='text-decoration: underline;'>2</span>805
+#&gt; <span style='color: #949494;'># … with 184 more rows</span></div><div class='input'>
+<span class='co'># Get toplevel sequences for Caenorhabditis elegans</span>
+<span class='fu'>get_toplevel_sequences</span><span class='op'>(</span><span class='st'>'caenorhabditis_elegans'</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 7 × 4</span>
+#&gt;   species_name           coord_system toplevel_sequence   length
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> caenorhabditis_elegans chromosome   I                 15<span style='text-decoration: underline;'>072</span>434
+#&gt; <span style='color: #BCBCBC;'>2</span> caenorhabditis_elegans chromosome   II                15<span style='text-decoration: underline;'>279</span>421
+#&gt; <span style='color: #BCBCBC;'>3</span> caenorhabditis_elegans chromosome   III               13<span style='text-decoration: underline;'>783</span>801
+#&gt; <span style='color: #BCBCBC;'>4</span> caenorhabditis_elegans chromosome   IV                17<span style='text-decoration: underline;'>493</span>829
+#&gt; <span style='color: #BCBCBC;'>5</span> caenorhabditis_elegans chromosome   V                 20<span style='text-decoration: underline;'>924</span>180
+#&gt; <span style='color: #BCBCBC;'>6</span> caenorhabditis_elegans chromosome   X                 17<span style='text-decoration: underline;'>718</span>942
+#&gt; <span style='color: #BCBCBC;'>7</span> caenorhabditis_elegans chromosome   MtDNA                <span style='text-decoration: underline;'>13</span>794</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

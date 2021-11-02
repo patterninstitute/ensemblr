@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Retrieve variant consequences — get_variant_consequences • ensemblr</title>
+<title>Get details about the genome assembly of a species — get_assemblies • ensemblr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,10 +48,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Retrieve variant consequences — get_variant_consequences" />
-<meta property="og:description" content="This function retrieves variant consequence types. For more details check
-Ensembl
-Variation - Calculated variant consequences." />
+<meta property="og:title" content="Get details about the genome assembly of a species — get_assemblies" />
+<meta property="og:description" content="This functions retrieves details about the assembly of a queried species." />
 <meta property="og:image" content="https://maialab.org/ensemblr/logo.png" />
 
 
@@ -132,76 +130,87 @@ Variation - Calculated variant consequences." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Retrieve variant consequences</h1>
-    <small class="dont-index">Source: <a href='https://github.com/maialab/ensemblr/blob/master/R/consequence_types.R'><code>R/consequence_types.R</code></a></small>
-    <div class="hidden name"><code>get_variant_consequences.Rd</code></div>
+    <h1>Get details about the genome assembly of a species</h1>
+    <small class="dont-index">Source: <a href='https://github.com/maialab/ensemblr/blob/master/R/get_assemblies.R'><code>R/get_assemblies.R</code></a></small>
+    <div class="hidden name"><code>get_assemblies.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function retrieves variant consequence types. For more details check
-<a href='https://m.ensembl.org/info/genome/variation/prediction/predicted_data.html'>Ensembl
-Variation - Calculated variant consequences</a>.</p>
+    <p>This functions retrieves details about the assembly of a queried species.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_variant_consequences</span><span class='op'>(</span>verbose <span class='op'>=</span> <span class='cn'>FALSE</span>, warnings <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>get_assemblies</span><span class='op'>(</span>
+  species_name <span class='op'>=</span> <span class='st'>"homo_sapiens"</span>,
+  verbose <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  warnings <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  progress_bar <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>species_name</th>
+      <td><p>The species name, i.e., the scientific name, all letters
+lowercase and space replaced by underscore. Examples: <code>'homo_sapiens'</code>
+(human), <code>'ovis_aries'</code> (Domestic sheep) or <code>'capra_hircus'</code>
+(Goat).</p></td>
+    </tr>
+    <tr>
       <th>verbose</th>
-      <td><p>Whether to be chatty about the underlying requests.</p></td>
+      <td><p>Whether to be chatty.</p></td>
     </tr>
     <tr>
       <th>warnings</th>
       <td><p>Whether to print warnings.</p></td>
     </tr>
+    <tr>
+      <th>progress_bar</th>
+      <td><p>Whether to show a progress bar.</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></code>, each row being a variant consequence,
-of four variables:</p><dl>
-<dt>SO_accession</dt><dd><p><a href='http://www.sequenceontology.org/'>Sequence
-Ontology</a> accession, e.g., <code>'SO:0001626'</code>.</p></dd>
-<dt>SO_term</dt><dd><p><a href='http://www.sequenceontology.org/'>Sequence Ontology</a>
-term, e.g., <code>'incomplete_terminal_codon_variant'</code>.</p></dd>
-<dt>label</dt><dd><p>Display term.</p></dd>
-<dt>description</dt><dd><p><a href='http://www.sequenceontology.org/'>Sequence Ontology</a>
-description.</p></dd>
+    <p>A <code><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></code>, each row being a toplevel sequence,
+of 4 variables:</p><dl>
+<dt><code>species_name</code></dt><dd><p>Ensembl species name: this is the name used internally
+by Ensembl to uniquely identify a species by name. It is the scientific
+name but formatted without capitalisation and spacing converted with an
+underscore, e.g., <code>'homo_sapiens'</code>.</p></dd>
+<dt><code>assembly_name</code></dt><dd><p>Assembly name.</p></dd>
+<dt><code>assembly_date</code></dt><dd><p>Assembly date.</p></dd>
+<dt><code>genebuild_method</code></dt><dd><p>Annotation method.</p></dd>
+<dt><code>golden_path_length</code></dt><dd><p>Golden path length.</p></dd>
+<dt><code>genebuild_initial_release_date</code></dt><dd><p>Genebuild release date.</p></dd>
+<dt><code>default_coord_system_version</code></dt><dd><p>Default coordinate system version.</p></dd>
+<dt><code>assembly_accession</code></dt><dd><p>Assembly accession.</p></dd>
+<dt><code>genebuild_start_date</code></dt><dd><p>Genebuild start date.</p></dd>
+<dt><code>genebuild_last_geneset_update</code></dt><dd><p>Genebuild last geneset update.</p></dd>
 
 </dl>
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>A rule-based approach is used to predict the effects that each allele of a
-variant may have on each transcript. These effects are variant consequences,
-that are catalogued as consequence terms, defined by the <a href='http://www.sequenceontology.org/'>Sequence Ontology</a>.</p>
-<p>See below a diagram showing the location of each display term relative to the
-transcript structure:</p>
-<p><img src='figures/consequences-fs8.png' width="90%" alt="Figure: consequences-fs8.png" /></p>
-    <h2 class="hasAnchor" id="ensembl-rest-api-endpoints"><a class="anchor" href="#ensembl-rest-api-endpoints"></a>Ensembl REST API endpoints</h2>
-
-    <p><code>get_variant_consequence_types</code> makes GET requests to
-<a href='https://rest.ensembl.org/documentation/info/variation_consequence_types'>/info/variation/consequence_types</a>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Retrieve variant consequence types</span>
-<span class='fu'>get_variant_consequences</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 37 × 4</span>
-#&gt;    SO_accession SO_term                           label     description         
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                             <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>               
-#&gt; <span style='color: #BCBCBC;'> 1</span> SO:0001628   intergenic_variant                intergen… A sequence variant …
-#&gt; <span style='color: #BCBCBC;'> 2</span> SO:0001632   downstream_gene_variant           downstre… A sequence variant …
-#&gt; <span style='color: #BCBCBC;'> 3</span> SO:0001818   protein_altering_variant          protein … A sequence_variant …
-#&gt; <span style='color: #BCBCBC;'> 4</span> SO:0001574   splice_acceptor_variant           splice a… A splice variant th…
-#&gt; <span style='color: #BCBCBC;'> 5</span> SO:0001619   non_coding_transcript_variant     non codi… A transcript varian…
-#&gt; <span style='color: #BCBCBC;'> 6</span> SO:0001583   missense_variant                  missense… A sequence variant,…
-#&gt; <span style='color: #BCBCBC;'> 7</span> SO:0001580   coding_sequence_variant           coding s… A sequence variant …
-#&gt; <span style='color: #BCBCBC;'> 8</span> SO:0001626   incomplete_terminal_codon_variant incomple… A sequence variant …
-#&gt; <span style='color: #BCBCBC;'> 9</span> SO:0001892   TFBS_amplification                TFBS amp… A feature amplifica…
-#&gt; <span style='color: #BCBCBC;'>10</span> SO:0001620   mature_miRNA_variant              mature m… A transcript varian…
-#&gt; <span style='color: #949494;'># … with 27 more rows</span></div><div class='input'>
+    <pre class="examples"><div class='input'><span class='co'># Get details about the human assembly</span>
+<span class='fu'>get_assemblies</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 × 10</span>
+#&gt;   species_name assembly_name assembly_date genebuild_method golden_path_length
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> homo_sapiens GRCh38.p13    2013-12       full_genebuild           <span style='text-decoration: underline;'>3</span>096<span style='text-decoration: underline;'>649</span>726
+#&gt; <span style='color: #949494;'># … with 5 more variables: genebuild_initial_release_date &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   default_coord_system_version &lt;chr&gt;, assembly_accession &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   genebuild_start_date &lt;chr&gt;, genebuild_last_geneset_update &lt;chr&gt;</span></div><div class='input'>
+<span class='co'># Get details about the Mouse and the Fruit Fly genomes</span>
+<span class='fu'>get_assemblies</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'mus_musculus'</span>, <span class='st'>'drosophila_melanogaster'</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2 × 9</span>
+#&gt;   species_name     assembly_name assembly_date genebuild_method golden_path_len…
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> mus_musculus     GRCm39        2020-06       full_genebuild         <span style='text-decoration: underline;'>2</span>728<span style='text-decoration: underline;'>222</span>451
+#&gt; <span style='color: #BCBCBC;'>2</span> drosophila_mela… BDGP6.32      <span style='color: #BB0000;'>NA</span>            import                  143<span style='text-decoration: underline;'>726</span>002
+#&gt; <span style='color: #949494;'># … with 4 more variables: default_coord_system_version &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   assembly_accession &lt;chr&gt;, genebuild_start_date &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   genebuild_last_geneset_update &lt;chr&gt;</span></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
