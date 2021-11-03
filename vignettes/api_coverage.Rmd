@@ -87,7 +87,7 @@ REST API endpoints by `{ensemblr}`.
 | ---------------- | ---------------- | ----------- |
 | GET info/analysis/:species | `get_analyses()` | Gets a table of analyses involved in the generation of data for the different Ensembl databases. |
 | GET info/assembly/:species | `get_assemblies()` `get_toplevel_sequences()` `get_karyotypes()` `get_cytogenetic_bands()` | Genome assembly level information, such as toplevel sequences, karyotype and cytogenetic bands. |
-| GET info/assembly/:species/:region_name | --- | --- |
+| GET info/assembly/:species/:region_name | `get_toplevel_sequence_info()` | Get a few extra details about a toplevel sequence. |
 | GET info/biotypes/:species | --- | --- |
 | GET info/biotypes/groups/:group/:object_type | --- | --- |
 | GET info/biotypes/name/:name/:object_type | --- | --- |
