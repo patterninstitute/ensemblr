@@ -38,6 +38,7 @@ parse_karyotypes <- function(species_name, lst) {
 #' # Get the karyotype of the Giant panda
 #' get_karyotypes('ailuropoda_melanoleuca')
 #'
+#' @md
 #' @export
 get_karyotypes <- function(species_name = 'homo_sapiens',
                            verbose = FALSE,

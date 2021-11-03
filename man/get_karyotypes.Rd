@@ -25,15 +25,15 @@ lowercase and space replaced by underscore. Examples: \code{'homo_sapiens'}
 }
 \value{
 A \code{\link[tibble]{tibble}}, each row being a chromosome,
-  of 4 variables:
+of 4 variables:
 \describe{
-  \item{`species_name`}{Ensembl species name: this is the name used internally
-  by Ensembl to uniquely identify a species by name. It is the scientific
-  name but formatted without capitalisation and spacing converted with an
-  underscore, e.g., \code{'homo_sapiens'}.}
-\item{`coord_system`}{Coordinate system type.}
-\item{`chromosome`}{Chromosome name.}
-\item{`length`}{Genomic length of the chromsome in base pairs.}
+\item{\code{species_name}}{Ensembl species name: this is the name used internally
+by Ensembl to uniquely identify a species by name. It is the scientific
+name but formatted without capitalisation and spacing converted with an
+underscore, e.g., \code{'homo_sapiens'}.}
+\item{\code{coord_system}}{Coordinate system type.}
+\item{\code{chromosome}}{Chromosome name.}
+\item{\code{length}}{Genomic length of the chromsome in base pairs.}
 }
 }
 \description{
