@@ -55,7 +55,7 @@ returned value.
 # Get toplevel sequences for the human genome (default)
 get_cytogenetic_bands()
 
-# Get toplevel sequences for Caenorhabditis elegans
-get_cytogenetic_bands('caenorhabditis_elegans')
+# Get toplevel sequences for Mus musculus
+get_cytogenetic_bands('mus_musculus')
 
 }
