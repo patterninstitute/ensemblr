@@ -45,201 +45,201 @@ REST API endpoints by `{ensemblr}`.
 
 | Ensembl REST API   | `{ensemblr}` API    | Description |
 | ----------------   | ----------------    | ----------- |
-| `GET archive/id/:id`  | `get_id()`       | Get details about an Ensembl identifier. |
-| `POST archive/id`     | `get_id()`       | Get details about an Ensembl identifier. |
+| [GET archive/id/:id](https://rest.ensembl.org/documentation/info/archive_id_get)  | `get_id()`       | Get details about an Ensembl identifier. |
+| [POST archive/id](https://rest.ensembl.org/documentation/info/archive_id_post)     | ---       | Get details about an Ensembl identifier. |
 
 ## Comparative genomics
 
 | Ensembl REST API                                    | `{ensemblr}` API | Description |
 | --------------------------------------------------- | ---------------- | ----------- |
-| GET cafe/genetree/id/:id                            | --- | --- |
-| GET cafe/genetree/member/id/:id                     | --- | --- |
-| GET cafe/genetree/member/symbol/:species/:symbol    | --- | --- |
-| GET family/id/:id                                   | --- | --- |
-| GET family/member/id/:id                            | --- | --- |
-| GET family/member/symbol/:species/:symbol           | --- | --- |
-| GET genetree/id/:id                                 | --- | --- |
-| GET genetree/member/id/:id                          | --- | --- |
-| GET genetree/member/symbol/:species/:symbol         | --- | --- |
-| GET alignment/region/:species/:region               | --- | --- |
-| GET homology/id/:id                                 | --- | --- |
-| GET homology/symbol/:species/:symbol                | --- | --- |
+| [GET cafe/genetree/id/:id](https://rest.ensembl.org/documentation/info/cafe_tree)                            | --- | --- |
+| [GET cafe/genetree/member/id/:id](https://rest.ensembl.org/documentation/info/cafe_tree_member_id)                     | --- | --- |
+| [GET cafe/genetree/member/symbol/:species/:symbol](https://rest.ensembl.org/documentation/info/cafe_tree_member_symbol)    | --- | --- |
+| [GET family/id/:id](https://rest.ensembl.org/documentation/info/family)                                   | --- | --- |
+| [GET family/member/id/:id](https://rest.ensembl.org/documentation/info/family_member_id)                            | --- | --- |
+| [GET family/member/symbol/:species/:symbol](https://rest.ensembl.org/documentation/info/family_member_symbol)           | --- | --- |
+| [GET genetree/id/:id](https://rest.ensembl.org/documentation/info/genetree)                                 | --- | --- |
+| [GET genetree/member/id/:id](https://rest.ensembl.org/documentation/info/genetree_member_id)                          | --- | --- |
+| [GET genetree/member/symbol/:species/:symbol](https://rest.ensembl.org/documentation/info/genetree_member_symbol)         | --- | --- |
+| [GET alignment/region/:species/:region](https://rest.ensembl.org/documentation/info/genomic_alignment_region)               | --- | --- |
+| [GET homology/id/:id](https://rest.ensembl.org/documentation/info/homology_ensemblgene)                                 | --- | --- |
+| [GET homology/symbol/:species/:symbol](https://rest.ensembl.org/documentation/info/homology_symbol)                | --- | --- |
 
 ## Cross references
 
 | Ensembl REST API | `{ensemblr}` API | Description |
 | ---------------- | ---------------- | ----------- |
-| GET xrefs/symbol/:species/:symbol | --- | --- |
-| GET xrefs/id/:id | `get_xrefs_by_ensembl_id()` | --- |
-| GET xrefs/name/:species/:name | `get_xrefs_by_gene()` | --- |
+| [GET xrefs/symbol/:species/:symbol](https://rest.ensembl.org/documentation/info/xref_external) | --- | --- |
+| [GET xrefs/id/:id](https://rest.ensembl.org/documentation/info/xref_id) | `get_xrefs_by_ensembl_id()` | --- |
+| [GET xrefs/name/:species/:name](https://rest.ensembl.org/documentation/info/xref_name) | `get_xrefs_by_gene()` | --- |
 
 ## eQTL
 
 | Ensembl REST API | `{ensemblr}` API | Description |
 | ---------------- | ---------------- | ----------- |
-| GET eqtl/id/:species/:stable_id | `get_eqtl_pval_by_gene()` | Retrieve eQTLs associated with queried gene. |
-| GET eqtl/variant_name/:species/:variant_name | `get_eqtl_pval_by_variant()` | Retrieve genes eQTL associated with queried variant. |
-| GET eqtl/tissue/:species | `get_eqtl_tissues()` | Returns all tissues currently available in the eQTL database. |
+| [GET eqtl/id/:species/:stable_id](https://rest.ensembl.org/documentation/info/species_id) | `get_eqtl_pval_by_gene()` | Retrieve eQTLs associated with queried gene. |
+| [GET eqtl/variant_name/:species/:variant_name](https://rest.ensembl.org/documentation/info/species_variant) | `get_eqtl_pval_by_variant()` | Retrieve genes eQTL associated with queried variant. |
+| [GET eqtl/tissue/:species](https://rest.ensembl.org/documentation/info/tissues) | `get_eqtl_tissues()` | Returns all tissues currently available in the eQTL database. |
 
 ## Information
 
 | Ensembl REST API | `{ensemblr}` API | Description |
 | ---------------- | ---------------- | ----------- |
-| GET info/analysis/:species | `get_analyses()` | Gets a table of analyses involved in the generation of data for the different Ensembl databases. |
-| GET info/assembly/:species | `get_assemblies()` `get_toplevel_sequences()` `get_karyotypes()` `get_cytogenetic_bands()` | Genome assembly level information, such as toplevel sequences, karyotype and cytogenetic bands. |
-| GET info/assembly/:species/:region_name | `get_toplevel_sequence_info()` | Get a few extra details about a toplevel sequence. |
-| GET info/biotypes/:species | --- | --- |
-| GET info/biotypes/groups/:group/:object_type | --- | --- |
-| GET info/biotypes/name/:name/:object_type | --- | --- |
-| GET info/compara/methods | --- | --- |
-| GET info/compara/species_sets/:method | --- | --- |
-| GET info/comparas | --- | --- |
-| GET info/data | `get_data_versions()` | Get data release version(s) available on the Ensembl REST server. |
-| GET info/eg_version | --- | --- |
-| GET info/external_dbs/:species | --- | --- |
-| GET info/divisions | `get_divisions()` | Retrieve Ensembl divisions. |
-| GET info/genomes/:genome_name | --- | --- |
-| GET info/genomes/accession/:accession | --- | --- |
-| GET info/genomes/assembly/:assembly_id | --- | --- |
-| GET info/genomes/division/:division_name | --- | --- |
-| GET info/genomes/taxonomy/:taxon_name | --- | --- |
-| GET info/ping | --- | --- |
-| GET info/rest | `get_rest_version()` | Retrieve the current version of the Ensembl REST API. |
-| GET info/software | `get_software_version()` | Retrieve the Perl API version. |
-| GET info/species | `get_species()` | Retrieves species-level information. |
-| GET info/variation/:species | `get_variation_sources()` | Retrieves variant sources, i.e. a list of databases used by Ensembl for obtaining variant information. |
-| GET info/variation/consequence_types | `get_variant_consequences()` | Retrieves variant consequence types. |
-| GET info/variation/populations/:species:/:population_name | `get_individuals()` | Retrieves individual-level information. |
-| GET info/variation/populations/:species | `get_populations()` | Retrieves population-level information. |
+| [GET info/analysis/:species](https://rest.ensembl.org/documentation/info/analysis) | `get_analyses()` | Gets a table of analyses involved in the generation of data for the different Ensembl databases. |
+| [GET info/assembly/:species](https://rest.ensembl.org/documentation/info/assembly_info) | `get_assemblies()` `get_toplevel_sequences()` `get_karyotypes()` `get_cytogenetic_bands()` | Genome assembly level information, such as toplevel sequences, karyotype and cytogenetic bands. |
+| [GET info/assembly/:species/:region_name](https://rest.ensembl.org/documentation/info/assembly_stats) | `get_toplevel_sequence_info()` | Get a few extra details about a toplevel sequence. |
+| [GET info/biotypes/:species](https://rest.ensembl.org/documentation/info/biotypes) | --- | --- |
+| [GET info/biotypes/groups/:group/:object_type](https://rest.ensembl.org/documentation/info/biotypes_groups) | --- | --- |
+| [GET info/biotypes/name/:name/:object_type](https://rest.ensembl.org/documentation/info/biotypes_name) | --- | --- |
+| [GET info/compara/methods](https://rest.ensembl.org/documentation/info/compara_methods) | --- | --- |
+| [GET info/compara/species_sets/:method](https://rest.ensembl.org/documentation/info/compara_species_sets) | --- | --- |
+| [GET info/comparas](https://rest.ensembl.org/documentation/info/comparas) | --- | --- |
+| [GET info/data](https://rest.ensembl.org/documentation/info/data) | `get_data_versions()` | Get data release version(s) available on the Ensembl REST server. |
+| [GET info/eg_version](https://rest.ensembl.org/documentation/info/eg_version) | --- | --- |
+| [GET info/external_dbs/:species](https://rest.ensembl.org/documentation/info/external_dbs) | --- | --- |
+| [GET info/divisions](https://rest.ensembl.org/documentation/info/info_divisions) | `get_divisions()` | Retrieve Ensembl divisions. |
+| [GET info/genomes/:genome_name](https://rest.ensembl.org/documentation/info/info_genome) | --- | --- |
+| [GET info/genomes/accession/:accession](https://rest.ensembl.org/documentation/info/info_genomes_accession) | --- | --- |
+| [GET info/genomes/assembly/:assembly_id](https://rest.ensembl.org/documentation/info/info_genomes_assembly) | --- | --- |
+| [GET info/genomes/division/:division_name](https://rest.ensembl.org/documentation/info/info_genomes_division) | --- | --- |
+| [GET info/genomes/taxonomy/:taxon_name](https://rest.ensembl.org/documentation/info/info_genomes_taxonomy) | --- | --- |
+| [GET info/ping](https://rest.ensembl.org/documentation/info/ping) | --- | --- |
+| [GET info/rest](https://rest.ensembl.org/documentation/info/rest) | `get_rest_version()` | Retrieve the current version of the Ensembl REST API. |
+| [GET info/software](https://rest.ensembl.org/documentation/info/software) | `get_software_version()` | Retrieve the Perl API version. |
+| [GET info/species](https://rest.ensembl.org/documentation/info/species) | `get_species()` | Retrieves species-level information. |
+| [GET info/variation/:species](https://rest.ensembl.org/documentation/info/species) | `get_variation_sources()` | Retrieves variant sources, i.e. a list of databases used by Ensembl for obtaining variant information. |
+| [GET info/variation/consequence_types](https://rest.ensembl.org/documentation/info/variation_consequence_types) | `get_variant_consequences()` | Retrieves variant consequence types. |
+| [GET info/variation/populations/:species:/:population_name](https://rest.ensembl.org/documentation/info/variation_population_name) | `get_individuals()` | Retrieves individual-level information. |
+| [GET info/variation/populations/:species](https://rest.ensembl.org/documentation/info/variation_populations) | `get_populations()` | Retrieves population-level information. |
 
 ## Linkage disequilibrium
 
 | Ensembl REST API | `{ensemblr}` API | Description |
 | ---------------- | ---------------- | ----------- |
-| GET ld/:species/:id/:population_name | `get_ld_variants_by_window()` | Gets linkage disequilibrium data by genomic window centred on queried variants. |
-| GET ld/:species/pairwise/:id1/:id2 | `get_ld_variants_by_pair()` | Gets linkage disequilibrium data for pairs of queried variants. |
-| GET ld/:species/region/:region/:population_name | `get_ld_variants_by_range()` | Gets linkage disequilibrium data by genomic range. |
+| [GET ld/:species/:id/:population_name](https://rest.ensembl.org/documentation/info/ld_id_get) | `get_ld_variants_by_window()` | Gets linkage disequilibrium data by genomic window centred on queried variants. |
+| [GET ld/:species/pairwise/:id1/:id2](https://rest.ensembl.org/documentation/info/ld_pairwise_get) | `get_ld_variants_by_pair()` | Gets linkage disequilibrium data for pairs of queried variants. |
+| [GET ld/:species/region/:region/:population_name](https://rest.ensembl.org/documentation/info/ld_region_get) | `get_ld_variants_by_range()` | Gets linkage disequilibrium data by genomic range. |
 
 ## Lookup
 
 | Ensembl REST API | `{ensemblr}` API | Description |
 | ---------------- | ---------------- | ----------- |
-| GET lookup/id/:id | --- | --- |
-| POST lookup/id | --- | --- |
-| GET lookup/symbol/:species/:symbol | --- | --- |
-| POST lookup/symbol/:species/:symbol | --- | --- |
+| [GET lookup/id/:id](https://rest.ensembl.org/documentation/info/lookup) | --- | --- |
+| [POST lookup/id](https://rest.ensembl.org/documentation/info/lookup_post) | --- | --- |
+| [GET lookup/symbol/:species/:symbol](https://rest.ensembl.org/documentation/info/symbol_lookup) | --- | --- |
+| [POST lookup/symbol/:species/:symbol](https://rest.ensembl.org/documentation/info/symbol_post) | --- | --- |
 
 ## Mapping
 
 | Ensembl REST API | `{ensemblr}` API | Description |
 | ---------------- | ---------------- | ----------- |
-| GET map/cdna/:id/:region | --- | --- |
-| GET map/cds/:id/:region | --- | --- |
-| GET map/:species/:asm_one/:region/:asm_two | --- | --- |
-|  GET map/translation/:id/:region | --- | --- |
+| [GET map/cdna/:id/:region](https://rest.ensembl.org/documentation/info/assembly_cdna) | --- | --- |
+| [GET map/cds/:id/:region](https://rest.ensembl.org/documentation/info/assembly_cds) | --- | --- |
+| [GET map/:species/:asm_one/:region/:asm_two](https://rest.ensembl.org/documentation/info/assembly_map) | --- | --- |
+| [GET map/translation/:id/:region](https://rest.ensembl.org/documentation/info/assembly_translation) | --- | --- |
 
 ## Ontologies and taxonomy
 
 | Ensembl REST API | `{ensemblr}` API | Description |
 | ---------------- | ---------------- | ----------- |
-| GET ontology/ancestors/:id | --- | --- |
-| GET ontology/ancestors/chart/:id | --- | --- |
-| GET ontology/descendants/:id | --- | --- |
-| GET ontology/id/:id | --- | --- |
-| GET ontology/name/:name | --- | --- |
-| GET taxonomy/classification/:id | --- | --- |
-| GET taxonomy/id/:id | --- | --- |
-| GET taxonomy/name/:name | --- | --- |
+| [GET ontology/ancestors/:id](https://rest.ensembl.org/documentation/info/ontology_ancestors) | --- | --- |
+| [GET ontology/ancestors/chart/:id](https://rest.ensembl.org/documentation/info/ontology_ancestors_chart) | --- | --- |
+| [GET ontology/descendants/:id](https://rest.ensembl.org/documentation/info/ontology_descendants) | --- | --- |
+| [GET ontology/id/:id](https://rest.ensembl.org/documentation/info/ontology_id) | --- | --- |
+| [GET ontology/name/:name](https://rest.ensembl.org/documentation/info/taxonomy_classification) | --- | --- |
+| [GET taxonomy/classification/:id](https://rest.ensembl.org/documentation/info/taxonomy_classification) | --- | --- |
+| [GET taxonomy/id/:id](https://rest.ensembl.org/documentation/info/taxonomy_id) | --- | --- |
+| [GET taxonomy/name/:name](https://rest.ensembl.org/documentation/info/taxonomy_name) | --- | --- |
 
 ## Overlap
 
 | Ensembl REST API | `{ensemblr}` API | Description |
 | ---------------- | ---------------- | ----------- |
-| GET overlap/id/:id | --- | --- |
-| GET overlap/region/:species/:region | --- | --- |
-| GET overlap/translation/:id | --- | --- |
+| [GET overlap/id/:id](https://rest.ensembl.org/documentation/info/overlap_id) | --- | --- |
+| [GET overlap/region/:species/:region](https://rest.ensembl.org/documentation/info/overlap_region) | --- | --- |
+| [GET overlap/translation/:id](https://rest.ensembl.org/documentation/info/overlap_translation) | --- | --- |
 
 ## Phenotype annotations
 
 | Ensembl REST API | `{ensemblr}` API | Description |
 | ---------------- | ---------------- | ----------- |
-| GET /phenotype/accession/:species/:accession | --- | --- |
-| GET /phenotype/gene/:species/:gene | --- | --- |
-| GET /phenotype/region/:species/:region | --- | --- |
-| GET /phenotype/term/:species/:term | --- | --- |
+| [GET /phenotype/accession/:species/:accession](https://rest.ensembl.org/documentation/info/phenotype_accession) | --- | --- |
+| [GET /phenotype/gene/:species/:gene](https://rest.ensembl.org/documentation/info/phenotype_gene) | --- | --- |
+| [GET /phenotype/region/:species/:region](https://rest.ensembl.org/documentation/info/phenotype_region) | --- | --- |
+| [GET /phenotype/term/:species/:term](https://rest.ensembl.org/documentation/info/phenotype_term) | --- | --- |
 
 ## Regulation
 
 | Ensembl REST API | `{ensemblr}` API | Description |
 | ---------------- | ---------------- | ----------- |
-| GET regulatory/species/:species/microarray/:microarray/vendor/:vendor	 | --- | --- |
-| GET regulatory/species/:species/epigenome | --- | --- |
-| GET species/:species/binding_matrix/:binding_matrix_stable_id/ | --- | --- |
-| GET regulatory/species/:species/microarray | --- | --- |
-| GET regulatory/species/:species/microarray/:microarray/probe/:probe | --- | --- |
-| GET regulatory/species/:species/microarray/:microarray/probe_set/:probe_set | --- | --- |
-| GET regulatory/species/:species/id/:id | --- | --- |
+| [GET regulatory/species/:species/microarray/:microarray/vendor/:vendor](https://rest.ensembl.org/documentation/info/array)	 | --- | --- |
+| [GET regulatory/species/:species/epigenome](https://rest.ensembl.org/documentation/info/fetch_all_epigenomes) | --- | --- |
+| [GET species/:species/binding_matrix/:binding_matrix_stable_id/](https://rest.ensembl.org/documentation/info/get_binding_matrix) | --- | --- |
+| [GET regulatory/species/:species/microarray](https://rest.ensembl.org/documentation/info/list_all_microarrays) | --- | --- |
+| [GET regulatory/species/:species/microarray/:microarray/probe/:probe](https://rest.ensembl.org/documentation/info/probe) | --- | --- |
+| [GET regulatory/species/:species/microarray/:microarray/probe_set/:probe_set](https://rest.ensembl.org/documentation/info/probe_set) | --- | --- |
+| [GET regulatory/species/:species/id/:id](https://rest.ensembl.org/documentation/info/regulatory_id) | --- | --- |
 
 ## Sequence
 
 | Ensembl REST API | `{ensemblr}` API | Description |
 | ---------------- | ---------------- | ----------- |
-| GET sequence/id/:id | --- | --- |
-| POST sequence/id | --- | --- |
-| GET sequence/region/:species/:region | --- | --- |
-| POST sequence/region/:species | --- | --- |
+| [GET sequence/id/:id](https://rest.ensembl.org/documentation/info/sequence_id) | --- | --- |
+| [POST sequence/id](https://rest.ensembl.org/documentation/info/sequence_id_post) | --- | --- |
+| [GET sequence/region/:species/:region](https://rest.ensembl.org/documentation/info/sequence_region) | --- | --- |
+| [POST sequence/region/:species](https://rest.ensembl.org/documentation/info/sequence_region_post) | --- | --- |
 
 ## Transcript haplotypes
 
 | Ensembl REST API | `{ensemblr}` API | Description |
 | ---------------- | ---------------- | ----------- |
-| GET transcript_haplotypes/:species/:id | --- | --- |
+| [GET transcript_haplotypes/:species/:id](https://rest.ensembl.org/documentation/info/transcript_haplotypes_get) | --- | --- |
 
 ## VEP
 
 | Ensembl REST API | `{ensemblr}` API | Description |
 | ---------------- | ---------------- | ----------- |
-| GET vep/:species/hgvs/:hgvs_notation | --- | --- |
-| POST vep/:species/hgvs | --- | --- |
-| GET vep/:species/id/:id | --- | --- |
-| POST vep/:species/id | --- | --- |
-| GET vep/:species/region/:region/:allele/ | --- | --- |
-| POST vep/:species/region | --- | --- |
+| [GET vep/:species/hgvs/:hgvs_notation](https://rest.ensembl.org/documentation/info/vep_hgvs_get) | --- | --- |
+| [POST vep/:species/hgvs](https://rest.ensembl.org/documentation/info/vep_hgvs_post) | --- | --- |
+| [GET vep/:species/id/:id](https://rest.ensembl.org/documentation/info/vep_id_get) | --- | --- |
+| [POST vep/:species/id](https://rest.ensembl.org/documentation/info/vep_id_post) | --- | --- |
+| [GET vep/:species/region/:region/:allele/](https://rest.ensembl.org/documentation/info/vep_region_get) | --- | --- |
+| [POST vep/:species/region](https://rest.ensembl.org/documentation/info/vep_region_post) | --- | --- |
 
 ## Variation
 
 | Ensembl REST API | `{ensemblr}` API | Description |
 | ---------------- | ---------------- | ----------- |
-| GET variant_recoder/:species/:id | --- | --- |
-| POST variant_recoder/:species | --- | --- |
-| GET variation/:species/:id | --- | --- |
-| GET variation/:species/pmcid/:pmcid | --- | --- |
-| GET variation/:species/pmid/:pmid | --- | --- |
-| POST variation/:species/ | --- | --- |
+| [GET variant_recoder/:species/:id](https://rest.ensembl.org/documentation/info/variant_recoder) | --- | --- |
+| [POST variant_recoder/:species](https://rest.ensembl.org/documentation/info/variant_recoder_post) | --- | --- |
+| [GET variation/:species/:id](https://rest.ensembl.org/documentation/info/variation_id) | --- | --- |
+| [GET variation/:species/pmcid/:pmcid](https://rest.ensembl.org/documentation/info/variation_pmcid_get) | --- | --- |
+| [GET variation/:species/pmid/:pmid](https://rest.ensembl.org/documentation/info/variation_pmid_get) | --- | --- |
+| [POST variation/:species/](https://rest.ensembl.org/documentation/info/variation_post) | --- | --- |
 
 ## Variation GA4GH
 
 | Ensembl REST API | `{ensemblr}` API | Description |
 | ---------------- | ---------------- | ----------- |
-| GET ga4gh/beacon | --- | --- |
-| GET ga4gh/beacon/query | --- | --- |
-| POST ga4gh/beacon/query | --- | --- |
-| GET ga4gh/features/:id | --- | --- |
-| POST ga4gh/features/search | --- | --- |
-| POST ga4gh/callsets/search | --- | --- |
-| GET ga4gh/callsets/:id | --- | --- |
-| POST ga4gh/datasets/search | --- | --- |
-| GET ga4gh/datasets/:id | --- | --- |
-| POST ga4gh/featuresets/search | --- | --- |
-| GET ga4gh/featuresets/:id | --- | --- |
-| GET ga4gh/variants/:id | --- | --- |
-| POST ga4gh/variantannotations/search | --- | --- |
-| POST ga4gh/variants/search | --- | --- |
-| POST ga4gh/variantsets/search | --- | --- |
-| GET ga4gh/variantsets/:id | --- | --- |
-| POST ga4gh/references/search | --- | --- |
-| GET ga4gh/references/:id | --- | --- |
-| POST ga4gh/referencesets/search | --- | --- |
-| GET ga4gh/referencesets/:id | --- | --- |
-| POST ga4gh/variantannotationsets/search | --- | --- |
-| GET ga4gh/variantannotationsets/:id | --- | --- |
+| [GET ga4gh/beacon](https://rest.ensembl.org/documentation/info/beacon_get) | --- | --- |
+| [GET ga4gh/beacon/query](https://rest.ensembl.org/documentation/info/beacon_query_get) | --- | --- |
+| [POST ga4gh/beacon/query](https://rest.ensembl.org/documentation/info/beacon_query_post) | --- | --- |
+| [GET ga4gh/features/:id](https://rest.ensembl.org/documentation/info/features_id) | --- | --- |
+| [POST ga4gh/features/search](https://rest.ensembl.org/documentation/info/features_post) | --- | --- |
+| [POST ga4gh/callsets/search](POST ga4gh/callsets/search) | --- | --- |
+| [GET ga4gh/callsets/:id](https://rest.ensembl.org/documentation/info/gacallset_id) | --- | --- |
+| [POST ga4gh/datasets/search](https://rest.ensembl.org/documentation/info/gadataset) | --- | --- |
+| [GET ga4gh/datasets/:id](https://rest.ensembl.org/documentation/info/gadataset_id) | --- | --- |
+| [POST ga4gh/featuresets/search](https://rest.ensembl.org/documentation/info/gafeatureset) | --- | --- |
+| [GET ga4gh/featuresets/:id](https://rest.ensembl.org/documentation/info/gafeatureset_id) | --- | --- |
+| [GET ga4gh/variants/:id](https://rest.ensembl.org/documentation/info/gavariant_id) | --- | --- |
+| [POST ga4gh/variantannotations/search](https://rest.ensembl.org/documentation/info/gavariantannotations) | --- | --- |
+| [POST ga4gh/variants/search](https://rest.ensembl.org/documentation/info/gavariants) | --- | --- |
+| [POST ga4gh/variantsets/search](https://rest.ensembl.org/documentation/info/gavariantset) | --- | --- |
+| [GET ga4gh/variantsets/:id](https://rest.ensembl.org/documentation/info/gavariantset_id) | --- | --- |
+| [POST ga4gh/references/search](https://rest.ensembl.org/documentation/info/references) | --- | --- |
+| [GET ga4gh/references/:id](https://rest.ensembl.org/documentation/info/references_id) | --- | --- |
+| [POST ga4gh/referencesets/search](https://rest.ensembl.org/documentation/info/referenceSets) | --- | --- |
+| [GET ga4gh/referencesets/:id](https://rest.ensembl.org/documentation/info/referenceSets_id) | --- | --- |
+| [POST ga4gh/variantannotationsets/search](https://rest.ensembl.org/documentation/info/VariantAnnotationSet) | --- | --- |
+| [GET ga4gh/variantannotationsets/:id](https://rest.ensembl.org/documentation/info/VariantAnnotationSet_id) | --- | --- |
