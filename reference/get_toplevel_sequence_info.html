@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get cytogenetic bands by species — get_cytogenetic_bands • ensemblr</title>
+<title>Get toplevel sequences details — get_toplevel_sequence_info • ensemblr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,10 +48,11 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Get cytogenetic bands by species — get_cytogenetic_bands" />
-<meta property="og:description" content="This function retrieves cytogenetic bands. If no cytogenetic information is
-available for the queried species then it will be omitted from in the
-returned value." />
+<meta property="og:title" content="Get toplevel sequences details — get_toplevel_sequence_info" />
+<meta property="og:description" content="This function retrieves a few extra details about a toplevel sequence. These
+sequences correspond to genomic regions in the genome assembly that are not a
+component of another sequence region. Thus, toplevel sequences will be
+chromosomes and any unlocalised or unplaced scaffolds." />
 <meta property="og:image" content="https://maialab.org/ensemblr/logo.png" />
 
 
@@ -132,19 +133,21 @@ returned value." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get cytogenetic bands by species</h1>
-    <small class="dont-index">Source: <a href='https://github.com/maialab/ensemblr/blob/master/R/get_cytogenetic_bands.R'><code>R/get_cytogenetic_bands.R</code></a></small>
-    <div class="hidden name"><code>get_cytogenetic_bands.Rd</code></div>
+    <h1>Get toplevel sequences details</h1>
+    <small class="dont-index">Source: <a href='https://github.com/maialab/ensemblr/blob/master/R/get_toplevel_sequence_info.R'><code>R/get_toplevel_sequence_info.R</code></a></small>
+    <div class="hidden name"><code>get_toplevel_sequence_info.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function retrieves cytogenetic bands. If no cytogenetic information is
-available for the queried species then it will be omitted from in the
-returned value.</p>
+    <p>This function retrieves a few extra details about a toplevel sequence. These
+sequences correspond to genomic regions in the genome assembly that are not a
+component of another sequence region. Thus, toplevel sequences will be
+chromosomes and any unlocalised or unplaced scaffolds.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_cytogenetic_bands</span><span class='op'>(</span>
+    <pre class="usage"><span class='fu'>get_toplevel_sequence_info</span><span class='op'>(</span>
   species_name <span class='op'>=</span> <span class='st'>"homo_sapiens"</span>,
+  toplevel_sequence <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>22</span>, <span class='st'>"X"</span>, <span class='st'>"Y"</span>, <span class='st'>"MT"</span><span class='op'>)</span>,
   verbose <span class='op'>=</span> <span class='cn'>FALSE</span>,
   warnings <span class='op'>=</span> <span class='cn'>TRUE</span>,
   progress_bar <span class='op'>=</span> <span class='cn'>TRUE</span>
@@ -159,6 +162,12 @@ returned value.</p>
 lowercase and space replaced by underscore. Examples: <code>'homo_sapiens'</code>
 (human), <code>'ovis_aries'</code> (Domestic sheep) or <code>'capra_hircus'</code>
 (Goat).</p></td>
+    </tr>
+    <tr>
+      <th>toplevel_sequence</th>
+      <td><p>A toplevel sequence name, e.g. chromosome names such
+as <code>"1"</code>, <code>"X"</code>, or <code>"Y"</code>, or a non-chromosome sequence, e.g., a scaffold
+such as <code>"KI270757.1"</code>.</p></td>
     </tr>
     <tr>
       <th>verbose</th>
@@ -176,62 +185,55 @@ lowercase and space replaced by underscore. Examples: <code>'homo_sapiens'</code
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></code>, each row being a cytogenetic band,
+    <p>A <code><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></code>, each row being a toplevel sequence,
 of 8 variables:</p><dl>
 <dt><code>species_name</code></dt><dd><p>Ensembl species name: this is the name used internally
-by Ensembl to uniquely identify a species by name. It is the scientific
-name but formatted without capitalisation and spacing converted with an
+by Ensembl to uniquely identify a species by name. It is the scientific name
+but formatted without capitalisation and spacing converted with an
 underscore, e.g., <code>'homo_sapiens'</code>.</p></dd>
+<dt><code>toplevel_sequence</code></dt><dd><p>Name of the toplevel sequence.</p></dd>
+<dt><code>is_chromosome</code></dt><dd><p>A logical indicating whether the toplevel sequence is
+a chromosome (<code>TRUE</code>) or not (<code>FALSE</code>).</p></dd>
+<dt><code>coord_system</code></dt><dd><p>Coordinate system type.</p></dd>
+<dt><code>assembly_exception_type</code></dt><dd><p>Coordinate system type.</p></dd>
+<dt><code>is_circular</code></dt><dd><p>A logical indicating whether the toplevel sequence is a
+circular sequence (<code>TRUE</code>) or not (<code>FALSE</code>).</p></dd>
 <dt><code>assembly_name</code></dt><dd><p>Assembly name.</p></dd>
-<dt><code>cytogenetic_band</code></dt><dd><p>Name of the cytogenetic_band.</p></dd>
-<dt><code>chromosome</code></dt><dd><p>Chromosome name.</p></dd>
-<dt><code>start</code></dt><dd><p>Genomic start position of the cytogenetic band. Starts at 1.</p></dd>
-<dt><code>end</code></dt><dd><p>Genomic end position of the cytogenetic band. End position is
-included in the band interval.</p></dd>
-<dt><code>stain</code></dt><dd><p><a href='https://en.wikipedia.org/wiki/Giemsa_stain'>Giemsa
-stain</a> results: Giemsa negative, <code>'gneg'</code>; Giemsa positive, of
-increasing intensities, <code>'gpos25'</code>, <code>'gpos50'</code>, <code>'gpos75'</code>,
-and <code>'gpos100'</code>; centromeric region, <code>'acen'</code>; heterochromatin,
-either pericentric or telomeric, <code>'gvar'</code>; and short arm of
-acrocentric chromosomes are coded as <code>'stalk'</code>.</p></dd>
-<dt><code>strand</code></dt><dd><p>Strand.</p></dd>
+<dt><code>length</code></dt><dd><p>Genomic length toplevel sequence in base pairs.</p></dd>
 
 </dl>
 
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='get_toplevel_sequences.html'>get_toplevel_sequences()</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Get toplevel sequences for the human genome (default)</span>
-<span class='fu'>get_cytogenetic_bands</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 862 × 8</span>
-#&gt;    species_name assembly_name cytogenetic_band chromosome    start     end stain
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> homo_sapiens GRCh38        p11.1            Y          10<span style='text-decoration: underline;'>300</span>001  1.04<span style='color: #949494;'>e</span>7 acen 
-#&gt; <span style='color: #BCBCBC;'> 2</span> homo_sapiens GRCh38        p11.2            Y            <span style='text-decoration: underline;'>600</span>001  1.03<span style='color: #949494;'>e</span>7 gneg 
-#&gt; <span style='color: #BCBCBC;'> 3</span> homo_sapiens GRCh38        p11.31           Y            <span style='text-decoration: underline;'>300</span>001  6   <span style='color: #949494;'>e</span>5 gpos…
-#&gt; <span style='color: #BCBCBC;'> 4</span> homo_sapiens GRCh38        p11.32           Y                 1  3   <span style='color: #949494;'>e</span>5 gneg 
-#&gt; <span style='color: #BCBCBC;'> 5</span> homo_sapiens GRCh38        q11.1            Y          10<span style='text-decoration: underline;'>400</span>001  1.06<span style='color: #949494;'>e</span>7 acen 
-#&gt; <span style='color: #BCBCBC;'> 6</span> homo_sapiens GRCh38        q11.21           Y          10<span style='text-decoration: underline;'>600</span>001  1.24<span style='color: #949494;'>e</span>7 gneg 
-#&gt; <span style='color: #BCBCBC;'> 7</span> homo_sapiens GRCh38        q11.221          Y          12<span style='text-decoration: underline;'>400</span>001  1.71<span style='color: #949494;'>e</span>7 gpos…
-#&gt; <span style='color: #BCBCBC;'> 8</span> homo_sapiens GRCh38        q11.222          Y          17<span style='text-decoration: underline;'>100</span>001  1.96<span style='color: #949494;'>e</span>7 gneg 
-#&gt; <span style='color: #BCBCBC;'> 9</span> homo_sapiens GRCh38        q11.223          Y          19<span style='text-decoration: underline;'>600</span>001  2.38<span style='color: #949494;'>e</span>7 gpos…
-#&gt; <span style='color: #BCBCBC;'>10</span> homo_sapiens GRCh38        q11.23           Y          23<span style='text-decoration: underline;'>800</span>001  2.66<span style='color: #949494;'>e</span>7 gneg 
-#&gt; <span style='color: #949494;'># … with 852 more rows, and 1 more variable: strand &lt;int&gt;</span></div><div class='input'>
-<span class='co'># Get toplevel sequences for Mus musculus</span>
-<span class='fu'>get_cytogenetic_bands</span><span class='op'>(</span><span class='st'>'mus_musculus'</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 82 × 8</span>
-#&gt;    species_name assembly_name cytogenetic_band chromosome   start      end stain
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> mus_musculus GRCm39        <span style='color: #949494;'>""</span>               MT               1   1.63<span style='color: #949494;'>e</span>4 gneg 
-#&gt; <span style='color: #BCBCBC;'> 2</span> mus_musculus GRCm39        <span style='color: #949494;'>""</span>               Y                1   9.15<span style='color: #949494;'>e</span>7 gneg 
-#&gt; <span style='color: #BCBCBC;'> 3</span> mus_musculus GRCm39        <span style='color: #949494;'>"</span>cen<span style='color: #949494;'>"</span>            2           <span style='text-decoration: underline;'>110</span>001   1.56<span style='color: #949494;'>e</span>6 acen 
-#&gt; <span style='color: #BCBCBC;'> 4</span> mus_musculus GRCm39        <span style='color: #949494;'>"</span>cen<span style='color: #949494;'>"</span>            2          1<span style='text-decoration: underline;'>555</span>001   3   <span style='color: #949494;'>e</span>6 acen 
-#&gt; <span style='color: #BCBCBC;'> 5</span> mus_musculus GRCm39        <span style='color: #949494;'>"</span>p<span style='color: #949494;'>"</span>              2                1   1.1 <span style='color: #949494;'>e</span>5 gneg 
-#&gt; <span style='color: #BCBCBC;'> 6</span> mus_musculus GRCm39        <span style='color: #949494;'>"</span>q<span style='color: #949494;'>"</span>              2          3<span style='text-decoration: underline;'>000</span>001   1.82<span style='color: #949494;'>e</span>8 gneg 
-#&gt; <span style='color: #BCBCBC;'> 7</span> mus_musculus GRCm39        <span style='color: #949494;'>"</span>cen<span style='color: #949494;'>"</span>            4           <span style='text-decoration: underline;'>110</span>001   1.56<span style='color: #949494;'>e</span>6 acen 
-#&gt; <span style='color: #BCBCBC;'> 8</span> mus_musculus GRCm39        <span style='color: #949494;'>"</span>cen<span style='color: #949494;'>"</span>            4          1<span style='text-decoration: underline;'>555</span>001   3   <span style='color: #949494;'>e</span>6 acen 
-#&gt; <span style='color: #BCBCBC;'> 9</span> mus_musculus GRCm39        <span style='color: #949494;'>"</span>p<span style='color: #949494;'>"</span>              4                1   1.1 <span style='color: #949494;'>e</span>5 gneg 
-#&gt; <span style='color: #BCBCBC;'>10</span> mus_musculus GRCm39        <span style='color: #949494;'>"</span>q<span style='color: #949494;'>"</span>              4          3<span style='text-decoration: underline;'>000</span>001   1.57<span style='color: #949494;'>e</span>8 gneg 
-#&gt; <span style='color: #949494;'># … with 72 more rows, and 1 more variable: strand &lt;int&gt;</span></div><div class='input'>
+    <pre class="examples"><div class='input'><span class='co'># Get details about human chromosomes (default)</span>
+<span class='fu'>get_toplevel_sequence_info</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 25 × 8</span>
+#&gt;    species_name toplevel_sequen… is_chromosome coordinate_syst… assembly_except…
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;lgl&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>           
+#&gt; <span style='color: #BCBCBC;'> 1</span> homo_sapiens 1                TRUE          chromosome       REF             
+#&gt; <span style='color: #BCBCBC;'> 2</span> homo_sapiens 2                TRUE          chromosome       REF             
+#&gt; <span style='color: #BCBCBC;'> 3</span> homo_sapiens 3                TRUE          chromosome       REF             
+#&gt; <span style='color: #BCBCBC;'> 4</span> homo_sapiens 4                TRUE          chromosome       REF             
+#&gt; <span style='color: #BCBCBC;'> 5</span> homo_sapiens 5                TRUE          chromosome       REF             
+#&gt; <span style='color: #BCBCBC;'> 6</span> homo_sapiens 6                TRUE          chromosome       REF             
+#&gt; <span style='color: #BCBCBC;'> 7</span> homo_sapiens 7                TRUE          chromosome       REF             
+#&gt; <span style='color: #BCBCBC;'> 8</span> homo_sapiens 8                TRUE          chromosome       REF             
+#&gt; <span style='color: #BCBCBC;'> 9</span> homo_sapiens 9                TRUE          chromosome       REF             
+#&gt; <span style='color: #BCBCBC;'>10</span> homo_sapiens 10               TRUE          chromosome       REF             
+#&gt; <span style='color: #949494;'># … with 15 more rows, and 3 more variables: is_circular &lt;lgl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   assembly_name &lt;chr&gt;, length &lt;int&gt;</span></div><div class='input'>
+<span class='co'># Get details about a scaffold</span>
+<span class='co'># (To find available toplevel sequences to query use the function</span>
+<span class='co'># `get_toplevel_sequences()`)</span>
+<span class='fu'>get_toplevel_sequence_info</span><span class='op'>(</span>species_name <span class='op'>=</span> <span class='st'>'homo_sapiens'</span>, toplevel_sequence <span class='op'>=</span> <span class='st'>'KI270757.1'</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 × 8</span>
+#&gt;   species_name toplevel_sequence is_chromosome coordinate_syst… assembly_except…
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;lgl&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>           
+#&gt; <span style='color: #BCBCBC;'>1</span> homo_sapiens KI270757.1        FALSE         scaffold         REF             
+#&gt; <span style='color: #949494;'># … with 3 more variables: is_circular &lt;lgl&gt;, assembly_name &lt;chr&gt;, length &lt;int&gt;</span></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
