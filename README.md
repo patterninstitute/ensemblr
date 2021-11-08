@@ -11,19 +11,19 @@ MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.or
 [![Development
 version](https://img.shields.io/badge/devel-0.0.1-orange.svg)](https://github.com/ramiromagno/ensemblr)
 
-The goal of ensemblr is to provide an R client to the [Ensembl REST
+The goal of `{ensemblr}` is to provide an R client to the [Ensembl REST
 API](https://rest.ensembl.org/).
 
 Please note that this package is still in its infancy and hence only a
 small fraction of the resources exposed by the Ensembl REST API are
-retrievable via ensemblr. You can check the functionality covered so far
-in [Ensembl REST API
+retrievable via `{ensemblr}`. You can check the functionality covered so
+far in [Ensembl REST API
 Coverage](https://maialab.org/ensemblr/articles/api_coverage.html).
 
 ## Installation
 
-You can install the current, **very** experimental version of ensemblr
-with:
+You can install the current, **very** experimental version of
+`{ensemblr}` with:
 
 ``` r
 # install.packages("remotes")
@@ -45,23 +45,23 @@ get_ld_variants_by_window('rs123', genomic_window_size = 1L)
 #> # A tibble: 6 × 6
 #>   species_name population              variant_id1 variant_id2 r_squared d_prime
 #>   <chr>        <chr>                   <chr>       <chr>           <dbl>   <dbl>
-#> 1 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs10239961      0.255   1.00 
+#> 1 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs124           0.722   1.00 
 #> 2 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs114           0.475   0.703
-#> 3 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs124           0.722   1.00 
-#> 4 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs122           0.722   1.00 
-#> 5 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs12536724      0.255   1.00 
+#> 3 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs10239961      0.255   1.00 
+#> 4 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs12536724      0.255   1.00 
+#> 5 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs122           0.722   1.00 
 #> 6 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs115           0.721   1.00
 ```
 
 ## Contributors
 
-Please note that the ensemblr project is released with a [Contributor
-Code of Conduct](.github/CODE_OF_CONDUCT.md). By contributing to this
-project, you agree to abide by its terms.
+Please note that the `{ensemblr}` project is released with a
+[Contributor Code of Conduct](.github/CODE_OF_CONDUCT.md). By
+contributing to this project, you agree to abide by its terms.
 
 ## Logo
 
-The ensemblr logo, `ensemblr.png`, is a derivative work of an
+The `{ensemblr}` logo, `ensemblr.png`, is a derivative work of an
 illustration of [“The small DNA double helix in PDB entry
 309d”](https://cdn.rcsb.org/pdb101/motm/tiff/119-DesignedDNACrystal_309d.tif)
 by [David S. Goodsell](https://ccsb.scripps.edu/goodsell/) and the [RCSB
