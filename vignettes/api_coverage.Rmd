@@ -95,7 +95,7 @@ REST API endpoints by `{ensemblr}`.
 | [GET info/compara/species_sets/:method](https://rest.ensembl.org/documentation/info/compara_species_sets) | --- | --- |
 | [GET info/comparas](https://rest.ensembl.org/documentation/info/comparas) | --- | --- |
 | [GET info/data](https://rest.ensembl.org/documentation/info/data) | `get_data_versions()` | Get data release version(s) available on the Ensembl REST server. |
-| [GET info/eg_version](https://rest.ensembl.org/documentation/info/eg_version) | --- | --- |
+| [GET info/eg_version](https://rest.ensembl.org/documentation/info/eg_version) | `get_ensembl_genomes_version()` | Get Ensembl Genomes database version. |
 | [GET info/external_dbs/:species](https://rest.ensembl.org/documentation/info/external_dbs) | --- | --- |
 | [GET info/divisions](https://rest.ensembl.org/documentation/info/info_divisions) | `get_divisions()` | Retrieve Ensembl divisions. |
 | [GET info/genomes/:genome_name](https://rest.ensembl.org/documentation/info/info_genome) | --- | --- |
