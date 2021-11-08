@@ -103,7 +103,7 @@ REST API endpoints by `{ensemblr}`.
 | [GET info/genomes/assembly/:assembly_id](https://rest.ensembl.org/documentation/info/info_genomes_assembly) | --- | --- |
 | [GET info/genomes/division/:division_name](https://rest.ensembl.org/documentation/info/info_genomes_division) | --- | --- |
 | [GET info/genomes/taxonomy/:taxon_name](https://rest.ensembl.org/documentation/info/info_genomes_taxonomy) | --- | --- |
-| [GET info/ping](https://rest.ensembl.org/documentation/info/ping) | --- | --- |
+| [GET info/ping](https://rest.ensembl.org/documentation/info/ping) | `is_ensembl_reachable()` | Check access to the Ensembl REST API server. |
 | [GET info/rest](https://rest.ensembl.org/documentation/info/rest) | `get_rest_version()` | Retrieve the current version of the Ensembl REST API. |
 | [GET info/software](https://rest.ensembl.org/documentation/info/software) | `get_software_version()` | Retrieve the Perl API version. |
 | [GET info/species](https://rest.ensembl.org/documentation/info/species) | `get_species()` | Retrieves species-level information. |
