@@ -46,7 +46,7 @@ get_ld_variants_by_pair_combn(variant_id,
     
     <a class="navbar-brand me-2" href="../index.html">ensemblr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -269,15 +269,7 @@ function <code>get_ld_variants_by_range()</code>.</p></dd>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Retrieve variants in LD by a window size of 1kb:</span></span></span>
 <span class="r-in"><span><span class="co"># 1kb: 500 bp upstream and 500 bp downstream of variant.</span></span></span>
 <span class="r-in"><span><span class="fu">get_ld_variants_by_window</span><span class="op">(</span><span class="st">'rs123'</span>, genomic_window_size <span class="op">=</span> <span class="fl">1L</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 6</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   species_name population              variant_id1 variant_id2 r_squared d_prime</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs122           0.722   1.00 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs114           0.475   0.703</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs12536724      0.255   1.00 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs124           0.722   1.00 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs10239961      0.255   1.00 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs115           0.721   1.00 </span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in curl::curl_fetch_memory(url, handle = handle):</span> OpenSSL SSL_read: error:0A000126:SSL routines::unexpected eof while reading, errno 0</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Retrieve LD measures for pairs of variants:</span></span></span>
 <span class="r-in"><span><span class="fu">get_ld_variants_by_pair</span><span class="op">(</span></span></span>

@@ -14,7 +14,7 @@ Variation - Calculated variant consequences."><meta property="og:image" content=
     
     <a class="navbar-brand me-2" href="../index.html">ensemblr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -115,18 +115,18 @@ transcript structure:</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Retrieve variant consequence types</span></span></span>
 <span class="r-in"><span><span class="fu">get_variant_consequences</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 41 × 4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    SO_accession SO_term                            label             description</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> SO:0001566   regulatory_region_variant          regulatory regio… A sequence…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> SO:0001782   TF_binding_site_variant            TF binding site   A sequence…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> SO:0001632   downstream_gene_variant            downstream gene … A sequence…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> SO:0001574   splice_acceptor_variant            splice acceptor … A splice v…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> SO:0001792   non_coding_transcript_exon_variant non coding trans… A sequence…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> SO:0001575   splice_donor_variant               splice donor var… A splice v…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> SO:0001628   intergenic_variant                 intergenic varia… A sequence…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> SO:0001891   regulatory_region_amplification    regulatory regio… A feature …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> SO:0001567   stop_retained_variant              stop retained va… A sequence…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> SO:0001580   coding_sequence_variant            coding sequence … A sequence…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    SO_accession SO_term                       label                  description</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> SO:0001907   feature_elongation            feature elongation     A sequence…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> SO:0001787   splice_donor_5th_base_variant splice donor 5th base… A sequence…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> SO:0002019   start_retained_variant        start retained variant A sequence…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> SO:0001889   transcript_amplification      transcript amplificat… A feature …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> SO:0001893   transcript_ablation           transcript ablation    A feature …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> SO:0001619   non_coding_transcript_variant non coding transcript… A transcri…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> SO:0001892   TFBS_amplification            TFBS amplification     A feature …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> SO:0001620   mature_miRNA_variant          mature miRNA variant   A transcri…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> SO:0001894   regulatory_region_ablation    regulatory region abl… A feature …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> SO:0001895   TFBS_ablation                 TFBS ablation          A feature …</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 31 more rows</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
