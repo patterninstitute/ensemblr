@@ -14,10 +14,8 @@ knitr::opts_chunk$set(
 ```
 # ensemblr <img src='man/figures/logo.png' align="right" height="138.5" />
 
-[![Travis build status](https://travis-ci.org/ramiromagno/ensemblr.svg?branch=master)](https://travis-ci.org/ramiromagno/ensemblr)
+[![CRAN status](https://www.r-pkg.org/badges/version/ensemblr)](https://CRAN.R-project.org/package=ensemblr)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Development version](https://img.shields.io/badge/devel-0.0.1-orange.svg)](https://github.com/ramiromagno/ensemblr)
 
 The goal of `{ensemblr}` is to provide an R client to the [Ensembl REST API](https://rest.ensembl.org/).
 
@@ -29,7 +27,7 @@ You can install the current, **very** experimental version of `{ensemblr}` with:
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("maialab/ensemblr")
+remotes::install_github("ramiromagno/ensemblr")
 ```
 
 ## Cheatsheet
