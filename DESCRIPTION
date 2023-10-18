@@ -1,7 +1,7 @@
 Package: ensemblr
 Type: Package
 Title: R Client for the Ensembl REST API
-Version: 0.0.1
+Version: 0.1.0
 Authors@R: c(
     person(given = "Ramiro", family = "Magno",
       email = "rmagno@pattern.institute",
