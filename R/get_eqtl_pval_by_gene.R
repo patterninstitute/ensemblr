@@ -90,36 +90,36 @@ to_eqtl_tbl <- function(species_name, ensembl_id, tbl) {
 #'
 #' @md
 #' @export
-get_eqtl_pval_by_gene <-
-  function(ensembl_id,
-           species_name = 'homo_sapiens',
-           verbose = FALSE,
-           warnings = TRUE,
-           progress_bar = TRUE) {
-
-    resource_urls <- glue::glue('/eqtl/id/',
-                                '{species_name}/{ensembl_id}')
-
-    responses <-
-      request_parallel(
-        resource_urls,
-        verbose = verbose,
-        warnings = warnings,
-        progress_bar = progress_bar
-      )
-
-    # Only keep those responses that responded successfully, i.e. with status == "OK".
-    responses_ok <- purrr::keep(responses, ~ identical(.x$status, 'OK') && !rlang::is_empty(.x$content))
-    if (rlang::is_empty(responses_ok)) return(eqtl_tbl())
-
-    return(
-      purrr::imap_dfr(
-        .x = responses_ok,
-        .f = ~ to_eqtl_tbl(
-          species_name = species_name[.y],
-          ensembl_id = ensembl_id[.y],
-          tbl = .x$content
-        )
-      )
-    )
-}
+# get_eqtl_pval_by_gene <-
+#   function(ensembl_id,
+#            species_name = 'homo_sapiens',
+#            verbose = FALSE,
+#            warnings = TRUE,
+#            progress_bar = TRUE) {
+#
+#     resource_urls <- glue::glue('/eqtl/id/',
+#                                 '{species_name}/{ensembl_id}')
+#
+#     responses <-
+#       request_parallel(
+#         resource_urls,
+#         verbose = verbose,
+#         warnings = warnings,
+#         progress_bar = progress_bar
+#       )
+#
+#     # Only keep those responses that responded successfully, i.e. with status == "OK".
+#     responses_ok <- purrr::keep(responses, ~ identical(.x$status, 'OK') && !rlang::is_empty(.x$content))
+#     if (rlang::is_empty(responses_ok)) return(eqtl_tbl())
+#
+#     return(
+#       purrr::imap_dfr(
+#         .x = responses_ok,
+#         .f = ~ to_eqtl_tbl(
+#           species_name = species_name[.y],
+#           ensembl_id = ensembl_id[.y],
+#           tbl = .x$content
+#         )
+#       )
+#     )
+# }
