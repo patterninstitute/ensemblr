@@ -12,11 +12,11 @@
 #'
 #' @export
 get_ensembl_genomes_version <- function(verbose = FALSE, warnings = TRUE) {
+  response <- request("/info/eg_version", verbose = verbose, warnings = warnings)
 
-  response <- request('/info/eg_version', verbose = verbose, warnings = warnings)
-
-  if(identical(response$status, 'OK'))
+  if (identical(response$status, "OK")) {
     return(response$content$version)
-  else
+  } else {
     return(NA_integer_)
+  }
 }

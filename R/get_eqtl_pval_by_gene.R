@@ -1,45 +1,43 @@
 eqtl_tbl <- function(species_name = character(),
-                  ensembl_id = character(),
-                  variant_id = character(),
-                  tissue = character(),
-                  display_consequence = character(),
-                  seq_region_name = character(),
-                  seq_region_start = integer(),
-                  seq_region_end = integer(),
-                  beta = double(),
-                  pvalue = double()
-                  ) {
-
-  tibble::tibble(species_name = species_name,
-                 ensembl_id = ensembl_id,
-                 variant_id = variant_id,
-                 tissue = tissue,
-                 display_consequence = display_consequence,
-                 seq_region_name = seq_region_name,
-                 seq_region_start = seq_region_start,
-                 seq_region_end = seq_region_end,
-                 beta = beta,
-                 pvalue = pvalue)
-
+                     ensembl_id = character(),
+                     variant_id = character(),
+                     tissue = character(),
+                     display_consequence = character(),
+                     seq_region_name = character(),
+                     seq_region_start = integer(),
+                     seq_region_end = integer(),
+                     beta = double(),
+                     pvalue = double()) {
+  tibble::tibble(
+    species_name = species_name,
+    ensembl_id = ensembl_id,
+    variant_id = variant_id,
+    tissue = tissue,
+    display_consequence = display_consequence,
+    seq_region_name = seq_region_name,
+    seq_region_start = seq_region_start,
+    seq_region_end = seq_region_end,
+    beta = beta,
+    pvalue = pvalue
+  )
 }
 
 #' @importFrom rlang .data
 to_eqtl_tbl <- function(species_name, ensembl_id, tbl) {
-
   tbl %>%
-  tibble::as_tibble() %>%
-  tidyr::pivot_wider(
-    id_cols = c(
-      'snp',
-      'tissue',
-      'display_consequence',
-      'seq_region_name',
-      'seq_region_start',
-      'seq_region_end'
-    ),
-    names_from = 'statistic',
-    values_from = 'value'
-  ) %>%
+    tibble::as_tibble() %>%
+    tidyr::pivot_wider(
+      id_cols = c(
+        "snp",
+        "tissue",
+        "display_consequence",
+        "seq_region_name",
+        "seq_region_start",
+        "seq_region_end"
+      ),
+      names_from = "statistic",
+      values_from = "value"
+    ) %>%
     dplyr::mutate(seq_region_start = as.integer(.data$seq_region_start), seq_region_end = as.integer(.data$seq_region_end)) %>%
     tibble::add_column(species_name = species_name, ensembl_id = ensembl_id, .before = 1L) %>%
     dplyr::rename(variant_id = .data$snp, pvalue = .data$`p-value`)
@@ -86,7 +84,7 @@ to_eqtl_tbl <- function(species_name, ensembl_id, tbl) {
 #' [/eqtl/id/:species/:stable_id](https://rest.ensembl.org/documentation/info/species_id).
 #'
 #' @examples
-#' get_eqtl_pval_by_gene('ENSG00000248378')
+#' get_eqtl_pval_by_gene("ENSG00000248378")
 #'
 #' @md
 #' @export

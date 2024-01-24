@@ -9,9 +9,7 @@ xrefs_details_tbl <- function(species_name = character(),
                               info_type = character(),
                               info_text = character(),
                               synonyms = list(),
-                              description = character()
-                              ) {
-
+                              description = character()) {
   tbl <- tibble::tibble(
     species_name = species_name,
     gene = gene,
@@ -30,20 +28,19 @@ xrefs_details_tbl <- function(species_name = character(),
 }
 
 json_list_to_xrefs_details_tbl <- function(species_name, gene, ensembl_db, json_list) {
-
   tbl <- xrefs_details_tbl(
     species_name = species_name,
     gene = gene,
     ensembl_db = ensembl_db,
-    primary_id = purrr::pluck(json_list, 'primary_id', .default = NA_character_),
-    display_id = purrr::pluck(json_list, 'display_id', .default = NA_character_),
-    external_db_name = purrr::pluck(json_list, 'dbname', .default = NA_character_),
-    external_db_display_name = purrr::pluck(json_list, 'db_display_name', .default = NA_character_),
-    version = purrr::pluck(json_list, 'version', .default = NA_character_),
-    info_type = purrr::pluck(json_list, 'info_type', .default = NA_character_),
-    info_text = purrr::pluck(json_list, 'info_text', .default = NA_character_),
-    synonyms = purrr::pluck(json_list, 'synonyms', .default = list()),
-    description = purrr::pluck(json_list, 'description', .default = NA_character_)
+    primary_id = purrr::pluck(json_list, "primary_id", .default = NA_character_),
+    display_id = purrr::pluck(json_list, "display_id", .default = NA_character_),
+    external_db_name = purrr::pluck(json_list, "dbname", .default = NA_character_),
+    external_db_display_name = purrr::pluck(json_list, "db_display_name", .default = NA_character_),
+    version = purrr::pluck(json_list, "version", .default = NA_character_),
+    info_type = purrr::pluck(json_list, "info_type", .default = NA_character_),
+    info_text = purrr::pluck(json_list, "info_text", .default = NA_character_),
+    synonyms = purrr::pluck(json_list, "synonyms", .default = list()),
+    description = purrr::pluck(json_list, "description", .default = NA_character_)
   )
 
   # Convert empty strings to NA_character_
@@ -107,18 +104,17 @@ json_list_to_xrefs_details_tbl <- function(species_name, gene, ensembl_db, json_
 #'
 #' @examples
 #' # Get cross references that relate to gene BRCA2
-#' get_xrefs_by_gene(species_name = 'human', gene = 'BRCA2')
+#' get_xrefs_by_gene(species_name = "human", gene = "BRCA2")
 #'
 #' @md
 #' @export
 get_xrefs_by_gene <- function(species_name,
                               gene,
-                              ensembl_db = 'core',
-                              external_db = '',
+                              ensembl_db = "core",
+                              external_db = "",
                               verbose = FALSE,
                               warnings = TRUE,
                               progress_bar = TRUE) {
-
   # Assert species_name argument.
   assert_species_name(species_name)
 
@@ -135,12 +131,12 @@ get_xrefs_by_gene <- function(species_name,
   assertthat::assert_that(assertthat::is.flag(progress_bar))
 
   error_msg <- glue::glue(
-    'All arguments must have consistent lengths, ',
-    'only values of length one are recycled:\n',
-    '* Length of `species_name`: {length(species_name)}\n',
-    '* Length of `gene`: {length(gene)}\n',
-    '* Length of `ensembl_db`: {length(ensembl_db)}\n',
-    '* Length of `external_db`: {length(external_db)}\n'
+    "All arguments must have consistent lengths, ",
+    "only values of length one are recycled:\n",
+    "* Length of `species_name`: {length(species_name)}\n",
+    "* Length of `gene`: {length(gene)}\n",
+    "* Length of `ensembl_db`: {length(ensembl_db)}\n",
+    "* Length of `external_db`: {length(external_db)}\n"
   )
 
   if (!are_vec_recyclable(species_name, gene, ensembl_db, external_db)) {
@@ -151,30 +147,35 @@ get_xrefs_by_gene <- function(species_name,
 
   # The order of names here should be same as passed to
   # vctrs::vec_recycle_common()
-  names(recycled_args) <- c('species_name', 'gene', 'ensembl_db', 'external_db')
+  names(recycled_args) <- c("species_name", "gene", "ensembl_db", "external_db")
 
-  resource_urls <- glue::glue('/xrefs/name/',
-                              '{recycled_args$species_name}/',
-                              '{recycled_args$gene}?',
-                              'db_type={recycled_args$ensembl_db};',
-                              '{p("external_db", recycled_args$external_db)}')
+  resource_urls <- glue::glue(
+    "/xrefs/name/",
+    "{recycled_args$species_name}/",
+    "{recycled_args$gene}?",
+    "db_type={recycled_args$ensembl_db};",
+    '{p("external_db", recycled_args$external_db)}'
+  )
 
   # Usually we'd use purrr::map here but we opted for plyr::llply
   # for a no frills alternative with progress bar support.
-  progress <- dplyr::if_else(progress_bar && interactive(), 'text', 'none')
+  progress <- dplyr::if_else(progress_bar && interactive(), "text", "none")
   responses <- plyr::llply(
     .data = resource_urls,
     .fun = request,
     verbose = verbose,
     warnings = warnings,
-    .progress = progress)
+    .progress = progress
+  )
 
   # Only keep those responses that responded successfully, i.e. with status == "OK".
-  responses_ok <- purrr::keep(responses, ~ identical(.x$status, 'OK'))
+  responses_ok <- purrr::keep(responses, ~ identical(.x$status, "OK"))
 
   # If none of the responses were successful then return an empty linkage
   # disequilibrium tibble.
-  if (rlang::is_empty(responses_ok)) return(xrefs_details_tbl())
+  if (rlang::is_empty(responses_ok)) {
+    return(xrefs_details_tbl())
+  }
 
   return(
     purrr::imap_dfr(
@@ -187,23 +188,20 @@ get_xrefs_by_gene <- function(species_name,
       )
     )
   )
-
 }
 
 xrefs_details_tbl2 <- function(species_name = character(),
-                              ensembl_id = character(),
-                              ensembl_db = character(),
-                              primary_id = character(),
-                              display_id = character(),
-                              external_db_name = character(),
-                              external_db_display_name = character(),
-                              version = character(),
-                              info_type = character(),
-                              info_text = character(),
-                              synonyms = list(),
-                              description = character()
-) {
-
+                               ensembl_id = character(),
+                               ensembl_db = character(),
+                               primary_id = character(),
+                               display_id = character(),
+                               external_db_name = character(),
+                               external_db_display_name = character(),
+                               version = character(),
+                               info_type = character(),
+                               info_text = character(),
+                               synonyms = list(),
+                               description = character()) {
   tbl <- tibble::tibble(
     species_name = species_name,
     ensembl_id = ensembl_id,
@@ -222,20 +220,19 @@ xrefs_details_tbl2 <- function(species_name = character(),
 }
 
 json_list_to_xrefs_details_tbl2 <- function(species_name, ensembl_id, ensembl_db, json_list) {
-
   tbl <- xrefs_details_tbl2(
     species_name = species_name,
     ensembl_id = ensembl_id,
     ensembl_db = ensembl_db,
-    primary_id = purrr::pluck(json_list, 'primary_id', .default = NA_character_),
-    display_id = purrr::pluck(json_list, 'display_id', .default = NA_character_),
-    external_db_name = purrr::pluck(json_list, 'dbname', .default = NA_character_),
-    external_db_display_name = purrr::pluck(json_list, 'db_display_name', .default = NA_character_),
-    version = purrr::pluck(json_list, 'version', .default = NA_character_),
-    info_type = purrr::pluck(json_list, 'info_type', .default = NA_character_),
-    info_text = purrr::pluck(json_list, 'info_text', .default = NA_character_),
-    synonyms = purrr::pluck(json_list, 'synonyms', .default = list()),
-    description = purrr::pluck(json_list, 'description', .default = NA_character_)
+    primary_id = purrr::pluck(json_list, "primary_id", .default = NA_character_),
+    display_id = purrr::pluck(json_list, "display_id", .default = NA_character_),
+    external_db_name = purrr::pluck(json_list, "dbname", .default = NA_character_),
+    external_db_display_name = purrr::pluck(json_list, "db_display_name", .default = NA_character_),
+    version = purrr::pluck(json_list, "version", .default = NA_character_),
+    info_type = purrr::pluck(json_list, "info_type", .default = NA_character_),
+    info_text = purrr::pluck(json_list, "info_text", .default = NA_character_),
+    synonyms = purrr::pluck(json_list, "synonyms", .default = list()),
+    description = purrr::pluck(json_list, "description", .default = NA_character_)
   )
 
   # Convert empty strings to NA_character_
@@ -351,21 +348,20 @@ json_list_to_xrefs_details_tbl2 <- function(species_name, ensembl_id, ensembl_db
 #' [/xrefs/id/:id](https://rest.ensembl.org/documentation/info/xref_id).
 #'
 #' @examples
-#' get_xrefs_by_ensembl_id('human', 'ENSG00000248378')
+#' get_xrefs_by_ensembl_id("human", "ENSG00000248378")
 #'
-#' get_xrefs_by_ensembl_id('human', 'ENSG00000248378', all_levels = TRUE)
+#' get_xrefs_by_ensembl_id("human", "ENSG00000248378", all_levels = TRUE)
 #' @md
 #' @export
 get_xrefs_by_ensembl_id <- function(species_name,
                                     ensembl_id,
                                     all_levels = FALSE,
-                                    ensembl_db = 'core',
-                                    external_db = '',
-                                    feature = '',
+                                    ensembl_db = "core",
+                                    external_db = "",
+                                    feature = "",
                                     verbose = FALSE,
                                     warnings = TRUE,
                                     progress_bar = TRUE) {
-
   # Assert species_name argument.
   assert_species_name(species_name)
 
@@ -386,54 +382,60 @@ get_xrefs_by_ensembl_id <- function(species_name,
   # Assert progress_bar argument.
   assertthat::assert_that(assertthat::is.flag(progress_bar))
 
-  all_levels <- ifelse(all_levels, '1', '0')
+  all_levels <- ifelse(all_levels, "1", "0")
 
   error_msg <- glue::glue(
-    'All arguments must have consistent lengths, ',
-    'only values of length one are recycled:\n',
-    '* Length of `species_name`: {length(species_name)}\n',
-    '* Length of `ensembl_id`: {length(ensembl_id)}\n',
-    '* Length of `all_levels`: {length(all_levels)}\n',
-    '* Length of `ensembl_db`: {length(ensembl_db)}\n',
-    '* Length of `external_db`: {length(external_db)}\n',
-    '* Length of `feature`: {length(feature)}\n'
+    "All arguments must have consistent lengths, ",
+    "only values of length one are recycled:\n",
+    "* Length of `species_name`: {length(species_name)}\n",
+    "* Length of `ensembl_id`: {length(ensembl_id)}\n",
+    "* Length of `all_levels`: {length(all_levels)}\n",
+    "* Length of `ensembl_db`: {length(ensembl_db)}\n",
+    "* Length of `external_db`: {length(external_db)}\n",
+    "* Length of `feature`: {length(feature)}\n"
   )
 
-  if (!are_vec_recyclable(species_name,
-                          ensembl_id,
-                          all_levels,
-                          ensembl_db,
-                          external_db,
-                          feature)) {
+  if (!are_vec_recyclable(
+    species_name,
+    ensembl_id,
+    all_levels,
+    ensembl_db,
+    external_db,
+    feature
+  )) {
     rlang::abort(error_msg)
   }
 
-  recycled_args <- vctrs::vec_recycle_common(species_name,
-                                             ensembl_id,
-                                             all_levels,
-                                             ensembl_db,
-                                             external_db,
-                                             feature)
+  recycled_args <- vctrs::vec_recycle_common(
+    species_name,
+    ensembl_id,
+    all_levels,
+    ensembl_db,
+    external_db,
+    feature
+  )
 
   # The order of names here should be same as passed to
   # vctrs::vec_recycle_common()
   names(recycled_args) <-
     c(
-      'species_name',
-      'ensembl_id',
-      'all_levels',
-      'ensembl_db',
-      'external_db',
-      'feature'
+      "species_name",
+      "ensembl_id",
+      "all_levels",
+      "ensembl_db",
+      "external_db",
+      "feature"
     )
 
-  resource_urls <- glue::glue('/xrefs/id/',
-                              '{recycled_args$ensembl_id}?',
-                              ';{p("all_levels", recycled_args$all_levels)}',
-                              ';{p("db_type", recycled_args$ensembl_db)}',
-                              ';{p("external_db", recycled_args$external_db)}',
-                              ';{p("object_type", recycled_args$feature)}',
-                              ';{p("species", recycled_args$species_name)}')
+  resource_urls <- glue::glue(
+    "/xrefs/id/",
+    "{recycled_args$ensembl_id}?",
+    ';{p("all_levels", recycled_args$all_levels)}',
+    ';{p("db_type", recycled_args$ensembl_db)}',
+    ';{p("external_db", recycled_args$external_db)}',
+    ';{p("object_type", recycled_args$feature)}',
+    ';{p("species", recycled_args$species_name)}'
+  )
 
   # Usually we'd use purrr::map here but we opted for plyr::llply
   # for a no frills alternative with progress bar support.
@@ -453,13 +455,15 @@ get_xrefs_by_ensembl_id <- function(species_name,
     )
 
   # Only keep those responses that responded successfully, i.e. with status == "OK".
-  responses_ok <- purrr::keep(responses, ~ identical(.x$status, 'OK'))
+  responses_ok <- purrr::keep(responses, ~ identical(.x$status, "OK"))
 
   # If none of the responses were successful then return an empty linkage
   # disequilibrium tibble.
-  if (rlang::is_empty(responses_ok)) return(xrefs_details_tbl2())
+  if (rlang::is_empty(responses_ok)) {
+    return(xrefs_details_tbl2())
+  }
 
-  #return(tibble::as_tibble(responses_ok[[1]]$content, .name_repair = 'unique'))
+  # return(tibble::as_tibble(responses_ok[[1]]$content, .name_repair = 'unique'))
 
   return(purrr::imap_dfr(
     .x = responses_ok,
@@ -470,7 +474,6 @@ get_xrefs_by_ensembl_id <- function(species_name,
       json_list = .x$content
     )
   ))
-
 }
 
 #' xrefs_symbol_species_symbol_tbl <-

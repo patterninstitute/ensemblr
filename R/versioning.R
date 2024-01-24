@@ -6,17 +6,17 @@
 #'
 #' @export
 get_software_version <- function(verbose = FALSE, warnings = TRUE) {
-
   response <- request(
-    resource_url = '/info/software?',
+    resource_url = "/info/software?",
     verbose = verbose,
-    warnings = warnings)
+    warnings = warnings
+  )
 
   return(purrr::pluck(response,
-                      'content',
-                      'release',
-                      .default = NA_integer_)
-         )
+    "content",
+    "release",
+    .default = NA_integer_
+  ))
 }
 
 #' Retrieve the current version of the Ensembl REST API
@@ -27,17 +27,17 @@ get_software_version <- function(verbose = FALSE, warnings = TRUE) {
 #'
 #' @export
 get_rest_version <- function(verbose = FALSE, warnings = TRUE) {
-
   response <- request(
-    resource_url = '/info/rest?',
+    resource_url = "/info/rest?",
     verbose = verbose,
-    warnings = warnings)
+    warnings = warnings
+  )
 
   return(purrr::pluck(response,
-                      'content',
-                      'release',
-                      .default = NA_character_)
-         )
+    "content",
+    "release",
+    .default = NA_character_
+  ))
 }
 
 #' Retrieve the data release version(s) available on the Ensembl REST server.
@@ -48,17 +48,17 @@ get_rest_version <- function(verbose = FALSE, warnings = TRUE) {
 #'
 #' @export
 get_data_versions <- function(verbose = FALSE, warnings = TRUE) {
-
   response <- request(
-    resource_url = '/info/data?',
+    resource_url = "/info/data?",
     verbose = verbose,
-    warnings = warnings)
+    warnings = warnings
+  )
 
   return(purrr::pluck(response,
-                      'content',
-                      'releases',
-                      .default = NA_integer_)
-         )
+    "content",
+    "releases",
+    .default = NA_integer_
+  ))
 }
 
 #' Retrieve Ensembl REST versions
@@ -85,7 +85,6 @@ get_data_versions <- function(verbose = FALSE, warnings = TRUE) {
 #'
 #' @export
 get_versioning <- function(verbose = FALSE, warnings = TRUE) {
-
   # Ensembl data release version(s)
   data_version <-
     get_data_versions(verbose = verbose, warnings = warnings)
@@ -101,7 +100,8 @@ get_versioning <- function(verbose = FALSE, warnings = TRUE) {
   api_versions <- list(
     data = data_version,
     software = software_version,
-    rest = rest_version)
+    rest = rest_version
+  )
 
   return(api_versions)
 }

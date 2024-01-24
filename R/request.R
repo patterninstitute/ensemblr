@@ -13,8 +13,9 @@ ensembl_server <- function() "https://rest.ensembl.org"
 #'
 #' @return An S3 \code{request} object as defined by the package \code{httr}.
 #' @keywords internal
-user_agent_id <- function()
+user_agent_id <- function() {
   httr::user_agent("ensemblr: R Client for the Ensembl REST API")
+}
 
 #' Warn if response errored
 #'
@@ -28,40 +29,41 @@ user_agent_id <- function()
 #'   called mostly for its side effect, i.e., the triggering of a warning.
 #' @keywords internal
 warn_when_request_errored <- function(response) {
-
   code <- httr::status_code(response)
   # If status code is 200 (sucessful) then there is nothing to be done in this
   # function.
-  if (identical(code, 200L)) return('OK')
+  if (identical(code, 200L)) {
+    return("OK")
+  }
 
   url <- response$url
   type <- httr::http_type(response)
-  content <- httr::content(response, "text", encoding = 'UTF-8')
+  content <- httr::content(response, "text", encoding = "UTF-8")
 
   if (identical(type, "application/json")) {
     response_msg <- (jsonlite::fromJSON(content, flatten = TRUE))$error
-  }
-  else {
-    content2 <- httr::content(response, as = 'parsed', encoding = 'UTF-8')
+  } else {
+    content2 <- httr::content(response, as = "parsed", encoding = "UTF-8")
     if (identical(code, 503L)) {
-      msg1 <- rvest::html_text(rvest::html_nodes(content2, 'body'), trim = TRUE)
-      msg2 <- stringr::str_replace(msg1, '\\n', '\\. ')
-      response_msg <- glue::glue('{msg2}')
+      msg1 <- rvest::html_text(rvest::html_nodes(content2, "body"), trim = TRUE)
+      msg2 <- stringr::str_replace(msg1, "\\n", "\\. ")
+      response_msg <- glue::glue("{msg2}")
     } else {
-    # NB rvest::html_nodes uses only one of the two arguments: css or xpath.
-    # That is why xpath being missing from the call below is not an issue.
-    msg1 <- rvest::html_text(rvest::html_nodes(content2, 'h1'), trim = TRUE)
-    msg2 <- rvest::html_text(rvest::html_nodes(content2, 'h2'), trim = TRUE)
-    response_msg <- glue::glue('{msg1}. {msg2}.')
+      # NB rvest::html_nodes uses only one of the two arguments: css or xpath.
+      # That is why xpath being missing from the call below is not an issue.
+      msg1 <- rvest::html_text(rvest::html_nodes(content2, "h1"), trim = TRUE)
+      msg2 <- rvest::html_text(rvest::html_nodes(content2, "h2"), trim = TRUE)
+      response_msg <- glue::glue("{msg1}. {msg2}.")
     }
     # TODO: handle 400 error, e.g. resource_url = '/info/variation/populations/homo_sapiens/little humans'
   }
 
   wrn_msg <- glue::glue(
-    '\n\n',
-    '* Status code:    {code}\n',
-    '* Server message: {response_msg}\n',
-    '* Endpoint:       {url}')
+    "\n\n",
+    "* Status code:    {code}\n",
+    "* Server message: {response_msg}\n",
+    "* Endpoint:       {url}"
+  )
 
   warning(wrn_msg, immediate. = TRUE, call. = FALSE)
   return(wrn_msg)
@@ -91,8 +93,7 @@ warn_when_request_errored <- function(response) {
 #'
 #' @keywords internal
 request <- function(resource_url, base_url = ensembl_server(),
-                                     verbose = FALSE, warnings = TRUE) {
-
+                    verbose = FALSE, warnings = TRUE) {
   if (verbose) message(glue::glue("Base URL: {base_url}."))
 
   url <- stringr::str_c(base_url, resource_url)
@@ -111,10 +112,12 @@ request <- function(resource_url, base_url = ensembl_server(),
   #     or OK if successful.
   #   - response content: the content of the parsed JSON response, or NULL if
   #     not successful.
-  obj <- list(url = url,
-              response_code = response_code,
-              status = NA_character_,
-              content = NULL)
+  obj <- list(
+    url = url,
+    response_code = response_code,
+    status = NA_character_,
+    content = NULL
+  )
 
   # If response is not 200, i.e. if request did not complete successfully then
   # return an empty response object (NULL) and warn about the response code.
@@ -122,7 +125,7 @@ request <- function(resource_url, base_url = ensembl_server(),
     wrg_msg <- warn_when_request_errored(response)
     obj$status <- wrg_msg
     return(obj)
-  } else {# Else response code is 200 and we move on to JSON parsing.
+  } else { # Else response code is 200 and we move on to JSON parsing.
 
     # Check if the content type of the response is JSON.
     content_type <- httr::http_type(response)
@@ -138,7 +141,7 @@ request <- function(resource_url, base_url = ensembl_server(),
     }
 
     # Parse JSON content
-    content <- jsonlite::fromJSON(httr::content(response, "text", encoding = 'UTF-8'), flatten = FALSE)
+    content <- jsonlite::fromJSON(httr::content(response, "text", encoding = "UTF-8"), flatten = FALSE)
 
     obj$status <- "OK"
     obj$content <- content
@@ -174,17 +177,16 @@ request_parallel <- function(resource_urls,
                              verbose = FALSE,
                              warnings = TRUE,
                              progress_bar = TRUE) {
-
-
   # Usually we'd use purrr::map here but we opted for plyr::llply
   # for a no frills alternative with progress bar support.
-  progress <- dplyr::if_else(progress_bar && interactive(), 'text', 'none')
+  progress <- dplyr::if_else(progress_bar && interactive(), "text", "none")
   responses <- plyr::llply(
     .data = resource_urls,
     .fun = request,
     verbose = verbose,
     warnings = warnings,
-    .progress = progress)
+    .progress = progress
+  )
 
   return(responses)
 }

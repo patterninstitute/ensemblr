@@ -6,8 +6,9 @@
 #'
 #' @return A scalar logical: \code{TRUE} or \code{FALSE}.
 #' @keywords internal
-are_vec_recyclable <- function(...)
+are_vec_recyclable <- function(...) {
   !assertthat::is.error(try(vctrs::vec_recycle_common(...), silent = TRUE))
+}
 
 #' Pairwise combinations
 #'
@@ -20,11 +21,10 @@ are_vec_recyclable <- function(...)
 #'   pairwise combination.
 #' @keywords internal
 pairwise_combn <- function(x) {
-
   # Is x NULL?
   assertthat::assert_that(
     !rlang::is_null(x),
-    msg = '`x` cannot be NULL.'
+    msg = "`x` cannot be NULL."
   )
 
   # Is x empty?
@@ -33,7 +33,7 @@ pairwise_combn <- function(x) {
   # Is x a character vector?
   assertthat::assert_that(
     rlang::is_character(x),
-    msg = '`x` must be a character vector.'
+    msg = "`x` must be a character vector."
   )
 
   # Does x contain NAs?
@@ -45,14 +45,13 @@ pairwise_combn <- function(x) {
   return(tbl)
 }
 
-p <- function(param_name, value, missing = '') {
-
-  params <- glue::glue('{param_name}={value}')
-  params[value == missing] <- ''
+p <- function(param_name, value, missing = "") {
+  params <- glue::glue("{param_name}={value}")
+  params[value == missing] <- ""
 
   return(params)
 }
 
 empty_strings_to_NA <- function(df) {
-  dplyr::mutate_if(df, is.character, list( ~ dplyr::na_if(., "")))
+  dplyr::mutate_if(df, is.character, list(~ dplyr::na_if(., "")))
 }

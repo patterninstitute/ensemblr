@@ -12,21 +12,19 @@ eqtl_tbl2 <- function(species_name = character(),
     beta = beta,
     pvalue = pvalue
   )
-
 }
 
 #' @importFrom rlang .data
 to_eqtl_tbl2 <- function(species_name, variant_id, tbl) {
-
   tbl %>%
     tibble::as_tibble() %>%
     tidyr::pivot_wider(
       id_cols = c(
-        'gene',
-        'tissue'
+        "gene",
+        "tissue"
       ),
-      names_from = 'statistic',
-      values_from = 'value'
+      names_from = "statistic",
+      values_from = "value"
     ) %>%
     tibble::add_column(species_name = species_name, variant_id = variant_id, .before = 1L) %>%
     dplyr::rename(ensembl_id = .data$gene, pvalue = .data$`p-value`)
@@ -67,7 +65,7 @@ to_eqtl_tbl2 <- function(species_name, variant_id, tbl) {
 #' [/eqtl/variant_name/:species/:variant_name](https://rest.ensembl.org/documentation/info/species_variant).
 #'
 #' @examples
-#' get_eqtl_pval_by_variant('rs80100814')
+#' get_eqtl_pval_by_variant("rs80100814")
 #'
 #' @md
 #' @export

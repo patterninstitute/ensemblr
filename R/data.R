@@ -15,4 +15,4 @@
 #'   downloaded from Ensembl.}
 #' }
 #' @source \url{https://rest.ensembl.org/}
-'rest_api_endpoints'
+"rest_api_endpoints"

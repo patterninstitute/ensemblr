@@ -72,17 +72,18 @@ parse_assembly_details <- function(species_name, lst) {
 #' get_assemblies()
 #'
 #' # Get details about the Mouse and the Fruit Fly genomes
-#' get_assemblies(c('mus_musculus', 'drosophila_melanogaster'))
+#' get_assemblies(c("mus_musculus", "drosophila_melanogaster"))
 #'
 #' @md
 #' @export
-get_assemblies <- function(species_name = 'homo_sapiens',
+get_assemblies <- function(species_name = "homo_sapiens",
                            verbose = FALSE,
                            warnings = TRUE,
                            progress_bar = TRUE) {
-
-  resource_urls <- glue::glue('/info/assembly/',
-                              '{species_name}?bands=0')
+  resource_urls <- glue::glue(
+    "/info/assembly/",
+    "{species_name}?bands=0"
+  )
 
   responses <-
     request_parallel(
@@ -93,8 +94,10 @@ get_assemblies <- function(species_name = 'homo_sapiens',
     )
 
   # Only keep those responses that responded successfully, i.e. with status == "OK".
-  responses_ok <- purrr::keep(responses, ~ identical(.x$status, 'OK') && !rlang::is_empty(.x$content))
-  if (rlang::is_empty(responses_ok)) return(assembly_details())
+  responses_ok <- purrr::keep(responses, ~ identical(.x$status, "OK") && !rlang::is_empty(.x$content))
+  if (rlang::is_empty(responses_ok)) {
+    return(assembly_details())
+  }
 
   return(
     purrr::imap_dfr(
@@ -105,6 +108,4 @@ get_assemblies <- function(species_name = 'homo_sapiens',
       )
     )
   )
-
 }
-

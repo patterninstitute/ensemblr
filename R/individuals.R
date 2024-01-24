@@ -1,8 +1,8 @@
 individuals_tbl <- function(species_name = character(),
-                           population = character(),
-                           description = character(),
-                           individual = character(),
-                           gender = character()) {
+                            population = character(),
+                            description = character(),
+                            individual = character(),
+                            gender = character()) {
   tbl <- tibble::tibble(
     species_name = species_name,
     population = population,
@@ -16,14 +16,14 @@ individuals_tbl <- function(species_name = character(),
 json_list_to_individuals_tbl <- function(species_name, json_list) {
   tbl <- individuals_tbl(
     species_name = species_name,
-    population = purrr::pluck(json_list, 'name', .default = NA_character_),
-    description = purrr::pluck(json_list, 'description', .default = NA_character_),
-    individual = purrr::pluck(json_list, 'individuals', 1, 'name', .default = NA_character_),
-    gender = purrr::pluck(json_list, 'individuals', 1, 'gender', .default = NA_character_)
+    population = purrr::pluck(json_list, "name", .default = NA_character_),
+    description = purrr::pluck(json_list, "description", .default = NA_character_),
+    individual = purrr::pluck(json_list, "individuals", 1, "name", .default = NA_character_),
+    gender = purrr::pluck(json_list, "individuals", 1, "gender", .default = NA_character_)
   )
 
   # Drop rows if all columns except species_name are NA
-  return(tidyr::drop_na(tbl,-species_name))
+  return(tidyr::drop_na(tbl, -species_name))
 }
 
 #' Get individuals for a population
@@ -68,15 +68,14 @@ json_list_to_individuals_tbl <- function(species_name, json_list) {
 #' get_individuals()
 #'
 #' # Get Finnish individuals ("1000GENOMES:phase_3:FIN")
-#' get_individuals(population = '1000GENOMES:phase_3:FIN')
+#' get_individuals(population = "1000GENOMES:phase_3:FIN")
 #'
 #' @export
-get_individuals <- function(species_name = 'homo_sapiens',
-                            population = '1000GENOMES:phase_3:CEU',
+get_individuals <- function(species_name = "homo_sapiens",
+                            population = "1000GENOMES:phase_3:CEU",
                             verbose = FALSE,
                             warnings = TRUE,
                             progress_bar = TRUE) {
-
   # Assert species_name argument.
   assert_species_name(species_name)
   # Assert verbose argument.
@@ -87,28 +86,34 @@ get_individuals <- function(species_name = 'homo_sapiens',
   assertthat::assert_that(assertthat::is.flag(progress_bar))
 
   error_msg <- glue::glue(
-    'All arguments must have consistent lengths, ',
-    'only values of length one are recycled:\n',
-    '* Length of `species_name`: {length(species_name)}\n',
-    '* Length of `population`: {length(population)}\n'
+    "All arguments must have consistent lengths, ",
+    "only values of length one are recycled:\n",
+    "* Length of `species_name`: {length(species_name)}\n",
+    "* Length of `population`: {length(population)}\n"
   )
-  if (!are_vec_recyclable(species_name,
-                          population))
+  if (!are_vec_recyclable(
+    species_name,
+    population
+  )) {
     rlang::abort(error_msg)
+  }
 
-  recycled_args <- vctrs::vec_recycle_common(species_name,
-                                             population)
+  recycled_args <- vctrs::vec_recycle_common(
+    species_name,
+    population
+  )
 
   # The order of names here should be same as passed to
   # vctrs::vec_recycle_common()
   names(recycled_args) <- c(
-    'species_name',
-    'population')
+    "species_name",
+    "population"
+  )
 
   resource_urls <- glue::glue(
-    '/info/variation/populations/',
-    '{recycled_args$species_name}/',
-    '{recycled_args$population}'
+    "/info/variation/populations/",
+    "{recycled_args$species_name}/",
+    "{recycled_args$population}"
   )
 
   # Usually we'd use purrr::map here but we opted for plyr::llply
@@ -129,10 +134,12 @@ get_individuals <- function(species_name = 'homo_sapiens',
     )
 
   # Only keep those responses that responded successfully, i.e. with status == "OK".
-  responses_ok <- purrr::keep(responses, ~ identical(.x$status, 'OK'))
+  responses_ok <- purrr::keep(responses, ~ identical(.x$status, "OK"))
 
   # If none of the responses were successful then return an empty individuals tibble.
-  if (rlang::is_empty(responses_ok)) return(individuals_tbl())
+  if (rlang::is_empty(responses_ok)) {
+    return(individuals_tbl())
+  }
 
   return(
     purrr::imap_dfr(

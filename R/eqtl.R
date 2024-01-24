@@ -1,7 +1,6 @@
 eqtl_tissue_tbl <- function(
-  species_name = character(),
-  tissue = character()
-) {
+    species_name = character(),
+    tissue = character()) {
   tbl <- tibble::tibble(
     species_name = species_name,
     tissue = tissue
@@ -11,7 +10,6 @@ eqtl_tissue_tbl <- function(
 }
 
 json_list_to_eqtl_tissue_tbl <- function(species_name, json_list) {
-
   tissues <- names(json_list)
   tbl <- eqtl_tissue_tbl(
     species_name = species_name,
@@ -21,7 +19,7 @@ json_list_to_eqtl_tissue_tbl <- function(species_name, json_list) {
   # Drop rows if all columns except species_name are NA
   tbl2 <- tidyr::drop_na(tbl, -species_name)
 
-  tissue <- rlang::sym('tissue')
+  tissue <- rlang::sym("tissue")
   # Sort alphabetically by tissue
   tbl3 <- dplyr::arrange(tbl2, species_name, !!tissue)
   return(tbl3)

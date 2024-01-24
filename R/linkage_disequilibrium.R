@@ -1,11 +1,10 @@
 ld_tbl <- function(
-  species_name = character(),
-  population = character(),
-  variant_id1 = character(),
-  variant_id2 = character(),
-  r_squared = double(),
-  d_prime = double()
-) {
+    species_name = character(),
+    population = character(),
+    variant_id1 = character(),
+    variant_id2 = character(),
+    r_squared = double(),
+    d_prime = double()) {
   tbl <- tibble::tibble(
     species_name = species_name,
     population = population,
@@ -19,14 +18,13 @@ ld_tbl <- function(
 }
 
 json_list_to_ld_tbl <- function(species_name, json_list) {
-
   tbl <- ld_tbl(
     species_name = species_name,
-    population = purrr::pluck(json_list, 'population_name', .default = NA_character_),
-    variant_id1 = purrr::pluck(json_list, 'variation1', .default = NA_character_),
-    variant_id2 = purrr::pluck(json_list, 'variation2', .default = NA_character_),
-    r_squared = as.double(purrr::pluck(json_list, 'r2', .default = NA_real_)),
-    d_prime = as.double(purrr::pluck(json_list, 'd_prime', .default = NA_real_))
+    population = purrr::pluck(json_list, "population_name", .default = NA_character_),
+    variant_id1 = purrr::pluck(json_list, "variation1", .default = NA_character_),
+    variant_id2 = purrr::pluck(json_list, "variation2", .default = NA_character_),
+    r_squared = as.double(purrr::pluck(json_list, "r2", .default = NA_real_)),
+    d_prime = as.double(purrr::pluck(json_list, "d_prime", .default = NA_real_))
   )
 
   # Drop rows if all columns except species_name are NA
@@ -110,31 +108,31 @@ json_list_to_ld_tbl <- function(species_name, json_list) {
 #' @examples
 #' # Retrieve variants in LD by a window size of 1kb:
 #' # 1kb: 500 bp upstream and 500 bp downstream of variant.
-#' get_ld_variants_by_window('rs123', genomic_window_size = 1L)
+#' get_ld_variants_by_window("rs123", genomic_window_size = 1L)
 #'
 #' # Retrieve LD measures for pairs of variants:
 #' get_ld_variants_by_pair(
-#'   variant_id1 = c('rs123', 'rs35439278'),
-#'   variant_id2 = c('rs122', 'rs35174522')
+#'   variant_id1 = c("rs123", "rs35439278"),
+#'   variant_id2 = c("rs122", "rs35174522")
 #' )
 #'
 #' # Retrieve variants in LD within a genomic range
-#' get_ld_variants_by_range('7:100000..100500')
+#' get_ld_variants_by_range("7:100000..100500")
 #'
 #' # Retrieve all pair combinations of variants in LD
-#' get_ld_variants_by_pair_combn(c('rs6978506', 'rs12718102', 'rs13307200'))
+#' get_ld_variants_by_pair_combn(c("rs6978506", "rs12718102", "rs13307200"))
 #'
 #' @export
 #' @rdname get_ld_variants_by_window
 get_ld_variants_by_window <- function(variant_id,
-                                   genomic_window_size = 500L,
-                                   species_name = 'homo_sapiens',
-                                   population = '1000GENOMES:phase_3:CEU',
-                                   d_prime = 0.0,
-                                   r_squared = 0.05,
-                                   verbose = FALSE,
-                                   warnings = TRUE,
-                                   progress_bar = TRUE) {
+                                      genomic_window_size = 500L,
+                                      species_name = "homo_sapiens",
+                                      population = "1000GENOMES:phase_3:CEU",
+                                      d_prime = 0.0,
+                                      r_squared = 0.05,
+                                      verbose = FALSE,
+                                      warnings = TRUE,
+                                      progress_bar = TRUE) {
   # Assert variant_id argument.
   assert_variant_id(variant_id)
   # Assert genomic_window_size argument.
@@ -155,48 +153,54 @@ get_ld_variants_by_window <- function(variant_id,
   assertthat::assert_that(assertthat::is.flag(progress_bar))
 
   error_msg <- glue::glue(
-    'All arguments must have consistent lengths, ',
-    'only values of length one are recycled:\n',
-    '* Length of `variant_id`: {length(variant_id)}\n',
-    '* Length of `genomic_window_size`: {length(genomic_window_size)}\n',
-    '* Length of `species_name`: {length(species_name)}\n',
-    '* Length of `population`: {length(population)}\n',
-    '* Length of `d_prime`: {length(d_prime)}\n',
-    '* Length of `r_squared`: {length(r_squared)}'
+    "All arguments must have consistent lengths, ",
+    "only values of length one are recycled:\n",
+    "* Length of `variant_id`: {length(variant_id)}\n",
+    "* Length of `genomic_window_size`: {length(genomic_window_size)}\n",
+    "* Length of `species_name`: {length(species_name)}\n",
+    "* Length of `population`: {length(population)}\n",
+    "* Length of `d_prime`: {length(d_prime)}\n",
+    "* Length of `r_squared`: {length(r_squared)}"
   )
-  if (!are_vec_recyclable(variant_id,
-                     genomic_window_size,
-                     species_name,
-                     population,
-                     d_prime,
-                     r_squared))
+  if (!are_vec_recyclable(
+    variant_id,
+    genomic_window_size,
+    species_name,
+    population,
+    d_prime,
+    r_squared
+  )) {
     rlang::abort(error_msg)
+  }
 
-  recycled_args <- vctrs::vec_recycle_common(variant_id,
-                            genomic_window_size,
-                            species_name,
-                            population,
-                            d_prime,
-                            r_squared)
+  recycled_args <- vctrs::vec_recycle_common(
+    variant_id,
+    genomic_window_size,
+    species_name,
+    population,
+    d_prime,
+    r_squared
+  )
   # The order of names here should be same as passed to
   # vctrs::vec_recycle_common()
   names(recycled_args) <- c(
-    'variant_id',
-    'genomic_window_size',
-    'species_name',
-    'population',
-    'd_prime',
-    'r_squared')
+    "variant_id",
+    "genomic_window_size",
+    "species_name",
+    "population",
+    "d_prime",
+    "r_squared"
+  )
 
   resource_urls <- glue::glue(
-    '/ld/',
-    '{recycled_args$species_name}/',
-    '{recycled_args$variant_id}/',
-    '{recycled_args$population}?',
-    'window_size={recycled_args$genomic_window_size};',
-    'd_prime={recycled_args$d_prime};',
-    'r2={recycled_args$r_squared}'
-    )
+    "/ld/",
+    "{recycled_args$species_name}/",
+    "{recycled_args$variant_id}/",
+    "{recycled_args$population}?",
+    "window_size={recycled_args$genomic_window_size};",
+    "d_prime={recycled_args$d_prime};",
+    "r2={recycled_args$r_squared}"
+  )
 
   # Usually we'd use purrr::map here but we opted for plyr::llply
   # for a no frills alternative with progress bar support.
@@ -217,11 +221,13 @@ get_ld_variants_by_window <- function(variant_id,
     )
 
   # Only keep those responses that responded successfully, i.e. with status == "OK".
-  responses_ok <- purrr::keep(responses, ~ identical(.x$status, 'OK'))
+  responses_ok <- purrr::keep(responses, ~ identical(.x$status, "OK"))
 
   # If none of the responses were successful then return an empty linkage
   # disequilibrium tibble.
-  if (rlang::is_empty(responses_ok)) return(ld_tbl())
+  if (rlang::is_empty(responses_ok)) {
+    return(ld_tbl())
+  }
 
   return(
     purrr::imap_dfr(
@@ -232,21 +238,19 @@ get_ld_variants_by_window <- function(variant_id,
       )
     )
   )
-
 }
 
 #' @export
 #' @rdname get_ld_variants_by_window
 get_ld_variants_by_pair <- function(variant_id1,
-                                 variant_id2,
-                                 species_name = 'homo_sapiens',
-                                 population = '1000GENOMES:phase_3:CEU',
-                                 d_prime = 0.0,
-                                 r_squared = 0.05,
-                                 verbose = FALSE,
-                                 warnings = TRUE,
-                                 progress_bar = TRUE) {
-
+                                    variant_id2,
+                                    species_name = "homo_sapiens",
+                                    population = "1000GENOMES:phase_3:CEU",
+                                    d_prime = 0.0,
+                                    r_squared = 0.05,
+                                    verbose = FALSE,
+                                    warnings = TRUE,
+                                    progress_bar = TRUE) {
   # Assert variant_id1 argument.
   assert_variant_id(variant_id1)
   # Assert variant_id2 argument.
@@ -267,49 +271,55 @@ get_ld_variants_by_pair <- function(variant_id1,
   assertthat::assert_that(assertthat::is.flag(progress_bar))
 
   error_msg <- glue::glue(
-    'All arguments must have consistent lengths, ',
-    'only values of length one are recycled:\n',
-    '* Length of `variant_id1`: {length(variant_id1)}\n',
-    '* Length of `variant_id2`: {length(variant_id2)}\n',
-    '* Length of `species_name`: {length(species_name)}\n',
-    '* Length of `population`: {length(population)}\n',
-    '* Length of `d_prime`: {length(d_prime)}\n',
-    '* Length of `r_squared`: {length(r_squared)}'
+    "All arguments must have consistent lengths, ",
+    "only values of length one are recycled:\n",
+    "* Length of `variant_id1`: {length(variant_id1)}\n",
+    "* Length of `variant_id2`: {length(variant_id2)}\n",
+    "* Length of `species_name`: {length(species_name)}\n",
+    "* Length of `population`: {length(population)}\n",
+    "* Length of `d_prime`: {length(d_prime)}\n",
+    "* Length of `r_squared`: {length(r_squared)}"
   )
-  if (!are_vec_recyclable(variant_id1,
-                          variant_id2,
-                          species_name,
-                          population,
-                          d_prime,
-                          r_squared))
+  if (!are_vec_recyclable(
+    variant_id1,
+    variant_id2,
+    species_name,
+    population,
+    d_prime,
+    r_squared
+  )) {
     rlang::abort(error_msg)
+  }
 
-  recycled_args <- vctrs::vec_recycle_common(variant_id1,
-                                             variant_id2,
-                                             species_name,
-                                             population,
-                                             d_prime,
-                                             r_squared)
+  recycled_args <- vctrs::vec_recycle_common(
+    variant_id1,
+    variant_id2,
+    species_name,
+    population,
+    d_prime,
+    r_squared
+  )
 
   # The order of names here should be same as passed to
   # vctrs::vec_recycle_common()
   names(recycled_args) <- c(
-    'variant_id1',
-    'variant_id2',
-    'species_name',
-    'population',
-    'd_prime',
-    'r_squared')
+    "variant_id1",
+    "variant_id2",
+    "species_name",
+    "population",
+    "d_prime",
+    "r_squared"
+  )
 
   resource_urls <- glue::glue(
-    '/ld/',
-    '{recycled_args$species_name}/',
-    'pairwise/',
-    '{recycled_args$variant_id1}/',
-    '{recycled_args$variant_id2}?',
-    'population_name={recycled_args$population};',
-    'd_prime={recycled_args$d_prime};',
-    'r2={recycled_args$r_squared}'
+    "/ld/",
+    "{recycled_args$species_name}/",
+    "pairwise/",
+    "{recycled_args$variant_id1}/",
+    "{recycled_args$variant_id2}?",
+    "population_name={recycled_args$population};",
+    "d_prime={recycled_args$d_prime};",
+    "r2={recycled_args$r_squared}"
   )
 
   # Usually we'd use purrr::map here but we opted for plyr::llply
@@ -330,11 +340,13 @@ get_ld_variants_by_pair <- function(variant_id1,
     )
 
   # Only keep those responses that responded successfully, i.e. with status == "OK".
-  responses_ok <- purrr::keep(responses, ~ identical(.x$status, 'OK'))
+  responses_ok <- purrr::keep(responses, ~ identical(.x$status, "OK"))
 
   # If none of the responses were successful then return an empty linkage
   # disequilibrium tibble.
-  if (rlang::is_empty(responses_ok)) return(ld_tbl())
+  if (rlang::is_empty(responses_ok)) {
+    return(ld_tbl())
+  }
 
   return(
     purrr::imap_dfr(
@@ -345,19 +357,18 @@ get_ld_variants_by_pair <- function(variant_id1,
       )
     )
   )
-
 }
 
 #' @export
 #' @rdname get_ld_variants_by_window
 get_ld_variants_by_range <- function(genomic_range,
-                                  species_name = 'homo_sapiens',
-                                  population = '1000GENOMES:phase_3:CEU',
-                                  d_prime = 0.0,
-                                  r_squared = 0.05,
-                                  verbose = FALSE,
-                                  warnings = TRUE,
-                                  progress_bar = TRUE) {
+                                     species_name = "homo_sapiens",
+                                     population = "1000GENOMES:phase_3:CEU",
+                                     d_prime = 0.0,
+                                     r_squared = 0.05,
+                                     verbose = FALSE,
+                                     warnings = TRUE,
+                                     progress_bar = TRUE) {
   # Assert genomic_range argument.
   assert_genomic_range(genomic_range)
   # Assert species_name argument.
@@ -376,44 +387,50 @@ get_ld_variants_by_range <- function(genomic_range,
   assertthat::assert_that(assertthat::is.flag(progress_bar))
 
   error_msg <- glue::glue(
-    'All arguments must have consistent lengths, ',
-    'only values of length one are recycled:\n',
-    '* Length of `genomic_range`: {length(genomic_range)}\n',
-    '* Length of `species_name`: {length(species_name)}\n',
-    '* Length of `population`: {length(population)}\n',
-    '* Length of `d_prime`: {length(d_prime)}\n',
-    '* Length of `r_squared`: {length(r_squared)}'
+    "All arguments must have consistent lengths, ",
+    "only values of length one are recycled:\n",
+    "* Length of `genomic_range`: {length(genomic_range)}\n",
+    "* Length of `species_name`: {length(species_name)}\n",
+    "* Length of `population`: {length(population)}\n",
+    "* Length of `d_prime`: {length(d_prime)}\n",
+    "* Length of `r_squared`: {length(r_squared)}"
   )
-  if (!are_vec_recyclable(genomic_range,
-                          species_name,
-                          population,
-                          d_prime,
-                          r_squared))
+  if (!are_vec_recyclable(
+    genomic_range,
+    species_name,
+    population,
+    d_prime,
+    r_squared
+  )) {
     rlang::abort(error_msg)
+  }
 
-  recycled_args <- vctrs::vec_recycle_common(genomic_range,
-                                             species_name,
-                                             population,
-                                             d_prime,
-                                             r_squared)
+  recycled_args <- vctrs::vec_recycle_common(
+    genomic_range,
+    species_name,
+    population,
+    d_prime,
+    r_squared
+  )
 
   # The order of names here should be same as passed to
   # vctrs::vec_recycle_common()
   names(recycled_args) <- c(
-    'genomic_range',
-    'species_name',
-    'population',
-    'd_prime',
-    'r_squared')
+    "genomic_range",
+    "species_name",
+    "population",
+    "d_prime",
+    "r_squared"
+  )
 
   resource_urls <- glue::glue(
-    '/ld/',
-    '{recycled_args$species_name}/',
-    'region/',
-    '{recycled_args$genomic_range}/',
-    '{recycled_args$population}?',
-    'd_prime={recycled_args$d_prime};',
-    'r2={recycled_args$r_squared}'
+    "/ld/",
+    "{recycled_args$species_name}/",
+    "region/",
+    "{recycled_args$genomic_range}/",
+    "{recycled_args$population}?",
+    "d_prime={recycled_args$d_prime};",
+    "r2={recycled_args$r_squared}"
   )
 
   # Usually we'd use purrr::map here but we opted for plyr::llply
@@ -434,11 +451,13 @@ get_ld_variants_by_range <- function(genomic_range,
     )
 
   # Only keep those responses that responded successfully, i.e. with status == "OK".
-  responses_ok <- purrr::keep(responses, ~ identical(.x$status, 'OK'))
+  responses_ok <- purrr::keep(responses, ~ identical(.x$status, "OK"))
 
   # If none of the responses were successful then return an empty linkage
   # disequilibrium tibble.
-  if (rlang::is_empty(responses_ok)) return(ld_tbl())
+  if (rlang::is_empty(responses_ok)) {
+    return(ld_tbl())
+  }
 
   return(
     purrr::imap_dfr(
@@ -449,20 +468,18 @@ get_ld_variants_by_range <- function(genomic_range,
       )
     )
   )
-
 }
 
 #' @export
 #' @rdname get_ld_variants_by_window
 get_ld_variants_by_pair_combn <- function(variant_id,
-                                    species_name = 'homo_sapiens',
-                                    population = '1000GENOMES:phase_3:CEU',
-                                    d_prime = 0.0,
-                                    r_squared = 0.05,
-                                    verbose = FALSE,
-                                    warnings = TRUE,
-                                    progress_bar = TRUE) {
-
+                                          species_name = "homo_sapiens",
+                                          population = "1000GENOMES:phase_3:CEU",
+                                          d_prime = 0.0,
+                                          r_squared = 0.05,
+                                          verbose = FALSE,
+                                          warnings = TRUE,
+                                          progress_bar = TRUE) {
   # Assert species_name is scalar
   # (defer more specific assertions to get_ld_variants_by_pair())
   assertthat::assert_that(assertthat::is.scalar(species_name))

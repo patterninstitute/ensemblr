@@ -17,74 +17,96 @@
 #'
 #' @export
 genomic_range <- function(chr, start, end, starting_position_index = 1L) {
-
-  if (!(identical(starting_position_index, 0L) || identical(starting_position_index, 1L)))
+  if (!(identical(starting_position_index, 0L) || identical(starting_position_index, 1L))) {
     stop("starting_position_index must be either 0L or 1L.")
+  }
 
-  if (!is.character(chr))
+  if (!is.character(chr)) {
     stop("chr needs to a character vector.")
+  }
 
-  if (identical(length(chr), 0L))
+  if (identical(length(chr), 0L)) {
     stop("chr is empty, must have at least one chromosome name.")
+  }
 
-  if (!is.integer(start))
+  if (!is.integer(start)) {
     stop("start needs to an integer vector.")
+  }
 
-  if (identical(length(start), 0L))
+  if (identical(length(start), 0L)) {
     stop("start is empty, must have at least one start position.")
+  }
 
-  if (!is.integer(end))
+  if (!is.integer(end)) {
     stop("end needs to an integer vector.")
+  }
 
-  if (identical(length(end), 0L))
+  if (identical(length(end), 0L)) {
     stop("end is empty, must have at least one end position.")
+  }
 
   n_chr <- length(chr)
   n_start <- length(start)
   n_end <- length(end)
-  if (!(identical(n_start, n_end) && identical(n_start, n_chr))) # identical(n_end, n_chr) == TRUE follows.
-    stop("chr, start and end vectors should be of same length: ",
-         "len(chr) = ", n_chr, ", ",
-         "len(start) = ", n_start, ", and ",
-         "len(end) = ", n_end, ".")
+  if (!(identical(n_start, n_end) && identical(n_start, n_chr))) { # identical(n_end, n_chr) == TRUE follows.
+    stop(
+      "chr, start and end vectors should be of same length: ",
+      "len(chr) = ", n_chr, ", ",
+      "len(start) = ", n_start, ", and ",
+      "len(end) = ", n_end, "."
+    )
+  }
 
   is_start_below_starting_pos <- start < starting_position_index
-  if (any(is_start_below_starting_pos))
-    stop("All start positions must be greater than ", starting_position_index, ", these are not: ",
-         concatenate::cc_and(start[is_start_below_starting_pos], oxford = TRUE), ".")
+  if (any(is_start_below_starting_pos)) {
+    stop(
+      "All start positions must be greater than ", starting_position_index, ", these are not: ",
+      concatenate::cc_and(start[is_start_below_starting_pos], oxford = TRUE), "."
+    )
+  }
 
   is_end_below_starting_pos <- end < starting_position_index
-  if (any(is_end_below_starting_pos))
-    stop("All end positions must be greater than ", starting_position_index, ", these are not: ",
-         concatenate::cc_and(end[is_end_below_starting_pos], oxford = TRUE), ".")
+  if (any(is_end_below_starting_pos)) {
+    stop(
+      "All end positions must be greater than ", starting_position_index, ", these are not: ",
+      concatenate::cc_and(end[is_end_below_starting_pos], oxford = TRUE), "."
+    )
+  }
 
   # Generate genomic ranges strings.
   gen_ranges <- sprintf("%s:%d..%d", chr, start, end)
 
   # When is start greater than end? (should not happen.)
   start_gr_end <- start > end
-  if (any(start_gr_end))
-    stop("start positions cannot be larger than end positions: ",
-         concatenate::cc_and(gen_ranges[start_gr_end], oxford = TRUE), ".")
+  if (any(start_gr_end)) {
+    stop(
+      "start positions cannot be larger than end positions: ",
+      concatenate::cc_and(gen_ranges[start_gr_end], oxford = TRUE), "."
+    )
+  }
 
   # Check that all genomic ranges' strings conform to criteria of is_genomic_range.
   is_gen_ranges <- is_genomic_range(gen_ranges)
-  if (!all(is_gen_ranges))
-    stop("The following are not well-formed genomic ranges: ",
-         concatenate::cc_and(gen_ranges[!is_gen_ranges], oxford = TRUE), ".")
+  if (!all(is_gen_ranges)) {
+    stop(
+      "The following are not well-formed genomic ranges: ",
+      concatenate::cc_and(gen_ranges[!is_gen_ranges], oxford = TRUE), "."
+    )
+  }
 
   return(gen_ranges)
-
 }
 
-is_genomic_range <- function(genomic_range)
-  stringr::str_detect(genomic_range, '\\w+:\\d+\\.\\.\\d+')
+is_genomic_range <- function(genomic_range) {
+  stringr::str_detect(genomic_range, "\\w+:\\d+\\.\\.\\d+")
+}
 
 split_genomic_range <- function(genomic_range) {
+  split_coordinates <- stringr::str_match(
+    genomic_range,
+    "^(\\w+):(\\d+)\\.\\.(\\d+)$"
+  )[, -1, drop = FALSE]
 
-  split_coordinates <- stringr::str_match(genomic_range,
-                                          '^(\\w+):(\\d+)\\.\\.(\\d+)$')[, -1, drop = FALSE]
-
-  colnames(split_coordinates) <- c('chromosome', 'start', 'end')
+  colnames(split_coordinates) <- c("chromosome", "start", "end")
   return(split_coordinates)
 }

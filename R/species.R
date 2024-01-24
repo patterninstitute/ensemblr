@@ -1,17 +1,16 @@
 species_tbl <- function(
-  division = character(),
-  taxon_id = integer(),
-  species_name = character(),
-  species_display_name = character(),
-  species_common_name = character(),
-  release = integer(),
-  genome_assembly_name = character(),
-  genbank_assembly_accession = character(),
-  strain = character(),
-  strain_collection = character(),
-  species_aliases = list(),
-  groups = list()
-) {
+    division = character(),
+    taxon_id = integer(),
+    species_name = character(),
+    species_display_name = character(),
+    species_common_name = character(),
+    release = integer(),
+    genome_assembly_name = character(),
+    genbank_assembly_accession = character(),
+    strain = character(),
+    strain_collection = character(),
+    species_aliases = list(),
+    groups = list()) {
   tbl <- tibble::tibble(
     division = division,
     taxon_id = taxon_id,
@@ -30,20 +29,19 @@ species_tbl <- function(
 }
 
 json_list_to_species_tbl <- function(json_list) {
-
   tbl <- species_tbl(
-    division = purrr::pluck(json_list, 'division', .default = NA_character_),
-    taxon_id = as.integer(purrr::pluck(json_list, 'taxon_id', .default = NA_integer_)),
-    species_name = purrr::pluck(json_list, 'name', .default = NA_character_),
-    species_display_name = purrr::pluck(json_list, 'display_name', .default = NA_character_),
-    species_common_name = purrr::pluck(json_list, 'common_name', .default = NA_character_),
-    release = as.integer(purrr::pluck(json_list, 'release', .default = NA_integer_)),
-    genome_assembly_name = purrr::pluck(json_list, 'assembly', .default = NA_character_),
-    genbank_assembly_accession = purrr::pluck(json_list, 'accession', .default = NA_character_),
-    strain = purrr::pluck(json_list, 'strain', .default = NA_character_),
-    strain_collection = purrr::pluck(json_list, 'strain_collection', .default = NA_character_),
-    species_aliases = purrr::pluck(json_list, 'aliases', .default = list(character())),
-    groups = purrr::pluck(json_list, 'groups', .default = list(character()))
+    division = purrr::pluck(json_list, "division", .default = NA_character_),
+    taxon_id = as.integer(purrr::pluck(json_list, "taxon_id", .default = NA_integer_)),
+    species_name = purrr::pluck(json_list, "name", .default = NA_character_),
+    species_display_name = purrr::pluck(json_list, "display_name", .default = NA_character_),
+    species_common_name = purrr::pluck(json_list, "common_name", .default = NA_character_),
+    release = as.integer(purrr::pluck(json_list, "release", .default = NA_integer_)),
+    genome_assembly_name = purrr::pluck(json_list, "assembly", .default = NA_character_),
+    genbank_assembly_accession = purrr::pluck(json_list, "accession", .default = NA_character_),
+    strain = purrr::pluck(json_list, "strain", .default = NA_character_),
+    strain_collection = purrr::pluck(json_list, "strain_collection", .default = NA_character_),
+    species_aliases = purrr::pluck(json_list, "aliases", .default = list(character())),
+    groups = purrr::pluck(json_list, "groups", .default = list(character()))
   )
 
   # Sort species by division and species_name
@@ -98,7 +96,6 @@ get_species <- function(division = get_divisions(),
                         verbose = FALSE,
                         warnings = TRUE,
                         progress_bar = TRUE) {
-
   # Assert division argument.
   assert_division(division)
   # Assert verbose argument.
@@ -109,9 +106,9 @@ get_species <- function(division = get_divisions(),
   # e() is a short alias for function urltools::url_encode()
   e <- urltools::url_encode
   resource_urls <- glue::glue(
-    '/info/species?',
-    'hide_strain_info=0;', # We do not hide strain information
-    'division={e(division)}'
+    "/info/species?",
+    "hide_strain_info=0;", # We do not hide strain information
+    "division={e(division)}"
   )
 
   responses <-
@@ -123,11 +120,13 @@ get_species <- function(division = get_divisions(),
     )
 
   # Only keep those responses that responded successfully, i.e. with status == "OK".
-  responses_ok <- purrr::keep(responses, ~ identical(.x$status, 'OK'))
+  responses_ok <- purrr::keep(responses, ~ identical(.x$status, "OK"))
 
   # If none of the responses were successful then return an empty linkage
   # disequilibrium tibble.
-  if (rlang::is_empty(responses_ok)) return(species_tbl())
+  if (rlang::is_empty(responses_ok)) {
+    return(species_tbl())
+  }
 
   return(
     purrr::map_dfr(
@@ -136,4 +135,3 @@ get_species <- function(division = get_divisions(),
     )
   )
 }
-
