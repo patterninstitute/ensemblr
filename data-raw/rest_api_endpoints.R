@@ -25,7 +25,7 @@ library(usethis)
 library(readr)
 
 # URL of the page of interest.
-url <- 'https://rest.ensembl.org/'
+url <- "https://rest.ensembl.org/"
 
 # Get the html code for Ensembl REST API landing page
 # and create an XML document object.
@@ -35,7 +35,7 @@ html <- xml2::read_html(url)
 # corresponding to the table. The path string
 # '/html/body/div/table' was found by manually
 # inspection with a browser.
-nodeset <- rvest::html_nodes(x = html, xpath = '/html/body/div/table')
+nodeset <- rvest::html_nodes(x = html, xpath = "/html/body/div/table")
 
 # Parse the html table and convert it to a data frame.
 my_table <- rvest::html_table(nodeset)[[1]]
@@ -50,14 +50,14 @@ my_table <- rvest::html_table(nodeset)[[1]]
 # https://stackoverflow.com/questions/38511743/adding-missing-grouping-variables-message-in-dplyr-in-r
 my_table %>%
   dplyr::rename(endpoint = X1, description = X2) %>%
-  dplyr::mutate(section_id = dplyr::lead(cumsum(endpoint == 'Resource'))) %>%
+  dplyr::mutate(section_id = dplyr::lead(cumsum(endpoint == "Resource"))) %>%
   tidyr::fill(section_id) %>%
   dplyr::group_by(section_id) %>%
   dplyr::mutate(section = dplyr::first(endpoint)) %>%
   dplyr::group_by(section_id) %>%
   dplyr::slice(-(1:2)) %>%
   dplyr::ungroup() %>%
-  dplyr::select('section', 'endpoint', 'description') %>%
+  dplyr::select("section", "endpoint", "description") %>%
   dplyr::mutate(last_update_date = lubridate::date()) %>%
   dplyr::arrange(section) -> rest_api_endpoints
 
