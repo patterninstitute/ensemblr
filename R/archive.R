@@ -1,14 +1,13 @@
 id_tbl <- function(
-  id = character(),
-  id_latest = character(),
-  type = character(),
-  id_version = integer(),
-  release = integer(),
-  is_current = logical(),
-  genome_assembly_name = character(),
-  peptide = character(),
-  possible_replacement = list()
-) {
+    id = character(),
+    id_latest = character(),
+    type = character(),
+    id_version = integer(),
+    release = integer(),
+    is_current = logical(),
+    genome_assembly_name = character(),
+    peptide = character(),
+    possible_replacement = list()) {
   tbl <- tibble::tibble(
     id = id,
     id_latest = id_latest,
@@ -25,17 +24,16 @@ id_tbl <- function(
 }
 
 json_list_to_id_tbl <- function(json_list) {
-
   tbl <- id_tbl(
-    id = purrr::pluck(json_list, 'id', .default = NA_character_),
-    id_latest = purrr::pluck(json_list, 'latest', .default = NA_character_),
-    type = purrr::pluck(json_list, 'type', .default = NA_character_),
-    id_version = as.integer(purrr::pluck(json_list, 'version', .default = NA_integer_)),
-    release = as.integer(purrr::pluck(json_list, 'release', .default = NA_integer_)),
-    is_current = purrr::pluck(json_list, 'is_current', .default = NA) == '1',
-    genome_assembly_name = purrr::pluck(json_list, 'assembly', .default = NA_character_),
-    peptide = purrr::pluck(json_list, 'peptide', .default = NA_character_),
-    possible_replacement = purrr::pluck(json_list, 'possible_replacement', .default = list(character()))
+    id = purrr::pluck(json_list, "id", .default = NA_character_),
+    id_latest = purrr::pluck(json_list, "latest", .default = NA_character_),
+    type = purrr::pluck(json_list, "type", .default = NA_character_),
+    id_version = as.integer(purrr::pluck(json_list, "version", .default = NA_integer_)),
+    release = as.integer(purrr::pluck(json_list, "release", .default = NA_integer_)),
+    is_current = purrr::pluck(json_list, "is_current", .default = NA) == "1",
+    genome_assembly_name = purrr::pluck(json_list, "assembly", .default = NA_character_),
+    peptide = purrr::pluck(json_list, "peptide", .default = NA_character_),
+    possible_replacement = purrr::pluck(json_list, "possible_replacement", .default = list(character()))
   )
 
   return(tbl)
@@ -73,15 +71,13 @@ json_list_to_id_tbl <- function(json_list) {
 #' }
 #'
 #' @examples
-#' get_id(c('ENSDARE00000830915', 'ENSG00000248378', 'ENSDART00000033574', 'ENSP00000000233'))
+#' get_id(c("ENSDARE00000830915", "ENSG00000248378", "ENSDART00000033574", "ENSP00000000233"))
 #'
 #' @export
 get_id <- function(id,
                    verbose = FALSE,
                    warnings = TRUE,
                    progress_bar = TRUE) {
-
-
   # Assert verbose argument.
   assertthat::assert_that(assertthat::is.flag(verbose))
   # Assert warnings argument.
@@ -93,8 +89,8 @@ get_id <- function(id,
   e <- urltools::url_encode
 
   resource_urls <- glue::glue(
-    '/archive/id/',
-    '{e(id)}?'
+    "/archive/id/",
+    "{e(id)}?"
   )
 
   # Usually we'd use purrr::map here but we opted for plyr::llply
@@ -115,11 +111,13 @@ get_id <- function(id,
     )
 
   # Only keep those responses that responded successfully, i.e. with status == "OK".
-  responses_ok <- purrr::keep(responses, ~ identical(.x$status, 'OK'))
+  responses_ok <- purrr::keep(responses, ~ identical(.x$status, "OK"))
 
   # If none of the responses were successful then return an empty linkage
   # disequilibrium tibble.
-  if (rlang::is_empty(responses_ok)) return(id_tbl())
+  if (rlang::is_empty(responses_ok)) {
+    return(id_tbl())
+  }
 
   return(
     purrr::imap_dfr(
