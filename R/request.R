@@ -29,13 +29,17 @@ user_agent_id <- function()
 #' @keywords internal
 warn_when_request_errored <- function(response) {
 
-  code <- httr::status_code(response)
+  ## code <- httr::status_code(response)
+  code <- response |> 
+    httr2::resp_status()
   # If status code is 200 (sucessful) then there is nothing to be done in this
   # function.
-  if (identical(code, 200L)) return('OK')
+  if (identical(code, 200L)) return('OK') # Until here everything seem to be OK.
 
+  #------------------- I HAVE TO CHECK WELL THIS ERROR HANDLING --------------#
   url <- response$url
-  type <- httr::http_type(response)
+  type <-  response |> 
+    httr2::resp_content_type()
   content <- httr::content(response, "text", encoding = 'UTF-8')
 
   if (identical(type, "application/json")) {
@@ -56,7 +60,8 @@ warn_when_request_errored <- function(response) {
     }
     # TODO: handle 400 error, e.g. resource_url = '/info/variation/populations/homo_sapiens/little humans'
   }
-
+  #------------------- I HAVE TO CHECK WELL THIS ERROR HANDLING --------------#
+  
   wrn_msg <- glue::glue(
     '\n\n',
     '* Status code:    {code}\n',
@@ -99,9 +104,20 @@ request <- function(resource_url, base_url = ensembl_server(),
   if (verbose) message(glue::glue("Requesting resource: {url}."))
 
   if (verbose) message(glue::glue("Using the user agent: {user_agent_id()$options$useragent}."))
-  response <- httr::GET(url, user_agent_id())
+  # Start switching to httr2
+  # Creating a 'request', I opted directly for `json` content from the response instead of text!
+  req <- httr2::request(base_url = url) |>
+    httr2::req_headers(
+      Accept = "application/json" # To avoid <Unexpected content type "text/html">
+    ) 
+  ## response <- httr::GET(url, user_agent_id()) 
+  response <- req |> 
+    httr2::req_user_agent("ensemblr: R Client for the Ensembl REST API") |>
+    httr2::req_perform() 
 
-  response_code <- httr::status_code(response)
+  ## response_code <- httr::status_code(response)
+  response_code <- response |>
+    httr2::resp_status()
   if (verbose) message(glue::glue("Response code: {response_code}."))
 
   # Response object (a list of four elements):
@@ -125,7 +141,9 @@ request <- function(resource_url, base_url = ensembl_server(),
   } else {# Else response code is 200 and we move on to JSON parsing.
 
     # Check if the content type of the response is JSON.
-    content_type <- httr::http_type(response)
+    ## content_type <- httr::http_type(response)
+    content_type <- response |> 
+      httr2::resp_content_type()
     if (verbose) message(glue::glue("Response content type: {content_type}."))
 
     if (!identical(content_type, "application/json")) {
@@ -138,9 +156,12 @@ request <- function(resource_url, base_url = ensembl_server(),
     }
 
     # Parse JSON content
-    content <- jsonlite::fromJSON(httr::content(response, "text", encoding = 'UTF-8'), flatten = FALSE)
-
-    obj$status <- "OK"
+    ## content <- jsonlite::fromJSON(httr::content(response, "text", encoding = 'UTF-8'), flatten = FALSE)
+    content <- response |> 
+      httr2::resp_body_json() |> 
+      data.frame() # should we keep `data.frame` as it was before???
+    
+    obj$status <- "OK" # Shouldn't we take the actual value provided by the response???
     obj$content <- content
     return(obj)
   }
