@@ -29,7 +29,7 @@ user_agent_id <- function()
 #' @keywords internal
 warn_when_request_errored <- function(response) {
 
-  ## code <- httr::status_code(response)
+  ## code <- httr::status_code(response) #TO BE DEPRECATED/REMOVED
   code <- response |> 
     httr2::resp_status()
   # If status code is 200 (sucessful) then there is nothing to be done in this
@@ -110,14 +110,14 @@ request <- function(resource_url, base_url = ensembl_server(),
     httr2::req_headers(
       Accept = "application/json" # To avoid <Unexpected content type "text/html">
     ) 
-  ## response <- httr::GET(url, user_agent_id()) 
+  ## response <- httr::GET(url, user_agent_id())  #TO BE DEPRECATED/REMOVED
   response <- req |> 
     httr2::req_user_agent("ensemblr: R Client for the Ensembl REST API") |>
     httr2::req_perform() 
 
-  ## response_code <- httr::status_code(response)
+  ## response_code <- httr::status_code(response) #TO BE DEPRECATED/REMOVED
   response_code <- response |>
-    httr2::resp_status()
+    httr2::resp_status() # We can also obtain the response code by simply `response$status_code`
   if (verbose) message(glue::glue("Response code: {response_code}."))
 
   # Response object (a list of four elements):
@@ -141,7 +141,7 @@ request <- function(resource_url, base_url = ensembl_server(),
   } else {# Else response code is 200 and we move on to JSON parsing.
 
     # Check if the content type of the response is JSON.
-    ## content_type <- httr::http_type(response)
+    ## content_type <- httr::http_type(response) #TO BE DEPRECATED/REMOVED
     content_type <- response |> 
       httr2::resp_content_type()
     if (verbose) message(glue::glue("Response content type: {content_type}."))
@@ -156,7 +156,7 @@ request <- function(resource_url, base_url = ensembl_server(),
     }
 
     # Parse JSON content
-    ## content <- jsonlite::fromJSON(httr::content(response, "text", encoding = 'UTF-8'), flatten = FALSE)
+    ## content <- jsonlite::fromJSON(httr::content(response, "text", encoding = 'UTF-8'), flatten = FALSE) #TO BE DEPRECATED/REMOVED
     content <- response |> 
       httr2::resp_body_json() |> 
       data.frame() # should we keep `data.frame` as it was before???
