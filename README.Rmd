@@ -12,7 +12,8 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 ```
-# ensemblr <img src='man/figures/logo.png' align="right" height="138.5" />
+
+# ensemblr <a href="https://www.pattern.institute/ensemblr/"><img src="man/figures/logo.svg" align="right" height="139" alt="ensemblr website" /></a>
 
 [![CRAN status](https://www.r-pkg.org/badges/version/ensemblr)](https://CRAN.R-project.org/package=ensemblr)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
