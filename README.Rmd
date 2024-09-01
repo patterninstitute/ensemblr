@@ -12,22 +12,23 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 ```
-# ensemblr <img src='man/figures/logo.png' align="right" height="138.5" />
+
+# ensemblr <a href="https://www.pattern.institute/ensemblr/"><img src="man/figures/logo.svg" align="right" height="139" alt="ensemblr website" /></a>
 
 [![CRAN status](https://www.r-pkg.org/badges/version/ensemblr)](https://CRAN.R-project.org/package=ensemblr)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
 The goal of `{ensemblr}` is to provide an R client to the [Ensembl REST API](https://rest.ensembl.org/).
 
-Please note that this package is still in its infancy and hence only a small fraction of the resources exposed by the Ensembl REST API are retrievable via `{ensemblr}`. You can check the functionality covered so far in [Ensembl REST API Coverage](https://maialab.org/ensemblr/articles/api_coverage.html).
+Please note that this package is still in its infancy and hence only a small fraction of the resources exposed by the Ensembl REST API are retrievable via `{ensemblr}`. You can check the functionality covered so far in [Ensembl REST API Coverage](https://www.pattern.institute/ensemblr/articles/api_coverage.html).
 
 ## Installation
 
 You can install the current, **very** experimental version of `{ensemblr}` with:
 
 ``` r
-# install.packages("remotes")
-remotes::install_github("ramiromagno/ensemblr")
+# install.packages("pak")
+pak::pak("patterninstitute/ensemblr")
 ```
 
 ## Cheatsheet
@@ -40,7 +41,7 @@ Retrieve human linkage disequilibrium information for variants within a 1 kiloba
 
 ```{r}
 library(ensemblr)
-get_ld_variants_by_window('rs123', genomic_window_size = 1L)
+get_ld_variants_by_window("rs123", genomic_window_size = 1L)
 ```
 
 ## Contributors

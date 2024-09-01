@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# ensemblr <img src='man/figures/logo.png' align="right" height="138.5" />
+# ensemblr <a href="https://www.pattern.institute/ensemblr/"><img src="man/figures/logo.svg" align="right" height="139" alt="ensemblr website" /></a>
 
 [![CRAN
 status](https://www.r-pkg.org/badges/version/ensemblr)](https://CRAN.R-project.org/package=ensemblr)
@@ -14,7 +14,7 @@ Please note that this package is still in its infancy and hence only a
 small fraction of the resources exposed by the Ensembl REST API are
 retrievable via `{ensemblr}`. You can check the functionality covered so
 far in [Ensembl REST API
-Coverage](https://maialab.org/ensemblr/articles/api_coverage.html).
+Coverage](https://www.pattern.institute/ensemblr/articles/api_coverage.html).
 
 ## Installation
 
@@ -22,8 +22,8 @@ You can install the current, **very** experimental version of
 `{ensemblr}` with:
 
 ``` r
-# install.packages("remotes")
-remotes::install_github("ramiromagno/ensemblr")
+# install.packages("pak")
+pak::pak("patterninstitute/ensemblr")
 ```
 
 ## Cheatsheet
@@ -37,16 +37,16 @@ Retrieve human linkage disequilibrium information for variants within a
 
 ``` r
 library(ensemblr)
-get_ld_variants_by_window('rs123', genomic_window_size = 1L)
+get_ld_variants_by_window("rs123", genomic_window_size = 1L)
 #> # A tibble: 6 × 6
 #>   species_name population              variant_id1 variant_id2 r_squared d_prime
 #>   <chr>        <chr>                   <chr>       <chr>           <dbl>   <dbl>
-#> 1 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs114           0.475   0.703
-#> 2 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs10239961      0.255   1.00 
-#> 3 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs122           0.722   1.00 
-#> 4 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs115           0.721   1.00 
-#> 5 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs124           0.722   1.00 
-#> 6 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs12536724      0.255   1.00
+#> 1 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs124           0.722   1.00 
+#> 2 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs122           0.722   1.00 
+#> 3 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs115           0.721   1.00 
+#> 4 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs12536724      0.255   1.00 
+#> 5 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs10239961      0.255   1.00 
+#> 6 homo_sapiens 1000GENOMES:phase_3:CEU rs123       rs114           0.475   0.703
 ```
 
 ## Contributors

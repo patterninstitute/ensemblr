@@ -30,43 +30,49 @@ is_ensembl_reachable <-
 
     # Check whether I am online
     if (is.logical(am_i_online) && !am_i_online) {
-      rlang::inform('It seems you are not online.')
+      rlang::inform("It seems you are not online.")
       return(FALSE)
     } else {
-      if (verbose)
-        rlang::inform('Am I online? Yes.')
+      if (verbose) {
+        rlang::inform("Am I online? Yes.")
+      }
     }
 
     # Check whether there is a DNS service running
     if (is.character(am_i_online) &&
-        identical(am_i_online, "nodns")) {
-      rlang::inform('It seems there is no Domain Name Server (DNS) service running.')
+      identical(am_i_online, "nodns")) {
+      rlang::inform("It seems there is no Domain Name Server (DNS) service running.")
       return(FALSE)
     } else {
-      if (verbose)
-        rlang::inform('Is there a DNS service running? Yes.')
+      if (verbose) {
+        rlang::inform("Is there a DNS service running? Yes.")
+      }
     }
 
     # If we were not caught up in one of the stop()s earlier then we do have a
     # connection to the internet.
-    if (verbose)
-      rlang::inform('Connected to the internet? Yes.')
+    if (verbose) {
+      rlang::inform("Connected to the internet? Yes.")
+    }
 
     domain <- urltools::domain(url)
-    if (verbose)
-      rlang::inform(glue::glue('Ping\'ing {domain} on port {port}...'))
+    if (verbose) {
+      rlang::inform(glue::glue("Ping'ing {domain} on port {port}..."))
+    }
 
     ping_response <-
       pingr::ping_port(domain,
-                       port = port,
-                       count = 1L,
-                       timeout = 2)
+        port = port,
+        count = 1L,
+        timeout = 2
+      )
     if (is.na(ping_response)) {
-      rlang::inform(glue::glue('{domain} is not replying to ping requests on port {port}.'))
+      rlang::inform(glue::glue("{domain} is not replying to ping requests on port {port}."))
       return(FALSE)
     } else {
-      if (verbose)
-        rlang::inform(glue::glue('{domain} successfully replied in {ping_response} ms.'))
+      if (verbose) {
+        rlang::inform(glue::glue("{domain} successfully replied in {ping_response} ms."))
+      }
       return(TRUE)
     }
   }
