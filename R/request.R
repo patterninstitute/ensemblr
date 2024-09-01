@@ -13,8 +13,8 @@ ensembl_server <- function() "https://rest.ensembl.org"
 #'
 #' @return An S3 \code{request} object as defined by the package \code{httr}.
 #' @keywords internal
-user_agent_id <- function() {
-  httr::user_agent("ensemblr: R Client for the Ensembl REST API")
+user_agent <- function() {
+  httr::user_agent("ensemblr (https://www.pattern.institute/ensemblr)")
 }
 
 #' Warn if response errored
@@ -100,7 +100,7 @@ request <- function(resource_url, base_url = ensembl_server(),
   if (verbose) message(glue::glue("Requesting resource: {url}."))
 
   if (verbose) message(glue::glue("Using the user agent: {user_agent_id()$options$useragent}."))
-  response <- httr::GET(url, user_agent_id())
+  response <- httr::GET(url, user_agent())
 
   response_code <- httr::status_code(response)
   if (verbose) message(glue::glue("Response code: {response_code}."))
