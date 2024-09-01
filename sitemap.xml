@@ -1,135 +1,47 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://rmagno.eu/ensemblr/404.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/CODE_OF_CONDUCT.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/articles/api_coverage.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/index.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/reference/are_vec_recyclable.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/reference/code_to_strand.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/reference/ensembl_server.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/reference/ensemblr-package.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/reference/genomic_range.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/reference/get_analyses.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/reference/get_assemblies.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/reference/get_cytogenetic_bands.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/reference/get_data_versions.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/reference/get_divisions.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/reference/get_ensembl_genomes_version.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/reference/get_id.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/reference/get_individuals.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/reference/get_karyotypes.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/reference/get_ld_variants_by_window.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/reference/get_populations.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/reference/get_rest_version.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/reference/get_software_version.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/reference/get_species.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/reference/get_toplevel_sequence_info.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/reference/get_toplevel_sequences.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/reference/get_variant_consequences.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/reference/get_variation_sources.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/reference/get_versioning.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/reference/get_xrefs_by_ensembl_id.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/reference/get_xrefs_by_gene.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/reference/is_ensembl_reachable.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/reference/pairwise_combn.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/reference/pipe.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/reference/request.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/reference/request_parallel.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/reference/rest_api_endpoints.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/reference/strand_to_code.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/reference/user_agent_id.html</loc>
-  </url>
-  <url>
-    <loc>https://rmagno.eu/ensemblr/reference/warn_when_request_errored.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://www.pattern.institute/ensemblr/404.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/CODE_OF_CONDUCT.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/LICENSE-text.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/LICENSE.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/articles/api_coverage.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/articles/index.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/authors.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/index.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/reference/are_vec_recyclable.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/reference/code_to_strand.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/reference/ensembl_server.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/reference/ensemblr-package.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/reference/genomic_range.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/reference/get_analyses.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/reference/get_assemblies.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/reference/get_cytogenetic_bands.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/reference/get_data_versions.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/reference/get_divisions.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/reference/get_ensembl_genomes_version.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/reference/get_id.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/reference/get_individuals.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/reference/get_karyotypes.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/reference/get_ld_variants_by_window.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/reference/get_populations.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/reference/get_rest_version.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/reference/get_software_version.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/reference/get_species.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/reference/get_toplevel_sequence_info.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/reference/get_toplevel_sequences.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/reference/get_variant_consequences.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/reference/get_variation_sources.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/reference/get_versioning.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/reference/get_xrefs_by_ensembl_id.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/reference/get_xrefs_by_gene.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/reference/index.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/reference/is_ensembl_reachable.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/reference/pairwise_combn.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/reference/pipe.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/reference/request.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/reference/request_parallel.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/reference/rest_api_endpoints.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/reference/strand_to_code.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/reference/user_agent_id.html</loc></url>
+<url><loc>https://www.pattern.institute/ensemblr/reference/warn_when_request_errored.html</loc></url>
 </urlset>
+
