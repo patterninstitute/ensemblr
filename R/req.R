@@ -5,14 +5,14 @@ vars_in_braces <- function(x) {
   vars
 }
 
-# Helper functions for http headers
+# Helper functions for http headers (should we keep them in this file?)
 # The reference to which headers parameters were taken:
 # https://github.com/Ensembl/ensembl-rest/wiki/HTTP-Headers
 
 request_headers <-
   function(accept = NULL,
            accept_encoding = NULL,
-           content_type =  "application/json",
+           content_type =  "application/json", # as default
            origin = NULL) {
     .headers <- list(
       accept = accept,
@@ -30,7 +30,7 @@ request_headers <-
 response_headers <-
   function(access_control_allow_origin = "*",
            content_length = NULL,
-           content_type = "text/x-fasta",
+           content_type = "application/json",
            retry_after = NULL,
            x_runtime = NULL,
            x_rate_limit_limit = NULL,
@@ -101,6 +101,8 @@ req <-
     if (!is.null(.body)) {
       req <- httr2::req_body_raw(req, body = .body, type = .headers$content_type)
     }
+    #add `query_params` object, to give the user the possibility which one they used
+    req$query_params <- opt_params
 
     req
   }
