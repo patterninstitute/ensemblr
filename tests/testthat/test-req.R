@@ -70,13 +70,11 @@ test_that("req function does not set body when .body is NULL", {
   expect_null(test_req$body)
 })
 
-# test for invalid or `NULL` header inputs
-test_that("req function handles invalid headers", {
+test_that("req function handles invalid or null headers", {
   test_req <- req("/path/to/resource", .headers = request_headers())
   expect_false(any(is.null(test_req$headers)))
 })
 
-# Test for edge cases with special characters in parameters
 test_that("req function correctly handles special characters in parameters", {
   test_req <- req("/path", query_param = "special?chars&")
   expect_equal(test_req$query_params, list(query_param = "special?chars&"))
@@ -90,3 +88,32 @@ test_that("req function handles default headers", {
   expect_equal(test_req$headers$Accept, NULL)
   expect_equal(test_req$headers$Origin, NULL)
 })
+
+
+# ------------- GET Request Tests -------------
+
+test_that("GET req sends a valid GET request with valid id", {
+  res <- req("/archive/id/{id}", id = "ENSG00000157764") |>
+    httr2::req_perform()
+
+  expect_s3_class(res, "httr2_response")
+  expect_equal(res$url, "https://rest.ensembl.org/archive/id/ENSG00000157764")
+  expect_equal(res$method, "GET")
+  expect_true("Content-Type" %in% names(res$headers))
+  expect_equal(res$headers$`Content-Type`, "application/json")
+})
+
+test_that("GET req sends correct callback parameter in URL", {
+  res <- req("/archive/id/{id}", id = "ENSG00000157764", callback = "randomlygeneratedname")
+  expect_equal(res$query_params$callback, "randomlygeneratedname")
+  expect_match(res$url, "callback=randomlygeneratedname")
+})
+
+test_that("GET req sets correct headers", {
+  res <- req("/archive/id/{id}", id = "ENSG00000157764")
+  expect_equal(res$headers$`Content-Type`, "application/json")
+})
+
+# ------------- POST Request Tests -------------
+
+## to be done
