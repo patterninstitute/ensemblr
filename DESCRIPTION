@@ -49,7 +49,8 @@ Imports:
     memoise,
     httr2,
     tidyjson,
-    tibblify
+    tibblify,
+    testthat
 Suggests: 
     knitr,
     rmarkdown
