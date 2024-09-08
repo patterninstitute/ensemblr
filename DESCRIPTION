@@ -58,3 +58,4 @@ VignetteBuilder: knitr
 URL: https://github.com/patterninstitute/ensemblr, https://www.pattern.institute/ensemblr/
 BugReports: https://github.com/patterninstitute/ensemblr/issues
 Config/Needs/website: patterninstitute/chic
+Roxygen: list(markdown = TRUE)

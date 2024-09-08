@@ -1,76 +1,30 @@
-vars_in_braces <- function(x) {
-  matches <- stringr::str_extract_all(x, "\\{([^}]+)\\}")
-  vars <- gsub("[{}]", "", unlist(matches))
-
-  vars
-}
-
-# Helper functions for http headers (should we keep them in this file?)
-# The reference to which headers parameters were taken:
-# https://github.com/Ensembl/ensembl-rest/wiki/HTTP-Headers
-
-request_headers <-
-  function(accept = NULL,
-           accept_encoding = NULL,
-           content_type =  "application/json", # as default
-           origin = NULL) {
-    .headers <- list(
-      accept = accept,
-      accept_encoding = accept_encoding,
-      content_type = content_type,
-      origin = origin
-    )
-
-    .headers <-
-      .headers[!sapply(.headers, is.null)] # this will remove NULL entries
-
-    structure(.headers, class = "request_headers")
-  }
-
-response_headers <-
-  function(access_control_allow_origin = "*",
-           content_length = NULL,
-           content_type = "application/json",
-           retry_after = NULL,
-           x_runtime = NULL,
-           x_rate_limit_limit = NULL,
-           x_rate_limit_reset = NULL,
-           x_rate_limit_period = NULL,
-           x_rate_limit_remaining = NULL) {
-
-    ..headers <- list(
-      access_control_allow_origin = access_control_allow_origin,
-      content_length = content_length,
-      content_type = content_type,
-      retry_after = retry_after,
-      x_runtime = x_runtime,
-      x_rate_limit_limit = x_rate_limit_limit,
-      x_rate_limit_reset = x_rate_limit_reset,
-      x_rate_limit_period = x_rate_limit_period,
-      x_rate_limit_remaining = x_rate_limit_remaining
-    )
-
-    ..headers <-
-      ..headers[!sapply(..headers, is.null)]
-
-    structure(..headers, class = "response_headers")
-  }
-
-
 base_url <- function() "https://rest.ensembl.org"
 
 user_agent <- function() "ensemblr (https://www.pattern.institute/ensemblr)"
 
-# Example:
-#
-# req("/cafe/genetree/member/symbol/{species}/{symbol}", species = "homo_sapiens", symbol = "BRCA2") |>
-#   httr2::req_perform() |>
-#   httr2::resp_body_json()
+#' Create a new HTTP request
+#'
+#' [req()] creates an HTTP request object.
+#'
+#' @param res A resource (res) URL as a string. This string supports embedding
+#'   of R variable names in curly braces whose values are looked up in parameter
+#'   names supplied in `...` and interpolated.
+#'
+#' @param ... Name value pairs specifying query components or parameters.
+#'
+#' @param .body A literal string or raw vector to send as body.
+#'
+#' @param .headers An S3 list with class `ensemblr_req_hdr`. Use the helper
+#' [req_headers()] to create such an object.
+#'
+#' @inherit httr2::request return
+#'
+#' @keywords internal
 req <-
   function(res,
            ...,
            .body = NULL,
-           .headers = request_headers()) {
+           .headers = req_headers()) {
 
     # All parameters.
     params <- list(...)
@@ -90,19 +44,12 @@ req <-
       httr2::request(base_url()) |>
       httr2::req_url_path_append(res) |>
       httr2::req_url_query(!!!opt_params) |>
-      httr2::req_headers(
-        Accept = .headers$accept,
-        `Accept-Encoding` = .headers$accept_encoding,
-        `Content-Type` = .headers$content_type,
-        Origin = .headers$origin
-      ) |>
+      httr2::req_headers(!!!.headers) |>
       httr2::req_user_agent(user_agent())
 
     if (!is.null(.body)) {
       req <- httr2::req_body_raw(req, body = .body, type = .headers$content_type)
     }
-    #add `query_params` object, to give the user the possibility which one they used
-    req$query_params <- opt_params
 
     req
   }
@@ -110,7 +57,7 @@ req <-
 reqs <- function(res,
                  ...,
                  .body = NULL,
-                 .headers = request_headers()) {
+                 .headers = req_headers()) {
   params <- list(...)
   .body <- .body %||% list(.body)
 

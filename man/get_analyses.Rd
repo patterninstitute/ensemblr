@@ -26,14 +26,14 @@ responses' status.}
 \value{
 A \code{\link[tibble]{tibble}} of 3 variables:
 \describe{
-  \item{\code{species_name}}{Ensembl species name: this is the name used
-  internally by Ensembl to uniquely identify a species by name. It is the
-  scientific name but formatted without capitalisation and spacing converted
-  with an underscore, e.g., \code{'homo_sapiens'}.}
-  \item{\code{database}}{Ensembl database. Typically one of \code{'core'},
-  \code{'rnaseq'}, \code{'cdna'}, \code{'funcgen'} and
-  \code{'otherfeatures'}.}
-  \item{\code{analysis}}{Analysis.}
+\item{\code{species_name}}{Ensembl species name: this is the name used
+internally by Ensembl to uniquely identify a species by name. It is the
+scientific name but formatted without capitalisation and spacing converted
+with an underscore, e.g., \code{'homo_sapiens'}.}
+\item{\code{database}}{Ensembl database. Typically one of \code{'core'},
+\code{'rnaseq'}, \code{'cdna'}, \code{'funcgen'} and
+\code{'otherfeatures'}.}
+\item{\code{analysis}}{Analysis.}
 }
 }
 \description{

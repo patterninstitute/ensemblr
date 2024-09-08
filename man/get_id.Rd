@@ -23,17 +23,17 @@ responses' status.}
 \value{
 A \code{\link[tibble]{tibble}} of 9 variables:
 \describe{
-  \item{\code{id}}{Ensembl identifier.}
-  \item{\code{id_latest}}{Ensembl identifier including the version suffix.}
-  \item{\code{type}}{Entity type: gene (\code{'Gene'}), exon (\code{'Exon'}),
-  transcript (\code{'Transcript'}), and protein (\code{'Translation'}).}
-  \item{\code{id_version}}{Ensembl identifier version, indicates how many
-  times that entity has changed during its time in Ensembl.}
-  \item{\code{release}}{Ensembl release version.}
-  \item{\code{is_current}}{Is this the latest identifier for the represented entity.}
-  \item{\code{genome_assembly_name}}{Code name of the genome assembly.}
-  \item{\code{peptide}}{TODO}
-  \item{\code{possible_replacement}}{TODO}
+\item{\code{id}}{Ensembl identifier.}
+\item{\code{id_latest}}{Ensembl identifier including the version suffix.}
+\item{\code{type}}{Entity type: gene (\code{'Gene'}), exon (\code{'Exon'}),
+transcript (\code{'Transcript'}), and protein (\code{'Translation'}).}
+\item{\code{id_version}}{Ensembl identifier version, indicates how many
+times that entity has changed during its time in Ensembl.}
+\item{\code{release}}{Ensembl release version.}
+\item{\code{is_current}}{Is this the latest identifier for the represented entity.}
+\item{\code{genome_assembly_name}}{Code name of the genome assembly.}
+\item{\code{peptide}}{TODO}
+\item{\code{possible_replacement}}{TODO}
 }
 }
 \description{
