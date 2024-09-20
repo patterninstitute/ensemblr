@@ -2,6 +2,8 @@
 skip_on_cran()
 skip_if_offline()
 
+## tests for `req()` function
+
 test_that("`req()` builds correct request", {
   res <- "/cafe/genetree/member/symbol/{species}/{symbol}"
   test_req <- req(
@@ -91,7 +93,6 @@ test_that("req function handles default headers", {
   expect_null(test_req$headers$Accept)
   expect_null(test_req$headers$Origin)
 })
-
 
 # ------------- GET Request Tests -------------
 

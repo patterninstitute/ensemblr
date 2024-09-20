@@ -65,10 +65,12 @@ reqs <- function(res,
     vctrs::vec_recycle_common(
       res = res,
       !!!params,
-      .body = .body,
-      .type = .headers$content_type
+      .body = .body
     )
-  reqs <- purrr::pmap(.l = req_args, .f = req)
+  reqs <- purrr::pmap(.l = req_args, function(res, ...) {
+    req(res, ..., .headers = .headers) # because of errors while pass `.headers` into the recycling logic
+
+  })
 
   reqs
 }
