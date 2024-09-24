@@ -1,12 +1,38 @@
-# The function for the GET method
-
-get <- function(res, ..., .headers = req_headers()) { # for get the body could be optional?
+#' The function for the GET method
+#'
+#' The [get()] function is a wrapper around the [reqs()] function that performs
+#' GET requests to the Ensembl API, handling rate limiting automatically.
+#'
+#' @param res The resource (path) for the API request, can include variables
+#'   in curly braces `{}` that will be replaced with the corresponding parameter.
+#' @param ... Additional named parameters to be included in the request URL.
+#' @param .headers An S3 list with class `ensemblr_req_hdr`. Use the helper
+#'   [req_headers()] to create such an object.
+#' @param rate The maximum number of requests per second to allow.
+#' Defaults to 15 per minute (15/60).
+#'
+#' @return A list of responses, one for each request made.
+#'
+#' @keywords internal
+get <- function(res, ..., .headers = req_headers(), rate = 15/60) { # for get the body could be optional?
   requests <- reqs(res, ..., .headers = .headers)
+  requests <- purrr::map(requests, httr2::req_throttle, rate = rate)
   responses <- httr2::req_perform_parallel(requests)
+
+  #checking the rate limit exceptions and add delay if needed
+  for (i in seq_along(responses)) {
+    if (httr2::resp_status(responses[[i]]) == 429) {
+      retry_after <- as.numeric(httr2::resp_headers(responses[[i]])$`Retry-After`)
+      message(glue::glue("Rate limit reached, waiting {retry_after} seconds before retrying..."))
+      Sys.sleep(retry_after)
+      responses[[i]] <- httr2::req_perform(requests[[i]])
+    }
+  }
   return(responses)
 }
 
-## example for the get, but it will require a bit more knowledge of the APIs
+#----------------------------------------------------------------------------------------------
+## example for the get, but for the user it will still require a bit more knowledge of the APIs
 # response <- get("s/archive/id/{id}",
 #                id = "ENSG00000139618",
 #                type = "genomic",
@@ -30,3 +56,5 @@ get_archive_id <- function(id, callback = NULL) {
 # # example
 # result <- get_archive_id(id = "ENSG00000157764")
 # print(result)
+#
+# WE CAN THEN GO ON WITH OTHER ENDPOINTS WITH GET METHOD
