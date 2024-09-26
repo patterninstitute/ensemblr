@@ -19,6 +19,7 @@ parameter.}
 \item{.body}{The body of the POST request, can be a string or raw vector.}
 
 \item{rate}{The maximum number of requests per second to allow.
+on a request (default: 5).
 Defaults to 15 per minute (15/60).}
 }
 \value{
