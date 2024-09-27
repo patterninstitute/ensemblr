@@ -6,16 +6,14 @@
 \alias{ensemblr-package}
 \title{ensemblr: R Client for the Ensembl REST API}
 \description{
-\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
-
 R Client for the Ensembl REST API.
 }
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/ramiromagno/ensemblr}
-  \item \url{http://rmagno.eu/ensemblr/}
-  \item Report bugs at \url{https://github.com/ramiromagno/ensemblr/issues}
+  \item \url{https://github.com/patterninstitute/ensemblr}
+  \item \url{https://www.pattern.institute/ensemblr/}
+  \item Report bugs at \url{https://github.com/patterninstitute/ensemblr/issues}
 }
 
 }
@@ -24,13 +22,14 @@ Useful links:
 
 Authors:
 \itemize{
+  \item Dany Mukesha \email{dmukesha@pattern.institute} (\href{https://orcid.org/0009-0001-9514-751X}{ORCID})
   \item Isabel Duarte \email{iduarte.scientist@gmail.com} (\href{https://orcid.org/0000-0003-0060-2936}{ORCID})
   \item Ana-Teresa Maia \email{maia.anateresa@gmail.com} (\href{https://orcid.org/0000-0002-0454-9207}{ORCID})
 }
 
 Other contributors:
 \itemize{
-  \item CINTESIS [copyright holder, funder]
+  \item CINTESIS [funder]
   \item Pattern Institute [copyright holder, funder]
 }
 

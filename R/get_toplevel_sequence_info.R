@@ -6,29 +6,26 @@ toplevel_sequence_info_tbl <- function(species_name = character(),
                                        is_circular = logical(),
                                        assembly_name = character(),
                                        length = double()) {
-  tibble::tibble(
-    species_name = species_name,
-    toplevel_sequence = toplevel_sequence,
-    is_chromosome = is_chromosome,
-    coordinate_system = coordinate_system,
-    assembly_exception_type = assembly_exception_type,
-    is_circular = is_circular,
-    assembly_name = assembly_name,
-    length = length
-  )
+  tibble::tibble(species_name = species_name,
+                 toplevel_sequence = toplevel_sequence,
+                 is_chromosome = is_chromosome,
+                 coordinate_system = coordinate_system,
+                 assembly_exception_type = assembly_exception_type,
+                 is_circular = is_circular,
+                 assembly_name = assembly_name,
+                 length = length)
 }
 
 parse_toplevel_sequence_info <- function(species_name, toplevel_sequence, lst) {
-  toplevel_sequence_info_tbl(
-    species_name = species_name,
-    toplevel_sequence = toplevel_sequence,
-    is_chromosome = as.logical(lst$is_chromosome),
-    coordinate_system = lst$coordinate_system,
-    assembly_exception_type = lst$assembly_exception_type,
-    is_circular = as.logical(lst$is_circular),
-    assembly_name = lst$assembly_name,
-    length = lst$length
-  )
+
+  toplevel_sequence_info_tbl(species_name = species_name,
+                             toplevel_sequence = toplevel_sequence,
+                             is_chromosome = as.logical(lst$is_chromosome),
+                             coordinate_system = lst$coordinate_system,
+                             assembly_exception_type = lst$assembly_exception_type,
+                             is_circular = as.logical(lst$is_circular),
+                             assembly_name = lst$assembly_name,
+                             length = lst$length)
 }
 
 #' Get toplevel sequences details
@@ -76,47 +73,42 @@ parse_toplevel_sequence_info <- function(species_name, toplevel_sequence, lst) {
 #' # Get details about a scaffold
 #' # (To find available toplevel sequences to query use the function
 #' # `get_toplevel_sequences()`)
-#' get_toplevel_sequence_info(species_name = "homo_sapiens", toplevel_sequence = "KI270757.1")
+#' get_toplevel_sequence_info(species_name = 'homo_sapiens', toplevel_sequence = 'KI270757.1')
 #'
 #' @seealso [get_toplevel_sequences()]
 #'
 #' @export
-get_toplevel_sequence_info <- function(species_name = "homo_sapiens",
-                                       toplevel_sequence = c(1:22, "X", "Y", "MT"),
+get_toplevel_sequence_info <- function(species_name = 'homo_sapiens',
+                                       toplevel_sequence = c(1:22, 'X', 'Y', 'MT'),
                                        verbose = FALSE,
                                        warnings = TRUE,
                                        progress_bar = TRUE) {
+
   error_msg <- glue::glue(
-    "All arguments must have consistent lengths, ",
-    "only values of length one are recycled:\n",
-    "* Length of `species_name`: {length(species_name)}\n",
-    "* Length of `toplevel_sequence`: {length(toplevel_sequence)}\n"
+    'All arguments must have consistent lengths, ',
+    'only values of length one are recycled:\n',
+    '* Length of `species_name`: {length(species_name)}\n',
+    '* Length of `toplevel_sequence`: {length(toplevel_sequence)}\n'
   )
 
-  if (!are_vec_recyclable(
-    species_name,
-    toplevel_sequence
-  )) {
+  if (!are_vec_recyclable(species_name,
+                          toplevel_sequence)) {
     rlang::abort(error_msg)
   }
 
-  recycled_args <- vctrs::vec_recycle_common(
-    species_name,
-    toplevel_sequence
-  )
+  recycled_args <- vctrs::vec_recycle_common(species_name,
+                                             toplevel_sequence)
 
   # The order of names here should be same as passed to
   # vctrs::vec_recycle_common()
   names(recycled_args) <-
     c(
-      "species_name",
-      "toplevel_sequence"
+      'species_name',
+      'toplevel_sequence'
     )
 
-  resource_urls <- glue::glue(
-    "/info/assembly/",
-    "{recycled_args$species_name}/{recycled_args$toplevel_sequence}"
-  )
+  resource_urls <- glue::glue('/info/assembly/',
+                              '{recycled_args$species_name}/{recycled_args$toplevel_sequence}')
 
   responses <-
     request_parallel(
@@ -128,14 +120,11 @@ get_toplevel_sequence_info <- function(species_name = "homo_sapiens",
 
   # Only keep those responses that responded successfully, i.e. with status == "OK".
   responses_ok <-
-    purrr::keep(
-      responses,
-      ~ identical(.x$status, "OK") &&
-        !rlang::is_empty(.x$content)
-    )
-  if (rlang::is_empty(responses_ok)) {
+    purrr::keep(responses,
+                ~ identical(.x$status, 'OK') &&
+                  !rlang::is_empty(.x$content))
+  if (rlang::is_empty(responses_ok))
     return(toplevel_sequence_info_tbl())
-  }
 
   return(purrr::imap_dfr(
     .x = responses_ok,
@@ -145,4 +134,5 @@ get_toplevel_sequence_info <- function(species_name = "homo_sapiens",
       lst = .x$content
     )
   ))
+
 }

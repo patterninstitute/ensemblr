@@ -11,7 +11,7 @@ pairwise_combn(x)
 }
 \value{
 A \code{\link[tibble]{tibble}} of two columns where each row is a
-  pairwise combination.
+pairwise combination.
 }
 \description{
 Generates pairwise combinations from the supplied vector. Never returns the

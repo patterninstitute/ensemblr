@@ -27,26 +27,26 @@ responses' status.}
 \value{
 A \code{\link[tibble]{tibble}} of 12 variables:
 \describe{
-  \item{division}{Ensembl division: \code{"EnsemblVertebrates"},
-  \code{"EnsemblMetazoa"}, \code{"EnsemblPlants"}, \code{"EnsemblProtists"},
-  \code{"EnsemblFungi"} or \code{"EnsemblBacteria"}.}
-  \item{taxon_id}{NCBI taxon identifier.}
-  \item{species_name}{Ensembl species name: this is the name used internally
-  by Ensembl to uniquely identify a species by name. It is the scientific
-  name but formatted without capitalisation and spacing converted with an
-  underscore, e.g., \code{'homo_sapiens'}.}
-  \item{species_display_name}{Species display name: the name used for display
-  on Ensembl website.}
-  \item{species_common_name}{Species common name.}
-  \item{release}{Ensembl release version.}
-  \item{genome_assembly_name}{Code name of the genome assembly.}
-  \item{genbank_assembly_accession}{Genbank assembly accession identifier.}
-  \item{strain}{Species strain.}
-  \item{strain_collection}{Species strain collection.}
-  \item{species_aliases}{Other names or acronyms used to refer to the
-  species. Note that this column is of the list type.}
-  \item{groups}{Ensembl databases for which data exists for this species.
-  Note that this column is of the list type.}
+\item{division}{Ensembl division: \code{"EnsemblVertebrates"},
+\code{"EnsemblMetazoa"}, \code{"EnsemblPlants"}, \code{"EnsemblProtists"},
+\code{"EnsemblFungi"} or \code{"EnsemblBacteria"}.}
+\item{taxon_id}{NCBI taxon identifier.}
+\item{species_name}{Ensembl species name: this is the name used internally
+by Ensembl to uniquely identify a species by name. It is the scientific
+name but formatted without capitalisation and spacing converted with an
+underscore, e.g., \code{'homo_sapiens'}.}
+\item{species_display_name}{Species display name: the name used for display
+on Ensembl website.}
+\item{species_common_name}{Species common name.}
+\item{release}{Ensembl release version.}
+\item{genome_assembly_name}{Code name of the genome assembly.}
+\item{genbank_assembly_accession}{Genbank assembly accession identifier.}
+\item{strain}{Species strain.}
+\item{strain_collection}{Species strain collection.}
+\item{species_aliases}{Other names or acronyms used to refer to the
+species. Note that this column is of the list type.}
+\item{groups}{Ensembl databases for which data exists for this species.
+Note that this column is of the list type.}
 }
 }
 \description{

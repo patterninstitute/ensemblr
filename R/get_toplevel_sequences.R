@@ -1,10 +1,12 @@
 #' @importFrom rlang .data
 parse_toplevel_sequences <- function(species_name, lst) {
+
   lst$top_level_region %>%
     tibble::as_tibble() %>%
     tibble::add_column(species_name = species_name) %>%
     dplyr::rename(toplevel_sequence = .data$name) %>%
-    dplyr::relocate("species_name", "coord_system", "toplevel_sequence", "length")
+    dplyr::relocate('species_name', 'coord_system', 'toplevel_sequence', 'length')
+
 }
 
 #' Get toplevel sequences by species
@@ -39,18 +41,17 @@ parse_toplevel_sequences <- function(species_name, lst) {
 #' get_toplevel_sequences()
 #'
 #' # Get toplevel sequences for Caenorhabditis elegans
-#' get_toplevel_sequences("caenorhabditis_elegans")
+#' get_toplevel_sequences('caenorhabditis_elegans')
 #'
 #' @md
 #' @export
-get_toplevel_sequences <- function(species_name = "homo_sapiens",
+get_toplevel_sequences <- function(species_name = 'homo_sapiens',
                                    verbose = FALSE,
                                    warnings = TRUE,
                                    progress_bar = TRUE) {
-  resource_urls <- glue::glue(
-    "/info/assembly/",
-    "{species_name}?bands=0"
-  )
+
+  resource_urls <- glue::glue('/info/assembly/',
+                              '{species_name}?bands=0')
 
   responses <-
     request_parallel(
@@ -62,12 +63,10 @@ get_toplevel_sequences <- function(species_name = "homo_sapiens",
 
   # Only keep those responses that responded successfully, i.e. with status == "OK".
   responses_ok <-
-    purrr::keep(
-      responses,
-      ~ identical(.x$status, "OK") &&
-        !rlang::is_empty(.x$content)
-    )
-  if (rlang::is_empty(responses_ok)) {
+    purrr::keep(responses,
+                ~ identical(.x$status, 'OK') &&
+                  !rlang::is_empty(.x$content))
+  if (rlang::is_empty(responses_ok))
     return(
       tibble::tibble(
         species_name = character(),
@@ -76,13 +75,11 @@ get_toplevel_sequences <- function(species_name = "homo_sapiens",
         length = integer()
       )
     )
-  }
 
   return(purrr::imap_dfr(
     .x = responses_ok,
-    .f = ~ parse_toplevel_sequences(
-      species_name = species_name[.y],
-      lst = .x$content
-    )
+    .f = ~ parse_toplevel_sequences(species_name = species_name[.y],
+                                    lst = .x$content)
   ))
+
 }

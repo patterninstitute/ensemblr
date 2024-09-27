@@ -6,42 +6,36 @@ cytogenetic_bands_tbl <- function(species_name = character(),
                                   end = integer(),
                                   stain = character(),
                                   strand = integer()) {
-  tibble::tibble(
-    species_name = species_name,
-    assembly_name = assembly_name,
-    cytogenetic_band = cytogenetic_band,
-    chromosome = chromosome,
-    start = start,
-    end = end,
-    stain = stain,
-    strand = strand
-  )
+
+  tibble::tibble(species_name = species_name,
+                 assembly_name = assembly_name,
+                 cytogenetic_band = cytogenetic_band,
+                 chromosome = chromosome,
+                 start = start,
+                 end = end,
+                 stain = stain,
+                 strand = strand)
 }
 
 #' @importFrom rlang .data
 parse_cytogenetic_bands <- function(species_name, lst) {
-  if (rlang::is_empty(lst$top_level_region$bands)) {
-    return(cytogenetic_bands_tbl())
-  }
+
+  if(rlang::is_empty(lst$top_level_region$bands)) return(cytogenetic_bands_tbl())
 
   lst$top_level_region$bands %>%
     dplyr::bind_rows() %>%
     tibble::as_tibble() %>%
     tibble::add_column(species_name = species_name, .before = 1L) %>%
-    dplyr::rename(
-      cytogenetic_band = .data$id,
-      chromosome = .data$seq_region_name
-    ) %>%
-    dplyr::relocate(
-      "species_name",
-      "assembly_name",
-      "cytogenetic_band",
-      "chromosome",
-      "start",
-      "end",
-      "stain",
-      "strand"
-    )
+    dplyr::rename(cytogenetic_band = .data$id,
+                  chromosome = .data$seq_region_name) %>%
+    dplyr::relocate('species_name',
+                    'assembly_name',
+                    'cytogenetic_band',
+                    'chromosome',
+                    'start',
+                    'end',
+                    'stain',
+                    'strand')
 }
 
 #' Get cytogenetic bands by species
@@ -85,18 +79,17 @@ parse_cytogenetic_bands <- function(species_name, lst) {
 #' get_cytogenetic_bands()
 #'
 #' # Get toplevel sequences for Mus musculus
-#' get_cytogenetic_bands("mus_musculus")
+#' get_cytogenetic_bands('mus_musculus')
 #'
 #' @md
 #' @export
-get_cytogenetic_bands <- function(species_name = "homo_sapiens",
-                                  verbose = FALSE,
-                                  warnings = TRUE,
-                                  progress_bar = TRUE) {
-  resource_urls <- glue::glue(
-    "/info/assembly/",
-    "{species_name}?bands=1"
-  )
+get_cytogenetic_bands <- function(species_name = 'homo_sapiens',
+                                   verbose = FALSE,
+                                   warnings = TRUE,
+                                   progress_bar = TRUE) {
+
+  resource_urls <- glue::glue('/info/assembly/',
+                              '{species_name}?bands=1')
 
   responses <-
     request_parallel(
@@ -108,20 +101,16 @@ get_cytogenetic_bands <- function(species_name = "homo_sapiens",
 
   # Only keep those responses that responded successfully, i.e. with status == "OK".
   responses_ok <-
-    purrr::keep(
-      responses,
-      ~ identical(.x$status, "OK") &&
-        !rlang::is_empty(.x$content)
-    )
-  if (rlang::is_empty(responses_ok)) {
+    purrr::keep(responses,
+                ~ identical(.x$status, 'OK') &&
+                  !rlang::is_empty(.x$content))
+  if (rlang::is_empty(responses_ok))
     return(cytogenetic_bands_tbl())
-  }
 
   return(purrr::imap_dfr(
     .x = responses_ok,
-    .f = ~ parse_cytogenetic_bands(
-      species_name = species_name[.y],
-      lst = .x$content
-    )
+    .f = ~ parse_cytogenetic_bands(species_name = species_name[.y],
+                                    lst = .x$content)
   ))
+
 }

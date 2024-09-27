@@ -13,7 +13,7 @@ get_versioning(verbose = FALSE, warnings = TRUE)
 }
 \value{
 A named list of three elements: \code{data}, \code{software} and
-  \code{rest}.
+\code{rest}.
 }
 \description{
 This function gets the versions of the different entities involved in the
