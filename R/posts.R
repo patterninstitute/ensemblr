@@ -30,24 +30,18 @@ post <- function(res, ..., .headers = req_headers(), .body, rate = 15/60) { # fo
 
   for (i in seq_along(responses)) {
     status_code <- httr2::resp_status(responses[[i]]) # I am not sure whether the error will arrive here
-    if (status_code == 200) {
-      break
-    }
-    else if (status_code == 429) {
+    if (status_code == 429) {
       #the `Retry-After` in the response_headers will only show up once you exceed the rate limit
       retry_after <- as.numeric(httr2::resp_headers(responses[[i]])$`Retry-After`)
       message(glue::glue("Rate limit reached, waiting {retry_after} seconds
                          before retrying..."))
       Sys.sleep(retry_after)
       responses[[i]] <- httr2::req_perform(requests[[i]])
-    } else {
-      warning(glue("Request failed with status code {status_code}.
-                   Moving on to the next request."))
-      break
+    } else if (status_code != 200) {
+      warning(glue::glue("Request failed with status code {status_code}."))
     }
   }
 
-  # returns a list of responses, if multiple requests are made
   responses
 }
 
@@ -55,15 +49,12 @@ post <- function(res, ..., .headers = req_headers(), .body, rate = 15/60) { # fo
 # Retrieve the latest version for a set of Ensembl stable IDs, with a low level function
 # https://rest.ensembl.org/documentation/info/archive_id_post
 post_archive_ids <- function(ids, callback = NULL) {
-  # Validate that the 'ids' parameter is provided and is a non-empty vector
   if (missing(ids) || length(ids) == 0) {
     stop("The 'ids' parameter is required and should contain at least one ID.")
   }
 
-  # create the body of the request in JSON format
   body <- jsonlite::toJSON(list(id = ids), auto_unbox = TRUE)
 
-  # POST request
   response <- post(
     res = "/archive/id",
     callback = callback,  # optional query parameter for JSONP

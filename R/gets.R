@@ -23,18 +23,14 @@ get <- function(res, ..., .headers = req_headers(), rate = 15/60) { # for get th
   #checking the rate limit exceptions and add delay if needed
   for (i in seq_along(responses)) {
     status_code <- httr2::resp_status(responses[[i]]) # I am not sure whether the error will arrive here
-    if (status_code == 200) {
-      break
-    } else if (status_code == 429) {
+    if (status_code == 429) {
       #the `Retry-After` in the response_headers will only show up once you exceed the rate limit
       retry_after <- as.numeric(httr2::resp_headers(responses[[i]])$`Retry-After`)
       message(glue::glue("Rate limit reached, waiting {retry_after} seconds before retrying..."))
       Sys.sleep(retry_after)
       responses[[i]] <- httr2::req_perform(requests[[i]])
-    } else {
-      warning(glue("Request failed with status code {status_code}.
-                   Moving on to the next request."))
-      break
+    } else if (status_code != 200) {
+      warning(glue::glue("Request failed with status code {status_code}."))
     }
   }
   return(responses)
