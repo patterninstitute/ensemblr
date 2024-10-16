@@ -38,7 +38,7 @@ get <- function(res, ..., .headers = req_headers(), rate = 15/60) { # for get th
 
 #----------------------------------------------------------------------------------------------
 ## example for the get, but for the user it will still require a bit more knowledge of the APIs
-# response <- get("s/archive/id/{id}",
+# response <- get("/archive/id/{id}",
 #                id = "ENSG00000139618",
 #                type = "genomic",
 #                species = "human")
@@ -46,20 +46,30 @@ get <- function(res, ..., .headers = req_headers(), rate = 15/60) { # for get th
 # Retrieve a given Ensembl stable ID, with a low level function
 # https://rest.ensembl.org/documentation/info/archive_id_get
 get_archive_id <- function(id, callback = NULL) {
-  if (missing(id)) { stop("The 'id' parameter is required.") }
-
+  if (missing(id)) {
+    stop("The 'id' parameter is required.")
+  }
   response <- get(
     res = "/archive/id/{id}",
     id = id,
     #callback = callback,  # optional query parameter, perferred not to use, ave to understand how it works
     .headers = req_headers(content_type = "application/json")
   )
-
-  purrr::map(response, httr2::resp_body_json)
 }
 
 # # example
 # result <- get_archive_id(id = "ENSG00000157764")
 # print(result)
-#
+
+get_cafe_genetree_by_id <- function(id) {
+  if (missing(id)) {
+    stop("The 'id' parameter is required.")
+  }
+  response <- get(
+    res = glue::glue("/cafe/genetree/id/{id}"),
+    .headers = req_headers(content_type = "application/json")
+  )
+}
+
 # WE CAN THEN GO ON WITH OTHER ENDPOINTS WITH GET METHOD
+# {the rest of the endpoints functions are in file `ensembl-endpoins.R`}

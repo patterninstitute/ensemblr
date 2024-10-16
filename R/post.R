@@ -61,14 +61,12 @@ post_archive_ids <- function(ids, callback = NULL) {
     .headers = req_headers(content_type = "application/json"),
     .body = body
   )
-
-  # Parse and return the response as JSON
-  purrr::map(response, httr2::resp_body_json)
 }
 
 # #example
 # result <- post_archive_ids(ids = c("ENSG00000157764", "ENSG00000248378"),
 #                           callback = "myCallbackFunction")
 # print(result)
-#
+
 # WE CAN THEN GO ON WITH OTHER ENDPOINTS WITH POST METHOD
+# {the rest of the endpoints functions are in file `ensembl-endpoins.R`}
