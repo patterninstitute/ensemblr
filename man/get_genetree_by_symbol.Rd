@@ -12,7 +12,8 @@ get_genetree_by_symbol(species, symbol)
 \item{symbol}{A string representing the gene symbol (e.g., "BRCA2").}
 }
 \value{
-A list of parsed JSON responses containing the gene tree for the provided species and gene symbol.
+A list of parsed JSON responses containing the gene tree
+for the provided species and gene symbol.
 }
 \description{
 Retrieves the gene tree that contains the gene identified by a symbol

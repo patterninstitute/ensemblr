@@ -9,13 +9,16 @@ get_genetree_by_species_id(species, id)
 \arguments{
 \item{species}{A string representing the species name (e.g., "homo_sapiens").}
 
-\item{id}{A string representing the gene, transcript, or translation stable identifier.}
+\item{id}{A string representing the gene, transcript, or translation stable
+identifier.}
 }
 \value{
-A list of parsed JSON responses containing the gene tree for the provided species and stable identifier.
+A list of parsed JSON responses containing the gene tree
+for the provided species and stable identifier.
 }
 \description{
-Retrieves the gene tree that contains the gene/transcript/translation stable identifier in the given species
+Retrieves the gene tree that contains the gene/transcript/translation
+stable identifier in the given species
 }
 \note{
 See more about the implemented endpoint \code{\link[=get_genetree_by_species_id]{get_genetree_by_species_id()}}

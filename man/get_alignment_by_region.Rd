@@ -12,7 +12,8 @@ get_alignment_by_region(species, region)
 \item{region}{A string representing the genomic region (e.g., "3:1000-2000").}
 }
 \value{
-A list of parsed JSON responses containing the genomic alignments for the provided species and region.
+A list of parsed JSON responses containing the genomic alignments
+for the provided species and region.
 
 See more about the implemented endpoint \code{\link[=get_alignment_by_region]{get_alignment_by_region()}}
 on the following \href{https://rest.ensembl.org/documentation/info/genomic_alignment_region}{GET alignment/region/:species/:region}

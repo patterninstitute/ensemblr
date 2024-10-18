@@ -12,7 +12,8 @@ get_homology_by_species_id(species, id)
 \item{id}{A string representing the Ensembl gene ID.}
 }
 \value{
-A list of parsed JSON responses containing homology information for the provided species and Ensembl gene ID.
+A list of parsed JSON responses containing homology information
+for the provided species and Ensembl gene ID.
 
 See more about the implemented endpoint \code{\link[=get_homology_by_species_id]{get_homology_by_species_id()}}
 on the following \href{https://rest.ensembl.org/documentation/info/homology_species_gene_id}{GET homology/id/:species/:id}

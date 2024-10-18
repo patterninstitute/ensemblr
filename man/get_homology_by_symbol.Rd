@@ -12,7 +12,8 @@ get_homology_by_symbol(species, symbol)
 \item{symbol}{A string representing the gene symbol (e.g., "BRCA2").}
 }
 \value{
-A list of parsed JSON responses containing homology information for the provided species and gene symbol.
+A list of parsed JSON responses containing homology information
+for the provided species and gene symbol.
 
 See more about the implemented endpoint \code{\link[=get_homology_by_symbol]{get_homology_by_symbol()}}
 on the following \href{https://rest.ensembl.org/documentation/info/homology_symbol}{GET homology/symbol/:species/:symbol}

@@ -123,7 +123,8 @@ get_genetree_by_id <- function(id) {
 #' @param species A string representing the species name (e.g., "homo_sapiens").
 #' @param symbol A string representing the gene symbol (e.g., "BRCA2").
 #'
-#' @return A list of parsed JSON responses containing the gene tree for the provided species and gene symbol.
+#' @return A list of parsed JSON responses containing the gene tree
+#' for the provided species and gene symbol.
 #'
 #' @note
 #' See more about the implemented endpoint [get_genetree_by_symbol()]
@@ -145,12 +146,15 @@ get_genetree_by_symbol <- function(species, symbol) {
 
 #' Get gene tree by species id
 #'
-#' Retrieves the gene tree that contains the gene/transcript/translation stable identifier in the given species
+#' Retrieves the gene tree that contains the gene/transcript/translation
+#' stable identifier in the given species
 #'
 #' @param species A string representing the species name (e.g., "homo_sapiens").
-#' @param id A string representing the gene, transcript, or translation stable identifier.
+#' @param id A string representing the gene, transcript, or translation stable
+#' identifier.
 #'
-#' @return A list of parsed JSON responses containing the gene tree for the provided species and stable identifier.
+#' @return A list of parsed JSON responses containing the gene tree
+#' for the provided species and stable identifier.
 #'
 #' @note
 #' See more about the implemented endpoint [get_genetree_by_species_id()]
@@ -177,7 +181,8 @@ get_genetree_by_species_id <- function(species, id) {
 #' @param species A string representing the species name (e.g., "homo_sapiens").
 #' @param region A string representing the genomic region (e.g., "3:1000-2000").
 #'
-#' @return A list of parsed JSON responses containing the genomic alignments for the provided species and region.
+#' @return A list of parsed JSON responses containing the genomic alignments
+#' for the provided species and region.
 #'
 #' See more about the implemented endpoint [get_alignment_by_region()]
 #' on the following [GET alignment/region/:species/:region](https://rest.ensembl.org/documentation/info/genomic_alignment_region)
@@ -205,7 +210,8 @@ get_alignment_by_region <- function(species, region) {
 #' @param species A string representing the species name (e.g., "homo_sapiens").
 #' @param id A string representing the Ensembl gene ID.
 #'
-#' @return A list of parsed JSON responses containing homology information for the provided species and Ensembl gene ID.
+#' @return A list of parsed JSON responses containing homology information
+#' for the provided species and Ensembl gene ID.
 #'
 #' See more about the implemented endpoint [get_homology_by_species_id()]
 #' on the following [GET homology/id/:species/:id](https://rest.ensembl.org/documentation/info/homology_species_gene_id)
@@ -231,7 +237,8 @@ get_homology_by_species_id <- function(species, id) {
 #' @param species A string representing the species name (e.g., "homo_sapiens").
 #' @param symbol A string representing the gene symbol (e.g., "BRCA2").
 #'
-#' @return A list of parsed JSON responses containing homology information for the provided species and gene symbol.
+#' @return A list of parsed JSON responses containing homology information
+#' for the provided species and gene symbol.
 #'
 #' See more about the implemented endpoint [get_homology_by_symbol()]
 #' on the following [GET homology/symbol/:species/:symbol](https://rest.ensembl.org/documentation/info/homology_symbol)
@@ -253,5 +260,126 @@ get_homology_by_symbol <- function(species, symbol) {
 # -------------------------------------------------------- #
 ## Cross References ====
 
+#' Get external linked references by symbol
+#'
+#' Looks up an external symbol and returns all Ensembl objects linked to it
+#'
+#' This can be a display name for a gene/transcript/translation, a synonym,
+#' or an externally linked reference.
+#' If a gene's transcript is linked to the supplied symbol, the service will
+#' return both gene and transcript (it supports transient links).
+#'
+#' @param species A string representing the species name (e.g., "homo_sapiens").
+#' @param symbol A string representing the external symbol (e.g., "BRCA2").
+#'
+#' @return A list of parsed JSON responses containing Ensembl objects linked
+#' to the provided external symbol.
+#'
+#' See more about the implemented endpoint [get_xrefs_by_symbol()]
+#' on the following [GET xrefs/symbol/:species/:symbol](https://rest.ensembl.org/documentation/info/xref_external)
+#' from the official [Ensembl Rest API](https://rest.ensembl.org/).
+#'
+#' @export
+#' @examples
+#' get_xrefs_by_symbol("homo_sapiens", "BRCA2")
+get_xrefs_by_symbol <- function(species, symbol) {
+  if (missing(species) || missing(symbol)) {
+    stop("Both 'species' and 'symbol' parameters are required.")
+  }
+  response <- get(
+    res = glue::glue("/xrefs/symbol/{species}/{symbol}"),
+    .headers = req_headers(content_type = "application/json")
+  )
+}
 
+#' Get external linked references by id
+#'
+#' Performs lookups of Ensembl Identifiers and retrieves their external
+#' references in other databases
+#'
+#' @param id A string representing the Ensembl Identifier (e.g., "ENSG00000157764").
+#'
+#' @return A list of parsed JSON responses containing external references
+#' for the provided Ensembl identifier.
+#'
+#' See more about the implemented endpoint [get_xrefs_by_id()]
+#' on the following [GET xrefs/id/:id](https://rest.ensembl.org/documentation/info/xref_id)
+#' from the official [Ensembl Rest API](https://rest.ensembl.org/).
+#'
+#' @export
+#' @examples
+#' get_xrefs_by_id("ENSG00000157764")
+get_xrefs_by_id <- function(id) {
+  if (missing(id)) {
+    stop("The 'id' parameter is required.")
+  }
+  response <- get(
+    res = glue::glue("/xrefs/id/{id}"),
+    .headers = req_headers(content_type = "application/json")
+  )
+}
 
+#' Get external linked references by name
+#'
+#' Performs a lookup based upon the primary accession or display label
+#' of an external reference
+#'
+#' @param species A string representing the species name (e.g., "homo_sapiens").
+#' @param name A string representing the primary accession or display label
+#' of the external reference.
+#'
+#' @return A list of parsed JSON responses containing information about
+#' the provided external reference.
+#'
+#' See more about the implemented endpoint [get_xrefs_by_name()]
+#' on the following [GET xrefs/name/:species/:name](https://rest.ensembl.org/documentation/info/xref_name)
+#' from the official [Ensembl Rest API](https://rest.ensembl.org/).
+#'
+#' @export
+#' @examples
+#' get_xrefs_by_name("homo_sapiens", "P38398")
+get_xrefs_by_name <- function(species, name) {
+  if (missing(species) || missing(name)) {
+    stop("Both 'species' and 'name' parameters are required.")
+  }
+  response <- get(
+    res = glue::glue("/xrefs/name/{species}/{name}"),
+    .headers = req_headers(content_type = "application/json")
+  )
+}
+
+# -------------------------------------------------------- #
+## Information ====
+
+# -------------------------------------------------------- #
+## Linkage Disequilibrium ====
+
+# -------------------------------------------------------- #
+## Lookup ====
+
+# -------------------------------------------------------- #
+## Mapping ====
+
+# -------------------------------------------------------- #
+## Ontologies and taxonomy ====
+
+# -------------------------------------------------------- #
+## Overlap ====
+
+# -------------------------------------------------------- #
+## Phenotype annotations ====
+
+# -------------------------------------------------------- #
+## Regulation ====
+
+# -------------------------------------------------------- #
+## Transcript Haplotypes ====
+
+# -------------------------------------------------------- #
+## VEP ====
+
+# -------------------------------------------------------- #
+## Variation ====
+
+# -------------------------------------------------------- #
+## Variation GA4GH ====
