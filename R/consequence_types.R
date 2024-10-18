@@ -41,24 +41,22 @@
 #' @md
 #' @export
 get_variant_consequences <- function(verbose = FALSE, warnings = TRUE) {
-  response <- request(
-    resource_url = "/info/variation/consequence_types",
-    verbose = verbose,
-    warnings = warnings
-  )
 
-  if (!identical(response$status, "OK")) {
-    rlang::abort(
-      "Could not get a successful response\n",
-      "Response code was {response$response_code}."
+  response <- request(
+    resource_url = '/info/variation/consequence_types',
+    verbose = verbose,
+    warnings = warnings)
+
+  if (!identical(response$status, 'OK'))
+    rlang::abort('Could not get a successful response\n',
+                 'Response code was {response$response_code}.'
     )
-  }
 
   tbl <- tibble::tibble(
-    SO_accession = purrr::pluck(response, "content", "SO_accession", .default = NA_character_),
-    SO_term = purrr::pluck(response, "content", "SO_term", .default = NA_character_),
-    label = purrr::pluck(response, "content", "label", .default = NA_character_),
-    description = purrr::pluck(response, "content", "description", .default = NA_character_)
+    SO_accession = purrr::pluck(response, 'content', 'SO_accession', .default = NA_character_),
+    SO_term = purrr::pluck(response, 'content', 'SO_term', .default = NA_character_),
+    label = purrr::pluck(response, 'content', 'label', .default = NA_character_),
+    description = purrr::pluck(response, 'content', 'description', .default = NA_character_)
   )
 
   return(tbl)

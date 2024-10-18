@@ -11,8 +11,8 @@ warn_when_request_errored(response)
 }
 \value{
 A scalar character vector with a warning message, or the string
-  \code{'OK'} if the response was successful, although this function is
-  called mostly for its side effect, i.e., the triggering of a warning.
+\code{'OK'} if the response was successful, although this function is
+called mostly for its side effect, i.e., the triggering of a warning.
 }
 \description{
 Warn if an httr \code{\link[httr]{response}} errored. It also returns a tidy

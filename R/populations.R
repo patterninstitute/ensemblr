@@ -14,13 +14,13 @@ population_tbl <- function(species_name = character(),
 json_list_to_population_tbl <- function(species_name, json_list) {
   tbl <- population_tbl(
     species_name = species_name,
-    population = purrr::pluck(json_list, "name", .default = NA_character_),
-    description = purrr::pluck(json_list, "description", .default = NA_character_),
-    cohort_size = purrr::pluck(json_list, "size", .default = NA_integer_)
+    population = purrr::pluck(json_list, 'name', .default = NA_character_),
+    description = purrr::pluck(json_list, 'description', .default = NA_character_),
+    cohort_size = purrr::pluck(json_list, 'size', .default = NA_integer_)
   )
 
   # Drop rows if all columns except species_name are NA
-  return(tidyr::drop_na(tbl, -species_name))
+  return(tidyr::drop_na(tbl,-species_name))
 }
 
 #' Get populations for a species
@@ -61,18 +61,19 @@ json_list_to_population_tbl <- function(species_name, json_list) {
 #'
 #' @examples
 #' # Get all human populations with linkage disequilibrium data
-#' get_populations(species_name = "homo_sapiens", ld_only = TRUE)
+#' get_populations(species_name = 'homo_sapiens', ld_only = TRUE)
 #'
 #' # Get all human populations
-#' get_populations(species_name = "homo_sapiens", ld_only = FALSE)
+#' get_populations(species_name = 'homo_sapiens', ld_only = FALSE)
 #'
 #' @md
 #' @export
-get_populations <- function(species_name = "homo_sapiens",
+get_populations <- function(species_name = 'homo_sapiens',
                             ld_only = TRUE,
                             verbose = FALSE,
                             warnings = TRUE,
                             progress_bar = TRUE) {
+
   # Assert species_name argument.
   assert_species_name(species_name)
   # Assert ld_only argument.
@@ -85,35 +86,29 @@ get_populations <- function(species_name = "homo_sapiens",
   assertthat::assert_that(assertthat::is.flag(progress_bar))
 
   error_msg <- glue::glue(
-    "All arguments must have consistent lengths, ",
-    "only values of length one are recycled:\n",
-    "* Length of `species_name`: {length(species_name)}\n",
-    "* Length of `ld_only`: {length(ld_only)}\n"
-  )
-  if (!are_vec_recyclable(
-    species_name,
-    ld_only
-  )) {
+    'All arguments must have consistent lengths, ',
+    'only values of length one are recycled:\n',
+    '* Length of `species_name`: {length(species_name)}\n',
+    '* Length of `ld_only`: {length(ld_only)}\n'
+    )
+  if (!are_vec_recyclable(species_name,
+                          ld_only))
     rlang::abort(error_msg)
-  }
 
-  recycled_args <- vctrs::vec_recycle_common(
-    species_name,
-    ld_only
-  )
+  recycled_args <- vctrs::vec_recycle_common(species_name,
+                                             ld_only)
 
   # The order of names here should be same as passed to
   # vctrs::vec_recycle_common()
   names(recycled_args) <- c(
-    "species_name",
-    "ld_only"
-  )
+    'species_name',
+    'ld_only')
 
-  filter_by_ld <- dplyr::if_else(recycled_args$ld_only, "?filter=LD", "")
+  filter_by_ld <- dplyr::if_else(recycled_args$ld_only, '?filter=LD', '')
   resource_urls <- glue::glue(
-    "/info/variation/populations/",
-    "{recycled_args$species_name}",
-    "{filter_by_ld}"
+    '/info/variation/populations/',
+    '{recycled_args$species_name}',
+    '{filter_by_ld}'
   )
 
   responses <-
@@ -125,12 +120,10 @@ get_populations <- function(species_name = "homo_sapiens",
     )
 
   # Only keep those responses that responded successfully, i.e. with status == "OK".
-  responses_ok <- purrr::keep(responses, ~ .x$status == "OK")
+  responses_ok <- purrr::keep(responses, ~ .x$status == 'OK')
 
   # If none of the responses were successful then return an empty population tibble.
-  if (rlang::is_empty(responses_ok)) {
-    return(population_tbl())
-  }
+  if (rlang::is_empty(responses_ok)) return(population_tbl())
 
   return(
     purrr::imap_dfr(
