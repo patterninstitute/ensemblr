@@ -2,7 +2,7 @@
 % Please edit documentation in R/ensembl-endpoints.R
 \name{get_alignment_by_region}
 \alias{get_alignment_by_region}
-\title{Retrieves genomic alignments as separate blocks based on a region and species}
+\title{Get alignment by region}
 \usage{
 get_alignment_by_region(species, region)
 }

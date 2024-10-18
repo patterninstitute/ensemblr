@@ -2,7 +2,7 @@
 % Please edit documentation in R/ensembl-endpoints.R
 \name{get_cafe_genetree_by_species_id}
 \alias{get_cafe_genetree_by_species_id}
-\title{Retrieves the cafe tree of the gene tree that contains the gene/transcript/translation stable identifier in the given species}
+\title{Get cafe gene tree by species id}
 \usage{
 get_cafe_genetree_by_species_id(species, id)
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/ensembl-endpoints.R
 \name{get_homology_by_symbol}
 \alias{get_homology_by_symbol}
-\title{Retrieves homology information (orthologs) by species and symbol}
+\title{Get homologous by symbol}
 \usage{
 get_homology_by_symbol(species, symbol)
 }

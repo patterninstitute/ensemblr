@@ -2,7 +2,7 @@
 % Please edit documentation in R/ensembl-endpoints.R
 \name{get_genetree_by_species_id}
 \alias{get_genetree_by_species_id}
-\title{Retrieves the gene tree that contains the gene/transcript/translation stable identifier in the given species}
+\title{Get gene tree by species id}
 \usage{
 get_genetree_by_species_id(species, id)
 }

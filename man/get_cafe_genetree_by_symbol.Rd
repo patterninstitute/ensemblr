@@ -2,8 +2,7 @@
 % Please edit documentation in R/ensembl-endpoints.R
 \name{get_cafe_genetree_by_symbol}
 \alias{get_cafe_genetree_by_symbol}
-\title{Retrieves the cafe tree of the gene tree that contains the gene identified
-by a symbol}
+\title{Get cafe gene tree by symbol}
 \usage{
 get_cafe_genetree_by_symbol(species, symbol)
 }

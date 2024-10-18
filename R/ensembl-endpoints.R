@@ -1,8 +1,12 @@
 # These functions will perform validation on input parameters that are tailored
 # to each specific endpoint, and return already an R object that is sensible
 # for the type of information being returned by the endpoint
-# ----------------------------------------------------------
+# -------------------------------------------------------- #
+# Endpoints ====
+## Comparative Genomics =====
 
+#' Get cafe gene tree by id
+#'
 #' Retrieves a cafe tree of the gene tree using the gene tree stable identifier
 #'
 #' @param id A string representing the gene tree stable identifier.
@@ -29,6 +33,8 @@ get_cafe_genetree_by_id <- function(id) {
   )
 }
 
+#' Get cafe gene tree by symbol
+#'
 #' Retrieves the cafe tree of the gene tree that contains the gene identified
 #' by a symbol
 #'
@@ -55,9 +61,10 @@ get_cafe_genetree_by_symbol <- function(species, symbol) {
     res = glue::glue("/cafe/genetree/member/symbol/{species}/{symbol}"),
     .headers = req_headers(content_type = "application/json")
   )
-  response
 }
 
+#' Get cafe gene tree by species id
+#'
 #' Retrieves the cafe tree of the gene tree that contains the gene/transcript/translation stable identifier in the given species
 #'
 #' @param species A string representing the species name (e.g., "homo_sapiens").
@@ -83,6 +90,8 @@ get_cafe_genetree_by_species_id <- function(species, id) {
   )
 }
 
+#' Get gene tree by id
+#'
 #' Retrieves a gene tree for a gene tree stable identifier
 #'
 #' @param id A string representing the gene tree stable identifier.
@@ -107,6 +116,8 @@ get_genetree_by_id <- function(id) {
   )
 }
 
+#' Get gene tree by symbol
+#'
 #' Retrieves the gene tree that contains the gene identified by a symbol
 #'
 #' @param species A string representing the species name (e.g., "homo_sapiens").
@@ -132,6 +143,8 @@ get_genetree_by_symbol <- function(species, symbol) {
   )
 }
 
+#' Get gene tree by species id
+#'
 #' Retrieves the gene tree that contains the gene/transcript/translation stable identifier in the given species
 #'
 #' @param species A string representing the species name (e.g., "homo_sapiens").
@@ -157,6 +170,8 @@ get_genetree_by_species_id <- function(species, id) {
   )
 }
 
+#' Get alignment by region
+#'
 #' Retrieves genomic alignments as separate blocks based on a region and species
 #'
 #' @param species A string representing the species name (e.g., "homo_sapiens").
@@ -183,6 +198,8 @@ get_alignment_by_region <- function(species, region) {
   # )
 }
 
+#' Get homologous by species id
+#'
 #' Retrieves homology information (orthologs) by species and Ensembl gene ID
 #'
 #' @param species A string representing the species name (e.g., "homo_sapiens").
@@ -207,6 +224,8 @@ get_homology_by_species_id <- function(species, id) {
   )
 }
 
+#' Get homologous by symbol
+#'
 #' Retrieves homology information (orthologs) by species and symbol
 #'
 #' @param species A string representing the species name (e.g., "homo_sapiens").
@@ -230,3 +249,9 @@ get_homology_by_symbol <- function(species, symbol) {
     .headers = req_headers(content_type = "application/json")
   )
 }
+
+# -------------------------------------------------------- #
+## Cross References ====
+
+
+

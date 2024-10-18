@@ -2,7 +2,7 @@
 % Please edit documentation in R/ensembl-endpoints.R
 \name{get_cafe_genetree_by_id}
 \alias{get_cafe_genetree_by_id}
-\title{Retrieves a cafe tree of the gene tree using the gene tree stable identifier}
+\title{Get cafe gene tree by id}
 \usage{
 get_cafe_genetree_by_id(id)
 }

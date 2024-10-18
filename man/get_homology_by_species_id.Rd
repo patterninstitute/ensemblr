@@ -2,7 +2,7 @@
 % Please edit documentation in R/ensembl-endpoints.R
 \name{get_homology_by_species_id}
 \alias{get_homology_by_species_id}
-\title{Retrieves homology information (orthologs) by species and Ensembl gene ID}
+\title{Get homologous by species id}
 \usage{
 get_homology_by_species_id(species, id)
 }

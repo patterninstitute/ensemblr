@@ -2,7 +2,7 @@
 % Please edit documentation in R/ensembl-endpoints.R
 \name{get_genetree_by_id}
 \alias{get_genetree_by_id}
-\title{Retrieves a gene tree for a gene tree stable identifier}
+\title{Get gene tree by id}
 \usage{
 get_genetree_by_id(id)
 }
