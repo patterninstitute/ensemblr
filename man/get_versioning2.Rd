@@ -6,11 +6,6 @@
 \usage{
 get_versioning2()
 }
-\arguments{
-\item{verbose}{Whether to be chatty.}
-
-\item{warnings}{Whether to print warnings.}
-}
 \value{
 A named list of three elements: \code{data}, \code{software} and
 \code{rest}.

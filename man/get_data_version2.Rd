@@ -10,7 +10,7 @@
 get_data_version2()
 }
 \value{
-A numeric vector of data release versions.
+A numeric value representing of data release version.
 }
 \description{
 Retreive the version(s) of the Ensembl data that the REST API is accessing.

@@ -1,10 +1,10 @@
-##----Re-wrote the already existing functions from `version.R`----
+##----Re-wrote the already existing functions from `versioning.R`----
 
 #' Get REST API version
 #'
 #' Retrieve the version of the Ensembl REST API currently in use.
 #' The version format is `major.minor.point`.
-#' @return A list containing the REST API version components:
+#' @return A numeric value representing the REST API version components:
 #' `major`, `minor`, and `point`.
 #' @source \url{https://github.com/Ensembl/ensembl-rest/wiki/API-Versioning}
 #' @examples
@@ -23,7 +23,7 @@ get_rest_version2 <- function() {
 #' Get data version
 #'
 #' Retreive the version(s) of the Ensembl data that the REST API is accessing.
-#' @return A numeric vector of data release versions.
+#' @return A numeric value representing of data release version.
 #' @source \url{https://github.com/Ensembl/ensembl-rest/wiki/API-Versioning}
 #' @examples
 #' \dontrun{
@@ -50,7 +50,7 @@ get_data_version2 <- function() {
 #' }
 #' @export
 get_software_version2 <- function() {
-  res <- "info/data"
+  res <- "info/software"
   version <- ensemblr:::get(res)[[1]] |>
     httr2::resp_body_json()
   version$release |> as.numeric()

@@ -10,7 +10,7 @@
 get_rest_version2()
 }
 \value{
-A list containing the REST API version components:
+A numeric value representing the REST API version components:
 \code{major}, \code{minor}, and \code{point}.
 }
 \description{
