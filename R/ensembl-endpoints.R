@@ -27,8 +27,7 @@ get_cafe_genetree_by_id <- function(id) {
   if (missing(id)) {
     stop("The 'id' parameter is required.")
   }
-  response <- get(
-    res = glue::glue("/cafe/genetree/id/{id}"),
+  response <- get(res = "/cafe/genetree/id/{id}", id = id,
     .headers = req_headers(content_type = "application/json")
   )
 }
@@ -57,9 +56,9 @@ get_cafe_genetree_by_symbol <- function(species, symbol) {
   if (missing(species) || missing(symbol)) {
     stop("Both 'species' and 'symbol' parameters are required.")
   }
-  response <- get(
-    res = glue::glue("/cafe/genetree/member/symbol/{species}/{symbol}"),
-    .headers = req_headers(content_type = "application/json")
+  response <- get(res = "/cafe/genetree/member/symbol/{species}/{symbol}",
+    species = species, symbol = symbol,
+    symbol = symbol, .headers = req_headers(content_type = "application/json")
   )
 }
 
@@ -84,8 +83,8 @@ get_cafe_genetree_by_species_id <- function(species, id) {
   if (missing(species) || missing(id)) {
     stop("Both 'species' and 'id' parameters are required.")
   }
-  response <- get(
-    res = glue::glue("/cafe/genetree/member/id/{species}/{id}"),
+  response <- get(res = "/cafe/genetree/member/id/{species}/{id}",
+    species = species, id = id,
     .headers = req_headers(content_type = "application/json")
   )
 }
@@ -110,8 +109,7 @@ get_genetree_by_id <- function(id) {
   if (missing(id)) {
     stop("The 'id' parameter is required.")
   }
-  response <- get(
-    res = glue::glue("/genetree/id/{id}"),
+  response <- get(res = "/genetree/id/{id}", id = id,
     .headers = req_headers(content_type = "application/json")
   )
 }
@@ -138,8 +136,8 @@ get_genetree_by_symbol <- function(species, symbol) {
   if (missing(species) || missing(symbol)) {
     stop("Both 'species' and 'symbol' parameters are required.")
   }
-  response <- get(
-    res = glue::glue("/genetree/member/symbol/{species}/{symbol}"),
+  response <- get(res = "/genetree/member/symbol/{species}/{symbol}",
+    species = species, symbol = symbol,
     .headers = req_headers(content_type = "application/json")
   )
 }
@@ -168,8 +166,8 @@ get_genetree_by_species_id <- function(species, id) {
   if (missing(species) || missing(id)) {
     stop("Both 'species' and 'id' parameters are required.")
   }
-  response <- get(
-    res = glue::glue("/genetree/member/id/{species}/{id}"),
+  response <- get(res = "/genetree/member/id/{species}/{id}",
+    species = species, id = id,
     .headers = req_headers(content_type = "application/json")
   )
 }
@@ -197,8 +195,8 @@ get_alignment_by_region <- function(species, region) {
   if (missing(species) || missing(region)) {
     stop("Both 'species' and 'region' parameters are required.")
   }
-  # response <- get(
-  #   res = glue::glue("/alignment/region/{species}/{region}"),
+  # response <- get(res = "/alignment/region/{species}/{region}",
+  #   species = species, region = region,
   #   .headers = req_headers(content_type = "application/json")
   # )
 }
@@ -224,8 +222,8 @@ get_homology_by_species_id <- function(species, id) {
   if (missing(species) || missing(id)) {
     stop("Both 'species' and 'id' parameters are required.")
   }
-  response <- get(
-    res = glue::glue("/homology/id/{species}/{id}"),
+  response <- get(res = "/homology/id/{species}/{id}",
+    species = species, id = id,
     .headers = req_headers(content_type = "application/json")
   )
 }
@@ -251,8 +249,8 @@ get_homology_by_symbol <- function(species, symbol) {
   if (missing(species) || missing(symbol)) {
     stop("Both 'species' and 'symbol' parameters are required.")
   }
-  response <- get(
-    res = glue::glue("/homology/symbol/{species}/{symbol}"),
+  response <- get("/homology/symbol/{species}/{symbol}",
+    species = species, symbol = symbol,
     .headers = req_headers(content_type = "application/json")
   )
 }
@@ -286,8 +284,8 @@ get_xrefs_by_symbol <- function(species, symbol) {
   if (missing(species) || missing(symbol)) {
     stop("Both 'species' and 'symbol' parameters are required.")
   }
-  response <- get(
-    res = glue::glue("/xrefs/symbol/{species}/{symbol}"),
+  response <- get(res = "/xrefs/symbol/{species}/{symbol}",
+    species = species, symbol = symbol,
     .headers = req_headers(content_type = "application/json")
   )
 }
@@ -313,8 +311,8 @@ get_xrefs_by_id <- function(id) {
   if (missing(id)) {
     stop("The 'id' parameter is required.")
   }
-  response <- get(
-    res = glue::glue("/xrefs/id/{id}"),
+  response <- get(res = "/xrefs/id/{id}",
+    id = id,
     .headers = req_headers(content_type = "application/json")
   )
 }
@@ -342,8 +340,8 @@ get_xrefs_by_name <- function(species, name) {
   if (missing(species) || missing(name)) {
     stop("Both 'species' and 'name' parameters are required.")
   }
-  response <- get(
-    res = glue::glue("/xrefs/name/{species}/{name}"),
+  response <- get(res = "/xrefs/name/{species}/{name}",
+    species = species, name = name,
     .headers = req_headers(content_type = "application/json")
   )
 }

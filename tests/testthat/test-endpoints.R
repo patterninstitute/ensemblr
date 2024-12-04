@@ -89,4 +89,11 @@ test_that("Testing if the `Ensembl API` functions work correctly", {
     expect_error(get_xrefs_by_name("homo_sapiens"), "Both 'species' and 'name' parameters are required")
   })
 
+  ## test `get`
+  id <- "ENSGT00390000003602"
+  response <- get(res = "/cafe/genetree/id/{id}", id = id,
+    .headers = req_headers(content_type = "application/json")
+  )
+  expect_equal(response[[1]]$status_code, 200)
+
 })
