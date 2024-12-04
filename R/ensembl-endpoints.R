@@ -10,6 +10,18 @@
 #' Retrieves a cafe tree of the gene tree using the gene tree stable identifier
 #'
 #' @param id A string representing the gene tree stable identifier.
+#' @param callback String \emph{(optional)} Name of the callback subroutine
+#' to be returned by the requested JSONP response. Required ONLY when using
+#' JSONP as the serialisation method. Please
+#' see also [the user guide](http://github.com/Ensembl/ensembl-rest/wiki).
+#' @param compara String \emph{(optional)} Name of the compara database to use.
+#' Multiple comparas exist on a server for separate species divisions.
+#' Default is "vertebrates".
+#' @param nh_format String \emph{(optional)} The format of a NH (New Hampshire)
+#' request. Available only with the default setting to allow us to return
+#' the cafe tree with Taxa names appended with number of members
+#' and the p_value. Example: "homo_sapiens_3_0.123" where 3 is the number
+#' of members and 0.123 is the p value.
 #'
 #' @return A list of parsed JSON responses containing the cafe tree
 #' for the provided gene tree stable identifier.
@@ -22,13 +34,32 @@
 #' @export
 #' @examples
 #' get_cafe_genetree_by_id("ENSGT00390000003602")
+#' get_cafe_genetree_by_id("ENSGT00390000003602",
+#'                         callback = "randomlygeneratedname")
+#' get_cafe_genetree_by_id("ENSGT00390000003602",
+#'                         compara = "vertebrates")
+#' get_cafe_genetree_by_id("ENSGT00390000003602",
+#'                         nh_format = "homo_sapiens_3_0.123")
 #'
-get_cafe_genetree_by_id <- function(id) {
+get_cafe_genetree_by_id <- function(id, callback = NULL,
+                                    compara = "vertebrates",
+                                    nh_format = NULL) {
   if (missing(id)) {
     stop("The 'id' parameter is required.")
   }
+  params <- list()
+  if (!is.null(callback)) {
+    params$callback <- callback
+  }
+  if (!is.null(compara)) {
+    params$compara <- compara
+  }
+  if (!is.null(nh_format)) {
+    params$nh_format <- nh_format
+  }
   response <- get(res = "/cafe/genetree/id/{id}", id = id,
-    .headers = req_headers(content_type = "application/json")
+    .headers = req_headers(content_type = "application/json"),
+    .params = params
   )
 }
 

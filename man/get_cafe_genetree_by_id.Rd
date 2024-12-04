@@ -8,6 +8,21 @@ get_cafe_genetree_by_id(id)
 }
 \arguments{
 \item{id}{A string representing the gene tree stable identifier.}
+
+\item{callback}{String \emph{(optional)} Name of the callback subroutine
+to be returned by the requested JSONP response. Required ONLY when using
+JSONP as the serialisation method. Please
+see also \href{http://github.com/Ensembl/ensembl-rest/wiki}{the user guide}.}
+
+\item{compara}{String \emph{(optional)} Name of the compara database to use.
+Multiple comparas exist on a server for separate species divisions.
+Default is "vertebrates".}
+
+\item{nh_format}{String \emph{(optional)} The format of a NH (New Hampshire)
+request. Available only with the default setting to allow us to return
+the cafe tree with Taxa names appended with number of members
+and the p_value. Example: "homo_sapiens_3_0.123" where 3 is the number
+of members and 0.123 is the p value.}
 }
 \value{
 A list of parsed JSON responses containing the cafe tree
@@ -23,5 +38,11 @@ from the official \href{https://rest.ensembl.org/}{Ensembl Rest API}.
 }
 \examples{
 get_cafe_genetree_by_id("ENSGT00390000003602")
+get_cafe_genetree_by_id("ENSGT00390000003602",
+                        callback = "randomlygeneratedname")
+get_cafe_genetree_by_id("ENSGT00390000003602",
+                        compara = "vertebrates")
+get_cafe_genetree_by_id("ENSGT00390000003602",
+                        nh_format = "homo_sapiens_3_0.123")
 
 }
