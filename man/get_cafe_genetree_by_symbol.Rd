@@ -7,8 +7,7 @@
 get_cafe_genetree_by_symbol(species, symbol)
 }
 \arguments{
-\item{species}{A string representing the species name (e.g.,
-"homo_sapiens").}
+\item{species}{A string representing the species name (e.g., "homo_sapiens").}
 
 \item{symbol}{A string representing the gene symbol (e.g., "BRCA2").}
 }

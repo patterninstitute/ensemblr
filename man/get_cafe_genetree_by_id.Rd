@@ -4,7 +4,12 @@
 \alias{get_cafe_genetree_by_id}
 \title{Get cafe gene tree by id}
 \usage{
-get_cafe_genetree_by_id(id)
+get_cafe_genetree_by_id(
+  id,
+  callback = "myrandomfunctionname",
+  compara = "vertebrates",
+  nh_format = "simple"
+)
 }
 \arguments{
 \item{id}{A string representing the gene tree stable identifier.}

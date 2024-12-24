@@ -10,7 +10,8 @@ get_genetree_by_id(id)
 \item{id}{A string representing the gene tree stable identifier.}
 }
 \value{
-A list of parsed JSON responses containing the gene tree for the provided gene tree stable identifier.
+A list of parsed JSON responses containing the gene tree for
+the provided gene tree stable identifier.
 }
 \description{
 Retrieves a gene tree for a gene tree stable identifier

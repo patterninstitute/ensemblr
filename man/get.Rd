@@ -4,7 +4,7 @@
 \alias{get}
 \title{The function for the GET method}
 \usage{
-get(res, ..., .headers = req_headers(), rate = 15/60)
+get(res, ..., .headers = req_headers(), rate = 15/60, verbose = FALSE)
 }
 \arguments{
 \item{res}{The resource (path) for the API request, can include variables
@@ -17,6 +17,8 @@ in curly braces \code{{}} that will be replaced with the corresponding parameter
 
 \item{rate}{The maximum number of requests per second to allow.
 Defaults to 15 per minute (15/60).}
+
+\item{verbose}{Logical, if TRUE, enables detailed logging of request and response details.}
 }
 \value{
 A list of responses, one for each request made.
