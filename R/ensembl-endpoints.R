@@ -414,11 +414,22 @@ get_analysis_info <- function(species, callback = "randomlygeneratedname") {
     stop("'species' parameter is required.")
   }
   if (!is.null(callback)) {
-    response <- get(res = "/info/analysis/{species}", species = species,
-      .headers = req_headers(content_type = "application/json"), callback)
+    query_params <- list()
+    if (!is.null(species)) query_params$species <- species
+    if (!is.null(callback)) query_params$callback <- callback
+
+    headers <- req_headers(content_type = "application/json")
+
+    response <-
+      do.call(get,
+              c(list(
+                res = "/info/analysis/{species}",
+                .headers = headers),
+                query_params)
+      )
   } else {
-    response <- get(res = "/info/analysis/{species}", species = species,
-      .headers = req_headers(content_type = "application/json"))
+    warning("Callback is null. Returning an empty response.")
+    response <- list()
   }
 
   response
