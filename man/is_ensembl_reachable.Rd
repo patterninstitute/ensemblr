@@ -17,7 +17,7 @@ change this parameter.}
 }
 \value{
 A logical value: \code{TRUE} if EBI server is reachable, \code{FALSE}
-  otherwise.
+otherwise.
 }
 \description{
 Check if the Ensembl server where REST API service is running is reachable.

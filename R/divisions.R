@@ -14,17 +14,15 @@
 #'
 #' @export
 get_divisions <- function(verbose = FALSE, warnings = TRUE) {
-  response <- request(
-    resource_url = "/info/divisions?",
-    verbose = verbose,
-    warnings = warnings
-  )
 
-  if (!identical(response$status, "OK")) {
-    rlang::abort(
-      "Could not get a successful response\n",
-      "Response code was {response$response_code}."
+  response <- request(
+    resource_url = '/info/divisions?',
+    verbose = verbose,
+    warnings = warnings)
+
+  if (!identical(response$status, 'OK'))
+    rlang::abort('Could not get a successful response\n',
+                 'Response code was {response$response_code}.'
     )
-  }
-  return(purrr::pluck(response, "content"))
+  return(purrr::pluck(response, 'content'))
 }

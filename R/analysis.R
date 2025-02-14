@@ -1,7 +1,8 @@
 analysis_tbl <- function(
-    species_name = character(),
-    database = character(),
-    analysis = character()) {
+  species_name = character(),
+  database = character(),
+  analysis = character()
+) {
   tbl <- tibble::tibble(
     species_name = species_name,
     database = database,
@@ -11,14 +12,13 @@ analysis_tbl <- function(
 }
 
 json_list_to_analysis_tbl <- function(species_name, json_list) {
+
   tbl <- purrr::imap_dfr(
     json_list,
-    .f = ~ analysis_tbl(
-      species_name = species_name,
-      database = .x,
-      analysis = .y
+    .f = ~ analysis_tbl(species_name = species_name,
+                        database = .x,
+                        analysis = .y)
     )
-  )
 
   # Drop rows if all columns except species_name are NA
   return(tidyr::drop_na(tbl, -species_name))
@@ -54,6 +54,7 @@ get_analyses <- function(species_name,
                          verbose = FALSE,
                          warnings = TRUE,
                          progress_bar = TRUE) {
+
   # Assert species_name argument.
   assert_species_name(species_name)
   # Assert verbose argument.
@@ -67,8 +68,8 @@ get_analyses <- function(species_name,
   e <- urltools::url_encode
 
   resource_urls <- glue::glue(
-    "/info/analysis/",
-    "{e(species_name)}?"
+    '/info/analysis/',
+    '{e(species_name)}?'
   )
 
   # Usually we'd use purrr::map here but we opted for plyr::llply
@@ -89,13 +90,11 @@ get_analyses <- function(species_name,
     )
 
   # Only keep those responses that responded successfully, i.e. with status == "OK".
-  responses_ok <- purrr::keep(responses, ~ identical(.x$status, "OK"))
+  responses_ok <- purrr::keep(responses, ~ identical(.x$status, 'OK'))
 
   # If none of the responses were successful then return an empty linkage
   # disequilibrium tibble.
-  if (rlang::is_empty(responses_ok)) {
-    return(analysis_tbl())
-  }
+  if (rlang::is_empty(responses_ok)) return(analysis_tbl())
 
   tbl <- purrr::imap_dfr(
     .x = responses_ok,
@@ -106,4 +105,5 @@ get_analyses <- function(species_name,
   analysis <- rlang::expr(analysis)
 
   return(dplyr::arrange(tbl, species_name, !!database, !!analysis))
+
 }

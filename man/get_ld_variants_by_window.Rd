@@ -87,7 +87,7 @@ populations for a species.}
 
 \item{r_squared}{\eqn{r^2} is a measure of linkage disequilibrium.
 \code{r_squared} defines a cut-off threshold: only variants whose \eqn{r^2
-\ge }\code{r_squared} are returned. The lower bound for \code{r_squared} is
+  \ge }\code{r_squared} are returned. The lower bound for \code{r_squared} is
 \code{0.05}, not \code{0}; the upper bound is \code{1}.}
 
 \item{verbose}{Whether to be verbose about the http requests and respective
@@ -116,15 +116,15 @@ function \code{get_ld_variants_by_range()}.}
 \value{
 A \code{\link[tibble]{tibble}} of 6 variables:
 \describe{
-  \item{\code{species_name}}{Ensembl species name: this is the name used internally
-  by Ensembl to uniquely identify a species by name. It is the scientific
-  name but formatted without capitalisation and spacing converted with an
-  underscore, e.g., \code{'homo_sapiens'}.}
-  \item{\code{population}}{Population for which to compute linkage disequilibrium.}
-  \item{\code{variant_id1}}{First variant identifier.}
-  \item{\code{variant_id2}}{Second variant identifier.}
-  \item{\code{d_prime}}{\eqn{D'} between the two variants.}
-  \item{\code{r_squared}}{\eqn{r^2} between the two variants.}
+\item{\code{species_name}}{Ensembl species name: this is the name used internally
+by Ensembl to uniquely identify a species by name. It is the scientific
+name but formatted without capitalisation and spacing converted with an
+underscore, e.g., \code{'homo_sapiens'}.}
+\item{\code{population}}{Population for which to compute linkage disequilibrium.}
+\item{\code{variant_id1}}{First variant identifier.}
+\item{\code{variant_id2}}{Second variant identifier.}
+\item{\code{d_prime}}{\eqn{D'} between the two variants.}
+\item{\code{r_squared}}{\eqn{r^2} between the two variants.}
 }
 }
 \description{
