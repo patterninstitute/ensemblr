@@ -1,6 +1,6 @@
 #' The function for POST method
 #'
-#' The [post()] function is a wrapper around the [reqs()] function that
+#' The [post()] function is a wrapper around the `reqs` function that
 #' performs POST requests to the Ensembl API, handling rate limiting
 #' automatically.
 #'

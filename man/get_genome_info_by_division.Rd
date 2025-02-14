@@ -20,7 +20,7 @@ get_genome_info_by_division(
 \value{
 A parsed JSON response containing information about genomes in the specified division.
 
-See more about the implemented endpoint \code{\link[=get_genomes_by_division]{get_genomes_by_division()}}
+See more about the implemented endpoint \code{\link[=get_genome_info_by_division]{get_genome_info_by_division()}}
 on the following \href{https://rest.ensembl.org/documentation/info/info_genomes_division}{GET info/genomes/division/:division_name}
 from the official \href{https://rest.ensembl.org/}{Ensembl Rest API}.
 }

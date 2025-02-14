@@ -22,7 +22,7 @@ to include details of sequences (can be very large).}
 A parsed JSON response containing information about the genome associated
 with the specified assembly ID.
 
-See more about the implemented endpoint \code{\link[=get_genomes_by_assembly]{get_genomes_by_assembly()}}
+See more about the implemented endpoint \code{\link[=get_genome_info_by_assembly]{get_genome_info_by_assembly()}}
 on the following \href{https://rest.ensembl.org/documentation/info/info_genomes_assembly}{GET info/genomes/assembly/:assembly_id}
 from the official \href{https://rest.ensembl.org/}{Ensembl Rest API}.
 }

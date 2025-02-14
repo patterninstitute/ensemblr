@@ -26,7 +26,7 @@ Defaults to 15 per minute (15/60).}
 A list of responses, one for each request made.
 }
 \description{
-The \code{\link[=post]{post()}} function is a wrapper around the \code{\link[=reqs]{reqs()}} function that
+The \code{\link[=post]{post()}} function is a wrapper around the \code{reqs} function that
 performs POST requests to the Ensembl API, handling rate limiting
 automatically.
 }

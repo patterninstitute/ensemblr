@@ -1,6 +1,6 @@
 #' The function for the GET method
 #'
-#' The [get()] function is a wrapper around the [reqs()] function that performs
+#' The [get()] function is a wrapper around the `reqs` function that performs
 #' GET requests to the Ensembl API, handling rate limiting automatically.
 #'
 #' @param res The resource (path) for the API request, can include variables

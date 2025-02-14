@@ -3,6 +3,7 @@ skip_if_offline()
 
 test_that("Testing if the `Ensembl API` functions work correctly", {
 
+  # -------------------------------------------------------- #
   ## Comparative Genomics ====
 
   test_that("`get_cafe_genetree_by_id` works", {
@@ -66,6 +67,7 @@ test_that("Testing if the `Ensembl API` functions work correctly", {
     expect_error(get_homology_by_symbol("homo_sapiens"), "Both 'species' and 'symbol' parameters are required")
   })
 
+  # -------------------------------------------------------- #
   ## Cross References ====
 
   test_that("`get_xrefs_by_symbol` works", {
@@ -87,6 +89,62 @@ test_that("Testing if the `Ensembl API` functions work correctly", {
     expect_type(result, "list")
     expect_equal(result[[1]]$status_code, 200)
     expect_error(get_xrefs_by_name("homo_sapiens"), "Both 'species' and 'name' parameters are required")
+  })
+
+  # -------------------------------------------------------- #
+  ## Information ====
+  ## TO DO
+
+  # -------------------------------------------------------- #
+  ## Linkage Disequilibrium ====
+
+  test_that("get_ld_by_variant works", {
+    result <- get_ld_by_variant(species = "homo_sapiens", id = "rs56116432",
+                                population_name = "1000GENOMES:phase_3:KHV")
+
+    expect_type(result, "list")
+    expect_true(!is.null(result))
+    expect_true(length(result) > 0)
+  })
+
+  test_that("get_ld_by_variant handles missing parameters", {
+    expect_error(get_ld_by_variant(id = "rs56116432", population_name = "1000GENOMES:phase_3:KHV"),
+                 "'species', 'id', and 'population_name' parameters are all required.")
+    expect_error(get_ld_by_variant(species = "homo_sapiens",population_name = "1000GENOMES:phase_3:KHV"),
+                 "'species', 'id', and 'population_name' parameters are all required.")
+  })
+
+  test_that("get_pairwise_ld_values works", {
+    result <- get_pairwise_ld_values(species = "homo_sapiens",
+                                     id1 = "rs6792369",id2 = "rs1042779")
+
+    expect_type(result, "list")
+    expect_true(!is.null(result))
+    expect_true(length(result) > 0)
+  })
+
+  test_that("get_pairwise_ld_values handles missing parameters", {
+    expect_error(get_pairwise_ld_values(id1 = "rs6792369", id2 = "rs1042779"),
+                 "'species', 'id1', and 'id2' parameters are all required.")
+    expect_error(get_pairwise_ld_values(species = "homo_sapiens", id1 = "rs6792369"),
+                 "'species', 'id1', and 'id2' parameters are all required.")
+  })
+
+  test_that("get_ld_values_by_region works", {
+    result <- get_ld_values_by_region(species = "homo_sapiens",
+                                      region = "6:25837556..25843455",
+                                      population_name = "1000GENOMES:phase_3:KHV")
+
+    expect_type(result, "list")
+    expect_true(!is.null(result))
+    expect_true(length(result) > 0)
+  })
+
+  test_that("get_ld_values_by_region handles missing parameters", {
+    expect_error(get_ld_values_by_region(region = "6:25837556..25843455", population_name = "1000GENOMES:phase_3:KHV"),
+                 "'species', 'region', and 'population_name' parameters are all required.")
+    expect_error(get_ld_values_by_region(species = "homo_sapiens", population_name = "1000GENOMES:phase_3:KHV"),
+                 "'species', 'region', and 'population_name' parameters are all required.")
   })
 
   ## test `get`

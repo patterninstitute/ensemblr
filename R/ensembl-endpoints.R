@@ -1046,7 +1046,7 @@ get_genome_info_by_accession <- function(accession, callback = "randomlygenerate
 #' @return A parsed JSON response containing information about the genome associated
 #' with the specified assembly ID.
 #'
-#' See more about the implemented endpoint [get_genomes_by_assembly()]
+#' See more about the implemented endpoint [get_genome_info_by_assembly()]
 #' on the following [GET info/genomes/assembly/:assembly_id](https://rest.ensembl.org/documentation/info/info_genomes_assembly)
 #' from the official [Ensembl Rest API](https://rest.ensembl.org/).
 #'
@@ -1094,7 +1094,7 @@ get_genome_info_by_assembly <- function(assembly_id, callback = "randomlygenerat
 #'
 #' @return A parsed JSON response containing information about genomes in the specified division.
 #'
-#' See more about the implemented endpoint [get_genomes_by_division()]
+#' See more about the implemented endpoint [get_genome_info_by_division()]
 #' on the following [GET info/genomes/division/:division_name](https://rest.ensembl.org/documentation/info/info_genomes_division)
 #' from the official [Ensembl Rest API](https://rest.ensembl.org/).
 #'
@@ -1142,7 +1142,7 @@ get_genome_info_by_division <- function(division_name, callback = "randomlygener
 #'
 #' @return A parsed JSON response containing information about genomes beneath the specified taxonomy node.
 #'
-#' See more about the implemented endpoint [get_genomes_by_taxonomy()]
+#' See more about the implemented endpoint [get_genome_info_by_taxonomy()]
 #' on the following [GET info/genomes/taxonomy/:taxon_name](https://rest.ensembl.org/documentation/info/info_genomes_taxonomy)
 #' from the official [Ensembl Rest API](https://rest.ensembl.org/).
 #'
@@ -1499,7 +1499,7 @@ get_species_populations <- function(species, callback = "randomlygeneratedname",
 
   if (!is.null(callback)) {
     query_params <- list()
-    if (!is.null(species)) query_params$species <- species
+    query_params$species <- species
     if (!is.null(filter)) query_params$filter <- filter
     if (!is.null(callback)) query_params$callback <- callback
 
@@ -1520,9 +1520,235 @@ get_species_populations <- function(species, callback = "randomlygeneratedname",
   response
 }
 
-
 # -------------------------------------------------------- #
 ## Linkage Disequilibrium ====
+
+#' Get Linkage Disequilibrium (LD) values
+#'
+#' Computes and retrieves LD values between a given variant and all other
+#' variants within a window of up to 500 kb in the specified population.
+#'
+#' @param species A string representing the species name
+#' or alias.
+#' @param id A string representing the variant ID
+#' (e.g., rs56116432).
+#' @param population_name A string representing the population
+#' for which to compute LD.
+#' Use GET /info/variation/populations/:species?filter=LD to
+#' retrieve a list of all populations with LD data. This endpoint is already
+#' implemented. Please, use [get_species_populations()] with filter "LD"
+#' to retrieve valid populations.
+#' @param attribs \emph{(Optional)} A boolean indicating whether
+#' to add variation attributes such as chromosome, start, end, strand,
+#' consequence type, and clinical significance. Default is NULL.
+#' @param callback \emph{(Optional)} A string representing the name of the
+#' callback subroutine for JSONP responses.
+#' @param d_prime \emph{(Optional)} A float value (0-1) to filter results
+#' by D' (linkage disequilibrium measure). Only returns pairs with D' ≥
+#' the specified value. Default is NULL.
+#' @param r2 \emph{(Optional)} A float value (0-1) to filter results by
+#' r² (correlation coefficient). Only returns pairs with r² ≥ the specified
+#' value.. Default is NULL.
+#' @param window_size \emph{(Optional)} An integer specifying the window size
+#' in kb (max 500). Defaults to 500 kb.
+#'
+#' @return A list of parsed JSON responses containing the LD values for
+#' the provided variant.
+#'
+#' @note
+#' See more about the implemented endpoint [get_ld_by_variant()]
+#' on the following [GET ld/:species/:id/:population_name](https://rest.ensembl.org/documentation/info/ld)
+#' from the official [Ensembl Rest API](https://rest.ensembl.org/).
+#'
+#' @export
+#' @examples
+#' get_ld_by_variant("homo_sapiens", "rs56116432", "1000GENOMES:phase_3:KHV")
+#' get_ld_by_variant("homo_sapiens", "rs56116432", "1000GENOMES:phase_3:KHV",
+#'                   d_prime = 0.8, r2 = 0.85)
+#' get_ld_by_variant("homo_sapiens", "rs56116432", "1000GENOMES:phase_3:KHV",
+#'                   window_size = 250)
+#'
+get_ld_by_variant <- function(species, id, population_name, attribs = NULL,
+                              callback = "randomlygeneratedname",
+                              d_prime = NULL, r2 = NULL,
+                              window_size = 500) {
+  if (missing(species) || missing(id) || missing(population_name)) {
+    stop("'species', 'id', and 'population_name' parameters are all required.")
+  }
+
+  if (!is.null(window_size) && (window_size < 1 || window_size > 500)) {
+    stop("'window_size' parameter must be between 1 and 500 kb.")
+  }
+
+  if (!is.null(callback)) {
+    query_params <- list()
+    query_params$species <- species
+    query_params$id <- id
+    query_params$population_name <- population_name
+    if (!is.null(attribs)) query_params$attribs <- as.integer(attribs)
+    if (!is.null(d_prime)) query_params$d_prime <- d_prime
+    if (!is.null(r2)) query_params$r2 <- r2
+    if (!is.null(window_size)) query_params$window_size <- window_size
+
+    headers <- req_headers(content_type = "application/json")
+
+    response <- do.call(get, c(list(
+      res = "/ld/{species}/{id}/{population_name}",
+      .headers = headers),
+      query_params))
+
+  } else {
+    warning("Callback is null. Returning an empty response.")
+    response <- list()
+  }
+
+  response
+}
+
+#' Get Pairwise Linkage Disequilibrium (LD) Values
+#'
+#' Computes and retrieves LD values between two given variants.
+#'
+#' @param species A string representing the species name or
+#' alias (e.g., "homo_sapiens").
+#' @param id1 A string representing the first variant ID
+#' (e.g., "rs6792369").
+#' @param id2 A string representing the second variant ID
+#' (e.g., "rs1042779").
+#' @param callback \emph{(Optional)} A string representing the name of
+#' the callback
+#' subroutine for JSONP responses.
+#' @param d_prime \emph{(Optional)} A float value (0-1) to filter results
+#' by D' (linkage disequilibrium measure).
+#' Only returns pairs with D' ≥ the specified value.
+#' @param r2 \emph{(Optional)} A float value (0-1) to filter results by r²
+#' (correlation coefficient). Only returns pairs with r² ≥ the specified value.
+#' @param population_name \emph{(Optional)} A string representing the population
+#' for which to compute LD. Use [get_species_populations()] with filter "LD"
+#' to retrieve valid populations.
+#'
+#' @return A parsed JSON response containing the LD values for the specified
+#' variant pair.
+#'
+#' See more about the implemented endpoint [get_pairwise_ld_values()]
+#' on the following [GET ld/:species/pairwise/:id1/:id2](https://rest.ensembl.org/documentation/info/ld_pairwise)
+#' from the official [Ensembl Rest API](https://rest.ensembl.org/).
+#'
+#' @export
+#' @examples
+#' get_pairwise_ld_values(species = "homo_sapiens", id1 = "rs6792369",
+#'                       id2 = "rs1042779")
+#' get_pairwise_ld_values(species = "homo_sapiens", id1 = "rs6792369",
+#'                       id2 = "rs1042779", r2 = 0.85)
+#' get_pairwise_ld_values(species = "homo_sapiens", id1 = "rs6792369",
+#'                       id2 = "rs1042779", d_prime = 1.0,
+#'                       population_name = "1000GENOMES:phase_3:KHV")
+get_pairwise_ld_values <- function(species, id1, id2,
+                                   callback = "randomlygeneratedname",
+                                   d_prime = NULL, r2 = NULL,
+                                   population_name = NULL) {
+  if (missing(species) || missing(id1) || missing(id2)) {
+    stop("'species', 'id1', and 'id2' parameters are all required.")
+  }
+
+  if (!is.null(callback)) {
+    query_params <- list()
+    query_params$species <- species
+    query_params$id1 <- id1
+    query_params$id2 <- id2
+    if (!is.null(d_prime)) query_params$d_prime <- d_prime
+    if (!is.null(r2)) query_params$r2 <- r2
+    if (!is.null(population_name)) query_params$population_name <- population_name
+
+    headers <- req_headers(content_type = "application/json")
+
+    response <- do.call(get, c(list(
+      res = "/ld/{species}/pairwise/{id1}/{id2}",
+      .headers = headers),
+      query_params))
+
+  } else {
+    warning("Callback is null. Returning an empty response.")
+    response <- list()
+  }
+
+  response
+}
+
+#' Get Linkage Disequilibrium (LD) Values for a Genomic Region
+#'
+#' Computes and retrieves LD values between all pairs of variants within
+#' a defined genomic region.
+#'
+#' @param species A string representing the species name or alias
+#' (e.g., "homo_sapiens").
+#' @param region A string defining the genomic region in the format
+#' "chr:start..end".
+#'   The maximum region size allowed is 500 kb. If the region overlaps
+#' the MHC region, the maximum is 10 kb.
+#' @param population_name A string representing the population for which
+#' LD should be computed.
+#'   Use [get_species_populations()] with filter "LD" to retrieve valid
+#' populations.
+#' @param callback \emph{(Optional)} A string representing the name of the
+#' callback subroutine for JSONP responses.
+#' @param d_prime \emph{(Optional)} A float value (0-1) to filter results
+#' by D' (linkage disequilibrium measure).
+#'   Only returns pairs with D' ≥ the specified value.
+#' @param r2 \emph{(Optional)} A float value (0-1) to filter results by r²
+#' (correlation coefficient).
+#'   Only returns pairs with r² ≥ the specified value.
+#'
+#' @return A parsed JSON response containing the LD values for all variant
+#' pairs within the specified region.
+#'
+#' See more about the implemented endpoint [get_ld_values_by_region()]
+#' on the following [GET ld/:species/region/:region/:population_name](https://rest.ensembl.org/documentation/info/ld_region)
+#' from the official [Ensembl Rest API](https://rest.ensembl.org/).
+#'
+#' @export
+#' @examples
+#' get_ld_values_by_region(species = "homo_sapiens",
+#'                        region = "6:25837556..25843455",
+#'                        population_name = "1000GENOMES:phase_3:KHV")
+#' get_ld_values_by_region(species = "homo_sapiens",
+#'                        region = "6:25837556..25843455",
+#'                        population_name = "1000GENOMES:phase_3:KHV",
+#'                        r2 = 0.85)
+#' get_ld_values_by_region(species = "homo_sapiens",
+#'                        region = "6:25837556..25843455",
+#'                        population_name = "1000GENOMES:phase_3:KHV",
+#'                        d_prime = 1.0)
+get_ld_values_by_region <- function(species, region, population_name,
+                                    callback = "randomlygeneratedname",
+                                    d_prime = NULL, r2 = NULL) {
+  if (missing(species) || missing(region) || missing(population_name)) {
+    stop("'species', 'region', and 'population_name' parameters are all required.")
+  }
+
+  if (!is.null(callback)) {
+    query_params <- list()
+    query_params$species <- species
+    query_params$region <- region
+    query_params$population_name <- population_name
+    if (!is.null(d_prime)) query_params$d_prime <- d_prime
+    if (!is.null(r2)) query_params$r2 <- r2
+
+    headers <- req_headers(content_type = "application/json")
+
+    response <- do.call(get, c(list(
+      res = "/ld/{species}/region/{region}/{population_name}",
+      .headers = headers),
+      query_params))
+
+  } else {
+    warning("Callback is null. Returning an empty response.")
+    response <- list()
+  }
+
+  response
+}
+
 
 # -------------------------------------------------------- #
 ## Lookup ====

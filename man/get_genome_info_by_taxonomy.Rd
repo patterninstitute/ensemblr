@@ -21,7 +21,7 @@ to include details of sequences (can be very large).}
 \value{
 A parsed JSON response containing information about genomes beneath the specified taxonomy node.
 
-See more about the implemented endpoint \code{\link[=get_genomes_by_taxonomy]{get_genomes_by_taxonomy()}}
+See more about the implemented endpoint \code{\link[=get_genome_info_by_taxonomy]{get_genome_info_by_taxonomy()}}
 on the following \href{https://rest.ensembl.org/documentation/info/info_genomes_taxonomy}{GET info/genomes/taxonomy/:taxon_name}
 from the official \href{https://rest.ensembl.org/}{Ensembl Rest API}.
 }
